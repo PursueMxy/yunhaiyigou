@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="7dp"
+    android:background="@color/white"
+    android:paddingBottom="19dp">
+
+    <TextView
+        android:id="@+id/tvShopName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="14dp"
+        android:drawableStart="@mipmap/shops"
+        android:drawablePadding="5dp"
+        android:textColor="@color/B33"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="杜康古城酒业商城" />
+
+    <TextView
+        android:id="@+id/tvOrderStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="14dp"
+        android:textColor="@color/RFF"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/tvShopName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvShopName"
+        tools:text="待付款" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvOrderItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13.5dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@id/tvShopName" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/BCC"
+        app:layout_constraintTop_toBottomOf="@id/rvOrderItem" />
+
+    <TextView
+        android:id="@+id/tvOrderTips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="14dp"
+        android:textColor="@color/RFF"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rvOrderItem"
+        tools:text="订单将在29分30秒后自动关闭" />
+
+
+    <TextView
+        android:id="@+id/tvPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="21.5dp"
+        android:textColor="@color/RFF"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/tvOrderTips"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvOrderTips"
+        tools:text="799.0" />
+
+    <TextView
+        android:id="@+id/tvGoodsNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="6dp"
+        android:text="共1件商品"
+        android:textColor="@color/B33"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/tvOrderTips"
+        app:layout_constraintEnd_toStartOf="@id/tvPrice"
+        app:layout_constraintTop_toTopOf="@id/tvOrderTips" />
+
+    <TextView
+        android:id="@+id/btnOrderStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="29dp"
+        android:layout_marginTop="17.5dp"
+        android:layout_marginEnd="21.5dp"
+        android:background="@drawable/box_r100"
+        android:backgroundTint="@color/RFF"
+        android:gravity="center"
+        android:minWidth="90dp"
+        android:paddingHorizontal="20dp"
+        android:text="去付款"
+        android:textColor="#ffff0000"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPrice" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="29dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/box_r100"
+        android:backgroundTint="@color/B99"
+        android:gravity="center"
+        android:minWidth="90dp"
+        android:text="申请退款"
+        android:textColor="@color/B66"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="@id/btnOrderStatus"
+        app:layout_constraintEnd_toStartOf="@id/btnOrderStatus"
+        app:layout_constraintTop_toTopOf="@id/btnOrderStatus" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

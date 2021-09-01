@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:text="满500减100"
+    android:layout_marginEnd="11dp"
+    android:textColor="@color/RFF"
+    android:textSize="12sp"
+    android:id="@+id/tvGetCoupon"
+    android:paddingVertical="5dp"
+    android:paddingHorizontal="8dp"
+    android:background="@mipmap/get_coupons"/>

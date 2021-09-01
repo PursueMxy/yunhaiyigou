@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tabMain"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal|bottom"
+    android:drawablePadding="5dp"
+    android:gravity="center"
+    android:textColor="@color/select_home_tab"
+    android:textSize="10sp"
+    app:drawableTopCompat="@drawable/tab_home"
+    tools:ignore="SmallSp"
+    tools:text="社区" />

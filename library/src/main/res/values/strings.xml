@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="date_pattern">yyyy-MM-dd hh:mm:ss</string>
+
+    <string name="data_change_exception">数据解析错误</string>
+    <string name="net_exception">网络异常</string>
+    <string name="connect_timeout">连接超时</string>
+
+    <string name="dial_format">tel:%s</string>
+    <string name="package_format">package:%s</string>
+    <string name="geo_format">geo:</string>
+    <string name="comma">,</string>
+    <string name="query_format">\?q=</string>
+    <string name="dot">.</string>
+    <string name="content_type_json">application/json</string>
+    <string name="fix_behavior">com.icarexm.library.kit.behavior.FixAppBarLayoutBehavior</string>
+    <string name="image_mime">image/*</string>
+</resources>

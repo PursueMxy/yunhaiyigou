@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.xdys.library.widget.TitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:left_drawable="@mipmap/arrow_left_b"
+        app:show_left="true"
+        app:title_content="@string/add_shipping_address"
+        tools:layout_height="40dp" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleBar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvDeliveryTips"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/RFF_80"
+                android:paddingHorizontal="23dp"
+                android:paddingVertical="8.5dp"
+                android:textColor="@color/B66"
+                android:textSize="11sp"
+                tools:text="云南、青海、西藏、新疆、甘肃、海南、宁夏、港澳台等地区暂不支持发货" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/tvConsignee"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="21.5dp"
+                    android:paddingVertical="23dp"
+                    android:text="@string/consignee"
+                    android:textColor="@color/B66"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/etConsignee"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:paddingStart="42dp"
+                    android:paddingEnd="25dp"
+                    android:text="@string/hint_consignee"
+                    android:textColor="@color/BCC"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@id/tvConsignee"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tvConsignee"
+                    app:layout_constraintTop_toTopOf="@id/tvConsignee" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginStart="20dp"
+                    android:background="@color/BCC"
+                    app:layout_constraintTop_toBottomOf="@id/tvConsignee" />
+
+
+                <TextView
+                    android:id="@+id/tvPhoneNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="21.5dp"
+                    android:layout_marginTop="1dp"
+                    android:paddingVertical="23dp"
+                    android:text="@string/phone_number"
+                    android:textColor="@color/B66"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvConsignee" />
+
+                <EditText
+                    android:id="@+id/etPhoneNumber"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:paddingStart="42dp"
+                    android:paddingEnd="25dp"
+                    android:text="@string/hint_phone_number"
+                    android:textColor="@color/BCC"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@id/tvPhoneNumber"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/etConsignee"
+                    app:layout_constraintTop_toTopOf="@id/tvPhoneNumber" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginStart="20dp"
+                    android:background="@color/BCC"
+                    app:layout_constraintTop_toBottomOf="@id/tvPhoneNumber" />
+
+
+                <TextView
+                    android:id="@+id/tvCity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="21.5dp"
+                    android:layout_marginTop="1dp"
+                    android:paddingVertical="23dp"
+                    android:text="@string/city"
+                    android:textColor="@color/B66"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvPhoneNumber" />
+
+                <EditText
+                    android:id="@+id/etCity"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:drawableEnd="@mipmap/arrow_right_s"
+                    android:drawablePadding="5dp"
+                    android:paddingStart="42dp"
+                    android:paddingEnd="25dp"
+                    android:text="@string/hint_city"
+                    android:textColor="@color/BCC"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@id/tvCity"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/etConsignee"
+                    app:layout_constraintTop_toTopOf="@id/tvCity" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginStart="20dp"
+                    android:background="@color/BCC"
+                    app:layout_constraintTop_toBottomOf="@id/tvCity" />
+
+                <TextView
+                    android:id="@+id/tvDetailedAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="21.5dp"
+                    android:layout_marginTop="1dp"
+                    android:paddingVertical="23dp"
+                    android:text="@string/detailed_address"
+                    android:textColor="@color/B66"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvCity" />
+
+                <EditText
+                    android:id="@+id/etDetailedAddress"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:paddingStart="42dp"
+                    android:paddingEnd="25dp"
+                    android:text="@string/hint_detail_address"
+                    android:textColor="@color/BCC"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@id/tvDetailedAddress"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/etConsignee"
+                    app:layout_constraintTop_toTopOf="@id/tvDetailedAddress" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/tvSetDefaultAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="21.5dp"
+                    android:layout_marginTop="1dp"
+                    android:paddingVertical="23dp"
+                    android:text="@string/set_default_address"
+                    android:textColor="@color/B66"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/ivSetDefaultAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="18dp"
+                    android:src="@drawable/selector_switch"
+                    app:layout_constraintBottom_toBottomOf="@id/tvSetDefaultAddress"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tvSetDefaultAddress" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tvSaveAddress"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginHorizontal="42dp"
+                android:layout_marginTop="76.5dp"
+                android:background="@drawable/bg_r100"
+                android:backgroundTint="@color/REB"
+                android:gravity="center"
+                android:text="@string/save_address"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvDeleteAddress"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginHorizontal="42dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/box_r100"
+                android:backgroundTint="@color/REB"
+                android:gravity="center"
+                android:text="@string/delete_address"
+                android:textColor="@color/REB"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

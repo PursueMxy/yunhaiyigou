@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_address"
+    app:startDestination="@id/goodsDetailFragment">
+
+    <fragment
+        android:id="@+id/goodsDetailFragment"
+        android:name="com.xdys.yhyg.ui.goods.GoodsDetailFragment"
+        android:label="goodsDetailFragment"
+        tools:layout="@layout/fragment_goods_detail" />
+    <fragment
+        android:id="@+id/goodsDetailSpikeFragment"
+        android:name="com.xdys.yhyg.ui.goods.GoodsDetailSpikeFragment"
+        android:label="goodsDetailSpikeFragment"
+        tools:layout="@layout/fragment_goods_detail_spike" />
+
+    <fragment
+        android:id="@+id/goodsEvaluateFragment"
+        android:name="com.xdys.yhyg.ui.goods.GoodsEvaluateFragment"
+        android:label="goodsDetailSpikeFragment"
+        tools:layout="@layout/fragment_goods_evaluate" />
+
+</navigation>

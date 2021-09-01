@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="7dp"
+    android:background="@color/white"
+    android:paddingHorizontal="20dp"
+    android:paddingTop="15dp"
+    android:paddingBottom="11dp">
+
+    <TextView
+        android:id="@+id/tvRecipient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/B33"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="李俊祥" />
+
+    <TextView
+        android:id="@+id/tvMobile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16.5dp"
+        android:textColor="@color/B33"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@id/tvRecipient"
+        app:layout_constraintStart_toEndOf="@id/tvRecipient"
+        app:layout_constraintTop_toTopOf="@id/tvRecipient"
+        tools:text="180****2236" />
+
+    <TextView
+        android:id="@+id/tvAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/B99"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/tvRecipient"
+        tools:text="福建厦门湖里区五缘湾安岭路1008号丰润金融中心B座1001-1室" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="7.5dp"
+        android:background="@color/BCC"
+        app:layout_constraintTop_toBottomOf="@id/tvAddress" />
+
+    <TextView
+        android:id="@+id/tvDefaultAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:drawableStart="@drawable/selector_pay"
+        android:drawablePadding="6dp"
+        android:text="@string/default_address"
+        android:textColor="@color/B33"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvAddress" />
+
+    <TextView
+        android:id="@+id/tvRedact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="39dp"
+        android:drawableStart="@mipmap/address_redact"
+        android:drawablePadding="3dp"
+        android:text="@string/redact"
+        android:textColor="@color/B33"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/tvDefaultAddress"
+        app:layout_constraintEnd_toStartOf="@id/tvDelete"
+        app:layout_constraintTop_toTopOf="@id/tvDefaultAddress" />
+
+    <TextView
+        android:id="@+id/tvDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@mipmap/address_delete"
+        android:drawablePadding="3dp"
+        android:text="@string/delete"
+        android:textColor="@color/B33"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/tvDefaultAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvDefaultAddress" />
+</androidx.constraintlayout.widget.ConstraintLayout>

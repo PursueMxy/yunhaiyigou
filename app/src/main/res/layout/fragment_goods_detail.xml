@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:orientation="vertical">
+
+            <com.to.aboomy.pager2banner.Banner
+                android:id="@+id/bannerContainer"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="h,1:1"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="10dp"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="5dp"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="@id/bannerContainer"
+                app:layout_constraintRight_toRightOf="parent"
+                tools:text="1/4"
+                tools:ignore="RtlHardcoded" />
+
+            <ImageView
+                android:id="@+id/ivShare"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:layout_marginEnd="22dp"
+                android:src="@mipmap/goods_share"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ivCollection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:layout_marginEnd="22dp"
+                android:src="@mipmap/goods_collection"
+                app:layout_constraintEnd_toStartOf="@id/ivShare"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="-8dp"
+                android:background="@color/transparent"
+                android:minHeight="40dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/ivShare"
+                app:layout_constraintEnd_toStartOf="@id/ivCollection"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/ivShare"
+                app:tabIndicator="@drawable/indicator_tab_goods"
+                app:tabIndicatorColor="@color/B00"
+                app:tabIndicatorHeight="4dp"
+                app:tabPaddingBottom="-10dp"
+                app:tabRippleColor="@null"
+                app:tabTextAppearance="@style/TabWallet" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingBottom="15dp">
+
+            <TextView
+                android:id="@+id/tvPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="17dp"
+                android:textColor="@color/RFF"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="￥899.00" />
+
+            <TextView
+                android:id="@+id/tvSold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:textColor="@color/B99"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@id/tvPrice"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="已售23445" />
+
+            <TextView
+                android:id="@+id/tvGoodsName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="19dp"
+                android:textColor="@color/B33"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvPrice"
+                tools:text="杜康酒【迎雙喜】500ML纯粮食酿造浓香型白酒" />
+
+            <TextView
+                android:id="@+id/tvIntroduce"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="7dp"
+                android:textColor="@color/B99"
+                android:textSize="12sp"
+                app:layout_constraintTop_toBottomOf="@id/tvGoodsName"
+                tools:text="杜康酒【迎雙喜】婚礼御用酒 满月酒 喜宴用酒" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvGuarantee"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="13.5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvIntroduce" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@color/white"
+            android:paddingHorizontal="17.5dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clOne"
+                android:layout_width="match_parent"
+                android:layout_height="53dp"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/tvGetCoupons"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/get_coupons"
+                    android:textColor="@color/B66"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvGetCoupons"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:paddingHorizontal="15dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/ivRight"
+                    app:layout_constraintStart_toEndOf="@id/tvGetCoupons"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/ivRight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/arrow_right"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:id="@+id/viewOne"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/BCC"
+                app:layout_constraintTop_toBottomOf="@id/clOne" />
+
+            <TextView
+                android:id="@+id/selected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingVertical="20dp"
+                android:text="@string/selected"
+                android:textColor="@color/B66"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/viewOne" />
+
+            <TextView
+                android:id="@+id/tvSelected"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:drawableRight="@mipmap/arrow_right"
+                android:drawablePadding="8dp"
+                android:textColor="@color/B33"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="@id/selected"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/selected"
+                app:layout_constraintTop_toTopOf="@id/selected"
+                tools:text="【迎雙喜】500ML单瓶，1件" />
+
+            <View
+                android:id="@+id/viewTwo"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/BCC"
+                app:layout_constraintTop_toBottomOf="@id/selected" />
+
+            <TextView
+                android:id="@+id/delivery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingVertical="20dp"
+                android:text="@string/delivery"
+                android:textColor="@color/B66"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/viewTwo" />
+
+            <TextView
+                android:id="@+id/tvDelivery"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:drawableRight="@mipmap/arrow_right"
+                android:drawablePadding="8dp"
+                android:textColor="@color/B33"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="@id/delivery"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/delivery"
+                app:layout_constraintTop_toTopOf="@id/delivery"
+                tools:text="ffff" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:background="@color/white"
+            android:paddingBottom="15dp">
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="14.5dp"
+                android:background="@color/RFF"
+                app:layout_constraintBottom_toBottomOf="@id/tvProductReview"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvProductReview" />
+
+            <TextView
+                android:id="@+id/tvProductReview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19.5dp"
+                android:layout_marginTop="18dp"
+                android:text="@string/product_review"
+                android:textColor="@color/B33"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvViewAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="11dp"
+                android:drawableRight="@mipmap/arrow_right"
+                android:drawablePadding="5dp"
+                android:text="@string/view_all"
+                android:textColor="@color/B99"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@id/tvProductReview"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvProductReview" />
+
+            <ImageView
+                android:id="@+id/ivPortrait"
+                android:layout_width="43dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintDimensionRatio="h,1.1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvProductReview"
+                tools:src="@mipmap/watch" />
+
+            <TextView
+                android:id="@+id/tvUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:textColor="@color/B33"
+                android:textSize="15sp"
+                app:layout_constraintStart_toEndOf="@id/ivPortrait"
+                app:layout_constraintTop_toTopOf="@id/ivPortrait"
+                tools:text="唯有杜康" />
+
+            <TextView
+                android:id="@+id/tvTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="11dp"
+                android:textColor="@color/B99"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/ivPortrait"
+                tools:text="2021-06-07  9:27" />
+
+            <androidx.appcompat.widget.AppCompatRatingBar
+                android:id="@+id/rating"
+                style="@style/CustomRatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="15dp"
+                android:isIndicator="true"
+                app:layout_constraintBottom_toBottomOf="@id/ivPortrait"
+                app:layout_constraintStart_toEndOf="@id/ivPortrait"
+                tools:rating="4" />
+
+            <TextView
+                android:id="@+id/tvContent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15.5dp"
+                android:layout_marginEnd="12.5dp"
+                android:textColor="@color/B33"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/ivPortrait"
+                app:layout_constraintTop_toBottomOf="@id/ivPortrait"
+                tools:text="包装设计精美，大气沉稳上档次，口感也不错，物流也很快，一次不错的购物体验！" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvEvaluate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="14.5dp"
+                android:layout_marginTop="13dp"
+                app:layout_constraintTop_toBottomOf="@id/tvContent" />
+
+            <TextView
+                android:id="@+id/tvSpecification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/B33"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@id/tvContent"
+                app:layout_constraintTop_toBottomOf="@id/rvEvaluate"
+                tools:text="规格：【迎雙喜】500ML单瓶" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="50dp"
+            android:background="@color/white"
+            android:clipChildren="false"
+            android:clipToPadding="false">
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="14.5dp"
+                android:background="@color/RFF"
+                app:layout_constraintBottom_toBottomOf="@id/tvGoodsDetail"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvGoodsDetail" />
+
+            <TextView
+                android:id="@+id/tvGoodsDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19.5dp"
+                android:layout_marginTop="18dp"
+                android:text="@string/goods_detail"
+                android:textColor="@color/B33"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:src="@mipmap/du_kang_jiu"
+                app:layout_constraintDimensionRatio="h,1:1"
+                app:layout_constraintTop_toBottomOf="@id/tvGoodsDetail" />
+
+            <com.xdys.library.widget.ProgressWebView
+                android:id="@+id/webView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tvGoodsDetail"
+                app:showProgress="false"
+                app:urlClickable="false" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

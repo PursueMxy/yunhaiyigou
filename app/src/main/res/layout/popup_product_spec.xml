@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:background="@drawable/bg_r10_top"
+    android:elevation="20dp"
+    android:orientation="vertical"
+    android:paddingStart="20dp"
+    android:paddingTop="30dp"
+    android:paddingEnd="20dp"
+    android:paddingBottom="10dp"
+    tools:ignore="ContentDescription"
+    tools:layout_height="500dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ivGoods"
+            android:layout_width="109dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="h,1:1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@mipmap/du_kang_jiu" />
+
+        <ImageView
+            android:id="@+id/ivClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15.5dp"
+            android:src="@mipmap/close"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/RFF"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@id/tvProductNumber"
+            app:layout_constraintStart_toStartOf="@id/tvProductNumber"
+            tools:text="￥499.00" />
+
+        <TextView
+            android:id="@+id/tvProductNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:textColor="@color/B99"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/ivGoods"
+            app:layout_constraintStart_toEndOf="@id/ivGoods"
+            tools:text="商品编号:20211123558" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:text="规格"
+        android:textColor="@color/B33"
+        android:textSize="14sp" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollSpec"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvSpec"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="never"
+                android:paddingVertical="15dp" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/number"
+            android:textColor="@color/B33"
+            android:textSize="15sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/ivSubtract"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/bg_r6"
+            android:backgroundTint="@color/BF6"
+            android:minWidth="26dp"
+            android:scaleType="centerInside"
+            android:src="@mipmap/number_sub"
+            app:layout_constraintBottom_toBottomOf="@id/tvNumber"
+            app:layout_constraintDimensionRatio="h,1:1"
+            app:layout_constraintRight_toLeftOf="@id/tvNumber"
+            app:layout_constraintTop_toTopOf="@id/tvNumber" />
+
+        <TextView
+            android:id="@+id/tvNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/bg_r6"
+            android:backgroundTint="@color/BF6"
+            android:gravity="center"
+            android:minWidth="52dp"
+            android:minHeight="26dp"
+            android:singleLine="true"
+            android:text="1"
+            android:textColor="@color/B66"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/ivAdd"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivAdd"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_r6"
+            android:backgroundTint="@color/BF6"
+            android:minWidth="26dp"
+            android:scaleType="centerInside"
+            android:src="@mipmap/number_add"
+            app:layout_constraintBottom_toBottomOf="@id/tvNumber"
+            app:layout_constraintDimensionRatio="h,1:1"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvNumber" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <TextView
+        android:id="@+id/tvConfirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginHorizontal="27.5dp"
+        android:layout_marginTop="43dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/bg_r100"
+        android:backgroundTint="@color/RFF"
+        android:gravity="center"
+        android:minHeight="40dp"
+        android:text="@string/determine"
+        android:textColor="@color/white"
+        android:textSize="14sp" />
+</LinearLayout>

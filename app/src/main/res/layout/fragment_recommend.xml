@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.to.aboomy.pager2banner.Banner
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="5dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCateFirst"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:backgroundTint="@android:color/white"
+            android:nestedScrollingEnabled="false"
+            android:paddingHorizontal="10dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="5"
+            tools:listitem="@layout/item_child" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="7dp"
+            android:background="@color/BF2" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="12.5dp">
+
+            <ImageView
+                android:id="@+id/ivSeckill"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/home_seckill"
+                app:layout_constraintDimensionRatio="175:150"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ivGoodsProduct"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:scaleType="fitXY"
+                android:src="@mipmap/good_products"
+                app:layout_constraintBottom_toTopOf="@id/ivNewProduct"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ivSeckill"
+                app:layout_constraintTop_toTopOf="@id/ivSeckill" />
+
+            <ImageView
+                android:id="@+id/ivNewProduct"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:scaleType="fitXY"
+                android:src="@mipmap/new_product"
+                app:layout_constraintBottom_toBottomOf="@id/ivSeckill"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ivSeckill"
+                app:layout_constraintTop_toBottomOf="@id/ivGoodsProduct" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:src="@mipmap/home_advertising"
+                app:layout_constraintDimensionRatio="364:99"
+                app:layout_constraintTop_toBottomOf="@id/ivSeckill" />
+            />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17.5dp">
+
+            <TextView
+                android:id="@+id/tvBrandMerchant"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="13dp"
+                android:text="@string/brand_merchant"
+                android:textColor="@color/B33"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="12dp"
+                android:layout_marginStart="6dp"
+                android:background="@color/B99"
+                app:layout_constraintBottom_toBottomOf="@id/tvBrandMerchant"
+                app:layout_constraintStart_toEndOf="@id/tvBrandMerchant"
+                app:layout_constraintTop_toTopOf="@id/tvBrandMerchant" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="13dp"
+                android:text="@string/quality_trustworthy"
+                android:textColor="@color/B99"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@id/tvBrandMerchant"
+                app:layout_constraintStart_toEndOf="@id/tvBrandMerchant"
+                app:layout_constraintTop_toTopOf="@id/tvBrandMerchant" />
+
+            <TextView
+                android:id="@+id/tvSeeMore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="13dp"
+                android:drawableEnd="@mipmap/arrow_right"
+                android:drawablePadding="5.5dp"
+                android:text="@string/see_more"
+                android:textColor="@color/B99"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@id/tvBrandMerchant"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvBrandMerchant" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvBrandMerchant"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="22dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:paddingHorizontal="15dp"
+            android:paddingBottom="15dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="7.5dp"
+            android:background="@color/BF2" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/guess_you_like"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvGoods"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="8.5dp"
+            android:background="@color/BF2"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:paddingHorizontal="13.5dp"
+            android:paddingBottom="15dp" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

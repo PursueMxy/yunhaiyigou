@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.xdys.library.widget.TitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:left_drawable="@mipmap/arrow_left_b"
+        app:show_left="true"
+        app:title_content="@string/merchant_settled"
+        tools:layout_height="48dp" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="22dp"
+                android:text="@string/check_entry_instructions"
+                android:textColor="@color/RFF"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="22.5dp"
+                android:text="1、提示条款
+各个条款标题仅为帮助您理解该条款表达的主旨之用，不影响或限制本协议条款的含义或解释。为维护您自身权益，建议您仔细阅读各条款具体表述。
+您在申请注册流程中点击同意本协议之前，应当认真阅读本协议。请您务必审慎阅读、充分理解各条款内容，特别是免除和限制条款、法律适用和争议解决条款。免除或限制责任的条款将以粗体下划线标识，您应重点阅读，如您对协议有任何疑问可向客服咨询。
+当您按照注册页提示填写信息、阅读并同意本协议且完成全部注册程序后，即表示您已充分阅读、理解并接受本协议的全部内容。并与我们达成一致，成为我们商城（商家）用户。阅读本协议的过程中，如果您不同意本协议或其中任何条款约定，您应立即停止注册程序。如果您未申请注册流程，或者在本协议生效前已成为我们的注册用户，则您通过访问/或使用，即视为您表示同意接受本协议的全部内容。"
+                android:textColor="@color/B33"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvAgree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="45dp"
+                android:gravity="center_horizontal"
+                android:textColor="@color/B99"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toTopOf="@id/tvApplyCancellation"
+                app:layout_constraintStart_toEndOf="@id/ivAgree"
+                tools:text="我已阅读并同意《注册协议》及《隐私协议》" />
+
+
+            <TextView
+                android:id="@+id/tvMoveInNow"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginHorizontal="19.5dp"
+                android:layout_marginTop="37dp"
+                android:layout_marginBottom="50dp"
+                android:background="@drawable/bg_r100"
+                android:backgroundTint="@color/RFFCC"
+                android:gravity="center"
+                android:text="@string/move_in_now"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.appcompat.widget.LinearLayoutCompat>

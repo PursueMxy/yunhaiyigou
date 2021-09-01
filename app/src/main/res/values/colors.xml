@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#F2F2F2</color>
+    <color name="purple_500">#F2F2F2</color>
+    <color name="purple_700">#F2F2F2</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="RE3">#E31802</color>
+    <color name="RFF">#FF0000</color>
+    <color name="REB">#EB0202</color>
+    <color name="RFFCC">#FFCCCC</color>
+    <color name="RF9">#FF9999</color>
+    <color name="B70">#707070</color>
+    <color name="BCC">#CCCCCC</color>
+    <color name="B66">#666666</color>
+    <color name="BF2">#F2F2F2</color>
+    <color name="BFA">#F2F2F2</color>
+    <color name="B33">#ff333333</color>
+    <color name="B99">#999999</color>
+    <color name="GDF">#ffdfb03b</color>
+    <color name="B00">#ff000000</color>
+    <color name="B51">#515151</color>
+    <color name="WFF_99">#99FFFFFF</color>
+
+    <color name="YFF">#FFCC00</color>
+    <color name="RFD">#fffd4145</color>
+    <color name="RFF_80">#80FF0000</color>
+    <color name="BE0">#E0DDDD</color>
+    <color name="BED">#EDE7E7</color>
+    <color name="OFA">#FA6547</color>
+    <color name="BL00">#0066FF</color>
+    <color name="BL08">#087DEE</color>
+    <color name="BL0099">#0099FF</color>
+</resources>

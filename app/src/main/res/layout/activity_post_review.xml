@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.xdys.library.widget.TitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:left_drawable="@mipmap/arrow_left_b"
+        app:show_left="true"
+        app:title_content="@string/post_review"
+        tools:layout_height="48dp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/ivGoods"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="27.5dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="13.5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@mipmap/du_kang_jiu" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/overview"
+            android:textColor="@color/B33"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@id/ivGoods"
+            app:layout_constraintTop_toTopOf="@id/ivGoods" />
+
+        <androidx.appcompat.widget.AppCompatRatingBar
+            android:id="@+id/rating"
+            style="@style/CustomRatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="7dp"
+            android:isIndicator="true"
+            app:layout_constraintBottom_toBottomOf="@id/ivGoods"
+            app:layout_constraintStart_toEndOf="@id/ivGoods"
+            tools:rating="4" />
+
+        <TextView
+            android:id="@+id/tvStar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="35dp"
+            android:textColor="@color/B33"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/rating"
+            app:layout_constraintStart_toEndOf="@id/rating"
+            app:layout_constraintTop_toTopOf="@id/rating"
+            tools:text="很好" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:background="@color/white"
+        android:paddingStart="12dp"
+        android:paddingTop="22dp"
+        android:paddingEnd="15dp"
+        android:paddingBottom="16dp">
+
+        <TextView
+            android:id="@+id/tvWantToSay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/want_to_say"
+            android:textColor="@color/B33"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/tvWantToSay"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tvWantToSay"
+            app:layout_constraintTop_toTopOf="@id/tvWantToSay" />
+
+        <EditText
+            android:id="@+id/etEvaluation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="亲，请您对这个商品满意吗？您的评价可能会帮助到更多的小伙伴哦~"
+            android:minHeight="100dp"
+            android:textColor="@color/BCC"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/tvWantToSay" />
+
+        <ImageView
+            android:id="@+id/ivAddImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/add_images"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etEvaluation" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/tvSubmitReview"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginHorizontal="21dp"
+        android:layout_marginBottom="90dp"
+        android:background="@drawable/bg_r6"
+        android:backgroundTint="@color/RFF"
+        android:gravity="center"
+        android:text="@string/submit_review"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+</LinearLayout>

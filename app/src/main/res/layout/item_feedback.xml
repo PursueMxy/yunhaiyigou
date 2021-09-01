@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_r6"
+    android:orientation="vertical"
+    android:layout_marginTop="7dp"
+    android:layout_marginHorizontal="10dp"
+    android:paddingHorizontal="15dp"
+    android:paddingTop="16dp"
+    android:paddingBottom="11dp">
+
+    <FrameLayout
+        android:id="@+id/flHidden"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:text="Q1:什么时候发货？"
+            android:textColor="@color/B33"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/ivHide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:src="@drawable/selector_hidden" />
+    </FrameLayout>
+
+
+    <TextView
+        android:id="@+id/tvContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="用户在商城上下单后,订单将发到后台运营人员后台处理，并将在48小时内发货,平台发货后会有提示并且在订单中心可以查看物流状态。商家逾期未发货,用户可以向平台反馈,商家将会受到平台处罚。"
+        android:textColor="#ff999999"
+        android:textSize="12sp"
+        android:visibility="gone" />
+
+</LinearLayout>

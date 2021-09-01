@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/BF2"
+    tools:ignore="SmallSp">
+
+    <com.xdys.library.widget.TitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:left_drawable="@mipmap/arrow_left_b"
+        app:right_drawable="@mipmap/share"
+        app:show_left="true"
+        app:show_right="true"
+        app:title_content="@string/business_details" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/white"
+        android:paddingBottom="50dp"
+        app:layout_constraintBottom_toTopOf="@id/clBottom"
+        app:layout_constraintTop_toBottomOf="@id/titleBar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/ivLogo"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="h,375:170"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@mipmap/business_tu" />
+
+            <TextView
+                android:id="@+id/tvBusinessName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/B33"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ivLogo"
+                tools:text="上官糖炒栗子·四果汤(塔埔店)" />
+
+            <TextView
+                android:id="@+id/tvBusinessHours"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:drawableStart="@mipmap/open_time"
+                android:drawablePadding="6dp"
+                android:textColor="@color/B99"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@id/tvBusinessName"
+                app:layout_constraintTop_toBottomOf="@id/tvBusinessName"
+                tools:ignore="UseCompatTextViewDrawableXml"
+                tools:text="营业时间：9:00~22:00 （周一至周日）     " />
+
+            <TextView
+                android:id="@+id/tvAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:drawableStart="@mipmap/shop_location"
+                android:drawablePadding="6dp"
+                android:textColor="@color/B99"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@id/tvBusinessName"
+                app:layout_constraintTop_toBottomOf="@id/tvBusinessHours"
+                tools:text="厦门市思明区观音山塔埔路新中街101-1店面" />
+
+            <TextView
+                android:id="@+id/tvLicenseInformation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="39dp"
+                android:layout_marginTop="26dp"
+                android:drawablePadding="6dp"
+                android:text="@string/license_information"
+                android:textColor="@color/B66"
+                android:textSize="10sp"
+                app:drawableTopCompat="@mipmap/license_information"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvAddress" />
+
+            <TextView
+                android:id="@+id/tvContactMerchant"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="6dp"
+                android:text="@string/contact_merchant"
+                android:textColor="@color/B66"
+                android:textSize="10sp"
+                app:drawableTopCompat="@mipmap/connect"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvLicenseInformation" />
+
+            <TextView
+                android:id="@+id/tvNavigation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="39dp"
+                android:drawablePadding="6dp"
+                android:text="@string/navigation"
+                android:textColor="@color/B66"
+                android:textSize="10sp"
+                app:drawableTopCompat="@mipmap/navigation"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvLicenseInformation" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:layout_marginTop="22dp"
+                android:background="@color/BF2"
+                app:layout_constraintTop_toBottomOf="@id/tvLicenseInformation" />
+
+            <TextView
+                android:id="@+id/tvMerchantIntroduction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="11dp"
+                android:layout_marginTop="50dp"
+                android:text="@string/merchant_introduction"
+                android:textColor="@color/B33"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvLicenseInformation" />
+
+            <TextView
+                android:id="@+id/tvBusinessDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="11dp"
+                android:layout_marginTop="22dp"
+                android:textColor="@color/B99"
+                android:textSize="12sp"
+                app:layout_constraintTop_toBottomOf="@id/tvMerchantIntroduction"
+                tools:text="四果汤是一道美味可口的名点，发源于福建闽南地区。味甜爽口，清凉解毒。在很多代人的记忆里都离不开一种伴随着炎夏和蝉声的爽口甜蜜，那种爽口香甜源自于一碗流传已久的四果汤。
+四果汤历史悠久，系福建闽南一带非常出名的特色小吃，兴于泉州、漳州一带，具有祛暑降温的作用，因而在夏季备受人们喜爱。每至炎夏，或是街边小摊，或是老字号店铺，人们总是喜欢适时地叫上一碗四果汤，消却炎炎夏日的闷热。" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <RelativeLayout
+        android:id="@+id/clBottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/tvPayMerchant"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="27.5dp"
+            android:layout_marginVertical="7dp"
+            android:background="@drawable/bg_r10"
+            android:backgroundTint="@color/RE3"
+            android:gravity="center_horizontal"
+            android:paddingVertical="15dp"
+            android:text="@string/pay_merchant"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

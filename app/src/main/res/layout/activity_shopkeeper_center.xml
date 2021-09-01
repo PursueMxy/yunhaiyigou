@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/BF2">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:background="@drawable/bg_red_r15_bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.xdys.library.widget.TitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:left_drawable="@mipmap/arrow_left"
+        app:show_left="true"
+        app:title_content="@string/shopkeeper_center"
+        app:title_text_color="@color/white" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clOrder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/bg_r10"
+        android:paddingBottom="33dp"
+        app:layout_constraintTop_toBottomOf="@id/titleBar">
+
+        <TextView
+            android:id="@+id/tvAccountBalance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/account_balance"
+            android:textColor="@color/B66"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvAccountBalanceNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="15.5dp"
+            android:textColor="@color/B33"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvAccountBalance"
+            tools:text="￥166,500.00" />
+
+        <TextView
+            android:id="@+id/tvExplain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@mipmap/explain"
+            android:drawablePadding="5dp"
+            android:textColor="@color/BCC"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/tvAccountBalanceNum"
+            app:layout_constraintStart_toEndOf="@id/tvAccountBalanceNum"
+            app:layout_constraintTop_toTopOf="@id/tvAccountBalanceNum"
+            tools:text="(冻结金额：0 )" />
+
+
+        <TextView
+            android:id="@+id/tvTodayIncomeNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12.5dp"
+            android:textColor="#ffe31802"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@id/tvTodayIncome"
+            app:layout_constraintStart_toStartOf="@id/tvTodayIncome"
+            app:layout_constraintTop_toBottomOf="@id/tvTodayIncome"
+            tools:text="18523.30" />
+
+        <TextView
+            android:id="@+id/tvTodayIncome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
+            android:text="@string/today_income"
+            android:textColor="@color/B33"
+            android:textSize="12sp"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvAccountBalanceNum" />
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="19dp"
+            android:background="@color/BCC"
+            app:layout_constraintBottom_toBottomOf="@id/tvTodayIncomeNum"
+            app:layout_constraintEnd_toEndOf="@id/tvTodaySales"
+            app:layout_constraintStart_toStartOf="@id/tvTodayIncome"
+            app:layout_constraintTop_toTopOf="@id/tvTodayIncome" />
+
+        <TextView
+            android:id="@+id/tvTodaySalesNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12.5dp"
+            android:textColor="#ffe31802"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@id/tvTodaySales"
+            app:layout_constraintStart_toStartOf="@id/tvTodaySales"
+            app:layout_constraintTop_toBottomOf="@id/tvTodaySales"
+            tools:text="18523.30" />
+
+        <TextView
+            android:id="@+id/tvTodaySales"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
+            android:text="@string/today_income"
+            android:textColor="@color/B33"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvAccountBalanceNum" />
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="19dp"
+            android:background="@color/BCC"
+            app:layout_constraintBottom_toBottomOf="@id/tvTodayIncomeNum"
+            app:layout_constraintEnd_toEndOf="@id/tvTodayOrder"
+            app:layout_constraintStart_toStartOf="@id/tvTodaySales"
+            app:layout_constraintTop_toTopOf="@id/tvTodayIncome" />
+
+        <TextView
+            android:id="@+id/tvTodayOrderNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12.5dp"
+            android:textColor="#ffe31802"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@id/tvTodayOrder"
+            app:layout_constraintStart_toStartOf="@id/tvTodayOrder"
+            app:layout_constraintTop_toBottomOf="@id/tvTodayOrder"
+            tools:text="18523.30" />
+
+        <TextView
+            android:id="@+id/tvTodayOrder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="24dp"
+            android:text="@string/today_order"
+            android:textColor="@color/B33"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintTop_toBottomOf="@id/tvAccountBalanceNum" />
+
+
+        <TextView
+            android:id="@+id/tvMonthIncomeNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12.5dp"
+            android:textColor="#ffe31802"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@id/tvMonthIncome"
+            app:layout_constraintStart_toStartOf="@id/tvMonthIncome"
+            app:layout_constraintTop_toBottomOf="@id/tvMonthIncome"
+            tools:text="18523.30" />
+
+        <TextView
+            android:id="@+id/tvMonthIncome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
+            android:text="@string/month_income"
+            android:textColor="@color/B33"
+            android:textSize="12sp"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTodayOrderNum" />
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="19dp"
+            android:background="@color/BCC"
+            app:layout_constraintBottom_toBottomOf="@id/tvMonthIncomeNum"
+            app:layout_constraintEnd_toEndOf="@id/tvMonthSales"
+            app:layout_constraintStart_toStartOf="@id/tvMonthIncome"
+            app:layout_constraintTop_toTopOf="@id/tvMonthIncome" />
+
+        <TextView
+            android:id="@+id/tvMonthSalesNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12.5dp"
+            android:textColor="#ffe31802"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@id/tvMonthSales"
+            app:layout_constraintStart_toStartOf="@id/tvMonthSales"
+            app:layout_constraintTop_toBottomOf="@id/tvMonthSales"
+            tools:text="18523.30" />
+
+        <TextView
+            android:id="@+id/tvMonthSales"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
+            android:text="@string/month_income"
+            android:textColor="@color/B33"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTodayOrderNum" />
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="19dp"
+            android:background="@color/BCC"
+            app:layout_constraintBottom_toBottomOf="@id/tvMonthIncomeNum"
+            app:layout_constraintEnd_toEndOf="@id/tvMonthOrder"
+            app:layout_constraintStart_toStartOf="@id/tvMonthSales"
+            app:layout_constraintTop_toTopOf="@id/tvMonthIncome" />
+
+        <TextView
+            android:id="@+id/tvMonthOrderNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12.5dp"
+            android:textColor="#ffe31802"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@id/tvMonthOrder"
+            app:layout_constraintStart_toStartOf="@id/tvMonthOrder"
+            app:layout_constraintTop_toBottomOf="@id/tvMonthOrder"
+            tools:text="18523.30" />
+
+        <TextView
+            android:id="@+id/tvMonthOrder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="24dp"
+            android:text="@string/month_order"
+            android:textColor="@color/B33"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintTop_toBottomOf="@id/tvTodayOrderNum" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_r10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/clOrder">
+
+        <TextView
+            android:id="@+id/tvScreening"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16.5dp"
+            android:layout_marginTop="15dp"
+            android:drawableEnd="@mipmap/arrow_bottom"
+            android:drawablePadding="5dp"
+            android:text="7日内订单"
+            android:textColor="@color/B33"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.scwang.smart.refresh.layout.SmartRefreshLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvScreening">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvOrder"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="17dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

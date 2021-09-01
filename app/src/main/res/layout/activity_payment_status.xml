@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/BF2">
+
+    <com.xdys.library.widget.TitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title_content="支付成功" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingBottom="30dp"
+        app:layout_constraintTop_toBottomOf="@id/titleBar">
+
+        <ImageView
+            android:id="@+id/ivPaymentStatus"
+            android:layout_width="94dp"
+            android:layout_height="94dp"
+            android:layout_marginTop="16dp"
+            android:src="@mipmap/payment_success"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/tvPayHint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="恭喜您，支付成功！"
+            android:textColor="@color/RFF"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivPaymentStatus" />
+
+        <TextView
+            android:id="@+id/tvPayDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:textColor="@color/B99"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvPayHint"
+            tools:text="实付￥480.00，赠送480积分(线上积分)" />
+
+        <TextView
+            android:id="@+id/tvBackToHomepage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="34dp"
+            android:background="@drawable/box_r6"
+            android:backgroundTint="@color/RFF"
+            android:paddingHorizontal="29dp"
+            android:paddingVertical="11dp"
+            android:text="@string/back_to_homepage"
+            android:textColor="@color/RFF"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvPayDetail" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/ivLike"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingVertical="30dp"
+        android:src="@mipmap/guess_you_like"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/clTop" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvGoods"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/BF2"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:paddingHorizontal="13.5dp"
+        android:paddingBottom="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivLike" />
+</androidx.constraintlayout.widget.ConstraintLayout>

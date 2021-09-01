@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <View
+        android:id="@+id/topBg"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/selector_rff_re3"
+        app:layout_constraintDimensionRatio="h,375:296"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.xdys.library.widget.TitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:left_drawable="@mipmap/arrow_left"
+        app:right_content="@string/rule"
+        app:right_text_size="16sp"
+        app:show_left="true"
+        app:title_content="@string/merchant_settled"
+        app:title_text_color="@color/white"
+        tools:layout_height="48dp" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@mipmap/tenants"
+        app:layout_constraintBottom_toBottomOf="@id/topBg" />
+
+    <ImageView
+        android:id="@+id/ivSubmitted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20.5dp"
+        android:layout_marginTop="40.5dp"
+        android:src="@mipmap/submitted_in"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topBg" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4.5dp"
+        android:text="填写/提交信息和资料"
+        android:textColor="@color/B99"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="@id/ivSubmitted"
+        app:layout_constraintStart_toEndOf="@id/ivSubmitted" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:text="提交入驻资料"
+        android:textColor="@color/B00"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/ivSubmitted"
+        app:layout_constraintTop_toTopOf="@id/ivSubmitted" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+
+    <ImageView
+        android:id="@+id/ivWaitingAudit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20.5dp"
+        android:layout_marginTop="40.5dp"
+        android:src="@mipmap/waiting_audit"
+        app:layout_constraintStart_toEndOf="@id/guideline2"
+        app:layout_constraintTop_toBottomOf="@id/topBg" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4.5dp"
+        android:text="等待平台审核入驻资料"
+        android:textColor="@color/B99"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="@id/ivWaitingAudit"
+        app:layout_constraintStart_toEndOf="@id/ivWaitingAudit" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:text="商家等待审核"
+        android:textColor="@color/B00"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/ivWaitingAudit"
+        app:layout_constraintTop_toTopOf="@id/ivWaitingAudit" />
+
+    <ImageView
+        android:id="@+id/ivPaymentSetting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20.5dp"
+        android:layout_marginTop="46dp"
+        android:src="@mipmap/payment_setting"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivSubmitted" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4.5dp"
+        android:text="登录商家后台完成支付设置"
+        android:textColor="@color/B99"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="@id/ivPaymentSetting"
+        app:layout_constraintStart_toEndOf="@id/ivPaymentSetting" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:text="支付设置"
+        android:textColor="@color/B00"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/ivPaymentSetting"
+        app:layout_constraintTop_toTopOf="@id/ivPaymentSetting" />
+
+
+    <ImageView
+        android:id="@+id/ivSuccessIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20.5dp"
+        android:layout_marginTop="40.5dp"
+        android:src="@mipmap/success_in"
+        app:layout_constraintStart_toEndOf="@id/guideline2"
+        app:layout_constraintTop_toBottomOf="@id/ivSubmitted" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4.5dp"
+        android:text="店铺开通发布商品"
+        android:textColor="@color/B99"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="@id/ivSuccessIn"
+        app:layout_constraintStart_toEndOf="@id/ivSuccessIn" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:text="商家入驻成功"
+        android:textColor="@color/B00"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/ivSuccessIn"
+        app:layout_constraintTop_toTopOf="@id/ivSuccessIn" />
+
+
+    <TextView
+        android:id="@+id/tvInOnline"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginTop="54dp"
+        android:layout_marginHorizontal="52.5dp"
+        android:background="@drawable/bg_r100"
+        android:backgroundTint="@color/RFF"
+        android:gravity="center"
+        android:text="@string/in_online_businesses"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/ivPaymentSetting" />
+
+
+
+
+    <TextView
+        android:id="@+id/tvInOffline"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginHorizontal="52.5dp"
+        android:layout_marginTop="22.5dp"
+        android:background="@drawable/bg_r100"
+        android:backgroundTint="@color/RFF"
+        android:gravity="center"
+        android:text="@string/in_offline_businesses"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/tvInOnline" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

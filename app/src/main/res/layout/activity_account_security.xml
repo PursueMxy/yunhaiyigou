@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.xdys.library.widget.TitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:left_drawable="@mipmap/arrow_left_b"
+        app:show_left="true"
+        app:title_content="@string/account_security"
+        tools:layout_height="48dp" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/titleBar"
+        tools:ignore="MissingConstraints">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clVerified"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="11dp">
+
+            <TextView
+                android:id="@+id/tvVerified"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:text="@string/verified"
+                android:textColor="@color/B00"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:text="@string/verified_tips"
+                android:textColor="@color/B99"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@id/tvVerified"
+                app:layout_constraintTop_toBottomOf="@id/tvVerified" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="13dp"
+                android:drawableEnd="@mipmap/arrow_right_s"
+                android:drawablePadding="8dp"
+                android:textColor="@color/B99"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/BED" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clMobile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="11dp">
+
+            <TextView
+                android:id="@+id/tvModifyMobile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:text="@string/modify_mobile"
+                android:textColor="@color/B00"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:text="@string/modify_mobile_tips"
+                android:textColor="@color/B99"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@id/tvModifyMobile"
+                app:layout_constraintTop_toBottomOf="@id/tvModifyMobile" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="13dp"
+                android:drawableEnd="@mipmap/arrow_right_s"
+                android:drawablePadding="8dp"
+                android:hint="187****8821"
+                android:textColor="@color/B99"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/BED" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clPaymentPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="11dp">
+
+            <TextView
+                android:id="@+id/tvPaymentPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:text="@string/set_payment_password"
+                android:textColor="@color/B00"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:text="@string/payment_password_tips"
+                android:textColor="@color/B99"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@id/tvPaymentPassword"
+                app:layout_constraintTop_toBottomOf="@id/tvPaymentPassword" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="13dp"
+                android:drawableEnd="@mipmap/arrow_right_s"
+                android:drawablePadding="8dp"
+                android:hint="@string/not_set"
+                android:textColor="@color/B99"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/BED" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clModifyLoginPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="11dp">
+
+            <TextView
+                android:id="@+id/tvModifyLoginPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:text="@string/modify_login_password"
+                android:textColor="@color/B00"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:text="@string/modify_login_password_tips"
+                android:textColor="@color/B99"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@id/tvModifyLoginPassword"
+                app:layout_constraintTop_toBottomOf="@id/tvModifyLoginPassword" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="13dp"
+                android:drawableEnd="@mipmap/arrow_right_s"
+                android:drawablePadding="8dp"
+                android:hint="@string/not_set"
+                android:textColor="@color/B99"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="UseCompatTextViewDrawableXml" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/BF2" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clEquipmentManagement"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="11dp">
+
+            <TextView
+                android:id="@+id/tvEquipmentManagement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:text="@string/equipment_management"
+                android:textColor="@color/B00"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:text="@string/equipment_management_tips"
+                android:textColor="@color/B99"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@id/tvEquipmentManagement"
+                app:layout_constraintTop_toBottomOf="@id/tvEquipmentManagement" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="13dp"
+                android:drawableEnd="@mipmap/arrow_right_s"
+                android:drawablePadding="8dp"
+                android:textColor="@color/B99"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="UseCompatTextViewDrawableXml" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/BED" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clAccountSecurity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="11dp">
+
+            <TextView
+                android:id="@+id/tvAccountLogout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:text="@string/account_logout"
+                android:textColor="@color/B00"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:text="@string/account_logout_tips"
+                android:textColor="@color/B99"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@id/tvAccountLogout"
+                app:layout_constraintTop_toBottomOf="@id/tvAccountLogout" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="13dp"
+                android:drawableEnd="@mipmap/arrow_right_s"
+                android:drawablePadding="8dp"
+                android:textColor="@color/B99"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="UseCompatTextViewDrawableXml" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.constraintlayout.widget.ConstraintLayout>

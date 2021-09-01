@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.xdys.library.widget.TitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:left_drawable="@mipmap/arrow_left_b"
+        app:show_left="true"
+        app:title_content="@string/feedback"
+        tools:layout_height="48dp" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleBar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="20dp">
+
+                <ImageView
+                    android:id="@+id/ivCustomer"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="12.5dp"
+                    android:src="@mipmap/customer_service_1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvFeedback"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="13dp"
+                    android:text="Hi，有什么需要反馈的？"
+                    android:textColor="@color/B33"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toEndOf="@id/ivCustomer"
+                    app:layout_constraintTop_toTopOf="@id/ivCustomer" />
+
+                <TextView
+                    android:id="@+id/tvQuestion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15.5dp"
+                    android:text="@string/question"
+                    android:textColor="@color/B66"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@id/ivCustomer"
+                    app:layout_constraintTop_toBottomOf="@id/ivCustomer" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvProblem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="19.5dp"
+                    app:layout_constraintTop_toBottomOf="@id/tvQuestion" />
+
+                <TextView
+                    android:id="@+id/tvPleaseAdd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15.5dp"
+                    android:text="请补充详细问题和意见："
+                    android:textColor="@color/B66"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@id/ivCustomer"
+                    app:layout_constraintTop_toBottomOf="@id/rvProblem" />
+
+                <EditText
+                    android:id="@+id/edFeedback"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/box_r10_cc"
+                    android:gravity="left"
+                    android:hint="@string/feedback_details_hint"
+                    android:lineSpacingExtra="3dp"
+                    android:minHeight="150dp"
+                    android:padding="12dp"
+                    android:textSize="13sp"
+                    app:layout_constraintTop_toBottomOf="@id/tvPleaseAdd" />
+
+                <TextView
+                    android:id="@+id/tvScreenshot"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15.5dp"
+                    android:text="请提供相关问题的截图或照片："
+                    android:textColor="@color/B66"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@id/ivCustomer"
+                    app:layout_constraintTop_toBottomOf="@id/edFeedback" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/ivImg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:paddingStart="15dp"
+                    android:paddingTop="16dp"
+                    android:paddingEnd="0dp"
+                    app:layout_constraintTop_toBottomOf="@id/tvScreenshot" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tvSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginHorizontal="37.5dp"
+                android:layout_marginTop="18.5dp"
+                android:layout_marginBottom="50dp"
+                android:background="@drawable/bg_r6"
+                android:backgroundTint="@color/RFF"
+                android:gravity="center"
+                android:text="@string/submit"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

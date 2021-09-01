@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/ivGoods"
+        android:layout_width="35dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="13dp"
+        android:src="@mipmap/schoolgirl"
+        app:layout_constraintDimensionRatio="h,1:1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvGoodsName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/B33"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/ivGoods"
+        app:layout_constraintTop_toTopOf="@id/ivGoods"
+        tools:text="小猫爱吃鱼" />
+
+    <TextView
+        android:id="@+id/tvSpecification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:textColor="@color/B99"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@id/tvGoodsName"
+        app:layout_constraintTop_toBottomOf="@id/tvGoodsName"
+        tools:text="香奈儿邂逅香水(瓶装)" />
+
+    <TextView
+        android:id="@+id/tvTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:textColor="@color/B99"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@id/tvGoodsName"
+        app:layout_constraintTop_toBottomOf="@id/tvSpecification"
+        tools:text="2021-06-28  15:17" />
+
+    <TextView
+        android:id="@+id/tvSum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="35dp"
+        android:textColor="@color/B33"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ivGoods"
+        tools:text="+￥858.9" />
+
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/RE3"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/tvSum"
+        app:layout_constraintStart_toStartOf="@id/tvSum"
+        app:layout_constraintTop_toBottomOf="@id/tvSum"
+        tools:text="待发货" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="17.5dp"
+        android:src="@mipmap/arrow_right"
+        app:layout_constraintBottom_toBottomOf="@id/ivGoods"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/ivGoods" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="16.5dp"
+        android:background="@color/BCC"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tvTime"
+        app:layout_constraintTop_toBottomOf="@id/tvTime" />
+</androidx.constraintlayout.widget.ConstraintLayout>

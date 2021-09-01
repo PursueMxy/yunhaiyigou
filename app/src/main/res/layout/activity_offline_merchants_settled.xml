@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.xdys.library.widget.TitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:left_drawable="@mipmap/arrow_left_b"
+        app:show_left="true"
+        app:title_content="@string/offline_merchants_settled"
+        tools:layout_height="48dp" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleBar">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:paddingHorizontal="19dp">
+
+                <TextView
+                    android:id="@+id/tvMobile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="20dp"
+                    android:text="@string/phone_number"
+                    android:textColor="@color/B33"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/etMobile"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="36dp"
+                    android:background="@color/white"
+                    android:hint="@string/hint_mobile"
+                    android:textColor="@color/BCC"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="@id/tvMobile"
+                    app:layout_constraintStart_toEndOf="@id/tvMobile"
+                    app:layout_constraintTop_toTopOf="@id/tvMobile"
+                    tools:ignore="HardcodedText" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/BED"
+                    app:layout_constraintTop_toBottomOf="@id/tvMobile" />
+
+                <TextView
+                    android:id="@+id/tvActualName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:paddingVertical="20dp"
+                    android:text="@string/contact_person"
+                    android:textColor="@color/B33"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvMobile" />
+
+                <EditText
+                    android:id="@+id/etName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:hint="@string/hint_name"
+                    android:textColor="@color/BCC"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="@id/tvActualName"
+                    app:layout_constraintStart_toStartOf="@id/etMobile"
+                    app:layout_constraintTop_toTopOf="@id/tvActualName"
+                    tools:ignore="HardcodedText" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/BED"
+                    app:layout_constraintTop_toBottomOf="@id/tvActualName" />
+
+                <TextView
+                    android:id="@+id/tvIDNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:paddingVertical="20dp"
+                    android:text="@string/id_number"
+                    android:textColor="@color/B33"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvActualName" />
+
+                <EditText
+                    android:id="@+id/etIDNumber"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:hint="@string/hint_id_number"
+                    android:textColor="@color/BCC"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="@id/tvIDNumber"
+                    app:layout_constraintStart_toStartOf="@id/etMobile"
+                    app:layout_constraintTop_toTopOf="@id/tvIDNumber"
+                    tools:ignore="HardcodedText" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/BED"
+                    app:layout_constraintTop_toBottomOf="@id/tvIDNumber" />
+
+                <TextView
+                    android:id="@+id/tvVerificationCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:paddingVertical="20dp"
+                    android:text="@string/verification_code"
+                    android:textColor="@color/B33"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvIDNumber" />
+
+                <EditText
+                    android:id="@+id/etVerificationCode"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:hint="@string/hint_verification_code"
+                    android:textColor="@color/BCC"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="@id/tvVerificationCode"
+                    app:layout_constraintEnd_toStartOf="@id/tvGetVerificationCode"
+                    app:layout_constraintStart_toStartOf="@id/etMobile"
+                    app:layout_constraintTop_toTopOf="@id/tvVerificationCode"
+                    tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:id="@+id/tvGetVerificationCode"
+                    android:layout_width="80dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/box_r6"
+                    android:backgroundTint="@color/OFA"
+                    android:gravity="center"
+                    android:text="@string/get_verification_code"
+                    android:textColor="@color/OFA"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@id/tvVerificationCode"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tvVerificationCode" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:paddingHorizontal="19dp">
+
+                <TextView
+                    android:id="@+id/tvStoreName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="20dp"
+                    android:text="@string/store_name"
+                    android:textColor="@color/B33"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/etStoreName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="36dp"
+                    android:background="@color/white"
+                    android:hint="@string/hint_mobile"
+                    android:textColor="@color/BCC"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="@id/tvStoreName"
+                    app:layout_constraintStart_toEndOf="@id/tvStoreName"
+                    app:layout_constraintTop_toTopOf="@id/tvStoreName"
+                    tools:ignore="HardcodedText" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/BED"
+                    app:layout_constraintTop_toBottomOf="@id/tvStoreName" />
+
+
+                <TextView
+                    android:id="@+id/tvStoreType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:paddingVertical="20dp"
+                    android:text="@string/store_type"
+                    android:textColor="@color/B33"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvStoreName" />
+
+                <RadioGroup
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="@id/tvStoreType"
+                    app:layout_constraintStart_toStartOf="@id/etStoreName"
+                    app:layout_constraintTop_toTopOf="@id/tvStoreType">
+
+                    <RadioButton
+                        android:id="@+id/rbFlagshipStore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@null"
+                        android:checked="true"
+                        android:drawableStart="@drawable/selector_pay"
+                        android:drawablePadding="5dp"
+                        android:text="@string/flagship_store" />
+
+                    <RadioButton
+                        android:id="@+id/rbSpecialtyStore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:button="@null"
+                        android:drawableStart="@drawable/selector_pay"
+                        android:drawablePadding="5dp"
+                        android:text="@string/specialty_store" />
+
+                    <RadioButton
+                        android:id="@+id/rbFranchiseStore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:button="@null"
+                        android:drawableStart="@drawable/selector_pay"
+                        android:drawablePadding="5dp"
+                        android:text="@string/franchise_store" />
+                </RadioGroup>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/BED"
+                    app:layout_constraintTop_toBottomOf="@id/tvStoreType" />
+
+                <TextView
+                    android:id="@+id/tvMainItems"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:paddingVertical="20dp"
+                    android:text="@string/main_items"
+                    android:textColor="@color/B33"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvStoreType" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20.5dp"
+                    android:drawableEnd="@mipmap/arrow_right_s"
+                    android:drawablePadding="10dp"
+                    android:text="@string/please_select_type"
+                    android:textColor="@color/BCC"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="@id/tvMainItems"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/etStoreName"
+                    app:layout_constraintTop_toTopOf="@id/tvMainItems" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/BED"
+                    app:layout_constraintTop_toBottomOf="@id/tvMainItems" />
+
+                <TextView
+                    android:id="@+id/tvBusinessAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:paddingVertical="20dp"
+                    android:text="@string/business_address"
+                    android:textColor="@color/B33"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvMainItems" />
+
+                <TextView
+                    android:id="@+id/tvSelectCity"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20.5dp"
+                    android:drawableEnd="@mipmap/arrow_right_s"
+                    android:drawablePadding="10dp"
+                    android:text="@string/select_city"
+                    android:textColor="@color/BCC"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="@id/tvBusinessAddress"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/etStoreName"
+                    app:layout_constraintTop_toTopOf="@id/tvBusinessAddress" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/BED"
+                    app:layout_constraintTop_toBottomOf="@id/tvBusinessAddress" />
+
+                <EditText
+                    android:id="@+id/etAddressDetail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="20.5dp"
+                    android:background="@color/white"
+                    android:paddingVertical="20dp"
+                    android:hint="@string/hint_detail_address"
+                    android:textColor="@color/B33"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvBusinessAddress" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="18.5dp"
+                    android:layout_marginTop="19dp"
+                    android:text="@string/upload_id_photo"
+                    android:textColor="@color/B33"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="39dp"
+                    android:text="(请确保身份证照片清晰无光斑，边框完整)"
+                    android:textColor="@color/B66"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/ivCardFront"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="31.5dp"
+                    android:layout_marginTop="49dp"
+                    android:background="@color/BF2"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="25dp"
+                    android:src="@mipmap/id_card_front" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="15dp"
+                    android:text="点击上传身份证人像面"
+                    android:textColor="@color/B33"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/ivCardBack"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="31.5dp"
+                    android:layout_marginTop="49dp"
+                    android:background="@color/BF2"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="25dp"
+                    android:src="@mipmap/id_card_back" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="19dp"
+                    android:text="点击上传身份证国徽面"
+                    android:textColor="@color/B33"
+                    android:textSize="14sp" />
+
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="31.5dp"
+                    android:layout_marginTop="49dp"
+                    android:background="@color/BF2"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="25dp"
+                    android:src="@mipmap/business_license" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="19dp"
+                    android:text="点击上传商家营业执照"
+                    android:textColor="@color/B33"
+                    android:textSize="14sp" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_marginHorizontal="22.5dp"
+                    android:layout_marginTop="53dp"
+                    android:background="@drawable/bg_r100"
+                    android:backgroundTint="@color/OFA"
+                    android:gravity="center"
+                    android:text="@string/submit"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="46dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginBottom="27dp"
+                    android:gravity="center_horizontal"
+                    android:text="备注:个人身份证材料只做审核使用，不会显示在软件中，请用户放心！"
+                    android:textColor="@color/B33"
+                    android:textSize="14sp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

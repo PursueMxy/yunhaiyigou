@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_red_r15_bottom"
+        app:layout_constraintBottom_toTopOf="@id/viewOne"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.xdys.library.widget.TitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:left_drawable="@mipmap/arrow_left"
+        app:show_left="true"
+        app:title_content="@string/online_points"
+        app:title_text_color="@color/white"
+        tools:layout_height="48dp" />
+
+    <TextView
+        android:id="@+id/accountBalance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25.5dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/account_balance"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleBar" />
+
+    <TextView
+        android:id="@+id/tvAccountBalance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11.5dp"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@id/accountBalance"
+        app:layout_constraintTop_toBottomOf="@id/accountBalance"
+        tools:text="16660.00" />
+
+    <TextView
+        android:id="@+id/tvWithdraw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="26.5dp"
+        android:drawableEnd="@mipmap/arrow_right"
+        android:drawablePadding="8dp"
+        android:drawableTint="@color/white"
+        android:text="@string/withdraw"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/tvAccountBalance"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvAccountBalance" />
+
+    <TextView
+        android:id="@+id/yesterdayEarnings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:text="@string/yesterday_earnings"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@id/monthEarnings"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvAccountBalance" />
+
+
+    <TextView
+        android:id="@+id/tvYesterdayEarnings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8.5dp"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@id/yesterdayEarnings"
+        app:layout_constraintStart_toStartOf="@id/yesterdayEarnings"
+        app:layout_constraintTop_toBottomOf="@id/yesterdayEarnings"
+        tools:text="+66.00" />
+
+
+    <TextView
+        android:id="@+id/monthEarnings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:text="@string/month_earnings"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvAccountBalance" />
+
+
+    <TextView
+        android:id="@+id/tvMonthEarnings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8.5dp"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@id/monthEarnings"
+        app:layout_constraintStart_toStartOf="@id/monthEarnings"
+        app:layout_constraintTop_toBottomOf="@id/monthEarnings"
+        tools:text="+66.00" />
+
+
+    <TextView
+        android:id="@+id/cumulativeIncome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:text="@string/cumulative_income"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/monthEarnings"
+        app:layout_constraintTop_toBottomOf="@id/tvAccountBalance" />
+
+
+    <TextView
+        android:id="@+id/tvCumulativeIncome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8.5dp"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@id/cumulativeIncome"
+        app:layout_constraintStart_toStartOf="@id/cumulativeIncome"
+        app:layout_constraintTop_toBottomOf="@id/cumulativeIncome"
+        tools:text="+66.00" />
+
+    <View
+        android:id="@+id/viewOne"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="55dp"
+        app:layout_constraintTop_toBottomOf="@id/tvYesterdayEarnings" />
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="27.5dp"
+        android:background="@drawable/bg_r5_top"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvYesterdayEarnings">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            app:tabGravity="center"
+            app:tabIndicator="@drawable/indicator_tab_goods"
+            app:tabIndicatorColor="@color/RFF"
+            app:tabIndicatorHeight="3dp"
+            app:tabMode="auto"
+            app:tabRippleColor="@null"
+            app:tabSelectedTextColor="@color/RFF"
+            app:tabTextAppearance="@style/TabLayoutFind"
+            app:tabTextColor="@color/B33"
+            app:tabUnboundedRipple="false" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

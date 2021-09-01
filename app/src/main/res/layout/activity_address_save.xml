@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.xdys.library.widget.TitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:left_drawable="@mipmap/arrow_left_b"
+        app:show_left="true"
+        app:show_right="true"
+        app:title_content="@string/address"
+        tools:layout_height="48dp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:paddingVertical="19dp"
+        android:paddingStart="19dp"
+        android:paddingEnd="13dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:text="@string/area"
+            android:textColor="@color/B00"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tvAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:drawableEnd="@mipmap/arrow_right_s"
+            android:drawablePadding="5dp"
+            android:textColor="@color/B99"
+            android:textSize="15sp"
+            tools:text="@string/not_set" />
+    </FrameLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/BE0" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingVertical="19dp"
+        android:paddingStart="19dp"
+        android:paddingEnd="13dp"
+        app:layout_constraintTop_toBottomOf="@id/titleBar">
+
+        <TextView
+            android:id="@+id/tvAddressDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:text="@string/detailed_address"
+            android:textColor="@color/B00"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@id/etAddressDetail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/etAddressDetail" />
+
+        <EditText
+            android:id="@+id/etAddressDetail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:background="@color/white"
+            android:drawableEnd="@mipmap/arrow_right_s"
+            android:drawablePadding="5dp"
+            android:textColor="@color/B99"
+            android:textSize="15sp"
+            android:layout_marginStart="26dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tvAddressDetail"
+            app:layout_constraintTop_toTopOf="parent"
+            android:hint="请输入详细地址信息，如道路、门牌号、小区、楼栋号、单元室等" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <TextView
+        android:id="@+id/tvSave"
+        android:layout_width="320dp"
+        android:layout_height="44dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/bg_r6"
+        android:backgroundTint="@color/BL08"
+        android:gravity="center"
+        android:text="@string/save"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+</androidx.appcompat.widget.LinearLayoutCompat>

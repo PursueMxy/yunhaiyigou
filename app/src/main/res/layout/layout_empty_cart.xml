@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView
+        android:id="@+id/ivCartNull"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="33dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/cart_null"/>
+
+    <TextView
+        app:layout_constraintTop_toBottomOf="@id/ivCartNull"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/tvCartNull"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/shopping_cart_null"
+        android:textColor="@color/B70"
+        android:layout_marginTop="13.5dp"
+        android:textSize="14sp"
+        />
+
+    <TextView
+        android:layout_marginBottom="5dp"
+        android:backgroundTint="@color/RE3"
+        android:background="@drawable/bg_r6"
+        android:id="@+id/tvGoShopping"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="25dp"
+        app:layout_constraintTop_toBottomOf="@id/tvCartNull"
+        android:paddingHorizontal="35dp"
+        android:paddingVertical="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/go_shopping"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

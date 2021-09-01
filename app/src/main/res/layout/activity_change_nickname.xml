@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.xdys.library.widget.TitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:left_drawable="@mipmap/arrow_left_b"
+        app:right_content="@string/determine"
+        app:right_text_color="@color/BCC"
+        app:show_left="true"
+        app:show_right="true"
+        app:title_content="@string/change_nickname"
+        tools:layout_height="48dp" />
+
+    <EditText
+        android:id="@+id/etNickName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:hint="@string/hint_nick_name"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="15.5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="9dp"
+        android:text="@string/nick_name_tips"
+        android:textColor="@color/BCC"
+        android:textSize="12sp" />
+</androidx.appcompat.widget.LinearLayoutCompat>

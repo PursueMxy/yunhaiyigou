@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tvCateName"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingVertical="10dp"
+    android:drawablePadding="6dp"
+    android:gravity="center"
+    android:paddingHorizontal="6dp"
+    android:singleLine="true"
+    android:textColor="@color/selector_classify"
+    android:textSize="14sp"
+    android:background="@drawable/selector_left"
+    app:drawableStartCompat="@drawable/selector_cate_left"
+    tools:text="品牌馆" />

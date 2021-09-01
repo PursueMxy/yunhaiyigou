@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TabLayoutFind">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TabWallet">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="CustomRatingBar" parent="Widget.AppCompat.RatingBar">
+        <item name="android:minHeight">12dp</item>
+        <item name="android:minWidth">12dp</item>
+        <item name="android:stepSize">10</item>
+        <item name="android:numStars">5</item>
+        <item name="android:numColumns">5</item>
+        <item name="android:progressDrawable">@drawable/rating_bar</item>
+    </style>
+</resources>

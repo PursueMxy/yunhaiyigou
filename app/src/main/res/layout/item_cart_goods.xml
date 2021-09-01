@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:id="@+id/cbCartCheck"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="20.5dp"
+        android:background="@null"
+        android:button="@drawable/selector_pay"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivGoods"
+        android:layout_width="90dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24.5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="h,1:1"
+        app:layout_constraintStart_toEndOf="@id/cbCartCheck"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@mipmap/du_kang_jiu" />
+
+    <TextView
+        android:id="@+id/tvGoodsName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="7.5dp"
+        android:layout_marginEnd="17.5dp"
+        android:ellipsize="end"
+        android:lines="2"
+        android:textColor="@color/B33"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivGoods"
+        app:layout_constraintTop_toTopOf="@id/ivGoods"
+        tools:text="【酒厂直供】杜康秘藏1号 大容量口粮酒 52度浓香型白酒..." />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16.5dp"
+        android:layout_marginTop="7.5dp"
+        android:background="@drawable/bg_r10"
+        android:backgroundTint="@color/BF2"
+        android:paddingHorizontal="4dp"
+        android:paddingVertical="1dp"
+        android:text="浓香型500ml/单瓶"
+        android:textColor="@color/B99"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@id/ivGoods"
+        app:layout_constraintTop_toBottomOf="@id/tvGoodsName" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="¥899"
+        android:textColor="@color/RE3"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@id/ivGoods"
+        app:layout_constraintStart_toEndOf="@id/ivGoods" />
+
+
+    <ImageView
+        android:id="@+id/ivSubtract"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/bg_r6"
+        android:backgroundTint="@color/BF6"
+        android:minWidth="26dp"
+        android:scaleType="centerInside"
+        android:src="@mipmap/number_sub"
+        app:layout_constraintBottom_toBottomOf="@id/tvNumber"
+        app:layout_constraintDimensionRatio="h,1:1"
+        app:layout_constraintRight_toLeftOf="@id/tvNumber"
+        app:layout_constraintTop_toTopOf="@id/tvNumber" />
+
+    <TextView
+        android:id="@+id/tvNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/bg_r6"
+        android:backgroundTint="@color/BF6"
+        android:gravity="center"
+        android:minWidth="52dp"
+        android:minHeight="26dp"
+        android:singleLine="true"
+        android:text="1"
+        android:textColor="@color/B66"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/ivGoods"
+        app:layout_constraintRight_toLeftOf="@id/ivAdd" />
+
+    <ImageView
+        android:id="@+id/ivAdd"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/bg_r6"
+        android:backgroundTint="@color/BF6"
+        android:minWidth="26dp"
+        android:scaleType="centerInside"
+        android:src="@mipmap/number_add"
+        app:layout_constraintBottom_toBottomOf="@id/tvNumber"
+        app:layout_constraintDimensionRatio="h,1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvNumber" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

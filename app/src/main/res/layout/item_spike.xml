@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:background="@drawable/bg_r10"
+    android:padding="11dp">
+
+    <ImageView
+        android:id="@+id/ivGoods"
+        android:layout_width="105dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="h,1:1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@mipmap/du_kang_jiu" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:lines="2"
+        android:textColor="@color/B33"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivGoods"
+        app:layout_constraintTop_toTopOf="@id/ivGoods"
+        tools:text="【酒厂直供】杜康秘藏1号 大容量口粮酒52度浓香型白酒..." />
+
+    <ProgressBar
+        android:id="@+id/pbSellProgress"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="127dp"
+        android:layout_height="13dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/box_r100"
+        android:backgroundTint="@color/RFF"
+        android:max="100"
+        android:padding="1dp"
+        android:progress="30"
+        android:progressDrawable="@drawable/progressbar_bg"
+        app:layout_constraintBottom_toTopOf="@id/tvPrice"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tvName" />
+
+    <TextView
+        android:id="@+id/tvPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/RFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@id/ivGoods"
+        app:layout_constraintStart_toStartOf="@id/tvName"
+        tools:text="¥499" />
+
+    <TextView
+        android:id="@+id/tvOriginalPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:textColor="@color/B99"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/tvPrice"
+        app:layout_constraintStart_toEndOf="@id/tvPrice"
+        tools:text="￥889" />
+
+
+    <TextView
+        android:id="@+id/tvGoPanicBuying"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_btn"
+        android:paddingHorizontal="12.5dp"
+        android:paddingVertical="7.5dp"
+        android:text="@string/go_panic_buying"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@id/ivGoods"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tvSold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="已售70%"
+        android:textColor="@color/RFF"
+        android:textSize="9sp"
+        app:layout_constraintBottom_toBottomOf="@id/pbSellProgress"
+        app:layout_constraintEnd_toEndOf="@id/pbSellProgress"
+        app:layout_constraintStart_toStartOf="@id/pbSellProgress"
+        app:layout_constraintTop_toTopOf="@id/pbSellProgress" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_account_logout"
+    app:startDestination="@id/applyLogoutFragment">
+
+    <fragment
+        android:id="@+id/applyLogoutFragment"
+        android:name="com.xdys.yhyg.ui.setting.ApplyLogoutFragment"
+        android:label="applyLogoutFragment"
+        tools:layout="@layout/fragment_apply_logout" />
+
+    <fragment
+        android:id="@+id/logoutValidationFragment"
+        android:name="com.xdys.yhyg.ui.setting.LogoutValidationFragment"
+        android:label="logoutValidationFragment"
+        tools:layout="@layout/fragment_validation_logout" />
+
+    <fragment
+        android:id="@+id/confirmLogoutFragment"
+        android:name="com.xdys.yhyg.ui.setting.ConfirmLogoutFragment"
+        android:label="confirmLogoutFragment"
+        tools:layout="@layout/fragment_confirm_logout" />
+
+</navigation>

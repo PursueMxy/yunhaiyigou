@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.xdys.library.widget.TitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:left_drawable="@mipmap/arrow_left_b"
+        app:right_content="@string/edit"
+        app:right_text_color="@color/B33"
+        app:right_text_size="14sp"
+        app:show_left="true"
+        app:show_right="true"
+        app:title_content="@string/equipment_management"
+        tools:layout_height="48dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12.5dp"
+        android:layout_marginTop="14dp"
+        android:text="@string/equipment_management_hint"
+        android:textColor="@color/BCC"
+        android:textSize="14sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14.5dp"
+        android:layout_marginTop="21dp"
+        android:text="@string/current_equipment"
+        android:textColor="@color/B66"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tvEquipmentName"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginTop="12dp"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="15dp"
+        android:textColor="@color/RFF"
+        android:background="@color/white"
+        android:textSize="16sp"
+        tools:text="iPhone 12" />
+
+    <TextView
+        android:id="@+id/tvOtherDevice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13.5dp"
+        android:layout_marginTop="21dp"
+        android:text="@string/other_devices"
+        android:textColor="@color/B66"
+        android:textSize="14sp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvDevices"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11.5dp"
+        android:background="@color/white"
+        android:paddingHorizontal="14.5dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

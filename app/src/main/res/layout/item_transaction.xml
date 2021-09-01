@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="7dp"
+    android:background="@drawable/bg_r6"
+    android:paddingHorizontal="12.5dp"
+    android:paddingVertical="11.5dp">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/B00"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="购买成功通知" />
+
+    <TextView
+        android:id="@+id/tvTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/B99"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/tvTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvTitle"
+        tools:text="2021-06-13   14:11" />
+
+    <ImageView
+        android:id="@+id/ivGoods"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="12.5dp"
+        android:src="@mipmap/du_kang_jiu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+    <TextView
+        android:id="@+id/tvContent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:ellipsize="end"
+        android:lines="3"
+        android:textColor="@color/B99"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivGoods"
+        app:layout_constraintTop_toTopOf="@id/ivGoods"
+        tools:text="您已成功购买商品，请您耐心等待！" />
+
+    <TextView
+        android:id="@+id/tvCheckOrder"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:background="@drawable/box_r6"
+        android:backgroundTint="@color/RFF"
+        android:gravity="center"
+        android:minWidth="81dp"
+        android:paddingHorizontal="8.5dp"
+        android:text="@string/check_order"
+        android:textColor="@color/RFF"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/ivGoods"
+        app:layout_constraintStart_toStartOf="@id/tvContent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginBottom="7dp"
+        android:background="@drawable/bg_r10"
+        app:layout_constraintBottom_toTopOf="@id/tvCancel">
+
+        <TextView
+            android:id="@+id/tvWeChatFriends"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="22dp"
+            android:drawableTop="@mipmap/we_chat_friends"
+            android:drawablePadding="10dp"
+            android:gravity="center_horizontal"
+            android:paddingVertical="20dp"
+            android:text="@string/we_chat_friends"
+            android:textColor="@color/B33"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toStartOf="@id/tvCircleFriends"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvCircleFriends"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="22dp"
+            android:drawableTop="@mipmap/circle_friends"
+            android:drawablePadding="10dp"
+            android:gravity="center_horizontal"
+            android:paddingVertical="20dp"
+            android:text="@string/circle_friends"
+            android:textColor="@color/B33"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toStartOf="@id/tvShareQQ"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toEndOf="@id/tvWeChatFriends"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/tvShareQQ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="22dp"
+            android:drawableTop="@mipmap/qq"
+            android:drawablePadding="10dp"
+            android:gravity="center_horizontal"
+            android:paddingVertical="20dp"
+            android:text="@string/qq"
+            android:textColor="@color/B33"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toStartOf="@id/tvLink"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toEndOf="@id/tvCircleFriends"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/tvLink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="22dp"
+            android:drawableTop="@mipmap/link"
+            android:drawablePadding="10dp"
+            android:gravity="center_horizontal"
+            android:paddingVertical="20dp"
+            android:text="@string/link"
+            android:textColor="@color/B33"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toEndOf="@id/tvShareQQ"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tvCancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/bg_r10"
+        android:gravity="center"
+        android:paddingVertical="21dp"
+        android:text="@string/cancel"
+        android:textColor="@color/B33"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
