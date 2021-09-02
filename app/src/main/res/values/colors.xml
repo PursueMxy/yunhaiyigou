@@ -35,4 +35,8 @@
     <color name="BL00">#0066FF</color>
     <color name="BL08">#087DEE</color>
     <color name="BL0099">#0099FF</color>
+    <color name="bl369">#ff336699</color>
+
+    <color name="g00">#00C800</color>
+    <color name="RF8">#F85353</color>
 </resources>

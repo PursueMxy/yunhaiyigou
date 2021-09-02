@@ -224,8 +224,19 @@
             android:label="@string/offline_merchants_settled"
             android:screenOrientation="portrait" />
 
-        <activity android:name=".ui.mine.MyBalanceActivity"
+        <activity
+            android:name=".ui.mine.MyBalanceActivity"
             android:label="@string/my_balance"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.mine.WithdrawalActivity"
+            android:label="@string/withdraw"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.mine.MyCouponsActivity"
+            android:label="@string/my_card_voucher"
+            android:screenOrientation="portrait" />
     </application>
 </manifest>

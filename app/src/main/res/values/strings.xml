@@ -249,5 +249,19 @@
     <string name="month_earnings">本月收益(元)</string>
     <string name="cumulative_income">累计收益(元)</string>
     <string name="my_balance">我的余额</string>
+    <string name="withdrawal_instructions">提现须知</string>
+    <string name="withdraw_now">立即提现</string>
+    <string name="withdrawal_amount">提现金额</string>
+    <string name="withdraw_all">全部提现</string>
+    <string name="withdrawal_method">提现方式</string>
+    <string name="cash_withdrawal_tips">提现正常需要1~3个工作日到账</string>
+    <string name="real_name">实名姓名</string>
+    <string name="mobile">手机号</string>
+    <string name="receiving_code">收款码</string>
+    <string name="financial_check_tips">注：财务核对后将打款进该账户，请注意查看！</string>
+    <string name="bank_card_number">银行卡号</string>
+    <string name="choose_account_method">选择到帐方式</string>
+    <string name="arrival_time_tips">请留意各方式到账时间</string>
+    <string name="use_immediately">立即使用</string>
 
 </resources>

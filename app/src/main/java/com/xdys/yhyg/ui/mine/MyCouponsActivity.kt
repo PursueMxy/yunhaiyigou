@@ -13,26 +13,29 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.xdys.library.base.ViewModelActivity
 import com.xdys.library.extension.singleTop
 import com.xdys.yhyg.R
-import com.xdys.yhyg.databinding.ActivityMyBalanceBinding
+import com.xdys.yhyg.databinding.ActivityMyCouponsBinding
+import com.xdys.yhyg.ui.classify.CategoryFragment
+import com.xdys.yhyg.ui.classify.ShopFragment
 import com.xdys.yhyg.vm.MineViewModel
 
-class MyBalanceActivity : ViewModelActivity<MineViewModel, ActivityMyBalanceBinding>() {
-    override fun createBinding() = ActivityMyBalanceBinding.inflate(layoutInflater)
+class MyCouponsActivity : ViewModelActivity<MineViewModel, ActivityMyCouponsBinding>() {
+    override fun createBinding() = ActivityMyCouponsBinding.inflate(layoutInflater)
 
     override val viewModel: MineViewModel by viewModels()
 
     companion object {
         fun start(context: Context) {
-            val intent = Intent(context, MyBalanceActivity::class.java)
+            val intent = Intent(context, MyCouponsActivity::class.java)
                 .singleTop()
             context.startActivity(intent)
         }
     }
 
-    var tableList = arrayOf("收益明细", "提现记录")
+    var tableList = arrayOf("未使用", "已使用", "已过期")
 
     override fun initUI(savedInstanceState: Bundle?) = with(binding) {
         with(tabLayout) {
+            setSelectedTabIndicator(R.drawable.indicator_tab_goods)
             addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
                 override fun onTabSelected(tab: TabLayout.Tab?) {
                     if (tab == null) return
@@ -52,16 +55,15 @@ class MyBalanceActivity : ViewModelActivity<MineViewModel, ActivityMyBalanceBind
             })
         }
         with(pager) {
-            adapter = object : FragmentStateAdapter(this@MyBalanceActivity) {
+            adapter = object : FragmentStateAdapter(this@MyCouponsActivity) {
                 override fun getItemCount(): Int {
                     return tableList.size
                 }
 
-                override fun createFragment(position: Int): Fragment = when (position) {
-                    1 -> WithdrawalsRecordFragment.newInstance(position)
-                    else -> IncomeBreakdownFragment.newInstance(position)
-
+                override fun createFragment(position: Int): Fragment {
+                    return CouponsFragment.newInstance(position)
                 }
+
             }
             registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
@@ -72,10 +74,5 @@ class MyBalanceActivity : ViewModelActivity<MineViewModel, ActivityMyBalanceBind
         TabLayoutMediator(tabLayout, pager) { tab, position ->
             tab.text = tableList[position]
         }.attach()
-        tvWithdraw.setOnClickListener {
-            WithdrawalActivity.start(this@MyBalanceActivity)
-        }
     }
-
-
 }

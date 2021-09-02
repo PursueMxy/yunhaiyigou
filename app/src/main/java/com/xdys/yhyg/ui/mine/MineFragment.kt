@@ -67,6 +67,9 @@ class MineFragment : ViewModelFragment<MineViewModel, FragmentMineBinding>() {
         flBalance.setOnClickListener {
             MyBalanceActivity.start(requireContext())
         }
+        tvMyCardVoucher.setOnClickListener {
+            MyCouponsActivity.start(requireContext())
+        }
     }
 
     private val popupShare: PersonalSharePopupWindow by lazy {

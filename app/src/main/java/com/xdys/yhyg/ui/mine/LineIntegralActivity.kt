@@ -15,7 +15,6 @@ import com.xdys.library.extension.singleTop
 import com.xdys.yhyg.R
 import com.xdys.yhyg.databinding.ActivityLineIntegralBinding
 import com.xdys.yhyg.popup.IntegralRulePopupWindow
-import com.xdys.yhyg.popup.SharePopupWindow
 import com.xdys.yhyg.vm.MineViewModel
 
 class LineIntegralActivity : ViewModelActivity<MineViewModel, ActivityLineIntegralBinding>() {
@@ -78,6 +77,7 @@ class LineIntegralActivity : ViewModelActivity<MineViewModel, ActivityLineIntegr
             popupRule.showPopupWindow()
         }
     }
+
     private val popupRule: IntegralRulePopupWindow by lazy {
         IntegralRulePopupWindow(this) {
         }
