@@ -238,5 +238,15 @@
             android:name=".ui.mine.MyCouponsActivity"
             android:label="@string/my_card_voucher"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.mine.MyTeamActivity"
+            android:label="@string/my_team"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.sale.ProgressDetailsActivity"
+            android:label="@string/progress_details"
+            android:screenOrientation="portrait" />
     </application>
 </manifest>

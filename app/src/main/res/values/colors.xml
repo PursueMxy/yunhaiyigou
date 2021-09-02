@@ -27,6 +27,7 @@
     <color name="WFF_99">#99FFFFFF</color>
 
     <color name="YFF">#FFCC00</color>
+    <color name="YF9">#ffff9900</color>
     <color name="RFD">#fffd4145</color>
     <color name="RFF_80">#80FF0000</color>
     <color name="BE0">#E0DDDD</color>
@@ -39,4 +40,5 @@
 
     <color name="g00">#00C800</color>
     <color name="RF8">#F85353</color>
+    <color name="RF3">#FF3333</color>
 </resources>

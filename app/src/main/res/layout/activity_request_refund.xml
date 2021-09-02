@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.xdys.library.widget.TitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:left_drawable="@mipmap/arrow_left_b"
+        app:show_left="true"
+        app:title_content="@string/request_refund"
+        app:title_text_color="@color/B33"
+        app:title_text_size="18sp"
+        tools:layout_height="48dp" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleBar">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/applicationType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="22dp"
+                    android:paddingVertical="18dp"
+                    android:text="@string/application_type"
+                    android:textColor="@color/B99"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvApplicationType"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="113dp"
+                    android:layout_marginEnd="18dp"
+                    android:drawableEnd="@mipmap/arrow_right_s"
+                    android:drawablePadding="8dp"
+                    android:textColor="@color/B33"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@id/applicationType"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/applicationType"
+                    tools:text="我要退货退款" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/BCC"
+                    app:layout_constraintTop_toBottomOf="@id/applicationType" />
+
+                <TextView
+                    android:id="@+id/reasonApplication"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:paddingVertical="18dp"
+                    android:text="@string/reason_application"
+                    android:textColor="@color/B99"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@id/applicationType"
+                    app:layout_constraintTop_toBottomOf="@id/applicationType" />
+
+                <TextView
+                    android:id="@+id/tvReasonApplication"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@mipmap/arrow_right_s"
+                    android:drawablePadding="8dp"
+                    android:hint="@string/select_reason_application"
+                    android:textColor="@color/BCC"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@id/reasonApplication"
+                    app:layout_constraintEnd_toEndOf="@id/tvApplicationType"
+                    app:layout_constraintStart_toStartOf="@id/tvApplicationType"
+                    app:layout_constraintTop_toTopOf="@id/reasonApplication" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/tvRefundAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="18.5dp"
+                    android:text="@string/refund_amount"
+                    android:textColor="@color/B99"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="24dp"
+                    android:textColor="@color/B33"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="@id/tvRefundAmount"
+                    app:layout_constraintTop_toBottomOf="@id/tvRefundAmount"
+                    tools:text="¥368.00" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:text="@string/modify_amount"
+                    android:textColor="@color/B99"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tvPrice" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/trRefundSuccessfully"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:paddingVertical="8dp"
+                android:textColor="@color/B99"
+                android:textSize="11sp"
+                tools:text="若退款成功，将退还给您￥368现金" />
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/tvApplicationInstructions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="21dp"
+                    android:text="@string/application_instructions"
+                    android:textColor="@color/B66"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:text="您还可以输入170字"
+                    android:textColor="@color/BCC"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@id/tvApplicationInstructions"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tvApplicationInstructions" />
+
+                <EditText
+                    android:id="@+id/etContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="21dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/white"
+                    android:hint="@string/hint_application_instructions"
+                    android:lineSpacingExtra="3dp"
+                    android:minHeight="100dp"
+                    android:textColor="@color/BCC"
+                    android:textSize="14sp"
+                    app:layout_constraintTop_toBottomOf="@id/tvApplicationInstructions" />
+
+
+                <ImageView
+                    android:id="@+id/ivAdd"
+                    android:layout_width="70dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginBottom="15.5dp"
+                    android:src="@mipmap/upload_pictures"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="h,1:1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/etContent" />/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="18dp"
+                    android:layout_marginStart="20dp"
+                    android:text="@string/contact_number"
+                    android:textColor="@color/B66"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tvMobile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="110dp"
+                    android:text="18700008888"
+                    android:textColor="@color/B33"
+                    android:textSize="14sp" />
+            </FrameLayout>
+            <TextView
+                android:id="@+id/tvSubmitApplication"
+                android:layout_width="300dp"
+                android:layout_height="44dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginVertical="20dp"
+                android:background="@drawable/bg_r6"
+                android:backgroundTint="@color/RFF"
+                android:gravity="center"
+                android:text="@string/submit_application"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

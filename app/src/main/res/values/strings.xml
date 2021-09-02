@@ -263,5 +263,22 @@
     <string name="choose_account_method">选择到帐方式</string>
     <string name="arrival_time_tips">请留意各方式到账时间</string>
     <string name="use_immediately">立即使用</string>
+    <string name="personal_performance">个人业绩(元)</string>
+    <string name="profit_sharing_income">分润收益(元)</string>
+    <string name="team_performance">团队业绩(元)</string>
+    <string name="regional_agent">区域代理</string>
+    <string name="my_member">我的团员</string>
+    <string name="profit_sharing">分润收益</string>
+    <string name="request_refund">申请退款</string>
+    <string name="application_type">申请类型</string>
+    <string name="reason_application">申请原因</string>
+    <string name="select_reason_application">点击选择申请原因</string>
+    <string name="refund_amount">退款金额</string>
+    <string name="modify_amount">修改金额</string>
+    <string name="application_instructions">申请说明</string>
+    <string name="hint_application_instructions">请您详细填写申请说明</string>
+    <string name="contact_number">联系电话</string>
+    <string name="submit_application">提交申请</string>
+    <string name="progress_details">进度详情</string>
 
 </resources>

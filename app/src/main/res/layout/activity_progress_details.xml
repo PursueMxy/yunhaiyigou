@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.xdys.library.widget.TitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:left_drawable="@mipmap/arrow_left_b"
+        app:show_left="true"
+        app:title_content="@string/progress_details"
+        app:title_text_color="@color/B33"
+        app:title_text_size="18sp"
+        tools:layout_height="48dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvAfterSale"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:paddingTop="24dp"
+        android:paddingBottom="20dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+</androidx.appcompat.widget.LinearLayoutCompat>

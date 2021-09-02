@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/ivStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18.5dp"
+        android:src="@mipmap/accomplish"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="23dp"
+        android:textColor="@color/B33"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/ivStatus"
+        app:layout_constraintStart_toEndOf="@id/ivStatus"
+        app:layout_constraintTop_toTopOf="@id/ivStatus"
+        tools:text="退款成功" />
+
+    <TextView
+        android:id="@+id/tvContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:textColor="@color/B99"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@id/tvStatus"
+        app:layout_constraintTop_toBottomOf="@id/tvStatus"
+        tools:text="您的服务单号422485754已退款，请注意查收" />
+
+    <TextView
+        android:id="@+id/tvTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:textColor="@color/B99"
+        android:textSize="11sp"
+        app:layout_constraintStart_toStartOf="@id/tvStatus"
+        app:layout_constraintTop_toBottomOf="@id/tvContent"
+        tools:text="2021-05-22  10:22:11" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="70dp"
+        android:background="@color/BCC"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/ivStatus"
+        app:layout_constraintStart_toStartOf="@id/ivStatus"
+        app:layout_constraintTop_toBottomOf="@id/ivStatus" />
+</androidx.constraintlayout.widget.ConstraintLayout>

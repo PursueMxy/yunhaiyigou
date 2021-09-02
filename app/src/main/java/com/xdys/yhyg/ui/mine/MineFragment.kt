@@ -11,6 +11,7 @@ import com.xdys.yhyg.R
 import com.xdys.yhyg.databinding.FragmentMineBinding
 import com.xdys.yhyg.popup.PersonalSharePopupWindow
 import com.xdys.yhyg.ui.order.MyOrderActivity
+import com.xdys.yhyg.ui.sale.ProgressDetailsActivity
 import com.xdys.yhyg.ui.setting.SetActivity
 import com.xdys.yhyg.vm.MineViewModel
 
@@ -69,6 +70,12 @@ class MineFragment : ViewModelFragment<MineViewModel, FragmentMineBinding>() {
         }
         tvMyCardVoucher.setOnClickListener {
             MyCouponsActivity.start(requireContext())
+        }
+        tvMyTeam.setOnClickListener {
+            MyTeamActivity.start(requireContext())
+        }
+        tvReturnAfterSale.setOnClickListener {
+            ProgressDetailsActivity.start(requireContext())
         }
     }
 

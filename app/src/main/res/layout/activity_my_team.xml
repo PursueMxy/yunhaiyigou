@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:background="@drawable/bg_red_r15_bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.xdys.library.widget.TitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:left_drawable="@mipmap/arrow_left"
+        app:show_left="true"
+        app:title_content="@string/shopkeeper_center"
+        app:title_text_color="@color/white" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/bg_r10"
+        app:layout_constraintTop_toBottomOf="@id/titleBar">
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="85dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/B33"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="醉饮三百杯" />
+
+
+        <TextView
+            android:id="@+id/tvUserId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textColor="@color/B99"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@id/tvName"
+            app:layout_constraintTop_toBottomOf="@id/tvName"
+            tools:text="（ID:2011022）" />
+
+
+        <TextView
+            android:id="@+id/personalPerformance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/personal_performance"
+            android:textColor="@color/B33"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@id/profitSharingIncome"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvUserId" />
+
+
+        <TextView
+            android:id="@+id/tvPersonalPerformance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8.5dp"
+            android:textColor="@color/RF3"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@id/personalPerformance"
+            app:layout_constraintStart_toStartOf="@id/personalPerformance"
+            app:layout_constraintTop_toBottomOf="@id/personalPerformance"
+            tools:text="+66.00" />
+
+
+        <TextView
+            android:id="@+id/profitSharingIncome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:text="@string/profit_sharing_income"
+            android:textColor="@color/B33"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvUserId" />
+
+
+        <TextView
+            android:id="@+id/tvProfitSharingIncome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8.5dp"
+            android:textColor="@color/RF3"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@id/profitSharingIncome"
+            app:layout_constraintStart_toStartOf="@id/profitSharingIncome"
+            app:layout_constraintTop_toBottomOf="@id/profitSharingIncome"
+            tools:text="+66.00" />
+
+
+        <TextView
+            android:id="@+id/teamPerformance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:text="@string/team_performance"
+            android:textColor="@color/B33"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/profitSharingIncome"
+            app:layout_constraintTop_toBottomOf="@id/tvUserId" />
+
+
+        <TextView
+            android:id="@+id/tvTeamPerformance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8.5dp"
+            android:textColor="@color/RF3"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@id/teamPerformance"
+            app:layout_constraintStart_toStartOf="@id/teamPerformance"
+            app:layout_constraintTop_toBottomOf="@id/teamPerformance"
+            tools:text="+66.00" />
+
+
+        <TextView
+            android:id="@+id/tvTeamNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="31dp"
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/B33"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/viewOne"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvPersonalPerformance"
+            tools:text="团队：18人" />
+
+
+        <TextView
+            android:id="@+id/tvRegionalAgent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@mipmap/regional_agent"
+            android:drawablePadding="5dp"
+            android:text="@string/regional_agent"
+            android:textColor="@color/B33"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/tvTeamNumber"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/viewOne"
+            app:layout_constraintTop_toTopOf="@id/tvTeamNumber"
+            tools:ignore="UseCompatTextViewDrawableXml" />
+
+        <View
+            android:id="@+id/viewOne"
+            android:layout_width="0.5dp"
+            android:layout_height="22dp"
+            android:background="@color/BCC"
+            app:layout_constraintBottom_toBottomOf="@id/tvTeamNumber"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvTeamNumber" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/ivAvatar"
+        android:layout_width="69dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleBar"
+        tools:src="@mipmap/schoolgirl" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="14.5dp"
+        android:background="@drawable/bg_r5_top"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/clUser">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:background="@color/white"
+            app:tabGravity="center"
+            app:tabIndicator="@drawable/indicator_tab_goods"
+            app:tabIndicatorColor="@color/RFF"
+            app:tabIndicatorHeight="3dp"
+            app:tabMinWidth="100dp"
+            app:tabMode="auto"
+            app:tabRippleColor="@null"
+            app:tabSelectedTextColor="@color/RFF"
+            app:tabTextAppearance="@style/TabLayoutFind"
+            app:tabTextColor="@color/B33"
+            app:tabUnboundedRipple="false" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/BCC" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

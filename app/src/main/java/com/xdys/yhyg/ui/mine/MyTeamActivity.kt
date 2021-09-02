@@ -11,27 +11,28 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.xdys.library.base.ViewModelActivity
+import com.xdys.library.extension.loadCircleImage
 import com.xdys.library.extension.singleTop
 import com.xdys.yhyg.R
-import com.xdys.yhyg.databinding.ActivityMyBalanceBinding
+import com.xdys.yhyg.databinding.ActivityMyTeamBinding
 import com.xdys.yhyg.vm.MineViewModel
 
-class MyBalanceActivity : ViewModelActivity<MineViewModel, ActivityMyBalanceBinding>() {
-    override fun createBinding() = ActivityMyBalanceBinding.inflate(layoutInflater)
+class MyTeamActivity : ViewModelActivity<MineViewModel, ActivityMyTeamBinding>() {
+    override fun createBinding() = ActivityMyTeamBinding.inflate(layoutInflater)
 
     override val viewModel: MineViewModel by viewModels()
 
+
     companion object {
         fun start(context: Context) {
-            val intent = Intent(context, MyBalanceActivity::class.java)
+            val intent = Intent(context, MyTeamActivity::class.java)
                 .singleTop()
             context.startActivity(intent)
         }
     }
 
-    var tableList = arrayOf("收益明细", "提现记录")
-
     override fun initUI(savedInstanceState: Bundle?) = with(binding) {
+        var tableList = resources.getStringArray(R.array.my_team_page)
         with(tabLayout) {
             addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
                 override fun onTabSelected(tab: TabLayout.Tab?) {
@@ -52,14 +53,14 @@ class MyBalanceActivity : ViewModelActivity<MineViewModel, ActivityMyBalanceBind
             })
         }
         with(pager) {
-            adapter = object : FragmentStateAdapter(this@MyBalanceActivity) {
+            adapter = object : FragmentStateAdapter(this@MyTeamActivity) {
                 override fun getItemCount(): Int {
                     return tableList.size
                 }
 
                 override fun createFragment(position: Int): Fragment = when (position) {
-                    1 -> WithdrawalsRecordFragment.newInstance(position)
-                    else -> IncomeBreakdownFragment.newInstance(position)
+                    1 -> ProfitSharingFragment.newInstance(position)
+                    else -> MyMemberFragment.newInstance(position)
 
                 }
             }
@@ -72,13 +73,11 @@ class MyBalanceActivity : ViewModelActivity<MineViewModel, ActivityMyBalanceBind
         TabLayoutMediator(tabLayout, pager) { tab, position ->
             tab.text = tableList[position]
         }.attach()
-        tvWithdraw.setOnClickListener {
-            WithdrawalActivity.start(this@MyBalanceActivity)
-        }
-        tvYesterdayEarnings.text="+6666"
-        tvMonthEarnings.text="+8888"
-        tvCumulativeIncome.text="+9999"
+        tvTeamNumber.text = "团队：18人"
+        ivAvatar.loadCircleImage(R.mipmap.schoolgirl)
+        tvName.text = "醉酒三千杯"
+        tvPersonalPerformance.text = "888"
+        tvProfitSharingIncome.text = "955"
+        tvTeamPerformance.text = "9865"
     }
-
-
 }
