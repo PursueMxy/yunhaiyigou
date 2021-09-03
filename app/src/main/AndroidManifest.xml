@@ -248,5 +248,20 @@
             android:name=".ui.sale.ProgressDetailsActivity"
             android:label="@string/progress_details"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.sale.ServiceOrderDetailsActivity"
+            android:label="@string/service_order_details"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.sale.ReturnAfterSaleActivity"
+            android:label="@string/return_after_sale"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.sale.ChooseAfterSalesActivity"
+            android:label="@string/choose_after_sales"
+            android:screenOrientation="portrait"
+            />
     </application>
 </manifest>

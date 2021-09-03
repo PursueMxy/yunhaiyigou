@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="7dp"
+    android:background="@color/white"
+    android:paddingBottom="17dp">
+
+
+    <TextView
+        android:id="@+id/tvNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="15.5dp"
+        android:textColor="@color/B99"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="服务单号：422485754" />
+
+
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15.5dp"
+        android:textColor="@color/B33"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/tvNumber"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvNumber"
+        tools:text="退货" />
+
+    <ImageView
+        android:id="@+id/ivStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        app:layout_constraintBottom_toBottomOf="@id/tvNumber"
+        app:layout_constraintEnd_toStartOf="@id/tvStatus"
+        app:layout_constraintTop_toTopOf="@id/tvNumber"
+        tools:src="@mipmap/exchange" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/BCC"
+        app:layout_constraintTop_toBottomOf="@id/tvNumber" />
+
+
+    <ImageView
+        android:id="@+id/ivGoods"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="13.5dp"
+        android:layout_marginTop="29dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvNumber"
+        tools:src="@mipmap/du_kang_jiu" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="13.5dp"
+        android:lines="2"
+        android:textColor="@color/B33"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivGoods"
+        app:layout_constraintTop_toTopOf="@id/ivGoods"
+        tools:text="酒祖杜康12窖区 窖龄40年 50度浓香型白酒 500ml单瓶酒盒装..." />
+
+
+    <TextView
+        android:id="@+id/tvNumberApplications"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="11.5dp"
+        android:layout_marginBottom="10dp"
+        android:textColor="@color/B66"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/ivGoods"
+        app:layout_constraintStart_toStartOf="@id/tvName"
+        tools:text="申请数量：1" />
+
+    <TextView
+        android:id="@+id/tvAuditStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="17dp"
+        android:textColor="@color/RFF"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/tvNumberApplications"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvNumberApplications"
+        tools:text="审核中" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginHorizontal="15.5dp"
+        android:layout_marginTop="11dp"
+        android:background="@drawable/bg_r6"
+        android:backgroundTint="@color/BF2"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/ivGoods">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginHorizontal="24dp"
+            android:text="@string/audit"
+            android:textColor="@color/B33"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tvAuditContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/B99"
+            android:textSize="12sp"
+            tools:text="您的服务单已经申请成功，待售后审核" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.constraintlayout.widget.ConstraintLayout>

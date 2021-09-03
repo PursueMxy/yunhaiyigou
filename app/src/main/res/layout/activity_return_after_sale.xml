@@ -13,7 +13,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:left_drawable="@mipmap/arrow_left_b"
         app:show_left="true"
-        app:title_content="@string/my_card_voucher"
+        app:title_content="@string/return_after_sale"
         app:title_text_color="@color/B33" />
 
     <com.google.android.material.tabs.TabLayout

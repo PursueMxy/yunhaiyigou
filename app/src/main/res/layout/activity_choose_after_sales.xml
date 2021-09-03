@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.xdys.library.widget.TitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:left_drawable="@mipmap/arrow_left_b"
+        app:show_left="true"
+        app:title_content="@string/choose_after_sales"
+        tools:layout_height="48dp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/ivGoods"
+            android:layout_width="58dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="21dp"
+            android:layout_marginTop="16.5dp"
+            android:layout_marginBottom="8.5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="h,1:1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@mipmap/du_kang_jiu" />
+
+        <TextView
+            android:id="@+id/tvOrderStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="7dp"
+            android:text="已完成订单"
+            android:textColor="@color/B33"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@id/ivGoods"
+            app:layout_constraintTop_toTopOf="@id/ivGoods" />
+
+        <TextView
+            android:id="@+id/tvDeliveryInformation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
+            android:textColor="@color/B99"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/ivGoods"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tvOrderStatus"
+            tools:text="中通快递：【厦门市】快递已送达【厦门戏..." />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/ivSalesReturn"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_margin="29dp"
+            android:src="@mipmap/sales_return"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvNeedToRefunds"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="26.5dp"
+            android:text="@string/i_need_to_refunds"
+            android:textColor="@color/B33"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@id/ivSalesReturn"
+            app:layout_constraintTop_toTopOf="@id/ivSalesReturn" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="33.5dp"
+            android:text="已收到货，需要退还已收到的货物"
+            android:textColor="@color/B99"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tvNeedToRefunds"
+            app:layout_constraintTop_toBottomOf="@id/tvNeedToRefunds" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/ivWantRefund"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_margin="29dp"
+            android:src="@mipmap/want_refund"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvWantRefund"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="26.5dp"
+            android:text="@string/want_refund"
+            android:textColor="@color/B33"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@id/ivWantRefund"
+            app:layout_constraintTop_toTopOf="@id/ivWantRefund" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="33.5dp"
+            android:text="未收到货，或与商家协商之后申请"
+            android:textColor="@color/B99"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tvWantRefund"
+            app:layout_constraintTop_toBottomOf="@id/tvWantRefund" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/ivWantToExchange"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_margin="29dp"
+            android:src="@mipmap/want_to_exchange"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvWantToExchange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="26.5dp"
+            android:text="@string/want_to_exchange"
+            android:textColor="@color/B33"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@id/ivWantToExchange"
+            app:layout_constraintTop_toTopOf="@id/ivWantToExchange" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="33.5dp"
+            android:text="已收到货，需要退还已收到的货物"
+            android:textColor="@color/B99"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tvWantToExchange"
+            app:layout_constraintTop_toBottomOf="@id/tvWantToExchange" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

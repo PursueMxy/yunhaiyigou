@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:background="@drawable/bg_red_r15_bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.xdys.library.widget.TitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:left_drawable="@mipmap/arrow_left_b"
+        app:show_left="true"
+        app:title_content="@string/service_order_details"
+        app:title_text_color="@color/B33"
+        app:title_text_size="18sp"
+        tools:layout_height="48dp" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleBar">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvFinish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="23.5dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/finish"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/titleBar" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="23dp"
+                app:layout_constraintTop_toBottomOf="@id/tvFinish" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="7dp"
+                android:background="@drawable/bg_r6"
+                android:paddingHorizontal="12.5dp"
+                android:paddingVertical="19dp"
+                app:layout_constraintTop_toBottomOf="@id/rvStatus">
+
+                <TextView
+                    android:id="@+id/tvContent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="服务已完成，感谢您对商城的支持"
+                    android:textColor="@color/B33"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvReviewMessage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:text="审核留言：尊敬的商城用户，商品自收到之日起7天内没..."
+                    android:textColor="@color/B99"
+                    android:textSize="10sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvContent" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="11.5dp"
+                    android:src="@mipmap/arrow_right_s"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:paddingHorizontal="14dp"
+                android:paddingVertical="18dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/total_refund"
+                    android:textColor="@color/B99"
+                    android:textSize="14sp" />
+
+
+                <TextView
+                    android:id="@+id/tvPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:textColor="@color/RFF"
+                    android:textSize="14sp"
+                    tools:text="¥368.00" />
+            </FrameLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/commodityInformation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="13.5dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/commodity_information"
+                    android:textColor="@color/B99"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <ImageView
+                    android:id="@+id/ivGoods"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginStart="13.5dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginBottom="22dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/commodityInformation"
+                    tools:src="@mipmap/du_kang_jiu" />
+
+                <TextView
+                    android:id="@+id/tvName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginEnd="13.5dp"
+                    android:lines="2"
+                    android:textColor="@color/B33"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/ivGoods"
+                    app:layout_constraintTop_toTopOf="@id/ivGoods"
+                    tools:text="酒祖杜康12窖区 窖龄40年 50度浓香型白酒 500ml单瓶酒盒装..." />
+
+                <TextView
+                    android:id="@+id/tvUnitPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@color/B66"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@id/ivGoods"
+                    app:layout_constraintStart_toStartOf="@id/tvName"
+                    tools:text="单价：￥368.00" />
+
+                <TextView
+                    android:id="@+id/tvNumberApplications"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:textColor="@color/B66"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@id/tvUnitPrice"
+                    app:layout_constraintStart_toEndOf="@id/tvUnitPrice"
+                    app:layout_constraintTop_toTopOf="@id/tvUnitPrice"
+                    tools:text="申请数量：1" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingBottom="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="13dp"
+                    android:layout_marginTop="18.5dp"
+                    android:text="@string/guess_you_want_to_ask"
+                    android:textColor="@color/B99"
+                    android:textSize="14sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvIssue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="13dp"
+                    android:paddingVertical="15dp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:paddingHorizontal="13dp"
+                android:paddingVertical="10dp">
+
+                <TextView
+                    android:id="@+id/orderNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="11dp"
+                    android:text="@string/service_order_number"
+                    android:textColor="@color/B99"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <TextView
+                    android:id="@+id/tvOrderNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="100dp"
+                    android:textColor="@color/B99"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@id/orderNumber"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/orderNumber"
+                    tools:text="422485754" />
+
+                <TextView
+                    android:id="@+id/tvCopy"
+                    android:layout_width="45dp"
+                    android:layout_height="19dp"
+                    android:layout_marginStart="15dp"
+                    android:background="@drawable/box_r100"
+                    android:backgroundTint="@color/BFA"
+                    android:gravity="center"
+                    android:text="@string/copy"
+                    android:textColor="@color/B33"
+                    android:textSize="10sp"
+                    app:layout_constraintBottom_toBottomOf="@id/orderNumber"
+                    app:layout_constraintStart_toEndOf="@id/tvOrderNumber"
+                    app:layout_constraintTop_toTopOf="@id/orderNumber" />
+
+                <TextView
+                    android:id="@+id/applicationTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="11dp"
+                    android:text="@string/application_time"
+                    android:textColor="@color/B99"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/orderNumber" />
+
+                <TextView
+                    android:id="@+id/tvApplicationTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/B99"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@id/applicationTime"
+                    app:layout_constraintStart_toStartOf="@id/tvOrderNumber"
+                    app:layout_constraintTop_toTopOf="@id/applicationTime"
+                    tools:text="2022-05-17  10:22:11  " />
+
+                <TextView
+                    android:id="@+id/serviceType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="11dp"
+                    android:text="@string/service_type"
+                    android:textColor="@color/B99"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/applicationTime" />
+
+                <TextView
+                    android:id="@+id/tvServiceType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/B99"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@id/serviceType"
+                    app:layout_constraintStart_toStartOf="@id/tvOrderNumber"
+                    app:layout_constraintTop_toTopOf="@id/serviceType"
+                    tools:text="退货退款 " />
+
+                <TextView
+                    android:id="@+id/reasonApplication"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="11dp"
+                    android:text="@string/reason_application"
+                    android:textColor="@color/B99"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/serviceType" />
+
+                <TextView
+                    android:id="@+id/tvReasonApplication"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/B99"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@id/reasonApplication"
+                    app:layout_constraintStart_toStartOf="@id/tvOrderNumber"
+                    app:layout_constraintTop_toTopOf="@id/reasonApplication"
+                    tools:text="商品与描述不符" />
+
+                <TextView
+                    android:id="@+id/refundMethod"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="11dp"
+                    android:text="@string/refund_method"
+                    android:textColor="@color/B99"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/reasonApplication" />
+
+                <TextView
+                    android:id="@+id/tvRefundMethod"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/B99"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@id/refundMethod"
+                    app:layout_constraintStart_toStartOf="@id/tvOrderNumber"
+                    app:layout_constraintTop_toTopOf="@id/refundMethod"
+                    tools:text="原返" />
+
+                <TextView
+                    android:id="@+id/expectedRefundTo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="11dp"
+                    android:text="@string/expected_refund_to"
+                    android:textColor="@color/B99"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/refundMethod" />
+
+                <TextView
+                    android:id="@+id/tvExpectedRefundTo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/B99"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@id/expectedRefundTo"
+                    app:layout_constraintStart_toStartOf="@id/tvOrderNumber"
+                    app:layout_constraintTop_toTopOf="@id/expectedRefundTo"
+                    tools:text="微信零钱" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

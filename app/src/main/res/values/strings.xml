@@ -280,5 +280,22 @@
     <string name="contact_number">联系电话</string>
     <string name="submit_application">提交申请</string>
     <string name="progress_details">进度详情</string>
+    <string name="finish">完成</string>
+    <string name="total_refund">退款总额:</string>
+    <string name="service_order_details">服务单详情</string>
+    <string name="guess_you_want_to_ask">猜你想问</string>
+    <string name="service_order_number">服务单号:</string>
+    <string name="application_time">申请时间:</string>
+    <string name="service_type">服务类型:</string>
+    <string name="refund_method">退款方式:</string>
+    <string name="expected_refund_to">预计退款至:</string>
+    <string name="audit">审核</string>
+    <string name="apply_after_sales">申请售后</string>
+    <string name="commodity_information">商品信息</string>
+    <string name="no_order_record">您暂无任何订单记录</string>
+    <string name="choose_after_sales">选择售后类型</string>
+    <string name="i_need_to_refunds">我要退货退款</string>
+    <string name="want_refund">我要退款(无需退货)</string>
+    <string name="want_to_exchange">我要换货</string>
 
 </resources>
