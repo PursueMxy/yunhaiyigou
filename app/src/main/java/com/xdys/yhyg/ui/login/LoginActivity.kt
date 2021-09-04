@@ -1,4 +1,4 @@
-package com.xdys.yhyg.ui
+package com.xdys.yhyg.ui.login
 
 import androidx.activity.viewModels
 import com.xdys.yhyg.databinding.ActivityLoginBinding

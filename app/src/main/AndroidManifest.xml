@@ -17,8 +17,11 @@
         tools:targetApi="m">
 
         <activity
-            android:name="com.xdys.yhyg.ui.MainActivity"
+            android:name="com.xdys.yhyg.ui.home.MainActivity"
             android:exported="true"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.xdys.yhyg.ui.login.LoginActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,9 +29,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.xdys.yhyg.ui.LoginActivity"
-            android:screenOrientation="portrait"></activity>
         <activity
             android:name="com.xdys.yhyg.ui.home.SearchActivity"
             android:label="@string/search"
@@ -245,6 +245,11 @@
             android:screenOrientation="portrait" />
 
         <activity
+            android:name=".ui.sale.RequestRefundActivity"
+            android:label="@string/request_refund"
+            android:screenOrientation="portrait" />
+
+        <activity
             android:name=".ui.sale.ProgressDetailsActivity"
             android:label="@string/progress_details"
             android:screenOrientation="portrait" />
@@ -261,7 +266,11 @@
         <activity
             android:name=".ui.sale.ChooseAfterSalesActivity"
             android:label="@string/choose_after_sales"
-            android:screenOrientation="portrait"
-            />
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.sale.ViewSolutionActivity"
+            android:label="@string/view_solution"
+            android:screenOrientation="portrait" />
     </application>
 </manifest>

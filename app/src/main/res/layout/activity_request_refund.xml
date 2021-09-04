@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:ignore="UseCompatTextViewDrawableXml">
 
     <com.xdys.library.widget.TitleBar
         android:id="@+id/titleBar"
@@ -165,9 +166,9 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_marginEnd="20dp"
-                    android:text="您还可以输入170字"
+                    android:text="@string/can_enter_170"
                     android:textColor="@color/BCC"
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="@id/tvApplicationInstructions"
@@ -186,7 +187,8 @@
                     android:minHeight="100dp"
                     android:textColor="@color/BCC"
                     android:textSize="14sp"
-                    app:layout_constraintTop_toBottomOf="@id/tvApplicationInstructions" />
+                    app:layout_constraintTop_toBottomOf="@id/tvApplicationInstructions"
+                    tools:ignore="Autofill" />
 
 
                 <ImageView
@@ -199,7 +201,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintDimensionRatio="h,1:1"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/etContent" />/>
+                    app:layout_constraintTop_toBottomOf="@id/etContent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <FrameLayout
@@ -222,10 +224,11 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="110dp"
-                    android:text="18700008888"
+                    tools:text="18700008888"
                     android:textColor="@color/B33"
                     android:textSize="14sp" />
             </FrameLayout>
+
             <TextView
                 android:id="@+id/tvSubmitApplication"
                 android:layout_width="300dp"

@@ -13,6 +13,7 @@ import com.xdys.yhyg.popup.PersonalSharePopupWindow
 import com.xdys.yhyg.ui.order.MyOrderActivity
 import com.xdys.yhyg.ui.sale.ReturnAfterSaleActivity
 import com.xdys.yhyg.ui.sale.ServiceOrderDetailsActivity
+import com.xdys.yhyg.ui.sale.ViewSolutionActivity
 import com.xdys.yhyg.ui.setting.SetActivity
 import com.xdys.yhyg.vm.MineViewModel
 
@@ -77,6 +78,9 @@ class MineFragment : ViewModelFragment<MineViewModel, FragmentMineBinding>() {
         }
         tvReturnAfterSale.setOnClickListener {
             ReturnAfterSaleActivity.start(requireContext())
+        }
+        tvFeedback.setOnClickListener {
+            ViewSolutionActivity.start(requireContext())
         }
     }
 

@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import com.xdys.library.base.ViewModelActivity
+import com.xdys.library.extension.context
 import com.xdys.library.extension.loadRoundCornerImage
 import com.xdys.library.extension.singleTop
 import com.xdys.yhyg.R
@@ -28,6 +29,15 @@ class ChooseAfterSalesActivity :
 
     override fun initUI(savedInstanceState: Bundle?) = with(binding) {
         ivGoods.loadRoundCornerImage(R.mipmap.du_kang_jiu)
-        tvOrderStatus.text = "中通快递：【厦门市】快递已送达【厦门戏..."
+        tvDeliveryInformation.text = "中通快递：【厦门市】快递已送达【厦门戏..."
+        clSalesReturn.setOnClickListener {
+            RequestRefundActivity.start(this@ChooseAfterSalesActivity, "申请退货退款")
+        }
+        clWantRefund.setOnClickListener {
+            RequestRefundActivity.start(this@ChooseAfterSalesActivity, "申请退货")
+        }
+        clWantToExchange.setOnClickListener {
+            RequestRefundActivity.start(this@ChooseAfterSalesActivity, "申请换货")
+        }
     }
 }

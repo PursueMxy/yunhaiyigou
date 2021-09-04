@@ -5,12 +5,15 @@ import android.view.View
 import com.xdys.yhyg.R
 import razerdp.basepopup.BasePopupWindow
 
-class ChangePasswordPopubWindow(
+class AuthenticationPopupWindow(
     context: Context, private val confirm: () -> Unit,
 ) : BasePopupWindow(context) {
 
-    override fun onCreateContentView(): View = createPopupById(R.layout.popup_change_password)
+    override fun onCreateContentView(): View = createPopupById(R.layout.popup_authentication)
     override fun onViewCreated(contentView: View) {
+        findViewById<View>(R.id.ivClose).setOnClickListener {
+            dismiss()
+        }
 
     }
 }

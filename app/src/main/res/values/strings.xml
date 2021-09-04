@@ -297,5 +297,24 @@
     <string name="i_need_to_refunds">我要退货退款</string>
     <string name="want_refund">我要退款(无需退货)</string>
     <string name="want_to_exchange">我要换货</string>
+    <string name="view_solution">查看解决方案</string>
+    <string name="can_enter_170">您还可以输入170字</string>
+    <string name="you_may_also_want_to_know">您可能还想了解：</string>
+    <string name="sales_policy_description">售后政策说明</string>
+    <string name="how_apply_after_sales">如何申请售后？</string>
+    <string name="what_to_enjoy">如何查看商品享受哪些售后服务？</string>
+    <string name="is_it_resolved">以上方案是否解决了您的问题？</string>
+    <string name="solved">已解决</string>
+    <string name="unsolved">未解决</string>
+    <string name="thanks_for_your_feedback">感谢您的反馈</string>
+    <string name="specific_reason">请您描述具体原因</string>
+    <string name="submit_feedback">提交反馈</string>
+    <string name="register">注册</string>
+    <string name="login">登录</string>
+    <string name="account_password_login">帐号密码登录</string>
+    <string name="hint_password">请输入密码</string>
+    <string name="retrieve_password">找回密码</string>
+    <string name="mobile_verification_login">手机验证登录</string>
+    <string name="other_login_methods">其他登录方式</string>
 
 </resources>

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.xdys.library.widget.TitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:left_drawable="@mipmap/arrow_left_b"
+        app:show_left="true"
+        app:title_content="@string/view_solution"
+        app:title_text_color="@color/B33"
+        app:title_text_size="18sp"
+        tools:layout_height="48dp" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="26dp"
+        android:textColor="@color/B33"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleBar"
+        tools:text="商品买错了怎么办？" />
+
+
+    <TextView
+        android:id="@+id/tvSolutionContent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="10dp"
+        android:textColor="@color/B33"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tvTitle"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        tools:text="您的订单已提交售后服务单，如是18:00前提交申请，一般将在当天22:00前审核完毕，18:00后提交申请，一般将在次日12:00前审核完毕，请您耐心等待并关注服务单审核结果。" />
+
+    <TextView
+        android:id="@+id/tvYouWant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="33dp"
+        android:text="@string/you_may_also_want_to_know"
+        android:textColor="@color/B33"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@id/tvTitle"
+        app:layout_constraintTop_toBottomOf="@id/tvSolutionContent" />
+
+    <TextView
+        android:id="@+id/tvPolicyDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:text="@string/sales_policy_description"
+        android:textColor="@color/BL09F"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@id/tvTitle"
+        app:layout_constraintTop_toBottomOf="@id/tvYouWant" />
+
+    <TextView
+        android:id="@+id/tvHowApply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:text="@string/how_apply_after_sales"
+        android:textColor="@color/BL09F"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@id/tvTitle"
+        app:layout_constraintTop_toBottomOf="@id/tvPolicyDescription" />
+
+    <TextView
+        android:id="@+id/tvWhatToEnjoy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:text="@string/what_to_enjoy"
+        android:textColor="@color/BL09F"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@id/tvTitle"
+        app:layout_constraintTop_toBottomOf="@id/tvHowApply" />
+
+    <TextView
+        android:id="@+id/tvIsItResolved"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="33dp"
+        android:text="@string/is_it_resolved"
+        android:textColor="@color/B99"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvWhatToEnjoy" />
+
+    <View
+        android:layout_width="44dp"
+        android:layout_height="0.5dp"
+        android:layout_marginStart="4dp"
+        android:background="@color/BCC"
+        app:layout_constraintBottom_toBottomOf="@id/tvIsItResolved"
+        app:layout_constraintStart_toEndOf="@id/tvIsItResolved"
+        app:layout_constraintTop_toTopOf="@id/tvIsItResolved" />
+
+    <View
+        android:layout_width="44dp"
+        android:layout_height="0.5dp"
+        android:layout_marginEnd="4dp"
+        android:background="@color/BCC"
+        app:layout_constraintBottom_toBottomOf="@id/tvIsItResolved"
+        app:layout_constraintEnd_toStartOf="@id/tvIsItResolved"
+        app:layout_constraintTop_toTopOf="@id/tvIsItResolved" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/gpSolved"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="tvSolved,tvUnSolved" />
+
+    <TextView
+        android:id="@+id/tvSolved"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/box_r100"
+        android:backgroundTint="@color/BF5"
+        android:drawableStart="@mipmap/solved"
+        android:drawablePadding="7dp"
+        android:gravity="center"
+        android:paddingHorizontal="20dp"
+        android:text="@string/solved"
+        android:textColor="@color/B66"
+        android:textSize="15sp"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvIsItResolved" />
+
+
+    <TextView
+        android:id="@+id/tvUnSolved"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/box_r100"
+        android:backgroundTint="@color/BF5"
+        android:drawableStart="@mipmap/unsolved"
+        android:drawablePadding="7dp"
+        android:gravity="center"
+        android:paddingHorizontal="20dp"
+        android:text="@string/unsolved"
+        android:textColor="@color/B66"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintTop_toBottomOf="@id/tvIsItResolved" />
+
+
+    <TextView
+        android:id="@+id/tvSolvedStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/box_r100"
+        android:backgroundTint="@color/RFF"
+        android:drawableStart="@drawable/selector_solved"
+        android:drawablePadding="5dp"
+        android:gravity="center"
+        android:paddingHorizontal="21dp"
+        android:textColor="@color/RFF"
+        android:textSize="15sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvIsItResolved"
+        tools:text="已解决" />
+</androidx.constraintlayout.widget.ConstraintLayout>

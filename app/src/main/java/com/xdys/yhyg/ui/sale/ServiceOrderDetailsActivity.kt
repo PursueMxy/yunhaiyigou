@@ -58,6 +58,9 @@ class ServiceOrderDetailsActivity :
             tvExpectedRefundTo.text = "微信零钱"
             tvPrice.text = "¥588"
         }
+        clContent.setOnClickListener {
+            ProgressDetailsActivity.start(this@ServiceOrderDetailsActivity)
+        }
     }
 
     override fun initData() {

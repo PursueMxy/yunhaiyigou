@@ -41,5 +41,11 @@
     <color name="g00">#00C800</color>
     <color name="RF8">#F85353</color>
     <color name="RF3">#FF3333</color>
+    <color name="RDE">#FEE4E4</color>
     <color name="BF4">#F4F4F4</color>
+    <color name="BL09F">#ff0099ff</color>
+    <color name="BF5">#B5B5B5</color>
+    <color name="B80">#ff808080</color>
+    <color name="BF7">#F7F7F7</color>
+    <color name="BBE">#ffbebec0</color>
 </resources>

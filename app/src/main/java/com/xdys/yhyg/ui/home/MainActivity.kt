@@ -1,4 +1,5 @@
-package com.xdys.yhyg.ui
+
+package com.xdys.yhyg.ui.home
 
 import android.os.Bundle
 import android.widget.TextView
@@ -10,7 +11,6 @@ import com.xdys.yhyg.R
 import com.xdys.yhyg.databinding.ActivityMainBinding
 import com.xdys.yhyg.ui.cart.CartFragment
 import com.xdys.yhyg.ui.classify.ClassificationFragment
-import com.xdys.yhyg.ui.home.HomeFragment
 import com.xdys.yhyg.ui.mall.MallFragment
 import com.xdys.yhyg.ui.mine.MineFragment
 import com.xdys.yhyg.vm.MineViewModel

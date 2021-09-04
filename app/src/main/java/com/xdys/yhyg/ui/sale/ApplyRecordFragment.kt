@@ -35,10 +35,13 @@ class ApplyRecordFragment : ViewModelFragment<AfterSaleViewModel, FragmentApplyR
         }
         with(mAdapter) {
             setEmptyView(R.layout.empty_no_order_record)
+            setOnItemClickListener { _, _, position ->
+                ServiceOrderDetailsActivity.start(requireContext())
+            }
         }
     }
 
     override fun initData() {
-//        mAdapter.setNewInstance(mutableListOf("", "", ""))
+        mAdapter.setNewInstance(mutableListOf("", "", ""))
     }
 }
