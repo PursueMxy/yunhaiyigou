@@ -316,5 +316,12 @@
     <string name="retrieve_password">找回密码</string>
     <string name="mobile_verification_login">手机验证登录</string>
     <string name="other_login_methods">其他登录方式</string>
+    <string name="account_registration">帐号注册</string>
+    <string name="already_logged_in">已有帐号登录</string>
+    <string name="setting_login_password">设置登录密码</string>
+    <string name="enter_password_again">再次输入密码</string>
+    <string name="sign_up_now">立即注册</string>
+    <string name="privacy_agree">注册即代表你已同意</string>
+    <string name="privacy_policy">《云海易购用户协议》《隐私政策》</string>
 
 </resources>

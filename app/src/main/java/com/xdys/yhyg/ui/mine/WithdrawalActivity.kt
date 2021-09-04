@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
-import com.hjq.toast.ToastUtils
 import com.xdys.library.base.ViewModelActivity
 import com.xdys.library.extension.singleTop
 import com.xdys.yhyg.databinding.ActivityWithdrawalBinding

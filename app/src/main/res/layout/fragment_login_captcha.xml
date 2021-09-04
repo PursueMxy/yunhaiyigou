@@ -8,6 +8,7 @@
     android:orientation="vertical">
 
     <com.xdys.library.widget.TitleBar
+        android:id="@+id/tvTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:left_drawable="@mipmap/arrow_left_b"
@@ -16,7 +17,7 @@
         app:right_text_size="16sp"
         app:show_left="true"
         app:show_right="true"
-        tools:heighe="48dp" />
+        tools:layout_height="48dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -44,7 +45,8 @@
         android:layout_height="50dp"
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="25dp"
-        android:background="@color/BF7"
+        android:background="@drawable/bg_r10"
+        android:backgroundTint="@color/BF7"
         android:gravity="center_vertical"
         android:hint="@string/hint_mobile"
         android:inputType="number"
@@ -59,14 +61,15 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="10dp"
-        android:background="@color/BF7">
+        android:background="@drawable/bg_r10"
+        android:backgroundTint="@color/BF7">
 
         <EditText
             android:id="@+id/etPassword"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginEnd="8dp"
-            android:background="@color/white"
+            android:background="@null"
             android:gravity="center_vertical"
             android:hint="@string/hint_password"
             android:inputType="textPassword"

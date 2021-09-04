@@ -1,6 +1,179 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.xdys.library.widget.TitleBar
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:left_drawable="@mipmap/close_b"
+        app:show_left="true"
+        tools:layout_height="48dp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/account_registration"
+            android:textColor="@color/B19"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/tvAlreadyLogged"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:drawableEnd="@mipmap/arrow_right_s"
+            android:drawablePadding="8dp"
+            android:text="@string/already_logged_in"
+            android:textColor="@color/B66"
+            android:textSize="15sp" />
+    </FrameLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/bg_r10"
+        android:backgroundTint="@color/BF7">
+
+        <EditText
+            android:id="@+id/etMobile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="14dp"
+            android:background="@null"
+            android:drawableStart="@mipmap/mobile"
+            android:drawablePadding="14dp"
+            android:gravity="center_vertical"
+            android:hint="@string/hint_mobile"
+            android:textColor="@color/BBE"
+            android:textSize="16sp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_r10"
+        android:backgroundTint="@color/BF7">
+
+        <EditText
+            android:id="@+id/etVerificationCode"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="14dp"
+            android:background="@null"
+            android:drawableStart="@mipmap/verification_code"
+            android:drawablePadding="14dp"
+            android:gravity="center_vertical"
+            android:hint="@string/hint_verification_code"
+            android:textColor="@color/BBE"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@id/tvGetCode"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tvGetCode"
+            android:layout_width="100dp"
+            android:layout_height="29dp"
+            android:layout_marginEnd="13dp"
+            android:background="@drawable/bg_r100"
+            android:backgroundTint="@color/RFF"
+            android:gravity="center"
+            android:text="@string/get_verification_code"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_r10"
+        android:backgroundTint="@color/BF7">
+
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="14dp"
+            android:background="@null"
+            android:drawableStart="@mipmap/login_password"
+            android:drawablePadding="14dp"
+            android:gravity="center_vertical"
+            android:hint="@string/setting_login_password"
+            android:textColor="@color/BBE"
+            android:textSize="16sp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_r10"
+        android:backgroundTint="@color/BF7">
+
+        <EditText
+            android:id="@+id/etEnterPassword"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="14dp"
+            android:background="@null"
+            android:drawableStart="@mipmap/login_password"
+            android:drawablePadding="14dp"
+            android:gravity="center_vertical"
+            android:hint="@string/enter_password_again"
+            android:textColor="@color/BBE"
+            android:textSize="16sp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/btnSingUpNow"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/bg_r10"
+        android:backgroundTint="@color/RFF"
+        android:gravity="center"
+        android:text="@string/sign_up_now"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tvLoginAgree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginVertical="30dp"
+        android:drawableStart="@drawable/selector_pay"
+        android:drawablePadding="5dp"
+        android:gravity="center_horizontal"
+        android:textColor="@color/B80"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivAgree"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="我已阅读并同意《注册协议》及《隐私协议》" />
+</androidx.appcompat.widget.LinearLayoutCompat>

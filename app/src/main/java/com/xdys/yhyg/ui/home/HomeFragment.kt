@@ -1,6 +1,8 @@
 package com.xdys.yhyg.ui.home
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,6 +27,7 @@ class HomeFragment : ViewModelFragment<MineViewModel, FragmentHomeBinding>() {
     override val viewModel: MineViewModel by activityViewModels()
 
     var tableList = arrayOf("推荐", "男装", "女装", "美食", "电器", "酒水", "家居日用")
+    @SuppressLint("WrongConstant")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
         with(tabLayout) {
             setSelectedTabIndicator(R.drawable.indicator_tab)
@@ -69,5 +72,10 @@ class HomeFragment : ViewModelFragment<MineViewModel, FragmentHomeBinding>() {
             tab.text = tableList[position]
         }.attach()
         clSearch.setOnClickListener { SearchActivity.start(requireContext()) }
+
+        titleBar.setOnRightClickListener {
+            drawerLayout.openDrawer(Gravity.END)
+        }
+
     }
 }

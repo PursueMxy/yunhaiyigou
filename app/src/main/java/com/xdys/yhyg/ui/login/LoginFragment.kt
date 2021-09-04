@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.xdys.library.base.ViewModelFragment
 import com.xdys.yhyg.R
 import com.xdys.yhyg.databinding.FragmentLoginBinding
+import com.xdys.yhyg.ui.home.MainActivity
 import com.xdys.yhyg.vm.LoginViewModel
 
 class LoginFragment : ViewModelFragment<LoginViewModel, FragmentLoginBinding>() {
@@ -25,6 +26,13 @@ class LoginFragment : ViewModelFragment<LoginViewModel, FragmentLoginBinding>() 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
         tvMobileVerificationLogin.setOnClickListener {
             navController.navigate(R.id.loginCaptchaFragment)
+        }
+        tvTitle.setOnRightClickListener { navController.navigate(R.id.registerFragment) }
+        btnLogin.setOnClickListener {
+            MainActivity.startActivity(
+                requireContext(), false
+            
+            )
         }
     }
 }

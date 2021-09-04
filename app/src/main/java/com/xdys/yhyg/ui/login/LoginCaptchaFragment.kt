@@ -25,5 +25,6 @@ class LoginCaptchaFragment : ViewModelFragment<LoginViewModel, FragmentLoginCapt
         tvAccountPasswordLogin.setOnClickListener {
             navController.navigate(R.id.loginCaptchaFragment)
         }
+        tvTitle.setOnRightClickListener { navController.navigate(R.id.registerFragment) }
     }
 }

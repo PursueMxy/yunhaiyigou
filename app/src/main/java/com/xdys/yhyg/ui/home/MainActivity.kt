@@ -1,12 +1,16 @@
-
 package com.xdys.yhyg.ui.home
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.fragment.app.commit
 import androidx.lifecycle.Lifecycle
 import com.google.android.material.tabs.TabLayout
+import com.xdys.library.base.ViewModelActivity
+import com.xdys.library.extension.clearTask
+import com.xdys.library.extension.newTask
 import com.xdys.yhyg.R
 import com.xdys.yhyg.databinding.ActivityMainBinding
 import com.xdys.yhyg.ui.cart.CartFragment
@@ -14,12 +18,19 @@ import com.xdys.yhyg.ui.classify.ClassificationFragment
 import com.xdys.yhyg.ui.mall.MallFragment
 import com.xdys.yhyg.ui.mine.MineFragment
 import com.xdys.yhyg.vm.MineViewModel
-import com.xdys.library.base.ViewModelActivity
 
 class MainActivity : ViewModelActivity<MineViewModel, ActivityMainBinding>() {
     override fun createBinding(): ActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
 
     override val viewModel: MineViewModel by viewModels()
+
+    companion object {
+        fun startActivity(context: Context, isNew: Boolean = true) {
+            val intent = Intent(context, MainActivity::class.java)
+            if (isNew) intent.newTask().clearTask()
+            context.startActivity(intent)
+        }
+    }
 
     private val homeFragment: HomeFragment by lazy { HomeFragment() }
     private val classificationFragment: ClassificationFragment by lazy { ClassificationFragment() }
