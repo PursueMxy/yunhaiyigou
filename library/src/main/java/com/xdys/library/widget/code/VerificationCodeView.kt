@@ -217,7 +217,7 @@ class VerificationCodeView @JvmOverloads constructor(
         context.obtainStyledAttributes(attrs, R.styleable.VerificationCodeView).use {
             codeCount = it.getInt(R.styleable.VerificationCodeView_codeCount, 4)
             codeType = Type.values()[it.getInt(
-                R.styleable.VerificationCodeView_codeType, Type.NUMBER.ordinal
+                R.styleable.VerificationCodeView_codeType, Type.NUMBER_PASSWORD.ordinal
             )]
             codeMode = Mode.values()[it.getInt(
                 R.styleable.VerificationCodeView_codeMode, Mode.FIX.ordinal
@@ -329,7 +329,7 @@ class VerificationCodeView @JvmOverloads constructor(
     private fun initEditText(index: Int): EditText = EditText(context).apply {
         layoutParams = createOrUpdateLayoutParams(index = index)
         gravity = Gravity.CENTER
-        inputType = InputType.TYPE_NUMBER_VARIATION_PASSWORD
+        inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_VARIATION_PASSWORD
         textAlignment = TEXT_ALIGNMENT_CENTER
         isSingleLine = true
         setPadding(0, 0, 0, 0)
@@ -384,15 +384,6 @@ class VerificationCodeView @JvmOverloads constructor(
      * 设置输入类型
      */
     private fun setInputType(editText: EditText) = with(editText) {
-        when (codeType) {
-            Type.NUMBER -> inputType = InputType.TYPE_CLASS_NUMBER
-            Type.NUMBER_PASSWORD -> {
-                inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_VARIATION_PASSWORD
-                transformationMethod = NumberPasswordTransformationMethod()
-            }
-            Type.TEXT -> inputType = InputType.TYPE_CLASS_TEXT
-            Type.TEXT_PASSWORD -> inputType =
-                InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
-        }
+        inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_VARIATION_PASSWORD
     }
 }

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="12dp"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="21.5dp"
+        android:layout_marginTop="17.5dp"
+        android:textColor="@color/B00"
+        android:textSize="14sp"
+        tools:text="女式上衣" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvGoodsType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="27dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginBottom="8dp" />
+</androidx.appcompat.widget.LinearLayoutCompat>

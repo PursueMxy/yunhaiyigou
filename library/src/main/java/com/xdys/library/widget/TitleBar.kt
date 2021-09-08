@@ -27,7 +27,7 @@ class TitleBar @JvmOverloads constructor(
     private val DEFAULT_TITLE_SIZE = 18F.sp
     private val DEFAULT_PADDING = 8.dp
     private val DEFAULT_BAR_PADDING = 10.dp
-    private val DEFAULT_TEXT_COLOR = Color.parseColor("#FF202020")
+    private val DEFAULT_TEXT_COLOR = Color.parseColor("#333333")
     private val statusBarHeight = resources.run {
         getDimensionPixelSize(
             getIdentifier("status_bar_height", "dimen", "android")

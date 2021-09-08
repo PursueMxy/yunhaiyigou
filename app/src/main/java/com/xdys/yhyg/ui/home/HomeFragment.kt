@@ -13,10 +13,11 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import com.xdys.library.base.ViewModelFragment
 import com.xdys.yhyg.R
+import com.xdys.yhyg.adapte.home.ProductTypeAdapter
 import com.xdys.yhyg.databinding.FragmentHomeBinding
 import com.xdys.yhyg.vm.MineViewModel
-import com.xdys.library.base.ViewModelFragment
 
 class HomeFragment : ViewModelFragment<MineViewModel, FragmentHomeBinding>() {
     override fun createBinding(
@@ -26,7 +27,11 @@ class HomeFragment : ViewModelFragment<MineViewModel, FragmentHomeBinding>() {
 
     override val viewModel: MineViewModel by activityViewModels()
 
+
+    private val productTypeAdapter by lazy { ProductTypeAdapter() }
+
     var tableList = arrayOf("推荐", "男装", "女装", "美食", "电器", "酒水", "家居日用")
+
     @SuppressLint("WrongConstant")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
         with(tabLayout) {
@@ -72,10 +77,18 @@ class HomeFragment : ViewModelFragment<MineViewModel, FragmentHomeBinding>() {
             tab.text = tableList[position]
         }.attach()
         clSearch.setOnClickListener { SearchActivity.start(requireContext()) }
-
         titleBar.setOnRightClickListener {
             drawerLayout.openDrawer(Gravity.END)
         }
 
+        with(rvProductType) {
+            adapter = productTypeAdapter
+        }
+        tvTitle.text = "女装"
+
+    }
+
+    override fun initData() {
+        productTypeAdapter.setNewInstance(mutableListOf("", "", ""))
     }
 }

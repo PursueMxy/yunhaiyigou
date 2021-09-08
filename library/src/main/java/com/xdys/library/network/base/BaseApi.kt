@@ -19,4 +19,5 @@ interface BaseApi {
         @Field("active_id") activeId: String? = null,
         @Field("is_newcomer") isNewbie: Int? = null
     ): BaseResult
+
 }

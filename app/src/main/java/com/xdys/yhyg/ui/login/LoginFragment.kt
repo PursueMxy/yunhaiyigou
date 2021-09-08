@@ -31,7 +31,7 @@ class LoginFragment : ViewModelFragment<LoginViewModel, FragmentLoginBinding>() 
         btnLogin.setOnClickListener {
             MainActivity.startActivity(
                 requireContext(), false
-            
+
             )
         }
     }

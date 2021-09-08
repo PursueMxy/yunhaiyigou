@@ -323,5 +323,7 @@
     <string name="sign_up_now">立即注册</string>
     <string name="privacy_agree">注册即代表你已同意</string>
     <string name="privacy_policy">《云海易购用户协议》《隐私政策》</string>
+    <string name="all_check">全选</string>
+    <string name="to_settle">去结算</string>
 
 </resources>

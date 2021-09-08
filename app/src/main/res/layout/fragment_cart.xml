@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/BF2"
-    android:orientation="vertical">
+    android:background="@color/BF2">
 
     <com.xdys.library.widget.TitleBar
         android:id="@+id/titleBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
         app:title_content="@string/shopping_cart"
         app:title_text_color="@color/B51"
         app:title_text_size="16sp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clTop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white">
+        android:background="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/titleBar">
 
         <TextView
             android:layout_width="wrap_content"
@@ -45,33 +48,84 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <com.scwang.smart.refresh.layout.SmartRefreshLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/clTop">
+
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvCart"
-            android:nestedScrollingEnabled="false"
-            android:overScrollMode="never"
-            app:layout_scrollFlags="scroll"
+            android:id="@+id/rvGoods"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:background="@color/BF2"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:overScrollMode="never"
+            android:paddingHorizontal="13.5dp"
+            android:paddingBottom="50dp" />
     </com.scwang.smart.refresh.layout.SmartRefreshLayout>
 
-    <ImageView
-        android:id="@+id/ivLike"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:paddingVertical="30dp"
-        android:src="@mipmap/guess_you_like" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvGoods"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/BF2"
-        android:clipChildren="false"
-        android:clipToPadding="false"
-        android:paddingHorizontal="13.5dp"
-        android:paddingBottom="50dp" />
-</LinearLayout>
+        android:layout_height="57dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <CheckBox
+            android:id="@+id/cbCartAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20.5dp"
+            android:button="@drawable/selector_pay"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="5dp"
+            android:text="@string/all_check"
+            android:textColor="@color/B66"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/tvToSettle"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_r100"
+            android:backgroundTint="@color/RFF"
+            android:gravity="center"
+            android:text="@string/to_settle"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvTotalAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/B33"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@id/cbCartAll"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="合计:￥799.00" />
+
+        <TextView
+            android:id="@+id/tvDiscount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/B66"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tvTotalAmount"
+            tools:text="优惠减:￥100.00" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

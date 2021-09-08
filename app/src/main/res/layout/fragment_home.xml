@@ -23,7 +23,6 @@
             android:id="@+id/titleBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingRight="10dp"
             app:layout_constraintTop_toTopOf="parent"
             app:right_drawable="@mipmap/home_scanning"
             app:show_right="true"
@@ -55,7 +54,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="UseCompatTextViewDrawableXml" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.google.android.material.tabs.TabLayout
@@ -76,7 +76,8 @@
             app:tabRippleColor="@android:color/transparent"
             app:tabSelectedTextColor="@color/white"
             app:tabTextAppearance="@style/TabLayoutFind"
-            app:tabTextColor="@color/white" />
+            app:tabTextColor="@color/white"
+            tools:ignore="RtlSymmetry" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/pager"
@@ -92,8 +93,29 @@
         android:layout_height="match_parent"
         android:layout_gravity="end"
         android:layout_marginEnd="-32dp"
-        android:background="@color/BL00"
-        android:gravity="end">
+        android:background="@color/BF2"
+        android:gravity="end"
+        android:orientation="vertical">
 
+        <TextView
+            android:layout_marginTop="30dp"
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginStart="22dp"
+            android:layout_marginBottom="3dp"
+            android:textColor="@color/B00"
+            android:textSize="15sp"
+            tools:text="女装" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvProductType"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:paddingBottom="50dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.drawerlayout.widget.DrawerLayout>

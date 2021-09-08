@@ -60,6 +60,7 @@
 
         <activity
             android:name="com.xdys.yhyg.ui.mall.PaymentStatusActivity"
+            android:label="@string/checkout_counter"
             android:screenOrientation="portrait" />
 
         <activity
