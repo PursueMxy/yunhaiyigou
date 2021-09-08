@@ -17,7 +17,6 @@ import com.xdys.yhyg.R
 import com.xdys.yhyg.adapte.cart.CartAdapter
 import com.xdys.yhyg.adapte.home.HomeGoodsAdapter
 import com.xdys.yhyg.databinding.FragmentCartBinding
-import com.xdys.yhyg.entity.cart.CartProductEntity
 import com.xdys.yhyg.ui.goods.GoodsDetailActivity
 import com.xdys.yhyg.vm.CartViewModel
 
@@ -69,10 +68,13 @@ class CartFragment : ViewModelFragment<CartViewModel, FragmentCartBinding>() {
 
     override fun initObserver() {
         viewModel.cartLiveData.observe(this) {
-            cartAdapter.setNewInstance(it.cartList as MutableList<BaseNode>)
+            cartAdapter.setNewInstance(mutableListOf<BaseNode>().apply {
+                add(0, it.cartList[1].goodsList[0])
+                add(0, it.cartList[0])
+                add(2, it.cartList[1])
+            })
         }
     }
-
 
 
 }

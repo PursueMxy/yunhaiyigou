@@ -325,5 +325,6 @@
     <string name="privacy_policy">《云海易购用户协议》《隐私政策》</string>
     <string name="all_check">全选</string>
     <string name="to_settle">去结算</string>
+    <string name="hint_input_psw">·避免使用连续或重复的数字，类似“123456”“112233”\n·避免使用手机号、证件号中的连续数字</string>
 
 </resources>

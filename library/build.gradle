@@ -80,6 +80,7 @@ dependencies {
     api 'com.tencent:mmkv-static:1.2.5'
     api 'com.zhihu.android:matisse:0.5.3-beta3'
     api 'com.contrarywind:Android-PickerView:4.1.9'
+    api 'com.king.view:splitedittext:1.0.0'
 
     api 'io.github.zguop:pager2Banner:1.0.5'//Banner
 }
