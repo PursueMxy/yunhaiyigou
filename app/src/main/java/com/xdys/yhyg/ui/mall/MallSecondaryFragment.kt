@@ -38,6 +38,6 @@ class MallSecondaryFragment : ViewModelFragment<MineViewModel, FragmentMallSecon
     }
 
     override fun initData() {
-        mallAdapter.setNewInstance(mutableListOf("", "", "", ""))
+        mallAdapter.setNewInstance(mutableListOf("", "", "", "", "", "", ""))
     }
 }

@@ -13,6 +13,6 @@
     <string name="query_format">\?q=</string>
     <string name="dot">.</string>
     <string name="content_type_json">application/json</string>
-    <string name="fix_behavior">com.icarexm.library.kit.behavior.FixAppBarLayoutBehavior</string>
+    <string name="fix_behavior">com.xdys.library.kit.behavior.FixAppBarLayoutBehavior</string>
     <string name="image_mime">image/*</string>
 </resources>

@@ -6,6 +6,9 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCate"
+        android:paddingHorizontal="17dp"
+        android:clipChildren="false"
+        android:clipToPadding="false"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent" />

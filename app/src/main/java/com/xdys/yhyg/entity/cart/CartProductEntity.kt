@@ -20,7 +20,8 @@ data class CartShopEntity(
     @SerializedName("goods_list")
     val goodsList: MutableList<CartProductEntity> = mutableListOf()
 ) : BaseNode() {
-    override var childNode: MutableList<BaseNode>? = null
+    override val childNode: MutableList<BaseNode>
+    get() = goodsList as MutableList<BaseNode>
 }
 
 data class CartProductEntity(
