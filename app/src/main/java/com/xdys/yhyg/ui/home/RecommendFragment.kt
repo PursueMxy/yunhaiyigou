@@ -9,6 +9,10 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.to.aboomy.pager2banner.IndicatorView
+import com.xdys.library.base.ViewModelFragment
+import com.xdys.library.extension.dp
+import com.xdys.library.extension.px
+import com.xdys.library.kit.decoration.DividerItemDecoration
 import com.xdys.yhyg.adapte.home.BrandMerchantAdapter
 import com.xdys.yhyg.adapte.home.HomeCateFirstAdapter
 import com.xdys.yhyg.adapte.home.HomeGoodsAdapter
@@ -16,10 +20,6 @@ import com.xdys.yhyg.adapte.home.ImageAdapter
 import com.xdys.yhyg.databinding.FragmentRecommendBinding
 import com.xdys.yhyg.ui.goods.GoodsDetailActivity
 import com.xdys.yhyg.vm.MineViewModel
-import com.xdys.library.base.ViewModelFragment
-import com.xdys.library.extension.dp
-import com.xdys.library.extension.px
-import com.xdys.library.kit.decoration.DividerItemDecoration
 
 class RecommendFragment : ViewModelFragment<MineViewModel, FragmentRecommendBinding>() {
     override fun createBinding(
@@ -68,6 +68,11 @@ class RecommendFragment : ViewModelFragment<MineViewModel, FragmentRecommendBind
         }
         ivSeckill.setOnClickListener {
             CommodityTypeActivity.start(requireContext())
+        }
+        with(brandMerchatAdapter) {
+            setOnItemClickListener { _, _, position ->
+                BrandZoneActivity.start(requireContext())
+            }
         }
 
     }

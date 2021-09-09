@@ -40,7 +40,7 @@ class OtherFragment : ViewModelFragment<MineViewModel, FragmentOtherBinding>() {
         with(rvType) {
             adapter = goodsTypeAdapter
             layoutManager = GridLayoutManager(requireContext(), 5)
-            addItemDecoration(DividerItemDecoration(8.px, 17.px))
+            addItemDecoration(DividerItemDecoration(8.px, 0.px))
         }
         with(rvBrandSelection) {
             adapter = brandSelectionAdapter

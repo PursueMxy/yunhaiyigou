@@ -34,7 +34,9 @@
         app:tabRippleColor="@android:color/transparent"
         app:tabSelectedTextColor="@color/B33"
         app:tabTextAppearance="@style/TabLayoutFind"
-        app:tabTextColor="@color/B33" />
+        app:tabTextColor="@color/B33"
+        tools:ignore="RtlSymmetry" />
+
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/pager"
         android:layout_width="match_parent"

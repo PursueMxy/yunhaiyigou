@@ -4,7 +4,7 @@
     <item android:id="@android:id/background">
         <shape>
             <corners android:radius="5dp" />
-            <solid android:color="@color/white" />
+            <solid android:color="@color/RC8" />
         </shape>
     </item>
     <!--  设置进度条颜色  -->
@@ -18,8 +18,8 @@
                     android:top="1dp" />
                 <gradient
                     android:angle="180"
-                    android:endColor="@color/RFFCC"
-                    android:startColor="@color/RFFCC" />
+                    android:endColor="@color/R3B"
+                    android:startColor="@color/R3B" />
                 <corners android:radius="10dp" />
             </shape>
         </clip>

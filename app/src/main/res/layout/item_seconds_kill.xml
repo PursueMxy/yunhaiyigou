@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_r10">
+
+    <ImageView
+        android:id="@+id/ivGoods"
+        android:layout_width="110dp"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="h,1:1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@mipmap/du_kang_jiu" />
+
+
+    <TextView
+        android:id="@+id/tvGoodsName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13.5dp"
+        android:layout_marginEnd="15.5dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@color/B33"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivGoods"
+        app:layout_constraintTop_toTopOf="@id/ivGoods"
+        tools:text="【2021秋新品】梵希蔓轻奢法式碎花连衣裙显瘦遮肉减龄别致百褶裙 ..." />
+
+    <TextView
+        android:id="@+id/tvSpecialOffers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:textColor="@color/RFF"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@id/tvGoodsName"
+        app:layout_constraintTop_toBottomOf="@id/tvGoodsName"
+        tools:text="满2件打8折" />
+
+
+    <TextView
+        android:id="@+id/tvPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        android:textColor="@color/RFF"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/tvOriginalPrice"
+        app:layout_constraintStart_toStartOf="@id/tvGoodsName"
+        tools:text="￥256" />
+
+    <TextView
+        android:id="@+id/tvGoPanicBuying"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15.5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/selector_r15_r40"
+        android:paddingHorizontal="12.5dp"
+        android:paddingVertical="7.5dp"
+        android:text="@string/go_panic_buying"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@id/tvSold"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tvSold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5.5dp"
+        android:textColor="@color/B9C"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@id/ivGoods"
+        app:layout_constraintEnd_toStartOf="@id/pbSellProgress"
+        tools:ignore="SmallSp"
+        tools:text="已售30%" />
+
+    <ProgressBar
+        android:id="@+id/pbSellProgress"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="66dp"
+        android:layout_height="8dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/box_r6"
+        android:backgroundTint="@color/RFF"
+        android:max="100"
+        android:padding="1dp"
+        android:progress="30"
+        android:layout_marginBottom="2dp"
+        android:progressDrawable="@drawable/progressbar_bg"
+        app:layout_constraintBottom_toBottomOf="@id/ivGoods"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tvOriginalPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/BCC"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="@id/ivGoods"
+        app:layout_constraintStart_toStartOf="@id/tvGoodsName"
+        tools:text="￥860" />
+</androidx.constraintlayout.widget.ConstraintLayout>

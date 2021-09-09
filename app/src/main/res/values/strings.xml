@@ -326,5 +326,9 @@
     <string name="all_check">全选</string>
     <string name="to_settle">去结算</string>
     <string name="hint_input_psw">·避免使用连续或重复的数字，类似“123456”“112233”\n·避免使用手机号、证件号中的连续数字</string>
+    <string name="comprehensive">综合</string>
+    <string name="sales">销量</string>
+    <string name="discount">折扣</string>
+    <string name="price">价格</string>
 
 </resources>

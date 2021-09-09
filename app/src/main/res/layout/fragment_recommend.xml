@@ -16,10 +16,12 @@
             android:layout_height="170dp"
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="5dp" />
+
         <View
             android:layout_width="match_parent"
             android:layout_height="15dp"
             android:background="@color/BF2" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvCateFirst"
             android:layout_width="match_parent"
@@ -89,7 +91,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="17.5dp"
-            android:background="@color/BF2" />
+            android:background="@color/white" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -145,7 +147,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="22dp"
-            android:background="@color/BF2" />
+            android:background="@color/white" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvBrandMerchant"
@@ -164,7 +166,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp">
+            android:layout_height="60dp"
+            android:background="@color/white">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -175,7 +178,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvGoods"

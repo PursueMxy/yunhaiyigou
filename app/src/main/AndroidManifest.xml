@@ -19,13 +19,12 @@
         <activity
             android:name="com.xdys.yhyg.ui.home.MainActivity"
             android:exported="true"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.xdys.yhyg.ui.login.LoginActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -44,6 +43,10 @@
         <activity
             android:name="com.xdys.yhyg.ui.classify.SingleCategoryActivity"
             android:label="单类商品"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.home.BrandZoneActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.xdys.yhyg.ui.mall.EntityListActivity"

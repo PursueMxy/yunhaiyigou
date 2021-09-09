@@ -273,11 +273,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:text="(余额：280.00)"
                         android:textColor="@color/BCC"
                         android:textSize="10sp"
                         app:layout_constraintBottom_toBottomOf="@id/ivBalance"
-                        app:layout_constraintStart_toEndOf="@id/ivBalance" />
+                        app:layout_constraintStart_toEndOf="@id/ivBalance"
+                        tools:text="(余额：280.00)"
+                        tools:ignore="SmallSp" />
 
                     <ImageView
                         android:layout_width="25dp"
