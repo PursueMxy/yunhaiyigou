@@ -1,17 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.xdys.library.widget.NestedScrollableHost xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvCate"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:orientation="vertical"
+        app:elevation="0dp"
+        app:layout_behavior="@string/fix_behavior">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <com.zhpan.bannerview.BannerViewPager
+                android:id="@+id/bannerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                app:bvp_indicator_slide_mode="worm" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginVertical="11dp"
+            android:background="@drawable/bg_r100"
+            android:backgroundTint="@android:color/transparent"
+            app:tabBackground="@drawable/selector_type_tab"
+            app:tabGravity="center"
+            app:tabIndicatorHeight="0dp"
+            app:tabMode="scrollable"
+            app:tabRippleColor="@android:color/transparent"
+            app:tabSelectedTextColor="@color/RFA"
+            app:tabTextAppearance="@style/TabLayoutType"
+            app:tabTextColor="@color/B33"
+            />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.xdys.library.widget.NestedScrollableHost
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipChildren="false"
-        android:clipToPadding="false"
-        android:paddingHorizontal="12dp"
-        android:paddingBottom="60dp"
-        />
-</com.xdys.library.widget.NestedScrollableHost>
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCate"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:paddingHorizontal="12dp"
+            android:paddingBottom="60dp" />
+    </com.xdys.library.widget.NestedScrollableHost>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

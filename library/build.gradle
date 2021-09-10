@@ -83,4 +83,7 @@ dependencies {
     api 'com.king.view:splitedittext:1.0.0'
 
     api 'io.github.zguop:pager2Banner:1.0.5'//Banner
+
+    api 'com.github.zhpanvip:BannerViewPager:3.5.4'
+
 }

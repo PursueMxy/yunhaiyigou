@@ -330,5 +330,6 @@
     <string name="sales">销量</string>
     <string name="discount">折扣</string>
     <string name="price">价格</string>
+    <string name="brand_zone">品牌专区</string>
 
 </resources>

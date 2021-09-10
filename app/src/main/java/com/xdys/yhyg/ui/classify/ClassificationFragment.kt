@@ -9,7 +9,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.xdys.yhyg.adapte.classify.CateLeftAdapter
 import com.xdys.yhyg.adapte.classify.CateRightAdapter
 import com.xdys.yhyg.databinding.FragmentClassificationBinding
-import com.xdys.yhyg.entity.CateEntity
+import com.xdys.yhyg.entity.classify.CateEntity
 import com.xdys.yhyg.vm.MineViewModel
 import com.xdys.library.base.ViewModelFragment
 

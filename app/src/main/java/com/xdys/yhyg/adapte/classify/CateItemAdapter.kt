@@ -23,7 +23,7 @@ class CateItemAdapter : BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_c
         with(viewHolder.getView<RecyclerView>(R.id.rvClassify)) {
             adapter = goodsTypeAdapter
             layoutManager = GridLayoutManager(context, 3)
-            addItemDecoration(DividerItemDecoration(8.px, 17.px))
+            addItemDecoration(DividerItemDecoration(8.px, 0.px))
         }
         with(goodsTypeAdapter){
             setOnItemClickListener { _, view, position ->

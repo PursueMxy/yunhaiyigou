@@ -1,4 +1,4 @@
-package com.xdys.yhyg.entity
+package com.xdys.yhyg.entity.classify
 
 import com.chad.library.adapter.base.entity.node.BaseNode
 import java.io.Serializable

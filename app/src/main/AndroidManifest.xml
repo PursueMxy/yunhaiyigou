@@ -47,7 +47,14 @@
 
         <activity
             android:name=".ui.home.BrandZoneActivity"
+            android:label="@string/brand_zone"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.home.BrandZoneListActivity"
+            android:label="@string/brand_zone"
+            android:screenOrientation="portrait" />
+
         <activity
             android:name="com.xdys.yhyg.ui.mall.EntityListActivity"
             android:label="附近门店"
