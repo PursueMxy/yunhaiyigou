@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.xdys.library.widget.TitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:left_drawable="@mipmap/arrow_left_b"
+        app:show_left="true"
+        app:title_content="@string/confirm_order" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/tvAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="9dp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/B99"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toEndOf="@id/tvDefault"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="福建厦门市湖里区" />
+
+                <TextView
+                    android:id="@+id/tvDefault"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16.5dp"
+                    android:background="@drawable/bg_r6"
+                    android:backgroundTint="@color/RFF"
+                    android:padding="3dp"
+                    android:text="@string/defaults"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@id/tvAddress"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tvAddress" />
+
+                <TextView
+                    android:id="@+id/tvAddressDetail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16.5dp"
+                    android:layout_marginTop="10dp"
+                    android:drawableEnd="@mipmap/arrow_right_s"
+                    android:drawablePadding="10dp"
+                    android:textColor="@color/B33"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvAddress"
+                    tools:text="五缘湾安岭路1008号丰润金融中心B座1001-1" />
+
+                <TextView
+                    android:id="@+id/tvConsignee"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16.5dp"
+                    android:layout_marginTop="12dp"
+                    android:textColor="@color/B66"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvAddressDetail"
+                    tools:text="李俊祥" />
+
+
+                <TextView
+                    android:id="@+id/tvMobile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20.5dp"
+                    android:textColor="@color/B66"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toEndOf="@id/tvConsignee"
+                    app:layout_constraintTop_toTopOf="@id/tvConsignee"
+                    tools:text="180****2236" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13.5dp"
+                    android:src="@mipmap/decorative_edge"
+                    app:layout_constraintTop_toBottomOf="@id/tvConsignee" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="7.5dp"
+                android:background="@drawable/bg_r10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="16dp"
+                    android:text="支付方式"
+                    android:textColor="@color/B33"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tvPaymentType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginEnd="16.5dp"
+                    android:drawableEnd="@mipmap/choice"
+                    android:drawablePadding="13.5dp"
+                    android:textColor="@color/B33"
+                    android:textSize="14sp"
+                    tools:text="微信支付" />
+            </FrameLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:background="@drawable/bg_r10" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:background="@drawable/bg_r10">
+
+                <TextView
+                    android:id="@+id/tvDiscountCoupon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:paddingVertical="20.5dp"
+                    android:text="@string/discount_coupon"
+                    android:textColor="@color/B33"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvConditions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16.5dp"
+                    android:drawableEnd="@mipmap/choice"
+                    android:drawablePadding="10dp"
+                    android:textColor="@color/RFF"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@id/tvDiscountCoupon"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tvDiscountCoupon"
+                    tools:text="满500减100" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:background="@color/BCC"
+                    app:layout_constraintTop_toBottomOf="@id/tvDiscountCoupon" />
+
+                <TextView
+                    android:id="@+id/tvPointsDeduction"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="0.5dp"
+                    android:paddingVertical="20.5dp"
+                    android:text="@string/points_deduction"
+                    android:textColor="@color/B33"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvDiscountCoupon" />
+
+                <TextView
+                    android:id="@+id/tvIntegralNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:textColor="@color/B99"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@id/tvPointsDeduction"
+                    app:layout_constraintEnd_toStartOf="@id/ivIntegral"
+                    app:layout_constraintTop_toTopOf="@id/tvPointsDeduction"
+                    tools:text="共2490积分，可用于抵扣" />
+
+                <ImageView
+                    android:id="@+id/ivIntegral"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="18dp"
+                    android:src="@drawable/selector_switch"
+                    app:layout_constraintBottom_toBottomOf="@id/tvPointsDeduction"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tvPointsDeduction" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_r10"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingVertical="11dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16.5dp"
+                        android:text="@string/goods_amount"
+                        android:textColor="@color/B33"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tvGoodsAmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginEnd="15.5dp"
+                        android:textColor="@color/B33"
+                        android:textSize="14sp"
+                        tools:text="￥899.00" />
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="11dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16.5dp"
+                        android:text="@string/shipping"
+                        android:textColor="@color/B33"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tvShipping"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginEnd="15.5dp"
+                        android:textColor="@color/RFF"
+                        android:textSize="14sp"
+                        tools:text="￥899.00" />
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="11dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16.5dp"
+                        android:text="@string/coupon_deduction"
+                        android:textColor="@color/B33"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tvCouponDeduction"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginEnd="15.5dp"
+                        android:textColor="@color/RFF"
+                        android:textSize="14sp"
+                        tools:text="￥899.00" />
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="11dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16.5dp"
+                        android:text="线上积分抵扣"
+                        android:textColor="@color/B33"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginEnd="15.5dp"
+                        android:textColor="@color/RFF"
+                        android:textSize="14sp"
+                        tools:text="￥899.00" />
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="11dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16.5dp"
+                        android:text="赠送线下积分"
+                        android:textColor="@color/B33"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginEnd="15.5dp"
+                        android:textColor="@color/RFF"
+                        android:textSize="14sp"
+                        tools:text="￥899.00" />
+
+                </FrameLayout>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:layout_marginTop="7dp"
+                android:background="@color/white">
+
+
+                <TextView
+                    android:id="@+id/tvActualPayment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="19.5dp"
+                    android:text="@string/actual_payment"
+                    android:textColor="@color/B33"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/RFF"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tvActualPayment"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="￥340.00" />
+
+                <TextView
+                    android:id="@+id/tvPayImmediately"
+                    android:layout_width="130dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/bg_r100"
+                    android:backgroundTint="@color/RFF"
+                    android:gravity="center"
+                    android:text="@string/pay_immediately"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+</androidx.appcompat.widget.LinearLayoutCompat>

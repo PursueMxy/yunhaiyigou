@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="bottom"
+    android:background="@drawable/bg_r10_top"
+    android:maxHeight="600dp"
+    android:minHeight="300dp">
+
+    <TextView
+        android:id="@+id/tvCoupons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22.5dp"
+        android:text="@string/discount_coupon"
+        android:textColor="@color/B33"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="21dp"
+        android:src="@mipmap/close_b"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvCanReceiveCoupons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15.5dp"
+        android:layout_marginTop="24.5dp"
+        android:text="@string/can_receive_coupons"
+        android:textColor="@color/B33"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvCoupons" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="领取后可用于购物车商品"
+        android:textColor="@color/B99"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/tvCanReceiveCoupons"
+        app:layout_constraintStart_toEndOf="@id/tvCanReceiveCoupons"
+        app:layout_constraintTop_toTopOf="@id/tvCanReceiveCoupons" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCanReceive"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@id/tvCanReceiveCoupons" />
+
+    <TextView
+        android:id="@+id/tvCouponReceived"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15.5dp"
+        android:layout_marginTop="24.5dp"
+        android:text="@string/coupon_received"
+        android:textColor="@color/B33"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rvCanReceive" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="领取后可用于购物车商品"
+        android:textColor="@color/B99"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/tvCouponReceived"
+        app:layout_constraintStart_toEndOf="@id/tvCouponReceived"
+        app:layout_constraintTop_toTopOf="@id/tvCouponReceived" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCouponReceived"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@id/tvCouponReceived" />
+</androidx.constraintlayout.widget.ConstraintLayout>

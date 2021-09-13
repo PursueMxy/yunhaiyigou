@@ -11,17 +11,17 @@
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Komori"
+        android:theme="@style/appTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="LockedOrientationActivity"
         tools:targetApi="m">
 
         <activity
-            android:name="com.xdys.yhyg.ui.home.MainActivity"
+            android:name=".ui.home.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.xdys.yhyg.ui.login.LoginActivity"
+            android:name=".ui.login.LoginActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,19 +29,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.xdys.yhyg.ui.home.SearchActivity"
+            android:name=".ui.home.SearchActivity"
             android:label="@string/search"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.xdys.yhyg.ui.goods.GoodsDetailActivity"
+            android:name=".ui.goods.GoodsDetailActivity"
             android:label="@string/goods_detail"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.xdys.yhyg.ui.home.CommodityTypeActivity"
+            android:name=".ui.home.CommodityTypeActivity"
             android:label="@string/spike_special"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.xdys.yhyg.ui.classify.SingleCategoryActivity"
+            android:name=".ui.classify.SingleCategoryActivity"
             android:label="单类商品"
             android:screenOrientation="portrait" />
 
@@ -56,142 +56,142 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.xdys.yhyg.ui.mall.EntityListActivity"
+            android:name=".ui.mall.EntityListActivity"
             android:label="附近门店"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.xdys.yhyg.ui.mall.BusinessDetailsActivity"
+            android:name=".ui.mall.BusinessDetailsActivity"
             android:label="@string/business_details"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.xdys.yhyg.ui.mall.CheckoutCounterActivity"
+            android:name=".ui.mall.CheckoutCounterActivity"
             android:label="@string/checkout_counter"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.xdys.yhyg.ui.mall.PaymentStatusActivity"
+            android:name=".ui.mall.PaymentStatusActivity"
             android:label="@string/checkout_counter"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.xdys.yhyg.ui.mine.ShopkeeperCenterActivity"
+            android:name=".ui.mine.ShopkeeperCenterActivity"
             android:label="@string/shopkeeper_center"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.xdys.yhyg.ui.order.MyOrderActivity"
+            android:name=".ui.order.MyOrderActivity"
             android:label="@string/my_order"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.xdys.yhyg.ui.order.OrderDetailActivity"
+            android:name=".ui.order.OrderDetailActivity"
             android:label="@string/order_detail"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.xdys.yhyg.ui.mine.AddressActivity"
+            android:name=".ui.mine.AddressActivity"
             android:label="@string/address_management"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.xdys.yhyg.ui.mine.MessageNotificationActivity"
+            android:name=".ui.mine.MessageNotificationActivity"
             android:label="@string/message_notification"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.xdys.yhyg.ui.mine.MallActivitiesActivity"
+            android:name=".ui.mine.MallActivitiesActivity"
             android:label="@string/mall_activities"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.xdys.yhyg.ui.mine.FeedbackActivity"
+            android:name=".ui.mine.FeedbackActivity"
             android:label="@string/feedback"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.xdys.yhyg.ui.order.PostReviewActivity"
+            android:name=".ui.order.PostReviewActivity"
             android:label="@string/post_review"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.xdys.yhyg.ui.mine.LatestAnnouncementActivity"
+            android:name=".ui.mine.LatestAnnouncementActivity"
             android:label="@string/latest_announcement"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.xdys.yhyg.ui.mine.DiscountCouponActivity"
+            android:name=".ui.mine.DiscountCouponActivity"
             android:label="@string/discount_coupon"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.xdys.yhyg.ui.mine.TransactionNotificationActivity"
+            android:name=".ui.mine.TransactionNotificationActivity"
             android:label="@string/transaction_notification"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.xdys.yhyg.ui.mine.LogisticsNoticeActivity"
+            android:name=".ui.mine.LogisticsNoticeActivity"
             android:label="@string/logistics_notice"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.xdys.yhyg.ui.mine.FeedbackAddActivity"
+            android:name=".ui.mine.FeedbackAddActivity"
             android:label="@string/feedback"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.xdys.yhyg.ui.mine.CollectionActivity"
+            android:name=".ui.mine.CollectionActivity"
             android:label="@string/my_collection"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.xdys.yhyg.ui.setting.SetActivity"
+            android:name=".ui.setting.SetActivity"
             android:label="@string/setting"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.xdys.yhyg.ui.setting.PersonalInformationActivity"
+            android:name=".ui.setting.PersonalInformationActivity"
             android:label="@string/personal_information"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.xdys.yhyg.ui.setting.ChangeNicknameActivity"
+            android:name=".ui.setting.ChangeNicknameActivity"
             android:label="@string/change_nickname"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.xdys.yhyg.ui.setting.AccountSecurityActivity"
+            android:name=".ui.setting.AccountSecurityActivity"
             android:label="@string/account_security"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.xdys.yhyg.ui.setting.AuthenticationActivity"
+            android:name=".ui.setting.AuthenticationActivity"
             android:label="@string/verified"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.xdys.yhyg.ui.setting.CertificationCenterActivity"
+            android:name=".ui.setting.CertificationCenterActivity"
             android:label="@string/certification_center"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.xdys.yhyg.ui.setting.PersonalDetailsActivity"
+            android:name=".ui.setting.PersonalDetailsActivity"
             android:label="@string/personal_information"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.xdys.yhyg.ui.setting.ChangeMobileActivity"
+            android:name=".ui.setting.ChangeMobileActivity"
             android:label="@string/change_mobile"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.xdys.yhyg.ui.setting.ChangePaymentPasswordActivity"
+            android:name=".ui.setting.ChangePaymentPasswordActivity"
             android:label="@string/change_payment_password"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.xdys.yhyg.ui.setting.PaymentPasswordActivity"
+            android:name=".ui.setting.PaymentPasswordActivity"
             android:label="@string/payment_password"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.xdys.yhyg.ui.setting.ChangeLoginPswActivity"
+            android:name=".ui.setting.ChangeLoginPswActivity"
             android:label="@string/change_login_psw"
             android:screenOrientation="portrait" />
 
@@ -282,6 +282,11 @@
         <activity
             android:name=".ui.sale.ViewSolutionActivity"
             android:label="@string/view_solution"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.order.ConfirmOrderActivity"
+            android:label="@string/confirm_order"
             android:screenOrientation="portrait" />
     </application>
 </manifest>

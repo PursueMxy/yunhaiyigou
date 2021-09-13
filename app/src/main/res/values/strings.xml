@@ -132,7 +132,7 @@
     <string name="submit_review">提交评价</string>
     <string name="check_details">查看详情</string>
     <string name="check_order">查看订单</string>
-    <string name="feedback_details_hint">请输入不少于10个字的描述...</string>
+    <string name="feedback_details_hint">请输入不少于10个字的描述&#8230;</string>
     <string name="submit">提交</string>
     <string name="question">请选择你要反馈的问题点：</string>
     <string name="all_selected">全选</string>
@@ -152,7 +152,7 @@
     <string name="avatar">头像</string>
     <string name="change_nickname">修改昵称</string>
     <string name="hint_nick_name">请输入昵称</string>
-    <string name="nick_name_tips">4-20个字符，可由中英文、数字组成</string>
+    <string name="nick_name_tips">4&#82112;0个字符，可由中英文、数字组成</string>
     <string name="account_security">账号安全</string>
     <string name="verified">实名认证</string>
     <string name="verified_tips">完成实名认证，尊享更多服务</string>
@@ -331,5 +331,14 @@
     <string name="discount">折扣</string>
     <string name="price">价格</string>
     <string name="brand_zone">品牌专区</string>
+    <string name="can_receive_coupons">可领取优惠券</string>
+    <string name="coupon_received">已领取优惠券</string>
+    <string name="defaults">默认</string>
+    <string name="payment_method">支付方式</string>
+    <string name="confirm_order">确认订单</string>
+    <string name="points_deduction">积分抵扣</string>
+    <string name="goods_amount">商品金额</string>
+    <string name="coupon_deduction">优惠券抵扣</string>
+    <string name="pay_immediately">立即支付</string>
 
 </resources>

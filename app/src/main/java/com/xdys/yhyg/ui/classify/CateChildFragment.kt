@@ -1,6 +1,7 @@
 package com.xdys.yhyg.ui.classify
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +9,9 @@ import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
+import com.hjq.toast.ToastUtils
 import com.xdys.library.base.ViewModelFragment
 import com.xdys.library.config.Constant
 import com.xdys.yhyg.R
@@ -39,12 +42,20 @@ class CateChildFragment : ViewModelFragment<MineViewModel, FragmentCateChildBind
         with(rvCate) {
             adapter = cateItemAdapter
             layoutManager = LinearLayoutManager(requireContext())
+            addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
+                    var layoutManager = recyclerView.layoutManager as LinearLayoutManager
+                    var positions = layoutManager.findFirstVisibleItemPosition()
+                    tabLayout.setScrollPosition(positions, 0f, true)
+                }
+            })
         }
         bannerView.setLifecycleRegistry(lifecycle).setAdapter(BannerImgAdapter()).create()
         with(tabLayout) {
             addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
                 override fun onTabSelected(tab: TabLayout.Tab?) {
-
+                    tab?.position?.let { rvCate.scrollToPosition(it) }
                 }
 
                 override fun onTabUnselected(tab: TabLayout.Tab?) {

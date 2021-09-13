@@ -4,17 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg_r6"
     android:layout_marginTop="5dp"
-    android:paddingBottom="5dp">
+    android:background="@drawable/bg_r6"
+    android:paddingBottom="15dp">
 
-    <ImageView
-        android:id="@+id/ivSelectShop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20.5dp"
-        android:layout_marginTop="25dp"
-        android:src="@drawable/selector_pay"
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:id="@+id/cbShopCheck"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="19.5dp"
+        android:layout_marginStart="10dp"
+        android:background="@null"
+        android:button="@drawable/selector_pay"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,9 +29,10 @@
         android:drawablePadding="6.5dp"
         android:textColor="@color/B33"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@id/ivSelectShop"
-        app:layout_constraintStart_toEndOf="@id/ivSelectShop"
-        app:layout_constraintTop_toTopOf="@id/ivSelectShop"
+        android:drawableStart="@mipmap/shops"
+        app:layout_constraintBottom_toBottomOf="@id/cbShopCheck"
+        app:layout_constraintStart_toEndOf="@id/cbShopCheck"
+        app:layout_constraintTop_toTopOf="@id/cbShopCheck"
         tools:ignore="UseCompatTextViewDrawableXml"
         tools:text="杜康古城酒业商城" />
 
@@ -41,9 +44,9 @@
         android:text="@string/discount_coupon"
         android:textColor="@color/RFD"
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@id/ivSelectShop"
+        app:layout_constraintBottom_toBottomOf="@id/cbShopCheck"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/ivSelectShop" />
+        app:layout_constraintTop_toTopOf="@id/cbShopCheck" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

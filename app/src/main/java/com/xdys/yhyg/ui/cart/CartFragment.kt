@@ -19,6 +19,7 @@ import com.xdys.yhyg.adapte.home.HomeGoodsAdapter
 import com.xdys.yhyg.databinding.FragmentCartBinding
 import com.xdys.yhyg.entity.cart.CartProductEntity
 import com.xdys.yhyg.ui.goods.GoodsDetailActivity
+import com.xdys.yhyg.ui.order.ConfirmOrderActivity
 import com.xdys.yhyg.vm.CartViewModel
 
 class CartFragment : ViewModelFragment<CartViewModel, FragmentCartBinding>() {
@@ -48,6 +49,9 @@ class CartFragment : ViewModelFragment<CartViewModel, FragmentCartBinding>() {
                 GoodsDetailActivity.start(requireContext())
             }
         }
+        tvToSettle.setOnClickListener {
+            ConfirmOrderActivity.start(requireContext())
+        }
     }
 
     override fun initData() {
@@ -72,7 +76,6 @@ class CartFragment : ViewModelFragment<CartViewModel, FragmentCartBinding>() {
             cartAdapter.setNewInstance(it.cartList as MutableList<BaseNode>)
         }
     }
-
 
 
 }

@@ -1,13 +1,15 @@
 package com.xdys.yhyg.adapte.cart
 
-import android.util.Log
+import android.view.View
 import com.chad.library.adapter.base.BaseNodeAdapter
 import com.chad.library.adapter.base.entity.node.BaseNode
 import com.chad.library.adapter.base.provider.BaseNodeProvider
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
+import com.xdys.library.extension.context
 import com.xdys.yhyg.R
 import com.xdys.yhyg.entity.cart.CartProductEntity
 import com.xdys.yhyg.entity.cart.CartShopEntity
+import com.xdys.yhyg.popup.CouponsPopupWindow
 
 class CartAdapter() : BaseNodeAdapter() {
 
@@ -31,6 +33,12 @@ class CartShopProvider : BaseNodeProvider() {
     override val layoutId: Int = R.layout.item_cart
 
     override fun convert(holder: BaseViewHolder, item: BaseNode) {
+        (item as CartShopEntity)?.let {
+            holder.setText(R.id.tvShopName, it.shopName)
+                .getView<View>(R.id.tvDiscountCoupon).setOnClickListener {
+                    popupCoupons.setData().showPopupWindow()
+                }
+        }
     }
 }
 
@@ -40,6 +48,11 @@ class CartProductProvider : BaseNodeProvider() {
     override val layoutId: Int = R.layout.item_cart_goods
 
     override fun convert(holder: BaseViewHolder, item: BaseNode) {
+    }
+}
+
+private val popupCoupons: CouponsPopupWindow by lazy {
+    CouponsPopupWindow(context) {
     }
 }
 
