@@ -135,10 +135,12 @@
             </FrameLayout>
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvGoods"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
-                android:background="@drawable/bg_r10" />
+                android:background="@drawable/bg_r10"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
