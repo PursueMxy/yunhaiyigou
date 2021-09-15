@@ -15,9 +15,11 @@ import com.xdys.library.extension.dp
 import com.xdys.library.kit.decoration.DividerItemDecoration
 import com.xdys.yhyg.R
 import com.xdys.yhyg.adapte.cart.CartAdapter
+import com.xdys.yhyg.adapte.cart.OnCartItemSelectedListener
 import com.xdys.yhyg.adapte.home.HomeGoodsAdapter
 import com.xdys.yhyg.databinding.FragmentCartBinding
 import com.xdys.yhyg.entity.cart.CartProductEntity
+import com.xdys.yhyg.entity.cart.CartShopEntity
 import com.xdys.yhyg.ui.goods.GoodsDetailActivity
 import com.xdys.yhyg.ui.order.ConfirmOrderActivity
 import com.xdys.yhyg.vm.CartViewModel
@@ -30,7 +32,7 @@ class CartFragment : ViewModelFragment<CartViewModel, FragmentCartBinding>() {
 
     private val goodsAdapter by lazy { HomeGoodsAdapter() }
     override val viewModel: CartViewModel by activityViewModels()
-    private val cartAdapter: CartAdapter by lazy { CartAdapter() }
+    private val cartAdapter: CartAdapter by lazy { CartAdapter(listener) }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?): Unit = with(binding) {
@@ -51,6 +53,9 @@ class CartFragment : ViewModelFragment<CartViewModel, FragmentCartBinding>() {
         }
         tvToSettle.setOnClickListener {
             ConfirmOrderActivity.start(requireContext())
+        }
+        cbCartAll.setOnClickListener {
+            cartAdapter.refreshStatusEntity(true,cbCartAll.isChecked)
         }
     }
 
@@ -77,5 +82,28 @@ class CartFragment : ViewModelFragment<CartViewModel, FragmentCartBinding>() {
         }
     }
 
+    private val listener = object : OnCartItemSelectedListener {
+        // 选中状态发生变化
+        override fun changed() {
 
+        }
+
+        override fun changedShop(cartShop: CartShopEntity) {
+            cartAdapter.refreshShopEntity(cartShop)
+        }
+
+        // 数量变化
+        override fun numberChange(uiPosition: Int, type: Int, originNumber: Int, maxCount: Int) {
+
+        }
+
+        // 删除购物车item
+        override fun itemDelete(uiPosition: Int) {
+
+        }
+
+        override fun itemClick(uiPosition: Int, product: CartProductEntity) {
+
+        }
+    }
 }
