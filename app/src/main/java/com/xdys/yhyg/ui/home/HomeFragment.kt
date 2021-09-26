@@ -89,6 +89,6 @@ class HomeFragment : ViewModelFragment<MineViewModel, FragmentHomeBinding>() {
     }
 
     override fun initData() {
-        productTypeAdapter.setNewInstance(mutableListOf("", "", ""))
+        productTypeAdapter.setDiffNewData(mutableListOf())
     }
 }

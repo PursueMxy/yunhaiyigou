@@ -62,6 +62,6 @@ class OtherFragment : ViewModelFragment<MineViewModel, FragmentOtherBinding>() {
             )
         )
         brandSelectionAdapter.setNewInstance(mutableListOf("", "", "", "", "", ""))
-        goodsAdapter.setNewInstance(mutableListOf("", "", "", "", "", ""))
+        goodsAdapter.setDiffNewData(mutableListOf())
     }
 }

@@ -42,6 +42,6 @@ class PaymentStatusActivity : ViewModelActivity<MallViewModel, ActivityPaymentSt
     }
 
     override fun initData() {
-        goodsAdapter.setNewInstance(mutableListOf("", "", "", "", ""))
+        goodsAdapter.setDiffNewData(mutableListOf())
     }
 }

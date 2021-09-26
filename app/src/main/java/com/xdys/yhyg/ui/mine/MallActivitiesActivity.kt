@@ -4,11 +4,12 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
-import com.xdys.yhyg.adapte.mine.ActivitiesAdapter
-import com.xdys.yhyg.databinding.ActivityMallActivitiesBinding
-import com.xdys.yhyg.vm.MineViewModel
 import com.xdys.library.base.ViewModelActivity
 import com.xdys.library.extension.singleTop
+import com.xdys.yhyg.adapte.mine.ActivitiesAdapter
+import com.xdys.yhyg.databinding.ActivityMallActivitiesBinding
+import com.xdys.yhyg.entity.mine.ActivitiesEntity
+import com.xdys.yhyg.vm.MineViewModel
 
 class MallActivitiesActivity : ViewModelActivity<MineViewModel, ActivityMallActivitiesBinding>() {
     override fun createBinding() = ActivityMallActivitiesBinding.inflate(layoutInflater)
@@ -34,6 +35,12 @@ class MallActivitiesActivity : ViewModelActivity<MineViewModel, ActivityMallActi
     }
 
     override fun initData() {
-        activitiesAdapter.setNewInstance(mutableListOf("", "", ""))
+        activitiesAdapter.setDiffNewData(
+            mutableListOf(
+                ActivitiesEntity(),
+                ActivitiesEntity(),
+                ActivitiesEntity()
+            )
+        )
     }
 }

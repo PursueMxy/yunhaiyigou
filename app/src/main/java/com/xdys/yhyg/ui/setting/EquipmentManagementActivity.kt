@@ -40,6 +40,6 @@ class EquipmentManagementActivity :
         }
     }
     override fun initData() {
-        devicesAdapter.setNewInstance(mutableListOf("", "", "", ""))
+        devicesAdapter.setDiffNewData(mutableListOf())
     }
 }

@@ -21,7 +21,7 @@ data class CartShopEntity(
     val goodsList: MutableList<CartProductEntity> = mutableListOf()
 ) : BaseNode() {
     override val childNode: MutableList<BaseNode>
-    get() = goodsList as MutableList<BaseNode>
+        get() = goodsList as MutableList<BaseNode>
     var selected = false
 }
 
@@ -32,6 +32,11 @@ data class CartProductEntity(
     val goodsName: String = "",
 ) : BaseNode() {
     override val childNode: MutableList<BaseNode>? = null
-
     var selected = false
 }
+
+
+data class CartGoods(
+    var id: String? = null,
+    var goodsName: String? = null,
+)

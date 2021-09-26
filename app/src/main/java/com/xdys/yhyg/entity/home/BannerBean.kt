@@ -1,5 +1,7 @@
 package com.xdys.yhyg.entity.home
 
-class BannerBean {
+data class BannerBean(
     val img_url: String? = null
-}
+)
+
+

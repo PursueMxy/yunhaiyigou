@@ -6,10 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
+import com.xdys.library.base.ViewModelFragment
 import com.xdys.yhyg.adapte.mall.PhysicalStoreAdapter
 import com.xdys.yhyg.databinding.FragmentEntityBinding
 import com.xdys.yhyg.vm.MallViewModel
-import com.xdys.library.base.ViewModelFragment
 
 class EntityFragment : ViewModelFragment<MallViewModel, FragmentEntityBinding>() {
     override fun createBinding(
@@ -41,6 +41,6 @@ class EntityFragment : ViewModelFragment<MallViewModel, FragmentEntityBinding>()
     }
 
     override fun initData() {
-        physicalStoreAdapter.setNewInstance(mutableListOf("", "", "", ""))
+        physicalStoreAdapter.setDiffNewData(mutableListOf())
     }
 }

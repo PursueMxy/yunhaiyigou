@@ -1,9 +1,11 @@
 package com.xdys.yhyg.ui.cart
 
+import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isGone
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
@@ -20,6 +22,7 @@ import com.xdys.yhyg.adapte.home.HomeGoodsAdapter
 import com.xdys.yhyg.databinding.FragmentCartBinding
 import com.xdys.yhyg.entity.cart.CartProductEntity
 import com.xdys.yhyg.entity.cart.CartShopEntity
+import com.xdys.yhyg.entity.goods.GoodsEntity
 import com.xdys.yhyg.ui.goods.GoodsDetailActivity
 import com.xdys.yhyg.ui.order.ConfirmOrderActivity
 import com.xdys.yhyg.vm.CartViewModel
@@ -55,13 +58,29 @@ class CartFragment : ViewModelFragment<CartViewModel, FragmentCartBinding>() {
             ConfirmOrderActivity.start(requireContext())
         }
         cbCartAll.setOnClickListener {
-            cartAdapter.refreshStatusEntity(true,cbCartAll.isChecked)
+            cartAdapter.refreshStatusEntity(true, cbCartAll.isChecked)
+        }
+        tvTotalAmount.text = "合计:￥799.00"
+        tvDiscount.text = "优惠减:￥100.00"
+        tvEdit.setOnClickListener {
+            when (tvEdit.text.toString()) {
+                "编辑" -> {
+                    tvEdit.text = "完成"
+                    gpEdit.visibility = View.VISIBLE
+                    gpToSettle.visibility = View.GONE
+                }
+                "完成" -> {
+                    tvEdit.text = "编辑"
+                    gpEdit.visibility = View.GONE
+                    gpToSettle.visibility = View.VISIBLE
+                }
+            }
         }
     }
 
     override fun initData() {
         viewModel.cart()
-        goodsAdapter.setNewInstance(mutableListOf("", ""))
+        goodsAdapter.setNewInstance(mutableListOf(GoodsEntity(), GoodsEntity(), GoodsEntity()))
     }
 
     private fun createHeaderView(): View {

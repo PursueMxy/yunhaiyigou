@@ -1,6 +1,7 @@
 package com.xdys.yhyg.adapte.home
 
 import android.view.View
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chad.library.adapter.base.BaseQuickAdapter
@@ -8,14 +9,18 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.xdys.library.extension.px
 import com.xdys.library.kit.decoration.DividerItemDecoration
 import com.xdys.yhyg.R
+import com.xdys.yhyg.entity.goods.ProductType
 
 class ProductTypeAdapter :
-    BaseQuickAdapter<String, ProductTypeViewHolder>(R.layout.item_product_type) {
-    override fun convert(holder: ProductTypeViewHolder, item: String) {
-        holder.setText(R.id.tvTitle, "女式上衣")
-        holder.mAdapter.setNewInstance(
-            mutableListOf("T桖", "Polo衫", "拼接衬衫", "卫衣", "小西服", "衬衫", "卫衣")
-        )
+    BaseQuickAdapter<ProductType, ProductTypeViewHolder>(R.layout.item_product_type) {
+
+    init {
+        setDiffCallback(ProductTypeDiffCallback())
+    }
+
+    override fun convert(holder: ProductTypeViewHolder, item: ProductType) {
+        holder.setText(R.id.tvTitle, item.title)
+        holder.mAdapter.setNewInstance(item.typeList)
     }
 
     override fun onItemViewHolderCreated(viewHolder: ProductTypeViewHolder, viewType: Int) {
@@ -30,4 +35,21 @@ class ProductTypeAdapter :
 
 class ProductTypeViewHolder(view: View) : BaseViewHolder(view) {
     val mAdapter by lazy { GoodsTypeAdapter() }
+}
+
+
+class ProductTypeDiffCallback : DiffUtil.ItemCallback<ProductType>() {
+    override fun areItemsTheSame(
+        oldItem: ProductType,
+        newItem: ProductType
+    ): Boolean {
+        return oldItem.id == newItem.id
+    }
+
+    override fun areContentsTheSame(
+        oldItem: ProductType,
+        newItem: ProductType
+    ): Boolean {
+        return oldItem.title == newItem.title
+    }
 }

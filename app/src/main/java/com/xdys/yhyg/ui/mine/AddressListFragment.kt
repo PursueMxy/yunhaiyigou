@@ -34,6 +34,6 @@ class AddressListFragment : ViewModelFragment<MineViewModel, FragmentAddressList
     }
 
     override fun initData() {
-        addressListAdapter.setNewInstance(mutableListOf("", "", ""))
+        addressListAdapter.setDiffNewData(mutableListOf())
     }
 }

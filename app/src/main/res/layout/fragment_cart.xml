@@ -128,5 +128,48 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/tvTotalAmount"
             tools:text="优惠减:￥100.00" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/gpToSettle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="tvDiscount,tvTotalAmount,tvToSettle" />
+
+        <TextView
+            android:id="@+id/btnToCollect"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="22.5dp"
+            android:background="@drawable/box_r100"
+            android:backgroundTint="@color/B7D"
+            android:gravity="center"
+            android:text="@string/to_collect"
+            android:textColor="@color/B66"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btnDelete"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/btnDelete"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/box_r100"
+            android:backgroundTint="@color/B7D"
+            android:gravity="center"
+            android:text="@string/delete"
+            android:textColor="@color/B66"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/gpEdit"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="btnDelete,btnToCollect" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

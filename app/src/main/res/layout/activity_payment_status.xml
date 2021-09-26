@@ -58,20 +58,50 @@
             tools:text="实付￥480.00，赠送480积分(线上积分)" />
 
         <TextView
-            android:id="@+id/tvBackToHomepage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="34dp"
+            android:id="@+id/tvBackToHomepageV"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/box_r6"
             android:backgroundTint="@color/RFF"
-            android:paddingHorizontal="29dp"
-            android:paddingVertical="11dp"
+            android:gravity="center"
             android:text="@string/back_to_homepage"
             android:textColor="@color/RFF"
             android:textSize="16sp"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvPayDetail" />
+        <TextView
+            android:id="@+id/tvBackToHomepage"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/box_r6"
+            android:backgroundTint="@color/RFF"
+            android:gravity="center"
+            android:text="@string/back_to_homepage"
+            android:textColor="@color/RFF"
+            android:textSize="16sp"
+            android:layout_marginStart="50dp"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvPayDetail" />
+        <TextView
+            android:id="@+id/tvCheckOrder"
+            android:layout_width="120dp"
+            android:layout_height="37dp"
+            android:background="@drawable/bg_r6"
+            android:backgroundTint="@color/RFF"
+            android:text="@string/check_order"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:layout_marginEnd="50dp"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintBottom_toBottomOf="@id/tvBackToHomepage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvBackToHomepage" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView

@@ -35,6 +35,6 @@ class IncomeBreakdownFragment : ViewModelFragment<MineViewModel, FragmentIncomeB
     }
 
     override fun initData() {
-        mAdapter.setNewInstance(mutableListOf("", "", ""))
+        mAdapter.setDiffNewData(mutableListOf())
     }
 }

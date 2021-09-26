@@ -35,6 +35,6 @@ class MyMemberFragment : ViewModelFragment<MineViewModel, FragmentMyMemberBindin
     }
 
     override fun initData() {
-        mAdapter.setNewInstance(mutableListOf("", "", ""))
+        mAdapter.setDiffNewData(mutableListOf())
     }
 }

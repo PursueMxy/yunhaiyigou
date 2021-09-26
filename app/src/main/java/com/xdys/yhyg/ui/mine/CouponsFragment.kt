@@ -36,6 +36,6 @@ class CouponsFragment : ViewModelFragment<MineViewModel, FragmentCouponsBinding>
     }
 
     override fun initData() {
-        mAdapter.setNewInstance(mutableListOf("1", "2", "3", "4", "5"))
+        mAdapter.setDiffNewData(mutableListOf())
     }
 }

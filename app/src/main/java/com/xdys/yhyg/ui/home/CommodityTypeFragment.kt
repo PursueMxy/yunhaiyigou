@@ -38,6 +38,6 @@ class CommodityTypeFragment : ViewModelFragment<MineViewModel, FragmentCommodity
     }
 
     override fun initData() {
-        spikeAdapter.setNewInstance(mutableListOf("", "", "", "", ""))
+        spikeAdapter.setDiffNewData(mutableListOf())
     }
 }

@@ -3,6 +3,7 @@ package com.xdys.yhyg.adapte.cart
 import android.util.Log
 import android.view.View
 import androidx.appcompat.widget.AppCompatCheckBox
+import androidx.recyclerview.widget.DiffUtil
 import com.chad.library.adapter.base.BaseNodeAdapter
 import com.chad.library.adapter.base.entity.node.BaseNode
 import com.chad.library.adapter.base.provider.BaseNodeProvider
@@ -82,6 +83,8 @@ class CartAdapter(
         return builder.toString()
     }
 }
+
+
 
 // 判断是否是编辑模式
 var editMode = false

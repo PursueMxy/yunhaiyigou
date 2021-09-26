@@ -1,18 +1,43 @@
 package com.xdys.yhyg.adapte.mall
 
 import android.widget.ImageView
+import androidx.recyclerview.widget.DiffUtil
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
-import com.xdys.yhyg.R
 import com.xdys.library.extension.loadRoundCornerImage
+import com.xdys.yhyg.R
+import com.xdys.yhyg.entity.mall.PhysicalStore
 
 class PhysicalStoreAdapter :
-    BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_physical_store) {
-    override fun convert(holder: BaseViewHolder, item: String) {
-        holder.setText(R.id.tvSupermarket, "阳光超市（塔埔店）")
-            .setText(R.id.tvBusinessHours, "营业时间：9:00~11:00")
-            .setText(R.id.tvAddress, "厦门市思明区观音山塔埔路101-1店面")
-            .getView<ImageView>(R.id.ivSupermarket).loadRoundCornerImage(R.mipmap.supermarket)
+    BaseQuickAdapter<PhysicalStore, BaseViewHolder>(R.layout.item_physical_store) {
 
+    init {
+        setDiffCallback(PhysicalStoreDiffCallback())
+    }
+
+    override fun convert(holder: BaseViewHolder, item: PhysicalStore) {
+        holder.setText(R.id.tvSupermarket, item.supermarket)
+            .setText(R.id.tvBusinessHours, "营业时间：${item.businessHours}")
+            .setText(R.id.tvAddress, item.address)
+            .getView<ImageView>(R.id.ivSupermarket).loadRoundCornerImage(R.mipmap.supermarket)
     }
 }
+
+
+class PhysicalStoreDiffCallback : DiffUtil.ItemCallback<PhysicalStore>() {
+    override fun areItemsTheSame(
+        oldItem: PhysicalStore,
+        newItem: PhysicalStore
+    ): Boolean {
+        return oldItem.id == newItem.id
+    }
+
+    override fun areContentsTheSame(
+        oldItem: PhysicalStore,
+        newItem: PhysicalStore
+    ): Boolean {
+        return oldItem.supermarket == newItem.supermarket && oldItem.businessHours == newItem.businessHours
+                && oldItem.address == newItem.address
+    }
+}
+

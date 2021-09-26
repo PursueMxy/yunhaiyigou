@@ -87,7 +87,7 @@ class RecommendFragment : ViewModelFragment<MineViewModel, FragmentRecommendBind
             )
         )
         cateFirstAdapter.setNewInstance(mutableListOf("新人专享", "领券中心", "积分兑换", "杜康名酒", "品牌专区"))
-        brandMerchatAdapter.setNewInstance(mutableListOf("", "", "", "", "", ""))
-        goodsAdapter.setNewInstance(mutableListOf("", "", "", "", "", ""))
+        brandMerchatAdapter.setDiffNewData(mutableListOf())
+        goodsAdapter.setDiffNewData(mutableListOf())
     }
 }

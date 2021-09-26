@@ -5,6 +5,7 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.xdys.yhyg.R
 import com.xdys.yhyg.adapte.mine.CouponsAdapter
+import com.xdys.yhyg.entity.mine.CouponsEntity
 import razerdp.basepopup.BasePopupWindow
 
 class CouponsPopupWindow(
@@ -16,11 +17,11 @@ class CouponsPopupWindow(
 
     }
 
-    fun setData():CouponsPopupWindow{
+    fun setData(): CouponsPopupWindow {
         with(findViewById<RecyclerView>(R.id.rvCanReceive)) {
             adapter = canReceiveAdapter
         }
-        canReceiveAdapter.setNewInstance(mutableListOf("", ""))
+        canReceiveAdapter.setDiffNewData(mutableListOf(CouponsEntity()))
         return this
     }
 

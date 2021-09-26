@@ -53,19 +53,16 @@ class BrandZoneFragment : ViewModelFragment<HomeViewModel, FragmentBrandZoneBind
             if (it) {
                 binding.rvVerticalGoods.visibility = View.VISIBLE
                 binding.rvGoods.visibility = View.GONE
-                verticalAdapter.setNewInstance(mutableListOf("", "", "", ""))
                 verticalAdapter.notifyDataSetChanged()
             } else {
                 binding.rvVerticalGoods.visibility = View.GONE
                 binding.rvGoods.visibility = View.VISIBLE
-                mAdapter.setNewInstance(mutableListOf("", "", "", "", ""))
                 mAdapter.notifyDataSetChanged()
             }
         }
     }
 
     override fun initData() {
-        mAdapter.setNewInstance(mutableListOf("", "", "", "", ""))
     }
 
     override val viewModel: HomeViewModel by activityViewModels()

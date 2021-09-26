@@ -2,29 +2,35 @@ package com.xdys.yhyg.adapte.goods
 
 import android.widget.ImageView
 import androidx.appcompat.widget.AppCompatRatingBar
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
-import com.xdys.yhyg.R
-import com.xdys.yhyg.adapte.home.EvaluateImgAdapter
 import com.xdys.library.extension.dp
 import com.xdys.library.extension.loadCircleImage
 import com.xdys.library.extension.px
 import com.xdys.library.kit.decoration.DividerItemDecoration
+import com.xdys.yhyg.R
+import com.xdys.yhyg.adapte.home.EvaluateImgAdapter
+import com.xdys.yhyg.entity.goods.Evaluate
 
-class EvaluateAdapter : BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_evaluation) {
+class EvaluateAdapter : BaseQuickAdapter<Evaluate, BaseViewHolder>(R.layout.item_evaluation) {
 
     val evaluateImgAdapter = EvaluateImgAdapter()
 
-    override fun convert(holder: BaseViewHolder, item: String) {
-        holder.setText(R.id.tvUserName, "小杜小杜")
-            .setText(R.id.tvTime, "2021-06-07  9:27")
-            .setText(R.id.tvSpecification, "规格：【迎雙喜】500ML单瓶")
-            .setText(R.id.tvContent, "包装设计精美，大气沉稳上档次，口感也不错，物流也很快，一次不错的购物体验！")
+    init {
+        setDiffCallback(EvaluateDiffCallback())
+    }
+
+    override fun convert(holder: BaseViewHolder, item: Evaluate) {
+        holder.setText(R.id.tvUserName, item.userName)
+            .setText(R.id.tvTime, item.time)
+            .setText(R.id.tvSpecification, item.specification)
+            .setText(R.id.tvContent, item.content)
             .getView<ImageView>(R.id.ivPortrait).loadCircleImage(R.mipmap.du_kang_jiu)
         holder.getView<AppCompatRatingBar>(R.id.rating).rating = 4f
-        evaluateImgAdapter.setNewInstance(mutableListOf("", "", ""))
+        evaluateImgAdapter.setNewInstance(item.imgList)
     }
 
     override fun onItemViewHolderCreated(viewHolder: BaseViewHolder, viewType: Int) {
@@ -33,6 +39,18 @@ class EvaluateAdapter : BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_e
             layoutManager = GridLayoutManager(context, 3)
             addItemDecoration(DividerItemDecoration(13.dp, 10.px))
         }
+    }
+}
 
+
+class EvaluateDiffCallback : DiffUtil.ItemCallback<Evaluate>() {
+    override fun areItemsTheSame(oldItem: Evaluate, newItem: Evaluate): Boolean {
+        return oldItem.id == newItem.id
+    }
+
+    override fun areContentsTheSame(oldItem: Evaluate, newItem: Evaluate): Boolean {
+        return oldItem.content == newItem.content && oldItem.userName == newItem.userName
+                && oldItem.time == newItem.time && oldItem.specification == newItem.specification
+                && oldItem.rating == newItem.rating
     }
 }

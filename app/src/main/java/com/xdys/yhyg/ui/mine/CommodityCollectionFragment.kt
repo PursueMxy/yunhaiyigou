@@ -36,6 +36,6 @@ class CommodityCollectionFragment :
     }
 
     override fun initData() {
-        mAdapter.setNewInstance(mutableListOf("", "", ""))
+        mAdapter.setDiffNewData(mutableListOf())
     }
 }

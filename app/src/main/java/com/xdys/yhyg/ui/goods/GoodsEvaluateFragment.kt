@@ -15,6 +15,7 @@ import com.xdys.yhyg.vm.MineViewModel
 import com.xdys.library.base.ViewModelFragment
 import com.xdys.library.extension.px
 import com.xdys.library.kit.decoration.DividerItemDecoration
+import com.xdys.yhyg.entity.goods.Evaluate
 
 class GoodsEvaluateFragment :
     ViewModelFragment<MineViewModel, FragmentGoodsEvaluateBinding>() {
@@ -50,7 +51,7 @@ class GoodsEvaluateFragment :
     }
 
     override fun initData() {
-        evaluateAdapter.setNewInstance(mutableListOf("", "", ""))
+        evaluateAdapter.setNewInstance(mutableListOf(Evaluate(), Evaluate(),Evaluate()))
         evaluateLabelAdapter.setNewInstance(mutableListOf("口味极佳6", "香气十足6", "酒香甘醇6", "品牌信赖6"))
         evaluateTypeAdapter.setNewInstance(mutableListOf("全部", "有图6+", "好评6+", "中评6+", "差评+"))
     }

@@ -32,6 +32,6 @@ class DiscountCouponActivity : ViewModelActivity<MineViewModel, ActivityDiscount
     }
 
     override fun initData() {
-        mAdapter.setNewInstance(mutableListOf("","",""))
+        mAdapter.setDiffNewData(mutableListOf())
     }
 }

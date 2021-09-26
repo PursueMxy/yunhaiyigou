@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+
     <TextView
         android:id="@+id/tvTime"
         android:layout_width="wrap_content"
@@ -12,12 +14,12 @@
         android:backgroundTint="@color/BE0"
         android:paddingHorizontal="15.5dp"
         android:paddingVertical="8dp"
-        android:text="10:23"
         android:textColor="@color/white"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="10:23" />
 
     <ImageView
         android:id="@+id/ivLeaflet"
@@ -26,9 +28,9 @@
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="9.5dp"
         android:scaleType="fitXY"
-        android:src="@mipmap/good_products"
         app:layout_constraintDimensionRatio="h,355:128"
-        app:layout_constraintTop_toBottomOf="@id/tvTime" />
+        app:layout_constraintTop_toBottomOf="@id/tvTime"
+        tools:src="@mipmap/good_products" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,19 +42,21 @@
         app:layout_constraintTop_toBottomOf="@id/ivLeaflet">
 
         <TextView
+            android:id="@+id/tvTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingHorizontal="10dp"
-            android:text="618超级优惠，全场满1000减500活动狂欢开启！"
             android:textColor="@color/B00"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            tools:text="618超级优惠，全场满1000减500活动狂欢开启！" />
 
         <TextView
+            android:id="@+id/tvContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingHorizontal="10dp"
-            android:text="杜康古城酒业商城全场满减优惠，下单就送好礼品，手慢无，立即下单>>"
             android:textColor="@color/B99"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            tools:text="杜康古城酒业商城全场满减优惠，下单就送好礼品，手慢无，立即下单>>" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
