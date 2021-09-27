@@ -9,6 +9,7 @@ import androidx.fragment.app.activityViewModels
 import com.xdys.library.base.ViewModelFragment
 import com.xdys.yhyg.adapte.sale.AfterApplicationAdapter
 import com.xdys.yhyg.databinding.FragmentAfterApplicationBinding
+import com.xdys.yhyg.entity.sale.AfterApplicationEntity
 import com.xdys.yhyg.vm.AfterSaleViewModel
 
 class AfterApplicationFragment :
@@ -26,6 +27,7 @@ class AfterApplicationFragment :
             arguments = bundleOf(EXTRA_ID to position)
         }
     }
+
     private val mAdapter by lazy { AfterApplicationAdapter() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
@@ -35,6 +37,12 @@ class AfterApplicationFragment :
     }
 
     override fun initData() {
-        mAdapter.setNewInstance(mutableListOf("", "", ""))
+        mAdapter.setNewInstance(
+            mutableListOf(
+                AfterApplicationEntity(),
+                AfterApplicationEntity(),
+                AfterApplicationEntity()
+            )
+        )
     }
 }

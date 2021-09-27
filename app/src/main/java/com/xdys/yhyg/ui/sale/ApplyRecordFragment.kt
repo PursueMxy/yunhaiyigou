@@ -10,6 +10,7 @@ import com.xdys.library.base.ViewModelFragment
 import com.xdys.yhyg.R
 import com.xdys.yhyg.adapte.sale.ApplyRecordAdapter
 import com.xdys.yhyg.databinding.FragmentApplyRecordBinding
+import com.xdys.yhyg.entity.sale.ApplyRecordEntity
 import com.xdys.yhyg.vm.AfterSaleViewModel
 
 class ApplyRecordFragment : ViewModelFragment<AfterSaleViewModel, FragmentApplyRecordBinding>() {
@@ -42,6 +43,6 @@ class ApplyRecordFragment : ViewModelFragment<AfterSaleViewModel, FragmentApplyR
     }
 
     override fun initData() {
-        mAdapter.setNewInstance(mutableListOf("", "", ""))
+        mAdapter.setNewInstance(mutableListOf(ApplyRecordEntity(), ApplyRecordEntity(), ApplyRecordEntity()))
     }
 }

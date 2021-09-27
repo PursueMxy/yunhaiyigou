@@ -6,10 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
+import com.xdys.library.base.ViewModelFragment
 import com.xdys.yhyg.adapte.order.OrderAdapter
 import com.xdys.yhyg.databinding.FragmentOrderBinding
+import com.xdys.yhyg.entity.order.OrderEntity
 import com.xdys.yhyg.vm.MineViewModel
-import com.xdys.library.base.ViewModelFragment
 
 class OrderFragment : ViewModelFragment<MineViewModel, FragmentOrderBinding>() {
     override fun createBinding(
@@ -37,6 +38,6 @@ class OrderFragment : ViewModelFragment<MineViewModel, FragmentOrderBinding>() {
     }
 
     override fun initData() {
-        orderAdapter.setNewInstance(mutableListOf("", "", ""))
+        orderAdapter.setNewInstance(mutableListOf(OrderEntity(), OrderEntity(), OrderEntity()))
     }
 }

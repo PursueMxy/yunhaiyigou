@@ -49,13 +49,22 @@ class MessageNotificationActivity :
     override fun initData() {
         mAdapter.setNewInstance(
             mutableListOf(
-                NotificationEntity(getString(R.string.mall_activities), R.mipmap.mall_activities),
+                NotificationEntity(
+                    getString(R.string.mall_activities),
+                    R.mipmap.mall_activities
+                ),
                 NotificationEntity(
                     getString(R.string.transaction_notification),
                     R.mipmap.transaction_notification
                 ),
-                NotificationEntity(getString(R.string.logistics_notice), R.mipmap.logistics_notice),
-                NotificationEntity(getString(R.string.discount_coupon), R.mipmap.discount_coupon),
+                NotificationEntity(
+                    getString(R.string.logistics_notice),
+                    R.mipmap.logistics_notice
+                ),
+                NotificationEntity(
+                    getString(R.string.discount_coupon),
+                    R.mipmap.discount_coupon
+                ),
                 NotificationEntity(
                     getString(R.string.latest_announcement),
                     R.mipmap.latest_announcement

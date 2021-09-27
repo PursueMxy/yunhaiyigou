@@ -9,6 +9,7 @@ import androidx.fragment.app.activityViewModels
 import com.xdys.library.base.ViewModelFragment
 import com.xdys.yhyg.adapte.mine.WithdrawalsRecordAdapter
 import com.xdys.yhyg.databinding.FragmentWithdrawalsRecordBinding
+import com.xdys.yhyg.entity.mine.WithdrawalsRecordEntity
 import com.xdys.yhyg.vm.MineViewModel
 
 class WithdrawalsRecordFragment :
@@ -36,6 +37,6 @@ class WithdrawalsRecordFragment :
     }
 
     override fun initData() {
-        mAdapter.setNewInstance(mutableListOf("", "", ""))
+        mAdapter.setNewInstance(mutableListOf(WithdrawalsRecordEntity()))
     }
 }

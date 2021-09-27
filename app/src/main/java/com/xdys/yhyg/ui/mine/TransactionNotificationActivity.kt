@@ -4,11 +4,12 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
-import com.xdys.yhyg.adapte.mine.TransactionAdapter
-import com.xdys.yhyg.databinding.ActivityTransactionNotificationBinding
-import com.xdys.yhyg.vm.MineViewModel
 import com.xdys.library.base.ViewModelActivity
 import com.xdys.library.extension.singleTop
+import com.xdys.yhyg.adapte.mine.TransactionAdapter
+import com.xdys.yhyg.databinding.ActivityTransactionNotificationBinding
+import com.xdys.yhyg.entity.mine.TransactionEntity
+import com.xdys.yhyg.vm.MineViewModel
 
 class TransactionNotificationActivity :
     ViewModelActivity<MineViewModel, ActivityTransactionNotificationBinding>() {
@@ -34,6 +35,6 @@ class TransactionNotificationActivity :
     }
 
     override fun initData() {
-        mAdapter.setNewInstance(mutableListOf("", "", ""))
+        mAdapter.setNewInstance(mutableListOf(TransactionEntity()))
     }
 }

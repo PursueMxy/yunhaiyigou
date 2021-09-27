@@ -9,6 +9,7 @@ import androidx.fragment.app.activityViewModels
 import com.xdys.library.base.ViewModelFragment
 import com.xdys.yhyg.adapte.mine.ProfitSharingAdapter
 import com.xdys.yhyg.databinding.FragmentProfitSharingBinding
+import com.xdys.yhyg.entity.mine.ProfitSharEntity
 import com.xdys.yhyg.vm.MineViewModel
 
 class ProfitSharingFragment : ViewModelFragment<MineViewModel, FragmentProfitSharingBinding>() {
@@ -35,6 +36,6 @@ class ProfitSharingFragment : ViewModelFragment<MineViewModel, FragmentProfitSha
     }
 
     override fun initData() {
-        mAdapter.setNewInstance(mutableListOf("", "", ""))
+        mAdapter.setDiffNewData(mutableListOf(ProfitSharEntity()))
     }
 }

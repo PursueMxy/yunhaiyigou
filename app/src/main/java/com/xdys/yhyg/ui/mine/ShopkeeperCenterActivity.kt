@@ -9,6 +9,7 @@ import com.xdys.yhyg.databinding.ActivityShopkeeperCenterBinding
 import com.xdys.yhyg.vm.MineViewModel
 import com.xdys.library.base.ViewModelActivity
 import com.xdys.library.extension.singleTop
+import com.xdys.yhyg.entity.mine.SalesOrderEntity
 
 class ShopkeeperCenterActivity :
     ViewModelActivity<MineViewModel, ActivityShopkeeperCenterBinding>() {
@@ -41,6 +42,6 @@ class ShopkeeperCenterActivity :
     }
 
     override fun initData() {
-        salesOrderAdapter.setNewInstance(mutableListOf("", "", "", "", ""))
+        salesOrderAdapter.setNewInstance(mutableListOf(SalesOrderEntity(), SalesOrderEntity()))
     }
 }

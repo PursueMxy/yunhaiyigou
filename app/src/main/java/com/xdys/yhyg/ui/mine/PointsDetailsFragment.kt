@@ -9,6 +9,7 @@ import androidx.fragment.app.activityViewModels
 import com.xdys.library.base.ViewModelFragment
 import com.xdys.yhyg.adapte.mine.PointsDetailAdapter
 import com.xdys.yhyg.databinding.FragmentPointsDetailsBinding
+import com.xdys.yhyg.entity.mine.PointsEntity
 import com.xdys.yhyg.vm.MineViewModel
 
 class PointsDetailsFragment : ViewModelFragment<MineViewModel, FragmentPointsDetailsBinding>() {
@@ -35,6 +36,6 @@ class PointsDetailsFragment : ViewModelFragment<MineViewModel, FragmentPointsDet
     }
 
     override fun initData() {
-        mAdapter.setNewInstance(mutableListOf("", "", ""))
+        mAdapter.setNewInstance(mutableListOf(PointsEntity(), PointsEntity()))
     }
 }
