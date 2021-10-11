@@ -46,7 +46,7 @@ class RecommendFragment : ViewModelFragment<MineViewModel, FragmentRecommendBind
             .setIndicatorSelectorColor(Color.WHITE)
         with(banner) {
             setIndicator(indicator)
-            setAdapter(mAdapter)
+            adapter = mAdapter
         }
         with(rvCateFirst) {
             adapter = cateFirstAdapter
@@ -74,7 +74,13 @@ class RecommendFragment : ViewModelFragment<MineViewModel, FragmentRecommendBind
                 BrandZoneActivity.start(requireContext())
             }
         }
-
+        with(cateFirstAdapter) {
+            setOnItemClickListener { _, _, position ->
+                when (position) {
+                    1 -> CouponCenterActivity.start(requireContext())
+                }
+            }
+        }
     }
 
     override fun initData() {

@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/appTheme"
         android:usesCleartextTraffic="true"
-        tools:ignore="LockedOrientationActivity"
+        tools:ignore="AllowBackup,LockedOrientationActivity"
         tools:targetApi="m">
 
         <activity
@@ -287,6 +287,11 @@
         <activity
             android:name=".ui.order.ConfirmOrderActivity"
             android:label="@string/confirm_order"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.home.CouponCenterActivity"
+            android:label="@string/get_coupons_center"
             android:screenOrientation="portrait" />
     </application>
 </manifest>

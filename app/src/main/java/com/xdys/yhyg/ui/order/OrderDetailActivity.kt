@@ -9,6 +9,7 @@ import com.xdys.yhyg.databinding.ActivityOrderDetailBinding
 import com.xdys.yhyg.vm.OrderViewModel
 import com.xdys.library.base.ViewModelActivity
 import com.xdys.library.extension.singleTop
+import com.xdys.yhyg.entity.order.OrderProductEntity
 
 class OrderDetailActivity : ViewModelActivity<OrderViewModel, ActivityOrderDetailBinding>() {
     override fun createBinding() = ActivityOrderDetailBinding.inflate(layoutInflater)
@@ -30,14 +31,13 @@ class OrderDetailActivity : ViewModelActivity<OrderViewModel, ActivityOrderDetai
         tvRecipient.text = "杜康"
         tvMobile.text = "138****9999"
         tvAddress.text = "地址:福建厦门湖里区五缘湾安岭路1008号丰润金融中心B座1001-1室"
-        tvOrderTime.text="订单编号：202122546300"
-
+        tvOrderTime.text = "订单编号：202122546300"
         with(rvGoods) {
             adapter = mAdapter
         }
     }
 
     override fun initData() {
-        mAdapter.setNewInstance(mutableListOf("",""))
+        mAdapter.setNewInstance(mutableListOf(OrderProductEntity(), OrderProductEntity()))
     }
 }

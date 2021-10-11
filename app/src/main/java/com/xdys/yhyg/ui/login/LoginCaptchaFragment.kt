@@ -23,7 +23,7 @@ class LoginCaptchaFragment : ViewModelFragment<LoginViewModel, FragmentLoginCapt
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
         tvAccountPasswordLogin.setOnClickListener {
-            navController.navigate(R.id.loginCaptchaFragment)
+            navController.navigate(R.id.loginFragment)
         }
         tvTitle.setOnRightClickListener { navController.navigate(R.id.registerFragment) }
     }

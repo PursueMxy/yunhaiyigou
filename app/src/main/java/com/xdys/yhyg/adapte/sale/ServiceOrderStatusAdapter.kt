@@ -8,6 +8,5 @@ class ServiceOrderStatusAdapter :
     BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_service_order_status) {
     override fun convert(holder: BaseViewHolder, item: String) {
         holder.setText(R.id.tvStatus,"提交申请")
-
     }
 }

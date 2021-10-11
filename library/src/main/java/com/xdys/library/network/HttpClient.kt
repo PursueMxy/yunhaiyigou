@@ -13,10 +13,8 @@ import java.util.concurrent.TimeUnit
 object HttpClient {
 
     object Url {
-        private val prod = "https://app.pcpsoo.com/"
-
-        val baseUrl = prod.plus("api/")
-        val baseUrl2 = prod
+        private val prod = "http://192.168.2.6:8081/"
+        val baseUrl = prod
     }
 
     private val requestClient: OkHttpClient by lazy {
@@ -43,7 +41,7 @@ object HttpClient {
 
 
     private val retrofit2: Retrofit by lazy {
-        Retrofit.Builder().baseUrl(Url.baseUrl2).client(requestClient)
+        Retrofit.Builder().baseUrl(Url.baseUrl).client(requestClient)
             .addConverterFactory(CustomConvertFactory(Gson()))
             .build()
     }

@@ -10,6 +10,7 @@ import com.xdys.yhyg.adapte.mine.ShopCollectionAdapter
 import com.xdys.yhyg.databinding.FragmentShopCollectionBinding
 import com.xdys.yhyg.vm.MineViewModel
 import com.xdys.library.base.ViewModelFragment
+import com.xdys.yhyg.entity.mine.ShopCollectionEntity
 
 class ShopCollectionFragment : ViewModelFragment<MineViewModel, FragmentShopCollectionBinding>() {
     override fun createBinding(
@@ -35,6 +36,6 @@ class ShopCollectionFragment : ViewModelFragment<MineViewModel, FragmentShopColl
     }
 
     override fun initData() {
-        mAdapter.setNewInstance(mutableListOf("", "", ""))
+        mAdapter.setNewInstance(mutableListOf(ShopCollectionEntity(),ShopCollectionEntity(),ShopCollectionEntity()))
     }
 }
