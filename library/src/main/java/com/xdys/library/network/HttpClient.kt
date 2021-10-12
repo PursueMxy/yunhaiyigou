@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit
 object HttpClient {
 
     object Url {
-        private val prod = "http://192.168.2.6:8081/"
+        private val prod = "http://192.168.2.6:8081/auth/api/"
         val baseUrl = prod
     }
 
