@@ -14,7 +14,7 @@ class CustomResponseConvert<T>(
         return value.use {
             val json = value.string()
             val data = gson.fromJson(json, BaseResult::class.java)
-            if (!data.isSuccess) {
+            if (!data.success) {
 //                EventBus.getDefault().post(data.code == 6002)
                 throw HttpStatusException(data.code, data.msg)
             } else {

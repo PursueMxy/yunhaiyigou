@@ -91,7 +91,7 @@ open class BaseViewModel : ViewModel() {
         return withContext(Dispatchers.IO) {
             try {
                 val baseResult = api.invoke()
-                if (baseResult.isSuccess) baseResult.data
+                if (baseResult.success) baseResult.data
                 else {
                     failure?.invoke(HttpStatusException(baseResult.code, baseResult.msg))
                     null
@@ -113,7 +113,7 @@ open class BaseViewModel : ViewModel() {
         return withContext(Dispatchers.IO) {
             try {
                 val baseResult = api.invoke()
-                if (baseResult.isSuccess) baseResult.data
+                if (baseResult.success) baseResult.data
                 else {
                     messageLiveData.postValue(baseResult.msg)
                     failure?.invoke(HttpStatusException(baseResult.code, baseResult.msg))
@@ -140,7 +140,7 @@ open class BaseViewModel : ViewModel() {
         return withContext(Dispatchers.IO) {
             try {
                 val baseResult = api.invoke()
-                if (baseResult.isSuccess) baseResult.code
+                if (baseResult.success) baseResult.code
                 else {
                     failure?.invoke(HttpStatusException(baseResult.code, baseResult.msg))
                     null
@@ -153,6 +153,7 @@ open class BaseViewModel : ViewModel() {
             }
         }
     }
+
     suspend fun fetchEmptyMsgData(
         api: suspend () -> BaseResult,
         failure: ((Throwable) -> Unit)? = { handleThrowable(it) },
@@ -161,7 +162,7 @@ open class BaseViewModel : ViewModel() {
         return withContext(Dispatchers.IO) {
             try {
                 val baseResult = api.invoke()
-                if (baseResult.isSuccess) baseResult.code
+                if (baseResult.success) baseResult.code
                 else {
                     messageLiveData.postValue(baseResult.msg)
                     failure?.invoke(HttpStatusException(baseResult.code, baseResult.msg))

@@ -6,7 +6,7 @@ import com.xdys.library.network.HttpClient
 import java.io.File
 
 object Constant {
-    private val TOKEN = "Token"
+    private val tokenKey = "Token"
     private val POSITIONING = "Positioning"//是否开启定位
     private val FIRST = "first"
     private val LOCATION = "location"
@@ -45,9 +45,20 @@ object Constant {
             MMKV.defaultMMKV().encode(FIRST, value)
         }
 
-    var token: String?
-        get() = MMKV.defaultMMKV().decodeString(TOKEN)
-        set(value) {
-            MMKV.defaultMMKV().encode(TOKEN, value)
-        }
+
+
+    /**
+     * 获取保存在本地的用户token
+     */
+    fun getUserToken(): String? {
+        return MMKV.defaultMMKV()?.decodeString(tokenKey)
+    }
+
+    /**
+     * 保存用户token到本地
+     */
+    fun saveUserToken(token: String?) = MMKV.defaultMMKV()?.also {
+        if (!token.isNullOrBlank()) it.encode(tokenKey, token)
+        else if (it.containsKey(tokenKey)) MMKV.defaultMMKV()?.removeValueForKey(tokenKey)
+    }
 }

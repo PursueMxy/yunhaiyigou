@@ -106,7 +106,7 @@ abstract class BaseFragment<B : ViewBinding> : Fragment() {
     abstract fun createBinding(inflater: LayoutInflater, container: ViewGroup?): B
 
     protected fun isUserLogin(): Boolean {
-        return if (Constant.token.isNullOrBlank()) {
+        return if (Constant.getUserToken().isNullOrBlank()) {
             LiveDataBus.post(ReLoginEvent())
             false
         } else true
