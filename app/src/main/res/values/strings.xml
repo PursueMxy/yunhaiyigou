@@ -342,5 +342,8 @@
     <string name="coupon_deduction">优惠券抵扣</string>
     <string name="pay_immediately">立即支付</string>
     <string name="to_collect">移入收藏</string>
+    <string name="login_agree_1">登录即代表你已同意 </string>
+    <string name="user_agreement">云海易购用户协议/隐私政策</string>
+    <string name="login_resend_format">%d秒后重新发送</string>
 
 </resources>

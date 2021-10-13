@@ -5,11 +5,12 @@ import android.text.style.ClickableSpan
 import android.view.View
 import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
+import com.xdys.library.R
 import com.xdys.library.extension.context
 
 class CustomClickSpan(
     private val onClick: (v: View) -> Unit,
-    @ColorRes private val color: Int = android.R.color.black
+    @ColorRes private val color: Int = R.color.RE3
 ) : ClickableSpan() {
     override fun onClick(widget: View) {
         onClick.invoke(widget)

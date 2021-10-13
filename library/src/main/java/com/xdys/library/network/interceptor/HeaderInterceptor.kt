@@ -7,7 +7,7 @@ import okhttp3.Response
 class HeaderInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request().newBuilder().apply {
-            Constant.getUserToken()?.let { addHeader("token", it) }
+            Constant.getUserToken()?.let { addHeader("token", "Bearer $it") }
             addHeader("sourceType", "2")
             addHeader("tenant_id", "1")
             addHeader("shop_id", "1")

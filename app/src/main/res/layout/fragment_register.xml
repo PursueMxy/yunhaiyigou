@@ -57,8 +57,10 @@
             android:drawablePadding="14dp"
             android:gravity="center_vertical"
             android:hint="@string/hint_mobile"
+            android:maxLength="11"
             android:textColor="@color/BBE"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            tools:ignore="TextFields" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -87,9 +89,10 @@
 
         <TextView
             android:id="@+id/tvGetCode"
-            android:layout_width="100dp"
+            android:layout_width="110dp"
             android:layout_height="29dp"
             android:layout_marginEnd="13dp"
+            android:alpha="0.6"
             android:background="@drawable/bg_r100"
             android:backgroundTint="@color/RFF"
             android:gravity="center"
@@ -119,6 +122,8 @@
             android:drawablePadding="14dp"
             android:gravity="center_vertical"
             android:hint="@string/setting_login_password"
+            android:maxLength="20"
+            android:inputType="textPassword"
             android:textColor="@color/BBE"
             android:textSize="16sp" />
 
@@ -142,6 +147,8 @@
             android:drawablePadding="14dp"
             android:gravity="center_vertical"
             android:hint="@string/enter_password_again"
+            android:maxLength="20"
+            android:inputType="textPassword"
             android:textColor="@color/BBE"
             android:textSize="16sp" />
 
@@ -156,20 +163,20 @@
         android:background="@drawable/bg_r10"
         android:backgroundTint="@color/RFF"
         android:gravity="center"
+        android:alpha="0.6"
         android:text="@string/sign_up_now"
         android:textColor="@color/white"
         android:textSize="16sp" />
 
     <TextView
         android:id="@+id/tvLoginAgree"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginHorizontal="30dp"
         android:layout_marginVertical="30dp"
         android:drawableStart="@drawable/selector_pay"
         android:drawablePadding="5dp"
-        android:gravity="center_horizontal"
         android:textColor="@color/B80"
         android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="parent"

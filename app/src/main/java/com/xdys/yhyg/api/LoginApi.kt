@@ -11,4 +11,10 @@ interface LoginApi : BaseApi {
 
     @POST("login/app")
     suspend fun login(@Body body: RequestBody): Result<LoginEntity>
+
+    @POST("sendRegisterSms")
+    suspend fun sendRegisterSms(@Body body: RequestBody): Result<Any>
+
+    @POST("register/app")
+    suspend fun register(@Body body: RequestBody): Result<Any>
 }
