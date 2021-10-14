@@ -1,6 +1,7 @@
 package com.xdys.library.base
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,6 +23,7 @@ abstract class ViewModelFragment<ViewModel : BaseViewModel, B : ViewBinding> : B
             if (it == null) hideLoading() else showLoading(it)
         })
         viewModel.messageLiveData.observe(viewLifecycleOwner, {
+            Log.e("错当地的误","数据错误" )
             if (!it.isNullOrBlank()) showMessage(it)
         })
     }

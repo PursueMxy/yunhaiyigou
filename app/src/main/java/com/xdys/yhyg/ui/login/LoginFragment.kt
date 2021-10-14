@@ -58,6 +58,7 @@ class LoginFragment : ViewModelFragment<LoginViewModel, FragmentLoginBinding>() 
     }
 
     override fun initObserver() {
+        super.initObserver()
         viewModel.loginLiveData.observe(this) {
             MainActivity.startActivity(requireContext(), true)
         }

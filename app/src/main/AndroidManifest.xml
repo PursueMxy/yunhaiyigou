@@ -4,6 +4,20 @@
     package="com.xdys.yhyg">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <!--检查wifi网络状态-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!--检查网络状态-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!--切换网络通道-->
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <!--开关wifi状态，解决国内机型移动网络权限问题需要-->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <!-- 相机权限 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- 文件读取 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -294,4 +308,16 @@
             android:label="@string/get_coupons_center"
             android:screenOrientation="portrait" />
     </application>
+
+    <queries>
+        <!-- com.blankj.utilcode SDK检测虚拟机-->
+        <intent>
+            <action android:name="android.intent.action.DIAL" />
+        </intent>
+
+        <!-- 微信支付SDK-->
+        <package android:name="com.tencent.mm" />
+        <!-- 支付宝支付SDK-->
+        <package android:name="com.eg.android.AlipayGphone" />
+    </queries>
 </manifest>

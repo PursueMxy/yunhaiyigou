@@ -14,7 +14,7 @@
         app:left_drawable="@mipmap/arrow_left_b"
         app:show_left="true"
         app:show_right="true"
-        app:title_content="@string/change_mobile"
+        app:title_content="@string/change_password"
         tools:layout_height="48dp" />
 
     <TextView
@@ -45,12 +45,15 @@
         android:id="@+id/etAuthCode"
         android:layout_width="0dp"
         android:layout_height="44dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="15dp"
         android:background="@color/white"
         android:gravity="center"
         android:hint="@string/hint_auth_code"
+        android:inputType="number"
+        android:maxLength="6"
         android:textColor="@color/BCC"
         android:textSize="14sp"
-        android:layout_marginEnd="15dp"
         app:layout_constraintEnd_toStartOf="@id/btnGetVerificationCode"
         app:layout_constraintStart_toStartOf="@id/tvPleaseCertification"
         app:layout_constraintTop_toBottomOf="@id/tvInput" />

@@ -1,6 +1,7 @@
 package com.xdys.library.base
 
 import android.os.CountDownTimer
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.gson.JsonSyntaxException
@@ -91,8 +92,10 @@ open class BaseViewModel : ViewModel() {
         return withContext(Dispatchers.IO) {
             try {
                 val baseResult = api.invoke()
-                if (baseResult.success) baseResult.data
+                if (baseResult.isSuccess())
+                    baseResult.data
                 else {
+                    messageLiveData.postValue(baseResult.msg)
                     failure?.invoke(HttpStatusException(baseResult.code, baseResult.msg))
                     null
                 }
@@ -113,7 +116,7 @@ open class BaseViewModel : ViewModel() {
         return withContext(Dispatchers.IO) {
             try {
                 val baseResult = api.invoke()
-                if (baseResult.success) baseResult.data
+                if (baseResult.isSuccess()) baseResult.data
                 else {
                     messageLiveData.postValue(baseResult.msg)
                     failure?.invoke(HttpStatusException(baseResult.code, baseResult.msg))
@@ -140,7 +143,7 @@ open class BaseViewModel : ViewModel() {
         return withContext(Dispatchers.IO) {
             try {
                 val baseResult = api.invoke()
-                if (baseResult.success) baseResult.code
+                if (baseResult.isSuccess()) baseResult.code
                 else {
                     failure?.invoke(HttpStatusException(baseResult.code, baseResult.msg))
                     null
@@ -162,7 +165,7 @@ open class BaseViewModel : ViewModel() {
         return withContext(Dispatchers.IO) {
             try {
                 val baseResult = api.invoke()
-                if (baseResult.success) baseResult.code
+                if (baseResult.isSuccess()) baseResult.code
                 else {
                     messageLiveData.postValue(baseResult.msg)
                     failure?.invoke(HttpStatusException(baseResult.code, baseResult.msg))
@@ -181,8 +184,7 @@ open class BaseViewModel : ViewModel() {
         if (BuildConfig.DEBUG) throwable.printStackTrace()
         when (throwable) {
             is HttpStatusException -> {
-                if (throwable.code == 6002) LiveDataBus.post(ReLoginEvent())
-                else messageLiveData.postValue(throwable.msg)
+                messageLiveData.postValue(throwable.msg)
             }
             is JsonSyntaxException -> messageLiveData.postValue(context.getString(R.string.data_change_exception))
             is SocketTimeoutException -> {

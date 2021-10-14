@@ -345,5 +345,6 @@
     <string name="login_agree_1">登录即代表你已同意 </string>
     <string name="user_agreement">云海易购用户协议/隐私政策</string>
     <string name="login_resend_format">%d秒后重新发送</string>
+    <string name="change_password">更换登录密码</string>
 
 </resources>

@@ -32,13 +32,14 @@ class LoginViewModel : BaseViewModel() {
         viewModelScope.launch {
             fetchData({ api.login(body) })?.let {
                 Constant.saveUserToken(it.access_token)
+                Constant.mobile = username
                 loginLiveData.postValue(it)
             }
         }
     }
 
-    fun sendRegisterSms(mobile: String, resend: Boolean = false) {
-        val map = hashMapOf("phone" to mobile)
+    fun sendRegisterSms(mobile: String, type: String) {
+        val map = hashMapOf("phone" to mobile, "type" to type)
         val body = gson.toJson(map).toRequestBody(
             context.getString(R.string.content_type_json).toMediaType()
         )
@@ -60,4 +61,6 @@ class LoginViewModel : BaseViewModel() {
             }
         }
     }
+
+
 }

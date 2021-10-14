@@ -45,6 +45,11 @@ object Constant {
             MMKV.defaultMMKV().encode(FIRST, value)
         }
 
+    var mobile: String?
+        get() = MMKV.defaultMMKV().decodeString("mobile")
+        set(value) {
+            MMKV.defaultMMKV().encode("mobile", value)
+        }
 
 
     /**

@@ -1,5 +1,6 @@
 package com.xdys.library.network.convert
 
+import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.TypeAdapter
 import com.xdys.library.network.HttpStatusException
@@ -14,8 +15,7 @@ class CustomResponseConvert<T>(
         return value.use {
             val json = value.string()
             val data = gson.fromJson(json, BaseResult::class.java)
-            if (!data.success) {
-//                EventBus.getDefault().post(data.code == 6002)
+            if (!data.isSuccess()) {
                 throw HttpStatusException(data.code, data.msg)
             } else {
                 adapter.fromJson(json)

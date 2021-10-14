@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import com.hjq.toast.ToastUtils
 import com.xdys.library.base.ViewModelFragment
 import com.xdys.library.extension.loadCircleImage
 import com.xdys.yhyg.R
@@ -13,6 +14,7 @@ import com.xdys.yhyg.popup.PersonalSharePopupWindow
 import com.xdys.yhyg.ui.order.MyOrderActivity
 import com.xdys.yhyg.ui.sale.ReturnAfterSaleActivity
 import com.xdys.yhyg.ui.sale.ViewSolutionActivity
+import com.xdys.yhyg.ui.setting.PersonalInformationActivity
 import com.xdys.yhyg.ui.setting.SetActivity
 import com.xdys.yhyg.vm.MineViewModel
 
@@ -80,6 +82,10 @@ class MineFragment : ViewModelFragment<MineViewModel, FragmentMineBinding>() {
         }
         tvFeedback.setOnClickListener {
             ViewSolutionActivity.start(requireContext())
+        }
+        gpUser.setOnClickListener {
+            ToastUtils.show("点击")
+            PersonalInformationActivity.start(requireContext())
         }
     }
 

@@ -37,6 +37,12 @@
             app:title_text_color="@color/white"
             app:title_text_size="16sp" />
 
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/gpUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="ivPortrait,tvUserName,tvUserId,tvMemberLevel" />
+
         <ImageView
             android:id="@+id/ivPortrait"
             android:layout_width="60dp"

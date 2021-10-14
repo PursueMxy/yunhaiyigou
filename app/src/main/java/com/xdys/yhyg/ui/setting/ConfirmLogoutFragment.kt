@@ -14,4 +14,5 @@ class ConfirmLogoutFragment : ViewModelFragment<MineViewModel, FragmentConfirmLo
     ) = FragmentConfirmLogoutBinding.inflate(inflater, container, false)
 
     override val viewModel: MineViewModel by viewModels()
+
 }

@@ -131,7 +131,7 @@ class RegisterFragment : ViewModelFragment<LoginViewModel, FragmentRegisterBindi
             if (mobile.length != 11) {
                 return
             }
-            viewModel.sendRegisterSms(mobile, true)
+            viewModel.sendRegisterSms(mobile, "2")
         }
     }
 
@@ -150,7 +150,8 @@ class RegisterFragment : ViewModelFragment<LoginViewModel, FragmentRegisterBindi
     private fun changeLogin() {
         with(binding) {
             if (etMobile.text.length == 11 && etVerificationCode.text.length == 6
-                && etPassword.text.length > 4 && etEnterPassword.text.length > 4) {
+                && etPassword.text.length > 4 && etEnterPassword.text.length > 4
+            ) {
                 btnSingUpNow.isEnabled = true
                 btnSingUpNow.alpha = 1f
             } else {
