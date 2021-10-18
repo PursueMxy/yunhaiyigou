@@ -5,6 +5,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.util.AttributeSet
+import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.webkit.*
@@ -12,6 +13,8 @@ import android.widget.FrameLayout
 import android.widget.ProgressBar
 import androidx.core.content.res.use
 import androidx.databinding.BindingAdapter
+import com.google.gson.Gson
+import com.hjq.toast.ToastUtils
 import com.xdys.library.R
 import com.xdys.library.extension.px
 
@@ -21,6 +24,8 @@ class ProgressWebView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null
 ) : FrameLayout(context, attrs) {
+
+    private val javaScriptName = "android"
 
     private var onReceivedTitle: ((String) -> Unit)? = null
     var showProgress = true
@@ -61,6 +66,7 @@ class ProgressWebView @JvmOverloads constructor(
 
     override fun onDetachedFromWindow() {
         if (webView.isInitialized() && webView.value.parent != null) {
+            webView.value.removeJavascriptInterface(javaScriptName)
             webView.value.stopLoading()
             removeView(webView.value)
         }
@@ -75,7 +81,16 @@ class ProgressWebView @JvmOverloads constructor(
             )
         }
         webView.value.loadUrl(url)
+
     }
+
+
+
+    @SuppressLint("JavascriptInterface")
+    fun addJavaScript(jsInterface: Any) {
+        webView.value.addJavascriptInterface(jsInterface, javaScriptName)
+    }
+
 
     /**
      * 接收webView的回退事件

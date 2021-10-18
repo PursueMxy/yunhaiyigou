@@ -314,7 +314,7 @@
     <string name="login">登录</string>
     <string name="account_password_login">帐号密码登录</string>
     <string name="hint_password">请输入密码</string>
-    <string name="retrieve_password">找回密码</string>
+    <string name="retrieve_password">忘记密码</string>
     <string name="mobile_verification_login">手机验证登录</string>
     <string name="other_login_methods">其他登录方式</string>
     <string name="account_registration">帐号注册</string>
@@ -346,5 +346,6 @@
     <string name="user_agreement">云海易购用户协议/隐私政策</string>
     <string name="login_resend_format">%d秒后重新发送</string>
     <string name="change_password">更换登录密码</string>
+    <string name="tips">温馨提示</string>
 
 </resources>

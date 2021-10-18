@@ -54,4 +54,16 @@ class SetViewModel : BaseViewModel() {
             }
         }
     }
+
+
+    /**
+     * 退出登录
+     */
+    fun logout() {
+        viewModelScope.launch(Dispatchers.IO) {
+            fetchEmptyData({ api.logout() })?.let {
+
+            }
+        }
+    }
 }

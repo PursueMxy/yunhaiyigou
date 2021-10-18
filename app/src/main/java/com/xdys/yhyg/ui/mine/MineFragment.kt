@@ -16,6 +16,7 @@ import com.xdys.yhyg.ui.sale.ReturnAfterSaleActivity
 import com.xdys.yhyg.ui.sale.ViewSolutionActivity
 import com.xdys.yhyg.ui.setting.PersonalInformationActivity
 import com.xdys.yhyg.ui.setting.SetActivity
+import com.xdys.yhyg.ui.web.WebViewActivity
 import com.xdys.yhyg.vm.MineViewModel
 
 class MineFragment : ViewModelFragment<MineViewModel, FragmentMineBinding>() {
@@ -86,6 +87,9 @@ class MineFragment : ViewModelFragment<MineViewModel, FragmentMineBinding>() {
         gpUser.setOnClickListener {
             ToastUtils.show("点击")
             PersonalInformationActivity.start(requireContext())
+        }
+        tvBoardCommittee.setOnClickListener {
+            WebViewActivity.start(requireContext())
         }
     }
 

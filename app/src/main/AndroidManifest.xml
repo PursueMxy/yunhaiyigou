@@ -33,15 +33,15 @@
         <activity
             android:name=".ui.home.MainActivity"
             android:exported="true"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.login.LoginActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.login.LoginActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.home.SearchActivity"
             android:label="@string/search"
@@ -306,6 +306,10 @@
         <activity
             android:name=".ui.home.CouponCenterActivity"
             android:label="@string/get_coupons_center"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.web.WebViewActivity"
             android:screenOrientation="portrait" />
     </application>
 

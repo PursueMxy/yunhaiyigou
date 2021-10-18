@@ -11,12 +11,14 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.hjq.toast.ToastUtils
 import com.xdys.library.base.ViewModelFragment
+import com.xdys.library.config.Constant
 import com.xdys.library.kit.span.ClickMovementMethod
 import com.xdys.library.kit.span.CustomClickSpan
 import com.xdys.library.utils.mxyUtils
 import com.xdys.yhyg.R
 import com.xdys.yhyg.databinding.FragmentLoginBinding
 import com.xdys.yhyg.ui.home.MainActivity
+import com.xdys.yhyg.ui.setting.ChangeLoginPswActivity
 import com.xdys.yhyg.vm.LoginViewModel
 
 class LoginFragment : ViewModelFragment<LoginViewModel, FragmentLoginBinding>() {
@@ -53,6 +55,16 @@ class LoginFragment : ViewModelFragment<LoginViewModel, FragmentLoginBinding>() 
                 tvLoginAgree.isSelected = !tvLoginAgree.isSelected
             }
         }
+        tvRetrievePassword.setOnClickListener {
+            val mobile = etMobile.text.toString().trim()
+            if (mobile.isEmpty() || mobile.length!=11) {
+                ToastUtils.show(etMobile.hint.toString())
+                return@setOnClickListener
+            }else{
+                Constant.mobile=mobile
+                ChangeLoginPswActivity.start(requireContext())
+            }
+        }
         etMobile.doAfterTextChanged { changeLogin() }
         etPassword.doAfterTextChanged { changeLogin() }
     }
@@ -83,7 +95,7 @@ class LoginFragment : ViewModelFragment<LoginViewModel, FragmentLoginBinding>() 
 
     private fun changeLogin() {
         with(binding) {
-            if (etMobile.text.length == 11 && etPassword.text.length > 4) {
+            if (etMobile.text.length == 11 && etPassword.text.length > 7) {
                 btnLogin.isEnabled = true
                 btnLogin.alpha = 1f
             } else {

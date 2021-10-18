@@ -12,6 +12,7 @@ object Constant {
     private val LOCATION = "location"
     private val HISTORY = "history"
     private val RECIPE = "recipe"
+    val webUrl="http://192.168.2.2:8080"
 
     object Key {
         val EXTRA_ID = "id"

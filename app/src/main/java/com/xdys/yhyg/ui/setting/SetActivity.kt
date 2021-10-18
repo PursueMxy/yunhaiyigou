@@ -7,12 +7,18 @@ import androidx.activity.viewModels
 import com.xdys.yhyg.databinding.ActivitySetBinding
 import com.xdys.yhyg.vm.MineViewModel
 import com.xdys.library.base.ViewModelActivity
+import com.xdys.library.config.Constant
 import com.xdys.library.extension.singleTop
+import com.xdys.yhyg.popup.FeedbackPopupWindow
+import com.xdys.yhyg.popup.PromptPopupWindow
+import com.xdys.yhyg.ui.login.LoginActivity
+import com.xdys.yhyg.vm.LoginViewModel
+import com.xdys.yhyg.vm.SetViewModel
 
-class SetActivity : ViewModelActivity<MineViewModel, ActivitySetBinding>() {
+class SetActivity : ViewModelActivity<SetViewModel, ActivitySetBinding>() {
     override fun createBinding() = ActivitySetBinding.inflate(layoutInflater)
 
-    override val viewModel: MineViewModel by viewModels()
+    override val viewModel: SetViewModel by viewModels()
 
     companion object {
         fun start(context: Context) {
@@ -28,6 +34,17 @@ class SetActivity : ViewModelActivity<MineViewModel, ActivitySetBinding>() {
         }
         tvAccountSecurity.setOnClickListener {
             AccountSecurityActivity.start(this@SetActivity)
+        }
+        tvLogOut.setOnClickListener {
+            viewModel.logout()
+            popupFeedback.setData("您确定要退出登录么").showPopupWindow()
+        }
+    }
+
+    private val popupFeedback: PromptPopupWindow by lazy {
+        PromptPopupWindow(this) {
+            Constant.saveUserToken("")
+            LoginActivity.startActivity(this, true)
         }
     }
 }

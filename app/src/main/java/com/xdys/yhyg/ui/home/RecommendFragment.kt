@@ -19,15 +19,16 @@ import com.xdys.yhyg.adapte.home.HomeGoodsAdapter
 import com.xdys.yhyg.adapte.home.ImageAdapter
 import com.xdys.yhyg.databinding.FragmentRecommendBinding
 import com.xdys.yhyg.ui.goods.GoodsDetailActivity
-import com.xdys.yhyg.vm.MineViewModel
+import com.xdys.yhyg.ui.web.WebViewActivity
+import com.xdys.yhyg.vm.HomeViewModel
 
-class RecommendFragment : ViewModelFragment<MineViewModel, FragmentRecommendBinding>() {
+class RecommendFragment : ViewModelFragment<HomeViewModel, FragmentRecommendBinding>() {
     override fun createBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
     ): FragmentRecommendBinding = FragmentRecommendBinding.inflate(inflater, container, false)
 
-    override val viewModel: MineViewModel by activityViewModels()
+    override val viewModel: HomeViewModel by activityViewModels()
     private val mAdapter by lazy { ImageAdapter() }
     private val cateFirstAdapter by lazy { HomeCateFirstAdapter() }
     private val brandMerchatAdapter by lazy { BrandMerchantAdapter() }
@@ -78,22 +79,22 @@ class RecommendFragment : ViewModelFragment<MineViewModel, FragmentRecommendBind
             setOnItemClickListener { _, _, position ->
                 when (position) {
                     1 -> CouponCenterActivity.start(requireContext())
+                    4 -> WebViewActivity.start(requireContext())
                 }
             }
         }
     }
 
     override fun initData() {
-        mAdapter.setNewInstance(
-            mutableListOf(
-                "https://img1.baidu.com/it/u=1825851994,4163570429&fm=253&fmt=auto&app=120&f=JPEG?w=934&h=500",
-                "https://img2.baidu.com/it/u=3495436499,1211422207&fm=26&fmt=auto&gp=0.jpg",
-                "https://img0.baidu.com/it/u=251614576,2693916083&fm=26&fmt=auto&gp=0.jpg",
-                "https://img0.baidu.com/it/u=2027992389,3130985476&fm=26&fmt=auto&gp=0.jpg"
-            )
-        )
         cateFirstAdapter.setNewInstance(mutableListOf("新人专享", "领券中心", "积分兑换", "杜康名酒", "品牌专区"))
         brandMerchatAdapter.setDiffNewData(mutableListOf())
         goodsAdapter.setDiffNewData(mutableListOf())
+    }
+
+    override fun initObserver() {
+        super.initObserver()
+        viewModel.classifyLiveData.observe(this) {
+            mAdapter.setNewInstance(it.carouselList)
+        }
     }
 }

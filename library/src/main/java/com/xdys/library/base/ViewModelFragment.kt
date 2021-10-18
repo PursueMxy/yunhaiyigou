@@ -23,7 +23,6 @@ abstract class ViewModelFragment<ViewModel : BaseViewModel, B : ViewBinding> : B
             if (it == null) hideLoading() else showLoading(it)
         })
         viewModel.messageLiveData.observe(viewLifecycleOwner, {
-            Log.e("错当地的误","数据错误" )
             if (!it.isNullOrBlank()) showMessage(it)
         })
     }

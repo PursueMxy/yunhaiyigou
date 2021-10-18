@@ -89,14 +89,6 @@ class BrandZoneActivity : ViewModelActivity<HomeViewModel, ActivityBrandZoneBind
     }
 
     override fun initData() {
-        mAdapter.setNewInstance(
-            mutableListOf(
-                "https://img1.baidu.com/it/u=1825851994,4163570429&fm=253&fmt=auto&app=120&f=JPEG?w=934&h=500",
-                "https://img2.baidu.com/it/u=3495436499,1211422207&fm=26&fmt=auto&gp=0.jpg",
-                "https://img0.baidu.com/it/u=251614576,2693916083&fm=26&fmt=auto&gp=0.jpg",
-                "https://img0.baidu.com/it/u=2027992389,3130985476&fm=26&fmt=auto&gp=0.jpg"
-            )
-        )
     }
 
 

@@ -9,12 +9,14 @@ import androidx.fragment.app.commit
 import androidx.lifecycle.Lifecycle
 import com.google.android.material.tabs.TabLayout
 import com.xdys.library.base.ViewModelActivity
+import com.xdys.library.config.Constant
 import com.xdys.library.extension.clearTask
 import com.xdys.library.extension.newTask
 import com.xdys.yhyg.R
 import com.xdys.yhyg.databinding.ActivityMainBinding
 import com.xdys.yhyg.ui.cart.CartFragment
 import com.xdys.yhyg.ui.classify.ClassificationFragment
+import com.xdys.yhyg.ui.login.LoginActivity
 import com.xdys.yhyg.ui.mall.MallFragment
 import com.xdys.yhyg.ui.mine.MineFragment
 import com.xdys.yhyg.vm.MineViewModel
@@ -98,8 +100,15 @@ class MainActivity : ViewModelActivity<MineViewModel, ActivityMainBinding>() {
                     }
 
                     override fun onTabSelected(tab: TabLayout.Tab?) {
-                        prePosition = tab?.position ?: 0
-                        showFragment(prePosition)
+                        // 登录判断
+                        val index = tab?.position ?: 0
+                        if (Constant.getUserToken().isNullOrEmpty() && (index == 3 || index == 4)) {
+                            getTabAt(prePosition)?.select()
+                            LoginActivity.startActivity(this@MainActivity)
+                        } else {
+                            prePosition = tab?.position ?: 0
+                            showFragment(prePosition)
+                        }
                     }
                 })
             }
