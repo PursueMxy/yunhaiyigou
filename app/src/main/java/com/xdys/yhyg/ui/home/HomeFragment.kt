@@ -52,7 +52,7 @@ class HomeFragment : ViewModelFragment<HomeViewModel, FragmentHomeBinding>() {
 
     override fun initObserver() {
         super.initObserver()
-        viewModel.classifyLiveData.observe(this) {
+        viewModel.homeLiveData.observe(this) {
             initViewPager(it.goodsCategoryListFirst)
         }
     }
@@ -87,7 +87,7 @@ class HomeFragment : ViewModelFragment<HomeViewModel, FragmentHomeBinding>() {
 
                     override fun createFragment(position: Int): Fragment = when (position) {
                         0 -> RecommendFragment.newInstance(position)
-                        else -> OtherFragment.newInstance(position)
+                        else -> OtherFragment.newInstance(list[position].id!!)
                     }
 
 

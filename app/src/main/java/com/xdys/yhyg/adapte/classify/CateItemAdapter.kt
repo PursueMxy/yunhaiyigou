@@ -19,7 +19,7 @@ class CateItemAdapter : BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_c
 
     override fun convert(holder: BaseViewHolder, item: String) {
         holder.setText(R.id.tvClassifyName, item)
-        goodsTypeAdapter.setNewInstance(mutableListOf("夏上新", "JK制服", "连衣裙", "卫衣"))
+//        goodsTypeAdapter.setNewInstance(mutableListOf("夏上新", "JK制服", "连衣裙", "卫衣"))
     }
 
     override fun onItemViewHolderCreated(viewHolder: BaseViewHolder, viewType: Int) {

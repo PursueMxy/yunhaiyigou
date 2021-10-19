@@ -10,8 +10,10 @@ import com.xdys.yhyg.popup.MakeCallPopupWindow
 import com.xdys.yhyg.popup.SharePopupWindow
 import com.xdys.yhyg.vm.MallViewModel
 import com.xdys.library.base.ViewModelActivity
+import com.xdys.library.config.Constant
 import com.xdys.library.extension.loadRoundCornerImage
 import com.xdys.library.extension.singleTop
+import com.xdys.yhyg.ui.web.WebViewActivity
 
 class BusinessDetailsActivity : ViewModelActivity<MallViewModel, ActivityBusinessDetailsBinding>() {
     override fun createBinding() = ActivityBusinessDetailsBinding.inflate(layoutInflater)
@@ -35,6 +37,9 @@ class BusinessDetailsActivity : ViewModelActivity<MallViewModel, ActivityBusines
         }
         tvContactMerchant.setOnClickListener {
             popupMakeCall.showPopupWindow()
+        }
+        tvLicenseInformation.setOnClickListener {
+            WebViewActivity.start(this@BusinessDetailsActivity,"${Constant.webUrl}/verify")
         }
         ivLogo.loadRoundCornerImage(R.mipmap.business_tu)
         tvBusinessName.text = "上官糖炒栗子·四果汤(塔埔店)"

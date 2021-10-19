@@ -11,6 +11,7 @@ import com.xdys.library.extension.loadCircleImage
 import com.xdys.library.extension.singleTop
 import com.xdys.library.utils.PhotoUtils
 import com.xdys.yhyg.databinding.ActivityPersonalInformationBinding
+import com.xdys.yhyg.entity.mine.UserInfoEntity
 import com.xdys.yhyg.vm.MineViewModel
 
 class PersonalInformationActivity :
@@ -33,6 +34,31 @@ class PersonalInformationActivity :
         }
         ivAvatar.setOnClickListener {
             choose()
+        }
+    }
+
+    override fun initData() {
+        viewModel.userInfo()
+    }
+
+    override fun initObserver() {
+        super.initObserver()
+        viewModel.userInfoLivaData.observe(this) {
+            fillUI(it)
+        }
+    }
+
+    private fun fillUI(userInfo: UserInfoEntity) {
+        with(binding) {
+            tvNickName.text = userInfo.nickName
+            tvBirthday.text = "2000.12.23"
+            tvGender.text = when (userInfo.sex) {
+                "0" -> "男"
+                "1" -> "女"
+                else -> "未知"
+            }
+            tvRegion.text = userInfo.province + userInfo.city + userInfo.towns
+            ivAvatar.loadCircleImage(userInfo.headimgUrl)
         }
     }
 

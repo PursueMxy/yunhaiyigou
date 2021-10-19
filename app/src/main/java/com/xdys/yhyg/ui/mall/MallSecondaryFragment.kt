@@ -11,6 +11,7 @@ import com.xdys.yhyg.adapte.mall.MallAdapter
 import com.xdys.yhyg.databinding.FragmentMallSecondaryBinding
 import com.xdys.yhyg.vm.MineViewModel
 import com.xdys.library.base.ViewModelFragment
+import com.xdys.yhyg.entity.mall.MallEntity
 
 class MallSecondaryFragment : ViewModelFragment<MineViewModel, FragmentMallSecondaryBinding>() {
 
@@ -38,6 +39,6 @@ class MallSecondaryFragment : ViewModelFragment<MineViewModel, FragmentMallSecon
     }
 
     override fun initData() {
-        mallAdapter.setDiffNewData(mutableListOf())
+        mallAdapter.setDiffNewData(mutableListOf(MallEntity()))
     }
 }

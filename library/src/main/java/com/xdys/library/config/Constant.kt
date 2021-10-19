@@ -7,19 +7,14 @@ import java.io.File
 
 object Constant {
     private val tokenKey = "Token"
-    private val POSITIONING = "Positioning"//是否开启定位
     private val FIRST = "first"
-    private val LOCATION = "location"
-    private val HISTORY = "history"
-    private val RECIPE = "recipe"
-    val webUrl="http://192.168.2.2:8080"
+    val webUrl = "http://192.168.2.2:8080"
 
     object Key {
         val EXTRA_ID = "id"
         val EXTRA_DATA = "data"
         val EXTRA_TITLE = "title"
         val EXTRA_INDEX = "index"
-
     }
 
     object Url {

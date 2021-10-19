@@ -98,6 +98,7 @@ class ProgressWebView @JvmOverloads constructor(
     fun handleBackPress(): Boolean {
         return if (webView.isInitialized() && webView.value.canGoBack()) {
             webView.value.goBack()
+            ToastUtils.show("点击返回")
             true
         } else false
     }

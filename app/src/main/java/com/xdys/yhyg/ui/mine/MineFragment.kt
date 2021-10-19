@@ -4,17 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
-import com.hjq.toast.ToastUtils
 import com.xdys.library.base.ViewModelFragment
+import com.xdys.library.config.Constant
 import com.xdys.library.extension.loadCircleImage
 import com.xdys.yhyg.R
 import com.xdys.yhyg.databinding.FragmentMineBinding
+import com.xdys.yhyg.entity.mine.UserInfoEntity
 import com.xdys.yhyg.popup.PersonalSharePopupWindow
 import com.xdys.yhyg.ui.order.MyOrderActivity
 import com.xdys.yhyg.ui.sale.ReturnAfterSaleActivity
 import com.xdys.yhyg.ui.sale.ViewSolutionActivity
-import com.xdys.yhyg.ui.setting.PersonalInformationActivity
 import com.xdys.yhyg.ui.setting.SetActivity
 import com.xdys.yhyg.ui.web.WebViewActivity
 import com.xdys.yhyg.vm.MineViewModel
@@ -28,17 +29,6 @@ class MineFragment : ViewModelFragment<MineViewModel, FragmentMineBinding>() {
     override val viewModel: MineViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?): Unit = with(binding) {
-        tvMemberLevel.text = "普通会员"
-        tvUserId.text = "ID:201110222"
-        tvUserName.text = "醉神三毛啊"
-        tvOnlinePointsNum.text = "999"
-        tvOfflinePointsNum.text = "888"
-        tvBalanceNum.text = "666"
-        tvCouponsNumber.text = "555"
-        ivPortrait.loadCircleImage(R.mipmap.watch)
-        tvTodayIncomeNum.text = "16586"
-        tvTodayOrderNum.text = "5556"
-        tvTodaySalesNum.text = "7596"
         clShopkeeperCenter.setOnClickListener {
             ShopkeeperCenterActivity.start(requireContext())
         }
@@ -84,12 +74,39 @@ class MineFragment : ViewModelFragment<MineViewModel, FragmentMineBinding>() {
         tvFeedback.setOnClickListener {
             ViewSolutionActivity.start(requireContext())
         }
-        gpUser.setOnClickListener {
-            ToastUtils.show("点击")
-            PersonalInformationActivity.start(requireContext())
-        }
         tvBoardCommittee.setOnClickListener {
-            WebViewActivity.start(requireContext())
+        }
+        tvCommonProblem.setOnClickListener {
+            WebViewActivity.start(requireContext(), "${Constant.webUrl}/problem", "常见问题")
+        }
+    }
+
+    fun fillUI(userInfo: UserInfoEntity) {
+        with(binding) {
+            tvMemberLevel.text = "普通会员"
+            tvUserId.text = "ID:${userInfo.userCode}"
+            tvUserName.text = userInfo.nickName
+            tvOnlinePointsNum.text = userInfo.onlineIntegral
+            tvOfflinePointsNum.text = userInfo.offlineIntegral
+            tvBalanceNum.text = userInfo.balance
+            tvCouponsNumber.text = userInfo.cardVoucherList.size.toString()
+            ivPortrait.loadCircleImage(R.mipmap.watch)
+            tvTodayIncomeNum.text = "16586"
+            tvTodayOrderNum.text = "5556"
+            tvTodaySalesNum.text = "7596"
+            ivPortrait.loadCircleImage(userInfo.headimgUrl)
+            clShopkeeperCenter.isVisible = userInfo.isMerchant == "1"
+        }
+    }
+
+    override fun initData() {
+        viewModel.userInfo()
+    }
+
+    override fun initObserver() {
+        super.initObserver()
+        viewModel.userInfoLivaData.observe(this) {
+            fillUI(it)
         }
     }
 

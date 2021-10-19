@@ -13,6 +13,8 @@ import java.util.concurrent.TimeUnit
 object HttpClient {
 
     object Url {
+//        private val prod = "http://desktop-r37dbo8:8081/"
+
         private val prod = "http://desktop-0csfku1:8081/"
         val baseUrl = prod
     }

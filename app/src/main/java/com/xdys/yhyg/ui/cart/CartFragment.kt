@@ -80,7 +80,7 @@ class CartFragment : ViewModelFragment<CartViewModel, FragmentCartBinding>() {
 
     override fun initData() {
         viewModel.cart()
-        goodsAdapter.setNewInstance(mutableListOf(GoodsEntity(), GoodsEntity(), GoodsEntity()))
+        goodsAdapter.setNewInstance(mutableListOf())
     }
 
     private fun createHeaderView(): View {

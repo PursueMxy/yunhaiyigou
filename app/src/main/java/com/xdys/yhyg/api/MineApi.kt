@@ -8,6 +8,6 @@ import retrofit2.http.GET
 
 interface MineApi : BaseApi {
 
-    @GET("")
+    @GET("/mall-user/api/user/info")
     suspend fun userInfo(): Result<UserInfoEntity>
 }

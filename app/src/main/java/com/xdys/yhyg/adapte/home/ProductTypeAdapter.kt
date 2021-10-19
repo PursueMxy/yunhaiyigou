@@ -20,7 +20,7 @@ class ProductTypeAdapter :
 
     override fun convert(holder: ProductTypeViewHolder, item: ProductType) {
         holder.setText(R.id.tvTitle, item.title)
-        holder.mAdapter.setNewInstance(item.typeList)
+//        holder.mAdapter.setNewInstance(item.typeList)
     }
 
     override fun onItemViewHolderCreated(viewHolder: ProductTypeViewHolder, viewType: Int) {

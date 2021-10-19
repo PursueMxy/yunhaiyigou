@@ -15,9 +15,9 @@ class MallCateAdapter : BaseQuickAdapter<String, BaseViewHolder>(R.layout.mall_c
     private val goodsTypeAdapter by lazy { GoodsTypeAdapter() }
 
     override fun convert(holder: BaseViewHolder, item: String) {
-        goodsTypeAdapter.setNewInstance(
-            mutableListOf("超市", "生鲜果蔬", "乳制品", "休闲零食", "粮油副食", "个人洗护", "酒水饮料")
-        )
+//        goodsTypeAdapter.setNewInstance(
+//            mutableListOf("超市", "生鲜果蔬", "乳制品", "休闲零食", "粮油副食", "个人洗护", "酒水饮料")
+//        )
         goodsTypeAdapter.setOnItemClickListener { adapter, view, position ->
             EntityListActivity.start(context)
         }

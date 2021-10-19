@@ -10,6 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.to.aboomy.pager2banner.IndicatorView
 import com.xdys.library.base.ViewModelFragment
+import com.xdys.library.config.Constant
 import com.xdys.library.extension.dp
 import com.xdys.library.extension.px
 import com.xdys.library.kit.decoration.DividerItemDecoration
@@ -31,7 +32,7 @@ class RecommendFragment : ViewModelFragment<HomeViewModel, FragmentRecommendBind
     override val viewModel: HomeViewModel by activityViewModels()
     private val mAdapter by lazy { ImageAdapter() }
     private val cateFirstAdapter by lazy { HomeCateFirstAdapter() }
-    private val brandMerchatAdapter by lazy { BrandMerchantAdapter() }
+    private val brandMerchantAdapter by lazy { BrandMerchantAdapter() }
     private val goodsAdapter by lazy { HomeGoodsAdapter() }
 
     companion object {
@@ -55,7 +56,7 @@ class RecommendFragment : ViewModelFragment<HomeViewModel, FragmentRecommendBind
             addItemDecoration(DividerItemDecoration(12.px, 17.px))
         }
         with(rvBrandMerchant) {
-            adapter = brandMerchatAdapter
+            adapter = brandMerchantAdapter
             layoutManager = GridLayoutManager(requireContext(), 2)
             addItemDecoration(DividerItemDecoration(19.dp, 3.px))
         }
@@ -70,8 +71,13 @@ class RecommendFragment : ViewModelFragment<HomeViewModel, FragmentRecommendBind
         ivSeckill.setOnClickListener {
             CommodityTypeActivity.start(requireContext())
         }
-        with(brandMerchatAdapter) {
+        with(brandMerchantAdapter) {
             setOnItemClickListener { _, _, position ->
+                WebViewActivity.start(requireContext(), Constant.webUrl)
+            }
+        }
+        with(tvSeeMore) {
+            setOnClickListener {
                 BrandZoneActivity.start(requireContext())
             }
         }
@@ -79,22 +85,30 @@ class RecommendFragment : ViewModelFragment<HomeViewModel, FragmentRecommendBind
             setOnItemClickListener { _, _, position ->
                 when (position) {
                     1 -> CouponCenterActivity.start(requireContext())
-                    4 -> WebViewActivity.start(requireContext())
                 }
             }
+        }
+        ivSeckill.setOnClickListener {
+            WebViewActivity.start(requireContext(), "${Constant.webUrl}/", "限时秒杀")
         }
     }
 
     override fun initData() {
-        cateFirstAdapter.setNewInstance(mutableListOf("新人专享", "领券中心", "积分兑换", "杜康名酒", "品牌专区"))
-        brandMerchatAdapter.setDiffNewData(mutableListOf())
-        goodsAdapter.setDiffNewData(mutableListOf())
+        viewModel.favGoods()
+        viewModel.shopFav()
     }
 
     override fun initObserver() {
         super.initObserver()
-        viewModel.classifyLiveData.observe(this) {
+        viewModel.homeLiveData.observe(this) {
             mAdapter.setNewInstance(it.carouselList)
+            cateFirstAdapter.setNewInstance(it.buttonList)
+        }
+        viewModel.favGoodsLiveData.observe(this) {
+            goodsAdapter.setDiffNewData(it.records)
+        }
+        viewModel.shopFavLiveData.observe(this) {
+            brandMerchantAdapter.setDiffNewData(it.records)
         }
     }
 }

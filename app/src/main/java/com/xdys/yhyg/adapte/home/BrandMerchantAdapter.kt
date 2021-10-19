@@ -16,9 +16,9 @@ class BrandMerchantAdapter :
     }
 
     override fun convert(holder: BaseViewHolder, item: BrandMerchantEntity) {
-        holder.setText(R.id.tvGoodsName, item.goodsName)
-            .setText(R.id.tvMerchant, item.merchant)
-            .getView<ImageView>(R.id.ivGoods).loadRoundCornerImage(R.mipmap.imgthumb, 3)
+        holder.setText(R.id.tvGoodsName, item.name)
+            .setText(R.id.tvMerchant, item.detail)
+            .getView<ImageView>(R.id.ivGoods).loadRoundCornerImage(item.imgUrl, 3 , R.mipmap.imgthumb)
         holder.getView<ImageView>(R.id.ivBusinessLogo).loadRoundCornerImage(R.mipmap.business_logo)
     }
 }
@@ -36,7 +36,7 @@ class BrandMerchantDiffCallback : DiffUtil.ItemCallback<BrandMerchantEntity>() {
         oldItem: BrandMerchantEntity,
         newItem: BrandMerchantEntity
     ): Boolean {
-        return oldItem.goodsName == newItem.goodsName && oldItem.merchant == newItem.merchant
-                && oldItem.image == newItem.image && oldItem.logo == newItem.logo
+        return oldItem.name == newItem.name && oldItem.imgUrl == newItem.imgUrl
+                && oldItem.detail == newItem.detail
     }
 }

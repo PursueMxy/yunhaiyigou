@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import com.xdys.library.base.ViewModelFragment
 import com.xdys.yhyg.adapte.mall.PhysicalStoreAdapter
 import com.xdys.yhyg.databinding.FragmentEntityBinding
+import com.xdys.yhyg.entity.mall.PhysicalStore
 import com.xdys.yhyg.vm.MallViewModel
 
 class EntityFragment : ViewModelFragment<MallViewModel, FragmentEntityBinding>() {
@@ -41,6 +42,6 @@ class EntityFragment : ViewModelFragment<MallViewModel, FragmentEntityBinding>()
     }
 
     override fun initData() {
-        physicalStoreAdapter.setDiffNewData(mutableListOf())
+        physicalStoreAdapter.setDiffNewData(mutableListOf(PhysicalStore(),PhysicalStore()))
     }
 }

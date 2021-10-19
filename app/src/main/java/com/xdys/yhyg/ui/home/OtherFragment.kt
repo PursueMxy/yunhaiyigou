@@ -7,36 +7,38 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
+import com.xdys.library.base.ViewModelFragment
+import com.xdys.library.config.Constant.Key.EXTRA_ID
+import com.xdys.library.extension.dp
+import com.xdys.library.extension.px
+import com.xdys.library.kit.decoration.DividerItemDecoration
 import com.xdys.yhyg.adapte.home.BrandSelectionAdapter
 import com.xdys.yhyg.adapte.home.GoodsTypeAdapter
 import com.xdys.yhyg.adapte.home.HomeGoodsAdapter
 import com.xdys.yhyg.databinding.FragmentOtherBinding
-import com.xdys.yhyg.vm.MineViewModel
-import com.xdys.library.base.ViewModelFragment
-import com.xdys.library.extension.dp
-import com.xdys.library.extension.px
-import com.xdys.library.kit.decoration.DividerItemDecoration
+import com.xdys.yhyg.vm.HomeViewModel
 
-class OtherFragment : ViewModelFragment<MineViewModel, FragmentOtherBinding>() {
+class OtherFragment : ViewModelFragment<HomeViewModel, FragmentOtherBinding>() {
     override fun createBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
     ): FragmentOtherBinding = FragmentOtherBinding.inflate(inflater, container, false)
 
-    override val viewModel: MineViewModel by activityViewModels()
+    override val viewModel: HomeViewModel by activityViewModels()
     private val goodsTypeAdapter by lazy { GoodsTypeAdapter() }
     private val brandSelectionAdapter by lazy { BrandSelectionAdapter() }
     private val goodsAdapter by lazy { HomeGoodsAdapter() }
+    private var catId: String? = null
 
 
     companion object {
-        private val EXTRA_ID = "position"
-        fun newInstance(position: Int) = OtherFragment().apply {
+        fun newInstance(position: String) = OtherFragment().apply {
             arguments = bundleOf(EXTRA_ID to position)
         }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
+        catId = arguments?.getString(EXTRA_ID)
         with(rvType) {
             adapter = goodsTypeAdapter
             layoutManager = GridLayoutManager(requireContext(), 5)
@@ -55,13 +57,15 @@ class OtherFragment : ViewModelFragment<MineViewModel, FragmentOtherBinding>() {
     }
 
     override fun initData() {
-        goodsTypeAdapter.setNewInstance(
-            mutableListOf(
-                "夏上新", "JK制服", "连衣裙", "卫衣", "衬衫", "针织衫", "牛仔裤",
-                "休闲裤", "印花连衣裙", "真丝连衣裙", "印花连衣裙", "真丝连衣裙", "印花连衣裙", "真丝连衣裙", "更多分类"
-            )
-        )
+        catId?.let { viewModel.homeSecCat(it) }
         brandSelectionAdapter.setNewInstance(mutableListOf("", "", "", "", "", ""))
         goodsAdapter.setDiffNewData(mutableListOf())
+    }
+
+    override fun initObserver() {
+        super.initObserver()
+        viewModel.secCarLiveData.observe(this) {
+            goodsTypeAdapter.setNewInstance(it)
+        }
     }
 }

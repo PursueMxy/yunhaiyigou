@@ -5,11 +5,12 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.xdys.yhyg.R
 import com.xdys.library.extension.loadCircleImage
+import com.xdys.yhyg.entity.home.ButtonList
 
 
-class HomeCateFirstAdapter : BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_child) {
-    override fun convert(holder: BaseViewHolder, item: String) {
-        holder.setText(R.id.tvCateName, item)
-            .getView<ImageView>(R.id.ivCateCover).loadCircleImage(R.mipmap.new_exclusive)
+class HomeCateFirstAdapter : BaseQuickAdapter<ButtonList, BaseViewHolder>(R.layout.item_child) {
+    override fun convert(holder: BaseViewHolder, item: ButtonList) {
+        holder.setText(R.id.tvCateName, item.text)
+            .getView<ImageView>(R.id.ivCateCover).loadCircleImage(item.icon,R.mipmap.new_exclusive)
     }
 }

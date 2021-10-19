@@ -5,11 +5,12 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.xdys.library.extension.loadRoundCornerImage
 import com.xdys.yhyg.R
+import com.xdys.yhyg.entity.home.SecCatEntity
 
 class GoodsTypeAdapter :
-    BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_goods_type) {
-    override fun convert(holder: BaseViewHolder, item: String) {
-        holder.setText(R.id.tvTypeName, item)
-            .getView<ImageView>(R.id.ivType).loadRoundCornerImage(R.mipmap.uniform, 3)
+    BaseQuickAdapter<SecCatEntity, BaseViewHolder>(R.layout.item_goods_type) {
+    override fun convert(holder: BaseViewHolder, item: SecCatEntity) {
+        holder.setText(R.id.tvTypeName, item.name)
+            .getView<ImageView>(R.id.ivType).loadRoundCornerImage(item.picUrl, 3)
     }
 }
