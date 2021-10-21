@@ -36,7 +36,7 @@ class PaymentStatusActivity : ViewModelActivity<MallViewModel, ActivityPaymentSt
             layoutManager = GridLayoutManager(this@PaymentStatusActivity, 2)
             addItemDecoration(DividerItemDecoration(7.dp, 7.dp))
             goodsAdapter.setOnItemClickListener { adapter, view, position ->
-                GoodsDetailActivity.start(this@PaymentStatusActivity)
+                GoodsDetailActivity.start(this@PaymentStatusActivity,"")
             }
         }
     }

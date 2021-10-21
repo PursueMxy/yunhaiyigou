@@ -10,7 +10,7 @@ class IntegralRulePopupWindow(
     context: Context, private val confirm: () -> Unit,
 ) : BasePopupWindow(context) {
 
-    override fun onCreateContentView(): View = createPopupById(R.layout.popup_integral_rule)
+    fun onCreateContentView(): View = createPopupById(R.layout.popup_integral_rule)
     override fun onViewCreated(contentView: View) {
         findViewById<ImageView>(R.id.ivClose).setOnClickListener {
             dismiss()

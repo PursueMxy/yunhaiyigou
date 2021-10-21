@@ -2,9 +2,12 @@ package com.xdys.yhyg.ui.home
 
 import android.graphics.Color
 import android.os.Bundle
+import android.text.SpannableStringBuilder
+import android.text.Spanned
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
@@ -14,6 +17,8 @@ import com.xdys.library.config.Constant
 import com.xdys.library.extension.dp
 import com.xdys.library.extension.px
 import com.xdys.library.kit.decoration.DividerItemDecoration
+import com.xdys.library.widget.SpanView
+import com.xdys.yhyg.R
 import com.xdys.yhyg.adapte.home.BrandMerchantAdapter
 import com.xdys.yhyg.adapte.home.HomeCateFirstAdapter
 import com.xdys.yhyg.adapte.home.HomeGoodsAdapter
@@ -64,8 +69,11 @@ class RecommendFragment : ViewModelFragment<HomeViewModel, FragmentRecommendBind
             adapter = goodsAdapter
             layoutManager = GridLayoutManager(requireContext(), 2)
             addItemDecoration(DividerItemDecoration(7.dp, 7.dp))
-            goodsAdapter.setOnItemClickListener { adapter, view, position ->
-                GoodsDetailActivity.start(requireContext())
+
+        }
+        with(goodsAdapter) {
+            setOnItemClickListener { _, _, position ->
+                data[position].id?.let { GoodsDetailActivity.start(requireContext(), it) }
             }
         }
         ivSeckill.setOnClickListener {
@@ -73,13 +81,14 @@ class RecommendFragment : ViewModelFragment<HomeViewModel, FragmentRecommendBind
         }
         with(brandMerchantAdapter) {
             setOnItemClickListener { _, _, position ->
-                WebViewActivity.start(requireContext(), Constant.webUrl)
+                WebViewActivity.start(
+                    requireContext(),
+                    "${Constant.webUrl}/exclusive/id?${data[position].id}"
+                )
             }
         }
-        with(tvSeeMore) {
-            setOnClickListener {
-                BrandZoneActivity.start(requireContext())
-            }
+        tvSeeMore.setOnClickListener {
+            WebViewActivity.start(requireContext(), "${Constant.webUrl}/brand")
         }
         with(cateFirstAdapter) {
             setOnItemClickListener { _, _, position ->
@@ -88,9 +97,6 @@ class RecommendFragment : ViewModelFragment<HomeViewModel, FragmentRecommendBind
                 }
             }
         }
-        ivSeckill.setOnClickListener {
-            WebViewActivity.start(requireContext(), "${Constant.webUrl}/", "限时秒杀")
-        }
     }
 
     override fun initData() {
@@ -98,11 +104,40 @@ class RecommendFragment : ViewModelFragment<HomeViewModel, FragmentRecommendBind
         viewModel.shopFav()
     }
 
+    fun countDown() {
+        val str = " 10 : 20 : 56 "
+        val builder = SpannableStringBuilder(str)
+        builder.setSpan(
+            SpanView(
+                ContextCompat.getColor(requireContext(), R.color.RE3),
+                ContextCompat.getColor(requireContext(), R.color.white)
+            ),
+            0, 2 + 2, Spanned.SPAN_INCLUSIVE_INCLUSIVE
+        )
+        builder.setSpan(
+            SpanView(
+                ContextCompat.getColor(requireContext(), R.color.RE3),
+                ContextCompat.getColor(requireContext(), R.color.white)
+            ),
+            str.length - 9, str.length - 5, Spanned.SPAN_INCLUSIVE_INCLUSIVE
+        )
+        builder.setSpan(
+            SpanView(
+                ContextCompat.getColor(requireContext(), R.color.RE3),
+                ContextCompat.getColor(requireContext(), R.color.white)
+            ),
+            str.length - 4, str.length, Spanned.SPAN_INCLUSIVE_INCLUSIVE
+        )
+        binding.tvUntilTime.text = builder
+    }
+
+
     override fun initObserver() {
         super.initObserver()
         viewModel.homeLiveData.observe(this) {
             mAdapter.setNewInstance(it.carouselList)
             cateFirstAdapter.setNewInstance(it.buttonList)
+            countDown()
         }
         viewModel.favGoodsLiveData.observe(this) {
             goodsAdapter.setDiffNewData(it.records)

@@ -54,6 +54,41 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <TextView
+                android:id="@+id/tvLimitedSpike"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/limited_time_spike"
+                android:textColor="@color/RE3"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvUntilTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/RE3"
+                android:textSize="10sp"
+                app:layout_constraintStart_toStartOf="@id/tvLimitedSpike"
+                app:layout_constraintTop_toBottomOf="@id/tvLimitedSpike" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/bg_r100"
+                android:padding="2dp"
+                android:text="G0 >"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                android:backgroundTint="@color/RE3"
+                app:layout_constraintStart_toStartOf="@id/tvLimitedSpike"
+                app:layout_constraintTop_toBottomOf="@id/tvUntilTime" />
+
             <ImageView
                 android:id="@+id/ivGoodsProduct"
                 android:layout_width="0dp"

@@ -19,7 +19,7 @@ class ShopAdapter : BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_shop)
         holder.setText(R.id.tvShopName, "梵希蔓服饰旗舰店")
             .setText(R.id.tvAttention, "4.5万人关注")
             .getView<ImageView>(R.id.ivLogo).loadRoundCornerImage(R.mipmap.mall_logo)
-        goodsItemAdapter.setNewInstance(mutableListOf("","",""))
+        goodsItemAdapter.setNewInstance(mutableListOf("", "", ""))
     }
 
     override fun onItemViewHolderCreated(viewHolder: BaseViewHolder, viewType: Int) {
@@ -30,7 +30,7 @@ class ShopAdapter : BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_shop)
         }
         with(goodsItemAdapter) {
             setOnItemClickListener { _, view, position ->
-                SingleCategoryActivity.start(context)
+                SingleCategoryActivity.start(context, "", "")
             }
         }
     }

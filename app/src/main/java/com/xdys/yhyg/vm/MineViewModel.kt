@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 
 class MineViewModel : BaseViewModel() {
 
-    private val api by lazy { HttpClient.create(MineApi::class.java) }
+    private val api by lazy { HttpClient.create2(MineApi::class.java) }
     val userInfoLivaData by lazy { MutableLiveData<UserInfoEntity>() }
 
     //用户信息

@@ -31,6 +31,8 @@ class HomeFragment : ViewModelFragment<HomeViewModel, FragmentHomeBinding>() {
 
     private val productTypeAdapter by lazy { ProductTypeAdapter() }
 
+
+
     @SuppressLint("WrongConstant")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
         clSearch.setOnClickListener { SearchActivity.start(requireContext()) }
@@ -41,6 +43,8 @@ class HomeFragment : ViewModelFragment<HomeViewModel, FragmentHomeBinding>() {
         with(rvProductType) {
             adapter = productTypeAdapter
         }
+        refreshLayout.setOnRefreshListener { initData() }
+
         tvTitle.text = "女装"
 
     }
@@ -53,6 +57,8 @@ class HomeFragment : ViewModelFragment<HomeViewModel, FragmentHomeBinding>() {
     override fun initObserver() {
         super.initObserver()
         viewModel.homeLiveData.observe(this) {
+            binding.refreshLayout.finishRefresh()
+            binding.tabLayout.clearOnTabSelectedListeners()
             initViewPager(it.goodsCategoryListFirst)
         }
     }

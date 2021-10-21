@@ -22,7 +22,7 @@ class ProductSpecPopupWindow(
     private var number: Int = 1
 
     var type: Int? = 0
-    override fun onCreateContentView(): View = createPopupById(R.layout.popup_product_spec)
+    fun onCreateContentView(): View = createPopupById(R.layout.popup_product_spec)
 
     override fun onViewCreated(contentView: View) {
         // 设置属性Adapter

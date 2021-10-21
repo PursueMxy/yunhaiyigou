@@ -8,13 +8,16 @@ import com.xdys.yhyg.databinding.ActivityGoodsDetailBinding
 import com.xdys.yhyg.popup.ProductSpecPopupWindow
 import com.xdys.yhyg.vm.MineViewModel
 import com.xdys.library.base.ViewModelActivity
+import com.xdys.library.config.Constant
 import com.xdys.library.extension.*
+import com.xdys.yhyg.vm.HomeViewModel
 
-class GoodsDetailActivity : ViewModelActivity<MineViewModel, ActivityGoodsDetailBinding>() {
+class GoodsDetailActivity : ViewModelActivity<HomeViewModel, ActivityGoodsDetailBinding>() {
 
     companion object {
-        fun start(context: Context) {
+        fun start(context: Context, id: String) {
             val intent = Intent(context, GoodsDetailActivity::class.java)
+                .putExtra(Constant.Key.EXTRA_ID, id)
                 .singleTop()
             context.startActivity(intent)
         }
@@ -23,8 +26,7 @@ class GoodsDetailActivity : ViewModelActivity<MineViewModel, ActivityGoodsDetail
     override fun createBinding(): ActivityGoodsDetailBinding =
         ActivityGoodsDetailBinding.inflate(layoutInflater)
 
-    override val viewModel: MineViewModel by viewModels()
-
+    override val viewModel: HomeViewModel by viewModels()
 
 
     override fun initUI(savedInstanceState: Bundle?): Unit = with(binding) {
@@ -32,7 +34,13 @@ class GoodsDetailActivity : ViewModelActivity<MineViewModel, ActivityGoodsDetail
         tvBuyNow.setOnClickListener { productSpecPopupWindow.showPopupWindow() }
     }
 
+    override fun initData() {
+        intent.getStringExtra(Constant.Key.EXTRA_ID)?.let { viewModel.goodsDetail(it) }
+    }
 
+    override fun initObserver() {
+        super.initObserver()
+    }
 
 
     private val productSpecPopupWindow: ProductSpecPopupWindow by lazy {

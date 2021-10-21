@@ -14,13 +14,18 @@ import com.xdys.yhyg.R
 import com.xdys.yhyg.databinding.ActivitySingleCategoryBinding
 import com.xdys.yhyg.vm.CateViewModel
 import com.xdys.library.base.ViewModelActivity
+import com.xdys.library.config.Constant
+import com.xdys.library.config.Constant.Key.EXTRA_ID
+import com.xdys.library.config.Constant.Key.EXTRA_TITLE
 import com.xdys.library.extension.singleTop
 
 class SingleCategoryActivity : ViewModelActivity<CateViewModel, ActivitySingleCategoryBinding>() {
 
     companion object {
-        fun start(context: Context) {
+        fun start(context: Context,title:String,id:String) {
             val intent = Intent(context, SingleCategoryActivity::class.java)
+                .putExtra(EXTRA_ID,id)
+                .putExtra(EXTRA_TITLE,title)
                 .singleTop()
             context.startActivity(intent)
         }

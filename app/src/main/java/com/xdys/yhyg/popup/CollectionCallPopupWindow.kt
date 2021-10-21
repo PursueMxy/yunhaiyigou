@@ -10,7 +10,7 @@ class CollectionCallPopupWindow(
     context: Context, private val confirm: () -> Unit,
 ) : BasePopupWindow(context) {
 
-    override fun onCreateContentView(): View = createPopupById(R.layout.popup_collection_call)
+    fun onCreateContentView(): View = createPopupById(R.layout.popup_collection_call)
     override fun onViewCreated(contentView: View) {
         findViewById<TextView>(R.id.tvDetermine).setOnClickListener {
             confirm?.invoke()

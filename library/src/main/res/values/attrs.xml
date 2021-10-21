@@ -104,4 +104,19 @@
         <attr name="bgCorner" format="dimension"/>
 
     </declare-styleable>
+
+
+    <declare-styleable name="WheelView">
+        <attr name="wheel_gravity">
+            <enum name="center" value="17" />
+            <enum name="start" value="8388611" />
+            <enum name="end" value="8388613" />
+        </attr>
+        <attr name="wheel_textSize" format="dimension" />
+        <attr name="wheel_textColorOut" format="color" />
+        <attr name="wheel_textColorCenter" format="color" />
+        <attr name="wheel_dividerColor" format="color" />
+        <attr name="wheel_dividerWidth" format="dimension" />
+        <attr name="wheel_lineSpacingMultiplier" format="float" />
+    </declare-styleable>
 </resources>

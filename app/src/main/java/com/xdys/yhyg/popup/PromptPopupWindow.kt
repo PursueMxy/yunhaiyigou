@@ -4,18 +4,26 @@ import android.content.Context
 import android.view.View
 import android.widget.TextView
 import com.xdys.yhyg.R
+import com.xdys.yhyg.databinding.PopupPromptBinding
 import razerdp.basepopup.BasePopupWindow
 
 class PromptPopupWindow(
     context: Context, private val confirm: () -> Unit,
 ) : BasePopupWindow(context) {
 
-    override fun onCreateContentView(): View = createPopupById(R.layout.popup_prompt)
+    private lateinit var binding: PopupPromptBinding
+
+    init {
+        contentView = createPopupById(R.layout.popup_prompt)
+    }
+
+
     override fun onViewCreated(contentView: View) {
-        findViewById<View>(R.id.tvCancel).setOnClickListener {
+        binding = PopupPromptBinding.bind(contentView)
+        binding.tvCancel.setOnClickListener {
             dismiss()
         }
-        findViewById<View>(R.id.tvConfirm).setOnClickListener {
+        binding.tvConfirm.setOnClickListener {
             dismiss()
             confirm?.invoke()
         }
@@ -23,7 +31,7 @@ class PromptPopupWindow(
 
 
     fun setData(title: String): PromptPopupWindow {
-        findViewById<TextView>(R.id.tvTitle).text = title
+        binding.tvTitle.text = title
         return this
     }
 

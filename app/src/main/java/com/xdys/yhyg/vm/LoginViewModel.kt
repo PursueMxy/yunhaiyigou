@@ -17,13 +17,17 @@ import okhttp3.RequestBody.Companion.toRequestBody
 
 class LoginViewModel : BaseViewModel() {
 
-    private val api by lazy { HttpClient.create(LoginApi::class.java) }
+    private val api by lazy { HttpClient.create2(LoginApi::class.java) }
     private val gson by lazy { Gson() }
 
     val loginLiveData by lazy { MutableLiveData<LoginEntity>() }
 
     val registerLiveData by lazy { MutableLiveData<Any>() }
 
+
+    /**
+     * 登录
+     */
     fun login(username: String, password: String) {
         val map = hashMapOf("username" to username, "password" to password)
         val body = gson.toJson(map).toRequestBody(
@@ -38,6 +42,10 @@ class LoginViewModel : BaseViewModel() {
         }
     }
 
+
+    /**
+     * 发送短信
+     */
     fun sendRegisterSms(mobile: String, type: String) {
         val map = hashMapOf("phone" to mobile, "type" to type)
         val body = gson.toJson(map).toRequestBody(
@@ -50,11 +58,14 @@ class LoginViewModel : BaseViewModel() {
         }
     }
 
+
+    /**
+     * 注册
+     */
     fun register(username: String, smsCode: String, password: String) {
         val map = hashMapOf("username" to username, "smsCode" to smsCode, "password" to password)
-        val body = gson.toJson(map).toRequestBody(
-            context.getString(R.string.content_type_json).toMediaType()
-        )
+        val body = gson.toJson(map)
+            .toRequestBody(context.getString(R.string.content_type_json).toMediaType())
         viewModelScope.launch(Dispatchers.IO) {
             fetchData({ api.register(body) })?.let {
                 registerLiveData.postValue(it)

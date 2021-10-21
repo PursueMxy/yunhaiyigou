@@ -7,7 +7,7 @@ import razerdp.basepopup.BasePopupWindow
 
 class SharePopupWindow(context: Context, private val confirm: ((position: Int) -> Unit)? = null) :
     BasePopupWindow(context) {
-    override fun onCreateContentView(): View = createPopupById(R.layout.popup_share)
+     fun onCreateContentView(): View = createPopupById(R.layout.popup_share)
     override fun onViewCreated(contentView: View) {
         findViewById<View>(R.id.tvWeChatFriends).setOnClickListener {
             confirm?.invoke(0)

@@ -9,7 +9,7 @@ class AuthenticationPopupWindow(
     context: Context, private val confirm: () -> Unit,
 ) : BasePopupWindow(context) {
 
-    override fun onCreateContentView(): View = createPopupById(R.layout.popup_authentication)
+    fun onCreateContentView(): View = createPopupById(R.layout.popup_authentication)
     override fun onViewCreated(contentView: View) {
         findViewById<View>(R.id.ivClose).setOnClickListener {
             dismiss()

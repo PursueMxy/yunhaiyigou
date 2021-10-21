@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:background="@drawable/bg_r10_top"
+    android:backgroundTint="@android:color/white"
+    android:paddingTop="@dimen/padding_layout"
+    android:paddingBottom="@dimen/padding_layout">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/select_area"
+        android:textColor="#FF202020"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding_layout"
+        android:text="@string/cancel"
+        android:textColor="#555555"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@id/tvTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvTitle" />
+
+    <TextView
+        android:id="@+id/tvConfirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/padding_layout"
+        android:text="@string/confirm"
+        android:textColor="#555555"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@id/tvTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvTitle" />
+
+    <com.xdys.library.widget.wheel.view.WheelView
+        android:id="@+id/wheelProvince"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding_layout"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toStartOf="@id/wheelCity"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:wheel_dividerColor="#4CBFBB"
+        app:wheel_gravity="center"
+        app:wheel_lineSpacingMultiplier="3"
+        app:wheel_textColorCenter="#4CBFBB"
+        app:wheel_textColorOut="#555555"
+        app:wheel_textSize="15sp"
+        tools:layout_height="200dp" />
+
+    <com.xdys.library.widget.wheel.view.WheelView
+        android:id="@+id/wheelCity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@id/wheelDistrict"
+        app:layout_constraintStart_toEndOf="@id/wheelProvince"
+        app:layout_constraintTop_toTopOf="@id/wheelProvince"
+        app:layout_goneMarginEnd="@dimen/padding_layout"
+        app:wheel_dividerColor="#4CBFBB"
+        app:wheel_gravity="center"
+        app:wheel_lineSpacingMultiplier="3"
+        app:wheel_textColorCenter="#4CBFBB"
+        app:wheel_textColorOut="#555555"
+        app:wheel_textSize="15sp"
+        tools:layout_height="200dp" />
+
+    <com.xdys.library.widget.wheel.view.WheelView
+        android:id="@+id/wheelDistrict"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/padding_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/wheelCity"
+        app:layout_constraintTop_toTopOf="@id/wheelProvince"
+        app:wheel_dividerColor="#4CBFBB"
+        app:wheel_gravity="center"
+        app:wheel_lineSpacingMultiplier="3"
+        app:wheel_textColorCenter="#4CBFBB"
+        app:wheel_textColorOut="#555555"
+        app:wheel_textSize="15sp"
+        tools:layout_height="200dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -51,7 +51,7 @@ class CartFragment : ViewModelFragment<CartViewModel, FragmentCartBinding>() {
             setHeaderView(createHeaderView())
             headerWithEmptyEnable = true
             setOnItemClickListener { _, _, position ->
-                GoodsDetailActivity.start(requireContext())
+                GoodsDetailActivity.start(requireContext(),"")
             }
         }
         tvToSettle.setOnClickListener {

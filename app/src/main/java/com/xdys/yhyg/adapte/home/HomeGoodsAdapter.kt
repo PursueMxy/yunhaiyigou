@@ -18,7 +18,7 @@ class HomeGoodsAdapter :
     override fun convert(holder: BaseViewHolder, item: FavGoodsEntity) {
         holder.setText(R.id.tvGoodsName, item.name)
             .setText(R.id.tvPrice, item.priceDown)
-            .getView<ImageView>(R.id.ivGoods).loadRoundCornerImage(item.picUrls, 3)
+            .getView<ImageView>(R.id.ivGoods).loadRoundCornerImage(item.picUrls[0], 3)
     }
 }
 

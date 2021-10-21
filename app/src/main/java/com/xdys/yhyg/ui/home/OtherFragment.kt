@@ -16,6 +16,7 @@ import com.xdys.yhyg.adapte.home.BrandSelectionAdapter
 import com.xdys.yhyg.adapte.home.GoodsTypeAdapter
 import com.xdys.yhyg.adapte.home.HomeGoodsAdapter
 import com.xdys.yhyg.databinding.FragmentOtherBinding
+import com.xdys.yhyg.ui.classify.SingleCategoryActivity
 import com.xdys.yhyg.vm.HomeViewModel
 
 class OtherFragment : ViewModelFragment<HomeViewModel, FragmentOtherBinding>() {
@@ -53,6 +54,15 @@ class OtherFragment : ViewModelFragment<HomeViewModel, FragmentOtherBinding>() {
             adapter = goodsAdapter
             layoutManager = GridLayoutManager(requireContext(), 2)
             addItemDecoration(DividerItemDecoration(7.dp, 7.dp))
+        }
+        with(goodsTypeAdapter) {
+            setOnItemClickListener { _, _, position ->
+                data[position].name?.let {
+                    data[position].id?.let { id ->
+                        SingleCategoryActivity.start(requireContext(), it, id)
+                    }
+                }
+            }
         }
     }
 

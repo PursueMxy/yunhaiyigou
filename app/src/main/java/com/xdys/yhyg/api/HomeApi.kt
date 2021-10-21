@@ -26,4 +26,7 @@ interface HomeApi : BaseApi {
     @GET("/mall-goods/api/homecat/secCat/{id}")
     suspend fun homeSecCat(@Path("id") id: String): Result<MutableList<SecCatEntity>>
 
+
+    @GET("/mall-goods/api/goodsSpu/{id}")
+    suspend fun goodsDetail(@Path("id") id: String): Result<Any>
 }

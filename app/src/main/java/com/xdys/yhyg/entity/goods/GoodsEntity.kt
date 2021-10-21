@@ -38,3 +38,8 @@ data class Spike(
     val originalPrice: String? = null,
     val image: String? = null,
 )
+
+
+data class GoodsDetail(
+    val delFlag: String? = null,
+)

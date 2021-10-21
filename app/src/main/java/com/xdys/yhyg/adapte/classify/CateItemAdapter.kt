@@ -30,7 +30,7 @@ class CateItemAdapter : BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_c
         }
         with(goodsTypeAdapter) {
             setOnItemClickListener { _, view, position ->
-                SingleCategoryActivity.start(context)
+                SingleCategoryActivity.start(context,"","")
             }
         }
     }

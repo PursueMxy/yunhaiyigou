@@ -79,6 +79,9 @@ class MineFragment : ViewModelFragment<MineViewModel, FragmentMineBinding>() {
         tvCommonProblem.setOnClickListener {
             WebViewActivity.start(requireContext(), "${Constant.webUrl}/problem", "常见问题")
         }
+        refreshLayout.setOnRefreshListener {
+            initData()
+        }
     }
 
     fun fillUI(userInfo: UserInfoEntity) {
@@ -106,6 +109,7 @@ class MineFragment : ViewModelFragment<MineViewModel, FragmentMineBinding>() {
     override fun initObserver() {
         super.initObserver()
         viewModel.userInfoLivaData.observe(this) {
+            binding.refreshLayout.finishRefresh()
             fillUI(it)
         }
     }

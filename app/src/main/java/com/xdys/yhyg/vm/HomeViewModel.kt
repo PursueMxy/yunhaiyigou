@@ -77,5 +77,15 @@ class HomeViewModel : BaseViewModel() {
         }
     }
 
+    /**
+     * 商品详情
+     */
+    fun goodsDetail(id: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            fetchData({ api.goodsDetail(id) })?.let {
+            }
+        }
+    }
+
 
 }

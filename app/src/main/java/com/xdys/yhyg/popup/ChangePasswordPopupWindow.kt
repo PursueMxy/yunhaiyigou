@@ -9,7 +9,7 @@ class ChangePasswordPopupWindow(
     context: Context, private val confirm: () -> Unit,
 ) : BasePopupWindow(context) {
 
-    override fun onCreateContentView(): View = createPopupById(R.layout.popup_change_password)
+    fun onCreateContentView(): View = createPopupById(R.layout.popup_change_password)
     override fun onViewCreated(contentView: View) {
 
     }

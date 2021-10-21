@@ -76,7 +76,7 @@ dependencies {
     api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
     api 'com.jakewharton.timber:timber:4.7.1'
     api 'com.hjq:toast:8.8'
-    api 'com.github.razerdp:BasePopup:2.2.18'
+    api 'io.github.razerdp:BasePopup:3.1.4'
     api 'com.tencent:mmkv-static:1.2.5'
     api 'com.contrarywind:Android-PickerView:4.1.9'
     api 'com.king.view:splitedittext:1.0.0'

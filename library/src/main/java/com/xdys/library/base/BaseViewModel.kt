@@ -1,5 +1,6 @@
 package com.xdys.library.base
 
+import android.app.Application
 import android.os.CountDownTimer
 import android.util.Log
 import androidx.lifecycle.ViewModel
@@ -25,13 +26,15 @@ import kotlinx.coroutines.withContext
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
+import razerdp.basepopup.BasePopupSDK.getApplication
 import top.zibin.luban.Luban
 import java.net.ConnectException
 import java.net.SocketTimeoutException
 
-open class BaseViewModel : ViewModel() {
+open class BaseViewModel() : ViewModel() {
 
     private var timer: CountDownTimer? = null
+
 
     /**
      * 倒计时观察者

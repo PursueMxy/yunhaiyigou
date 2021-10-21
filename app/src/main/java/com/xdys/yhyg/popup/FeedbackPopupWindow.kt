@@ -24,7 +24,7 @@ class FeedbackPopupWindow(
             }
         }
 
-    override fun onCreateContentView(): View = createPopupById(R.layout.popup_feedback)
+    fun onCreateContentView(): View = createPopupById(R.layout.popup_feedback)
     override fun onViewCreated(contentView: View) {
         findViewById<TextView>(R.id.tvSubmitFeedback).setOnClickListener {
             confirm?.invoke()
