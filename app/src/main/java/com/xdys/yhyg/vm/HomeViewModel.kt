@@ -6,6 +6,7 @@ import com.xdys.library.base.BaseViewModel
 import com.xdys.library.network.HttpClient
 import com.xdys.library.network.base.PageData
 import com.xdys.yhyg.api.HomeApi
+import com.xdys.yhyg.entity.goods.GoodsDetailEntity
 import com.xdys.yhyg.entity.home.BrandMerchantEntity
 import com.xdys.yhyg.entity.home.FavGoodsEntity
 import com.xdys.yhyg.entity.home.HomeBean
@@ -27,6 +28,8 @@ class HomeViewModel : BaseViewModel() {
     val shopFavLiveData by lazy { MutableLiveData<PageData<BrandMerchantEntity>>() }
 
     val secCarLiveData by lazy { MutableLiveData<MutableList<SecCatEntity>>() }
+
+    val goodsDetailLiveData by lazy { MutableLiveData<GoodsDetailEntity>() }
 
     fun conversion(choose: Boolean) {
         conversionLiveData.postValue(choose)
@@ -83,6 +86,7 @@ class HomeViewModel : BaseViewModel() {
     fun goodsDetail(id: String) {
         viewModelScope.launch(Dispatchers.IO) {
             fetchData({ api.goodsDetail(id) })?.let {
+                goodsDetailLiveData.postValue(it)
             }
         }
     }

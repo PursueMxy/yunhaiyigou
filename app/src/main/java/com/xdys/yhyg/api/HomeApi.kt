@@ -3,13 +3,13 @@ package com.xdys.yhyg.api
 import com.xdys.library.network.base.BaseApi
 import com.xdys.library.network.base.PageData
 import com.xdys.library.network.base.Result
+import com.xdys.yhyg.entity.goods.GoodsDetailEntity
 import com.xdys.yhyg.entity.home.BrandMerchantEntity
 import com.xdys.yhyg.entity.home.FavGoodsEntity
 import com.xdys.yhyg.entity.home.HomeBean
 import com.xdys.yhyg.entity.home.SecCatEntity
 import retrofit2.http.GET
 import retrofit2.http.Path
-import retrofit2.http.Query
 
 interface HomeApi : BaseApi {
 
@@ -28,5 +28,5 @@ interface HomeApi : BaseApi {
 
 
     @GET("/mall-goods/api/goodsSpu/{id}")
-    suspend fun goodsDetail(@Path("id") id: String): Result<Any>
+    suspend fun goodsDetail(@Path("id") id: String): Result<GoodsDetailEntity>
 }

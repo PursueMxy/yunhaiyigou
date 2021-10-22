@@ -4,12 +4,12 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
-import com.xdys.yhyg.databinding.ActivityGoodsDetailBinding
-import com.xdys.yhyg.popup.ProductSpecPopupWindow
-import com.xdys.yhyg.vm.MineViewModel
 import com.xdys.library.base.ViewModelActivity
 import com.xdys.library.config.Constant
-import com.xdys.library.extension.*
+import com.xdys.library.extension.singleTop
+import com.xdys.yhyg.databinding.ActivityGoodsDetailBinding
+import com.xdys.yhyg.entity.goods.GoodsDetailEntity
+import com.xdys.yhyg.popup.ProductSpecPopupWindow
 import com.xdys.yhyg.vm.HomeViewModel
 
 class GoodsDetailActivity : ViewModelActivity<HomeViewModel, ActivityGoodsDetailBinding>() {
@@ -38,9 +38,9 @@ class GoodsDetailActivity : ViewModelActivity<HomeViewModel, ActivityGoodsDetail
         intent.getStringExtra(Constant.Key.EXTRA_ID)?.let { viewModel.goodsDetail(it) }
     }
 
-    override fun initObserver() {
-        super.initObserver()
-    }
+
+
+
 
 
     private val productSpecPopupWindow: ProductSpecPopupWindow by lazy {
