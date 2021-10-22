@@ -17,7 +17,6 @@ class PromptPopupWindow(
         contentView = createPopupById(R.layout.popup_prompt)
     }
 
-
     override fun onViewCreated(contentView: View) {
         binding = PopupPromptBinding.bind(contentView)
         binding.tvCancel.setOnClickListener {

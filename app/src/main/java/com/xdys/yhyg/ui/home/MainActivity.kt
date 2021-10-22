@@ -16,6 +16,7 @@ import com.xdys.yhyg.R
 import com.xdys.yhyg.databinding.ActivityMainBinding
 import com.xdys.yhyg.ui.cart.CartFragment
 import com.xdys.yhyg.ui.classify.ClassificationFragment
+import com.xdys.yhyg.ui.classify.ViceCateFragment
 import com.xdys.yhyg.ui.login.LoginActivity
 import com.xdys.yhyg.ui.mall.MallFragment
 import com.xdys.yhyg.ui.mine.MineFragment
@@ -34,9 +35,12 @@ class MainActivity : ViewModelActivity<MineViewModel, ActivityMainBinding>() {
         }
     }
 
-    private val homeFragment: HomeFragment by lazy { HomeFragment() }
-    private val classificationFragment: ClassificationFragment by lazy { ClassificationFragment() }
-    private val mallFragment: MallFragment by lazy { MallFragment() }
+//    private val homeFragment: HomeFragment by lazy { HomeFragment() }
+
+    private val homeFragment: ViceHomeFragment by lazy { ViceHomeFragment() }
+    private val classificationFragment: ViceCateFragment by lazy { ViceCateFragment() }
+
+    //    private val mallFragment: MallFragment by lazy { MallFragment() }
     private val cartFragment: CartFragment by lazy { CartFragment() }
     private val myFragment: MineFragment by lazy { MineFragment() }
 
@@ -64,15 +68,15 @@ class MainActivity : ViewModelActivity<MineViewModel, ActivityMainBinding>() {
                                 getString(R.string.classification)
                         })
                 )
-                addTab(
-                    newTab().setCustomView(
-                        layoutInflater.inflate(R.layout.tab_main, null).apply {
-                            findViewById<TextView>(R.id.tabMain).setCompoundDrawablesRelativeWithIntrinsicBounds(
-                                0, R.drawable.tab_mall, 0, 0
-                            )
-                            findViewById<TextView>(R.id.tabMain).text = getString(R.string.mall)
-                        })
-                )
+//                addTab(
+//                    newTab().setCustomView(
+//                        layoutInflater.inflate(R.layout.tab_main, null).apply {
+//                            findViewById<TextView>(R.id.tabMain).setCompoundDrawablesRelativeWithIntrinsicBounds(
+//                                0, R.drawable.tab_mall, 0, 0
+//                            )
+//                            findViewById<TextView>(R.id.tabMain).text = getString(R.string.mall)
+//                        })
+//                )
                 addTab(
                     newTab().setCustomView(
                         layoutInflater.inflate(R.layout.tab_main, null).apply {
@@ -120,9 +124,9 @@ class MainActivity : ViewModelActivity<MineViewModel, ActivityMainBinding>() {
         if (index > 4 || index < 0) return
         val fragment = when (index) {
             1 -> classificationFragment
-            2 -> mallFragment
-            3 -> cartFragment
-            4 -> myFragment
+//            2 -> mallFragment
+            2 -> cartFragment
+            3 -> myFragment
             else -> homeFragment
         }
         if (fragment.isAdded && fragment.isVisible) return

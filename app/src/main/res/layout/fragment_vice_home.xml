@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.scwang.smart.refresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.xdys.library.widget.TitleBar
+                android:id="@+id/titleBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:title_content="杜康古城酒业商城"
+                tools:height="50dp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clSearch"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="7dp"
+                android:background="@drawable/bg_r100"
+                android:backgroundTint="@color/BF2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/titleBar">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@mipmap/home_search"
+                    android:drawablePadding="5dp"
+                    android:text="@string/search_goods"
+                    android:textColor="@color/BCC"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="UseCompatTextViewDrawableXml" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="12dp">
+
+                <ImageView
+                    android:id="@+id/ivLatest"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:src="@mipmap/latest_announcements"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="23dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:textColor="@color/B66"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="@id/ivLatest"
+                    app:layout_constraintEnd_toStartOf="@id/tvMore"
+                    app:layout_constraintStart_toEndOf="@id/ivLatest"
+                    app:layout_constraintTop_toTopOf="@id/ivLatest"
+                    tools:text="关于商城活动买酒送礼品相关说明!" />
+
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="1dp"
+                    android:layout_height="0dp"
+                    android:layout_marginHorizontal="11dp"
+                    android:background="@color/B99"
+                    app:layout_constraintBottom_toBottomOf="@id/ivLatest"
+                    app:layout_constraintEnd_toStartOf="@id/tvMore"
+                    app:layout_constraintTop_toTopOf="@id/ivLatest" />o
+
+                <TextView
+                    android:id="@+id/tvMore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="19dp"
+                    android:text="@string/more"
+                    android:textColor="@color/B66"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="@id/ivLatest"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/ivLatest" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.to.aboomy.pager2banner.Banner
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="17dp"
+                app:layout_constraintTop_toBottomOf="@id/ivLatest" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCateFirst"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:nestedScrollingEnabled="false"
+                android:paddingHorizontal="10dp"
+                android:layout_marginTop="23dp"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="5"
+                tools:listitem="@layout/item_child" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:background="@color/BF2" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/ivFlashSale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="18.5dp"
+                    android:paddingVertical="17dp"
+                    android:src="@mipmap/flash_sale"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvSeeMore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="13dp"
+                    android:drawableEnd="@mipmap/arrow_right"
+                    android:drawablePadding="5.5dp"
+                    android:text="@string/see_more"
+                    android:textColor="@color/B99"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@id/ivFlashSale"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/ivFlashSale" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvFlashGoods"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginTop="1dp"
+                    android:paddingBottom="15dp"
+                    app:layout_constraintTop_toBottomOf="@id/ivFlashSale" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:background="@color/BF2" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@color/white">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/guess_you_like"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvGoods"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/BF2"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:paddingHorizontal="13.5dp"
+                android:paddingTop="8.5dp"
+                android:paddingBottom="15dp" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+</com.scwang.smart.refresh.layout.SmartRefreshLayout>

@@ -350,5 +350,6 @@
     <string name="limited_time_spike">限时秒杀</string>
     <string name="select_area">选择地区</string>
     <string name="confirm">确定</string>
+    <string name="more">更多</string>
 
 </resources>

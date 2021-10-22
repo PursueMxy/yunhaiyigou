@@ -2,10 +2,15 @@ package com.xdys.yhyg.vm
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.google.gson.Gson
 import com.xdys.library.base.BaseViewModel
+import com.xdys.library.config.Constant
+import com.xdys.library.extension.context
 import com.xdys.library.network.HttpClient
 import com.xdys.library.network.base.PageData
+import com.xdys.yhyg.R
 import com.xdys.yhyg.api.HomeApi
+import com.xdys.yhyg.entity.goods.GenerateOrdersEntity
 import com.xdys.yhyg.entity.goods.GoodsDetailEntity
 import com.xdys.yhyg.entity.home.BrandMerchantEntity
 import com.xdys.yhyg.entity.home.FavGoodsEntity
@@ -13,13 +18,18 @@ import com.xdys.yhyg.entity.home.HomeBean
 import com.xdys.yhyg.entity.home.SecCatEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.RequestBody.Companion.toRequestBody
 
 class HomeViewModel : BaseViewModel() {
 
     private val api by lazy { HttpClient.create(HomeApi::class.java) }
 
-    val conversionLiveData by lazy { MutableLiveData<Boolean>() }
+    private val api2 by lazy { HttpClient.create3(HomeApi::class.java) }
 
+    private val gson by lazy { Gson() }
+
+    val conversionLiveData by lazy { MutableLiveData<Boolean>() }
 
     val homeLiveData by lazy { MutableLiveData<HomeBean>() }
 
@@ -87,6 +97,20 @@ class HomeViewModel : BaseViewModel() {
         viewModelScope.launch(Dispatchers.IO) {
             fetchData({ api.goodsDetail(id) })?.let {
                 goodsDetailLiveData.postValue(it)
+            }
+        }
+    }
+
+    /**
+     * 下单
+     */
+    fun savaGoods(order: GenerateOrdersEntity) {
+        val body = gson.toJson(order).toRequestBody(
+            context.getString(R.string.content_type_json).toMediaType()
+        )
+        viewModelScope.launch {
+            fetchData({ api2.generateOrders(body) })?.let {
+
             }
         }
     }

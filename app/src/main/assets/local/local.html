@@ -7,12 +7,14 @@
 <body>
 
 <div id="content">
-
 </div>
 </body>
+
 <script>
      function callJS(str){
+     alert(str)
           document.getElementById("content").innerHTML = str;
      }
+     window.callJS=callJS
 </script>
 </html>

@@ -1,5 +1,6 @@
 package com.xdys.yhyg.ui.goods
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.xdys.library.base.ViewModelFragment
+import com.xdys.library.config.Constant
 import com.xdys.library.extension.dp
 import com.xdys.library.extension.loadCircleImage
 import com.xdys.library.extension.px
@@ -44,6 +46,7 @@ class GoodsDetailFragment : ViewModelFragment<HomeViewModel, FragmentGoodsDetail
     private val navController by lazy { findNavController() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
+        binding.webView.loadUrl("file:///android_asset/local/local.html")
         with(bannerContainer) {
             adapter = goodsBannerAdapter
             setOuterPageChangeListener(object : ViewPager2.OnPageChangeCallback() {
@@ -66,18 +69,19 @@ class GoodsDetailFragment : ViewModelFragment<HomeViewModel, FragmentGoodsDetail
             layoutManager = GridLayoutManager(context, 3)
             addItemDecoration(DividerItemDecoration(13.dp, 10.px))
         }
-        binding.webView.loadUrl("file:///android_asset/local/local.html")
         tvViewAll.setOnClickListener {
             navController.navigate(R.id.goodsEvaluateFragment)
         }
     }
 
     override fun initData() {
+        activity?.intent?.getStringExtra(Constant.Key.EXTRA_ID)?.let { viewModel.goodsDetail(it) }
         getCouponsAdapter.setNewInstance(mutableListOf("满500 送150 ", "满1230 送 333"))
         guaranteeAdapter.setNewInstance(mutableListOf("厂商发货配送", "品质保证", "不支持 7 天无理由退货"))
         evaluateImgAdapter.setNewInstance(mutableListOf("", "", ""))
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     fun fillUI(goods: GoodsDetailEntity) {
         with(binding) {
             goodsBannerAdapter.setNewInstance(goods.picUrls)
@@ -88,12 +92,9 @@ class GoodsDetailFragment : ViewModelFragment<HomeViewModel, FragmentGoodsDetail
             tvSelected.text = goods.specType
             tvDelivery.text = "商家配送"
             ivPortrait.loadCircleImage(R.mipmap.du_kang_jiu)
-            val jhhh: String =
-                "<p><img src=\"http://img20.360buyimg.com/vc/jfs/t1/78696/16/11566/195886/5d8daf86Efebb0a96/1797cdfc57bed506.jpg\">&nbsp;<img src=\"http://img20.360buyimg.com/vc/jfs/t1/47676/8/16789/186151/5ddcfe7aE972ab628/4d2949b425b32212.jpg\"></p>"
-            goods.description?.let {
-                Log.e("所倡导的", it)
-                webView.loadUrl("javascript:callJS('$jhhh')")
-            }
+            val jhhh: String = goods.description.toString()
+            Log.e("王者", jhhh)
+            webView.loadUrl("javascript:callJS('$jhhh')")
             tvUserName.text = "小杜小杜"
             tvTime.text = "2021-06-07  9:27"
             rating.rating = 3F

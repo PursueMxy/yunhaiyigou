@@ -79,14 +79,23 @@ data class GoodsDetailEntity(
 )
 
 data class skuEntity(
-   val delFlag:String?=null,
-   val createUserId:String?=null,
-   val createTime:String?=null,
-   val updateUserId:String?=null,
-   val updateTime:String?=null,
-   val tenantId:String?=null,
-   val id: String?=null,
-   val shopId:String?=null,
-   val skuCode:String?=null,
-   val spuId:String?=null,
+    val delFlag: String? = null,
+    val createUserId: String? = null,
+    val createTime: String? = null,
+    val updateUserId: String? = null,
+    val updateTime: String? = null,
+    val tenantId: String? = null,
+    val id: String? = null,
+    val shopId: String? = null,
+    val skuCode: String? = null,
+    val spuId: String? = null,
+    val specValueName: String? = null,
+    val specs: MutableList<specs> = mutableListOf()
+)
+
+data class specs(
+    val delFlag: String? = null,
+    val specValueName: String? = null,
+    val specId: String? = null,
+    val selected: Boolean = false
 )

@@ -13,6 +13,8 @@ import java.util.concurrent.TimeUnit
 object HttpClient {
 
     object Url {
+        val baseUrl2 = "http://192.168.2.30:8000/"
+
         val baseUrl1 = "http://desktop-r37dbo8:8081/"
 
         val baseUrl = "http://desktop-0csfku1:8081/"
@@ -49,4 +51,13 @@ object HttpClient {
     }
 
     fun <T : BaseApi> create2(clazz: Class<T>): T = retrofit2.create(clazz)
+
+
+    private val retrofit3: Retrofit by lazy {
+        Retrofit.Builder().baseUrl(Url.baseUrl2).client(requestClient)
+            .addConverterFactory(CustomConvertFactory(Gson()))
+            .build()
+    }
+
+    fun <T : BaseApi> create3(clazz: Class<T>): T = retrofit3.create(clazz)
 }
