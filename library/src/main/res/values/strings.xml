@@ -15,4 +15,6 @@
     <string name="content_type_json">application/json</string>
     <string name="fix_behavior">com.xdys.library.kit.behavior.FixAppBarLayoutBehavior</string>
     <string name="image_mime">image/*</string>
+    <string name="yuan_symbol">¥</string>
+    <string name="decimal_format">.00</string>
 </resources>

@@ -9,10 +9,7 @@ import com.xdys.yhyg.entity.home.FavGoodsEntity
 import com.xdys.yhyg.entity.home.HomeBean
 import com.xdys.yhyg.entity.home.SecCatEntity
 import okhttp3.RequestBody
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface HomeApi : BaseApi {
 
@@ -34,4 +31,7 @@ interface HomeApi : BaseApi {
 
     @POST("api/datainsert")
     suspend fun generateOrders(@Body body: RequestBody): Result<Any>
+
+    @GET("/mall-goods/api/goodsSpu/listEnsureBySpuId")
+    suspend fun ensureBySpuId(@Query("spuId") spuId:String): Result<Any>
 }

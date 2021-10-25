@@ -1,5 +1,7 @@
 package com.xdys.yhyg.entity.goods
 
+import java.io.Serializable
+
 data class GoodsEntity(
     val id: String? = null,
     val goodsName: String? = null,
@@ -74,9 +76,7 @@ data class GoodsDetailEntity(
     val verifyDetail: String? = null,
     val isHot: String? = null,
     val skus: MutableList<skuEntity> = mutableListOf()
-
-
-)
+) : Serializable
 
 data class skuEntity(
     val delFlag: String? = null,
@@ -89,13 +89,16 @@ data class skuEntity(
     val shopId: String? = null,
     val skuCode: String? = null,
     val spuId: String? = null,
-    val specValueName: String? = null,
+    val name: String? = null,
     val specs: MutableList<specs> = mutableListOf()
-)
+) : Serializable
 
 data class specs(
+    val id: String? = null,
     val delFlag: String? = null,
-    val specValueName: String? = null,
+    val specValueName: String = "",
     val specId: String? = null,
-    val selected: Boolean = false
-)
+    var selected: Boolean = false,
+    val spuId: String = "",
+    val skuId: String = "",
+) : Serializable

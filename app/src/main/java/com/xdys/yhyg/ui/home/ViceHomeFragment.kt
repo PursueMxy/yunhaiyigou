@@ -73,6 +73,9 @@ class ViceHomeFragment : ViewModelFragment<HomeViewModel, FragmentViceHomeBindin
                 data[position].id?.let { GoodsDetailActivity.start(requireContext(), it) }
             }
         }
+        clSearch.setOnClickListener {
+            SearchActivity.start(requireContext())
+        }
 
     }
 

@@ -2,13 +2,16 @@ package com.xdys.yhyg.adapte.cart
 
 import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import androidx.appcompat.widget.AppCompatCheckBox
 import androidx.recyclerview.widget.DiffUtil
 import com.chad.library.adapter.base.BaseNodeAdapter
 import com.chad.library.adapter.base.entity.node.BaseNode
 import com.chad.library.adapter.base.provider.BaseNodeProvider
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
+import com.hjq.toast.ToastUtils
 import com.xdys.library.extension.context
+import com.xdys.library.extension.currency
 import com.xdys.yhyg.R
 import com.xdys.yhyg.entity.cart.CartProductEntity
 import com.xdys.yhyg.entity.cart.CartSelectedEntity
@@ -61,6 +64,14 @@ class CartAdapter(
         return checkStatusEntity
     }
 
+    fun refreshAllCart(shopId: String, cartCheck: Boolean = false) {
+        for (shop in data) (shop as? CartShopEntity)?.let {
+            if (shop.shopId == shopId) {
+                it.selected = cartCheck
+            }
+        }
+    }
+
     /**
      * 刷新当前item
      */
@@ -85,7 +96,6 @@ class CartAdapter(
 }
 
 
-
 // 判断是否是编辑模式
 var editMode = false
     set(value) {
@@ -107,15 +117,14 @@ class CartShopProvider(
 
     override fun convert(holder: BaseViewHolder, item: BaseNode) {
         (item as CartShopEntity)?.let { shop ->
-            holder.getView<AppCompatCheckBox>(R.id.cbShopCheck).isChecked = shop.selected
+            holder.getView<ImageView>(R.id.cbShopCheck).isSelected = shop.selected
             holder.setText(R.id.tvShopName, shop.shopName)
                 .getView<View>(R.id.tvDiscountCoupon).setOnClickListener {
                     popupCoupons.setData().showPopupWindow()
                 }
-            holder.getView<AppCompatCheckBox>(R.id.cbShopCheck).setOnClickListener {
+            holder.getView<ImageView>(R.id.cbShopCheck).setOnClickListener {
                 shop.selected = !shop.selected
                 listener?.changedShop(shop)
-                Log.e("嘻嘻嘻", shop.shopName)
             }
         }
     }
@@ -141,8 +150,15 @@ class CartProductProvider(
     override val layoutId: Int = R.layout.item_cart_goods
 
     override fun convert(holder: BaseViewHolder, item: BaseNode) {
-        (item as CartProductEntity)?.let {
-            holder.getView<AppCompatCheckBox>(R.id.cbCartCheck).isChecked = it.selected
+        (item as CartProductEntity)?.let { cartProduct ->
+            holder.setText(R.id.tvGoodsName, cartProduct.goodsSpu?.name)
+            holder.setText(R.id.tvPrice, (cartProduct.goodsSpu?.priceDown?.currency()))
+            holder.getView<ImageView>(R.id.cbCartChecks).isSelected = cartProduct.selected
+            holder.getView<ImageView>(R.id.cbCartChecks).setOnClickListener {
+                it.isSelected = !it.isSelected
+                ToastUtils.show(cartProduct.goodsSku.shopId.toString()+"你你你")
+                listener?.changeProduct(cartProduct, it.isSelected)
+            }
         }
     }
 }
@@ -165,6 +181,11 @@ interface OnCartItemSelectedListener {
      * 选中状态发生变化
      */
     fun changed()
+
+    /**
+     * 商品选择更新店铺
+     */
+    fun changeProduct(cartProduct: CartProductEntity, isShop: Boolean)
 
     /**
      * 店铺选中状态发生变化

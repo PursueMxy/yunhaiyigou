@@ -1,10 +1,35 @@
 package com.xdys.library.extension
 
 import android.text.Editable
+import androidx.core.text.buildSpannedString
+import androidx.core.text.scale
 import com.xdys.library.R
 import java.math.RoundingMode
 import java.text.SimpleDateFormat
 import java.util.*
+
+
+/**
+ * 生成带货币符号，且小数点较小的金额格式(默认两位小数)
+ * @param scale 整数部分文字大小的倍率
+ * @param needDecimal 如果入参是整数，是否需要补齐小数
+ */
+fun String.currency(scale: Float = 1.5F, needDecimal: Boolean = false) =
+    buildSpannedString {
+        var hasDot = false
+        append(context.getString(R.string.yuan_symbol))
+        for (char in this@currency) char.toInt().let {
+            if (it in 48..57) {
+                if (hasDot) append(char)
+                else scale(scale) { append(char) }
+            } else if (it == 46) {
+                hasDot = true
+                append(char)
+            } else Unit
+        }
+        if (!hasDot && needDecimal) append(context.getString(R.string.decimal_format))
+    }
+
 
 /**
  * 将金额保留小数点

@@ -16,10 +16,10 @@ class ProductSpecAdapter(private val valueClickListener: OnSpecValueClickListene
     private val pool = RecyclerView.RecycledViewPool()
 
     override fun convert(helper: SpecViewHolder, item: skuEntity) {
-        helper.setText(R.id.tvProductSpecType, item.specValueName)
+        helper.setText(R.id.tvProductSpecType, item.name)
         helper.currentSpecIndex = helper.adapterPosition
         helper.valueClickListener = valueClickListener
-//        helper.adapter.replaceData(item.value)
+        helper.adapter.replaceData(item.specs)
     }
 
     override fun onItemViewHolderCreated(viewHolder: SpecViewHolder, viewType: Int) {

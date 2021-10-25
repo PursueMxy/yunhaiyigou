@@ -1,17 +1,16 @@
 package com.xdys.yhyg.ui.cart
 
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isGone
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chad.library.adapter.base.entity.node.BaseNode
+import com.hjq.toast.ToastUtils
 import com.xdys.library.base.ViewModelFragment
 import com.xdys.library.extension.dp
 import com.xdys.library.kit.decoration.DividerItemDecoration
@@ -22,7 +21,6 @@ import com.xdys.yhyg.adapte.home.HomeGoodsAdapter
 import com.xdys.yhyg.databinding.FragmentCartBinding
 import com.xdys.yhyg.entity.cart.CartProductEntity
 import com.xdys.yhyg.entity.cart.CartShopEntity
-import com.xdys.yhyg.entity.goods.GoodsEntity
 import com.xdys.yhyg.ui.goods.GoodsDetailActivity
 import com.xdys.yhyg.ui.order.ConfirmOrderActivity
 import com.xdys.yhyg.vm.CartViewModel
@@ -51,7 +49,7 @@ class CartFragment : ViewModelFragment<CartViewModel, FragmentCartBinding>() {
             setHeaderView(createHeaderView())
             headerWithEmptyEnable = true
             setOnItemClickListener { _, _, position ->
-                GoodsDetailActivity.start(requireContext(),"")
+                GoodsDetailActivity.start(requireContext(), "")
             }
         }
         tvToSettle.setOnClickListener {
@@ -79,7 +77,8 @@ class CartFragment : ViewModelFragment<CartViewModel, FragmentCartBinding>() {
     }
 
     override fun initData() {
-        viewModel.cart()
+//        viewModel.cart()
+        viewModel.cartList()
         goodsAdapter.setNewInstance(mutableListOf())
     }
 
@@ -97,7 +96,7 @@ class CartFragment : ViewModelFragment<CartViewModel, FragmentCartBinding>() {
 
     override fun initObserver() {
         viewModel.cartLiveData.observe(this) {
-            cartAdapter.setNewInstance(it.cartList as MutableList<BaseNode>)
+            cartAdapter.setNewInstance(it.list as MutableList<BaseNode>)
         }
     }
 
@@ -106,6 +105,12 @@ class CartFragment : ViewModelFragment<CartViewModel, FragmentCartBinding>() {
         override fun changed() {
 
         }
+
+        override fun changeProduct(cartProduct: CartProductEntity, isShop: Boolean) {
+            ToastUtils.show(cartProduct.selected.toString())
+            cartAdapter.refreshAllCart(cartProduct.goodsSku.shopId.toString(), isShop)
+        }
+
 
         override fun changedShop(cartShop: CartShopEntity) {
             cartAdapter.refreshShopEntity(cartShop)

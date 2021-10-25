@@ -2,41 +2,51 @@ package com.xdys.yhyg.entity.cart
 
 import com.chad.library.adapter.base.entity.node.BaseNode
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 
 data class CartEntity(
-    val cartList: MutableList<CartShopEntity> = mutableListOf()
+    val list: MutableList<CartShopEntity> = mutableListOf()
 ) {
     var totalPrice: String = "0"
 }
 
 data class CartShopEntity(
-    @SerializedName("shop_id")
-    val shopId: Int,
-    @SerializedName("shop_name")
+    val shopId: String,
     val shopName: String = "",
-    @SerializedName("shop_img")
-    val shopImg: String = "",
-    @SerializedName("goods_list")
     val goodsList: MutableList<CartProductEntity> = mutableListOf()
-) : BaseNode() {
+) : Serializable, BaseNode() {
     override val childNode: MutableList<BaseNode>
         get() = goodsList as MutableList<BaseNode>
     var selected = false
 }
 
 data class CartProductEntity(
-    @SerializedName("cart_id")
     val cartId: Long = 0,
-    @SerializedName("goods_name")
-    val goodsName: String = "",
-) : BaseNode() {
+    val goodsSpu: GoodsSpu? = GoodsSpu(),
+    val skuId: String = "",
+    val goodsSku: GoodsSku,
+) : Serializable, BaseNode() {
     override val childNode: MutableList<BaseNode>? = null
     var selected = false
 }
+
+data class GoodsSku(
+    val id: String? = null,
+    val shopId: String? = null
+)
+
+data class GoodsSpu(
+    val id: String? = null,
+    val spuCode: String? = null,
+    val name: String? = null,
+    val picUrls: String? = null,
+    val priceDown: String? = null,
+    val priceUp: String? = null
+)
 
 
 data class CartGoods(
     var id: String? = null,
     var goodsName: String? = null,
-)
+) : Serializable

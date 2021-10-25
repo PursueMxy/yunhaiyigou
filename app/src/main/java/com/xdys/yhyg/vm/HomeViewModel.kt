@@ -115,5 +115,16 @@ class HomeViewModel : BaseViewModel() {
         }
     }
 
+    /**
+     * 商品保障
+     */
+    fun ensureBySpuId(id:String){
+        viewModelScope.launch {
+            fetchData({ api.ensureBySpuId(id) })?.let {
+
+            }
+        }
+    }
+
 
 }
