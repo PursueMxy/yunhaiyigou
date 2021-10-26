@@ -9,22 +9,20 @@ import com.xdys.yhyg.R
 import com.xdys.yhyg.adapte.goods.OnSpecValueClickListener
 import com.xdys.yhyg.adapte.goods.ProductSpecAdapter
 import com.xdys.yhyg.databinding.PopupProductSpecBinding
-import com.xdys.yhyg.entity.goods.GoodsDetailEntity
-import com.xdys.yhyg.entity.goods.skuEntity
-import com.xdys.yhyg.entity.goods.specs
+import com.xdys.yhyg.entity.goods.*
 import razerdp.basepopup.BasePopupWindow
 
 class ProductSpecPopupWindow(
-    context: Context, val default: specs,
-    val onSend: (selectedSpec: specs, number: Int, type: Int) -> Unit,
+    context: Context, val default: SpecItem,
+    val onSend: (selectedSpec: SpecItem, number: Int, type: Int) -> Unit,
 ) : BasePopupWindow(context) {
 
     var specAdapter: ProductSpecAdapter? = null
     private val builder = StringBuilder()
     private val formatBuilder = StringBuilder()
-    var selectedSpec: specs = default
-    var specAttrList: MutableList<skuEntity> = mutableListOf()
-    var specList: MutableList<specs> = mutableListOf()
+    var selectedSpec: SpecItem = default
+    var specAttrList: MutableList<SkuItem> = mutableListOf()
+    var specList: MutableList<SpecItem> = mutableListOf()
     private var number: Int = 1
 
     var type: Int = 0
@@ -43,7 +41,7 @@ class ProductSpecPopupWindow(
             layoutManager = LinearLayoutManager(context)
             specAdapter = ProductSpecAdapter(object : OnSpecValueClickListener {
                 override fun onValueClick(specIndex: Int, valueIndex: Int) {
-                    val valueList = specAttrList[specIndex].specs
+                    val valueList = specAttrList[specIndex].leaf
                     for (value in valueList.indices) {
                         valueList[value].selected = valueIndex == value
                     }
@@ -76,17 +74,15 @@ class ProductSpecPopupWindow(
         }
     }
 
-    fun setData(goods: GoodsDetailEntity, types: Int): ProductSpecPopupWindow {
+    fun setData(goodsList: MutableList<SkuItem>, types: Int): ProductSpecPopupWindow {
         type = types
-        goods.skus?.let {
-            specAttrList = it
-        }
-        goods.skus?.let {
+        specAttrList = goodsList
+        goodsList?.let {
             if (it.size > 0) {
-                specList = it[0].specs
+                specList = it[0].leaf
             }
         }
-        specAdapter?.setNewInstance(goods.skus)
+        specAdapter?.setNewInstance(goodsList)
         specAdapter?.notifyDataSetChanged()
         selectedSpec = chooseSelectedSpec()
         return this
@@ -95,16 +91,16 @@ class ProductSpecPopupWindow(
     /**
      * 筛选出已选中的属性集合，若不是集合，则返回默认的属性集合
      */
-    private fun chooseSelectedSpec(): specs {
+    private fun chooseSelectedSpec(): SpecItem {
         if (specAttrList.size > 0) {
             builder.setLength(0)
             formatBuilder.setLength(0)
             formatBuilder.append("已选：")
             for (spec in specAttrList) {
-                loop@ for (value in spec.specs) {
+                loop@ for (value in spec.leaf) {
                     if (value.selected) {
-                        builder.append(value.specId + ":").append(value.specId).append(";")
-                        formatBuilder.append("“${value.specValueName}”").append(" ")
+                        builder.append(value.value + ":").append(value.id).append(";")
+                        formatBuilder.append("“${value.value}”").append(" ")
                         break@loop
                     }
                 }
@@ -112,10 +108,13 @@ class ProductSpecPopupWindow(
             if (builder.isEmpty()) return default
             val valueId = builder.deleteCharAt(builder.length - 1).toString()
             for (specPrice in specList) {
-                return specPrice
+                if (specPrice.selected == true) {
+                    return specPrice
+                }
             }
         } else {
             var specPrice = specList[0]
+
             return specPrice
         }
         return default

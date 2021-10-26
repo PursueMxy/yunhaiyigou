@@ -4,6 +4,7 @@ import com.xdys.library.network.base.BaseApi
 import com.xdys.library.network.base.PageData
 import com.xdys.library.network.base.Result
 import com.xdys.yhyg.entity.goods.GoodsDetailEntity
+import com.xdys.yhyg.entity.goods.SkuItem
 import com.xdys.yhyg.entity.home.BrandMerchantEntity
 import com.xdys.yhyg.entity.home.FavGoodsEntity
 import com.xdys.yhyg.entity.home.HomeBean
@@ -33,5 +34,9 @@ interface HomeApi : BaseApi {
     suspend fun generateOrders(@Body body: RequestBody): Result<Any>
 
     @GET("/mall-goods/api/goodsSpu/listEnsureBySpuId")
-    suspend fun ensureBySpuId(@Query("spuId") spuId:String): Result<Any>
+    suspend fun ensureBySpuId(@Query("spuId") spuId: String): Result<Any>
+
+    @GET("/mall-goods/api/goodsSpu/spuspec/tree")
+    suspend fun goodsSpu(@Query("spuId") spuId: String): Result<MutableList<SkuItem>>
+
 }

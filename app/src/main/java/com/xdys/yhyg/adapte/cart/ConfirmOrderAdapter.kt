@@ -42,7 +42,7 @@ class OrderGoodsProvider : BaseNodeProvider() {
     override val layoutId: Int = R.layout.item_order_goods
 
     override fun convert(holder: BaseViewHolder, item: BaseNode) {
-        (item as CartProductEntity )?.let {
+        (item as CartProductEntity)?.let {
         }
     }
 }

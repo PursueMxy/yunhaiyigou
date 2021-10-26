@@ -7,19 +7,21 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.google.android.flexbox.FlexboxLayoutManager
 import com.xdys.yhyg.R
+import com.xdys.yhyg.entity.goods.SkuItem
+import com.xdys.yhyg.entity.goods.SpecItem
 import com.xdys.yhyg.entity.goods.skuEntity
 import com.xdys.yhyg.entity.goods.specs
 
 class ProductSpecAdapter(private val valueClickListener: OnSpecValueClickListener) :
-    BaseQuickAdapter<skuEntity, SpecViewHolder>(R.layout.item_product_spec) {
+    BaseQuickAdapter<SkuItem, SpecViewHolder>(R.layout.item_product_spec) {
 
     private val pool = RecyclerView.RecycledViewPool()
 
-    override fun convert(helper: SpecViewHolder, item: skuEntity) {
-        helper.setText(R.id.tvProductSpecType, item.name)
+    override fun convert(helper: SpecViewHolder, item: SkuItem) {
+        helper.setText(R.id.tvProductSpecType, item.value)
         helper.currentSpecIndex = helper.adapterPosition
         helper.valueClickListener = valueClickListener
-        helper.adapter.replaceData(item.specs)
+        helper.adapter.setNewInstance(item.leaf)
     }
 
     override fun onItemViewHolderCreated(viewHolder: SpecViewHolder, viewType: Int) {
@@ -46,9 +48,9 @@ class SpecViewHolder(view: View) : BaseViewHolder(view) {
 }
 
 class ProductSpecValueAdapter :
-    BaseQuickAdapter<specs, BaseViewHolder>(R.layout.item_product_spec_value) {
-    override fun convert(helper: BaseViewHolder, item: specs) {
-        helper.setText(R.id.btnSpecValue, item.specValueName)
+    BaseQuickAdapter<SpecItem, BaseViewHolder>(R.layout.item_product_spec_value) {
+    override fun convert(helper: BaseViewHolder, item: SpecItem) {
+        helper.setText(R.id.btnSpecValue, item.value)
             .getView<TextView>(R.id.btnSpecValue).isSelected = item.selected
     }
 }

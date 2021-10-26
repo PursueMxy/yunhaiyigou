@@ -75,7 +75,8 @@ data class GoodsDetailEntity(
     val verifyStatus: String? = null,
     val verifyDetail: String? = null,
     val isHot: String? = null,
-    val skus: MutableList<skuEntity> = mutableListOf()
+    val skus: MutableList<skuEntity> = mutableListOf(),
+    val skuList: MutableList<SkuItem> = mutableListOf()
 ) : Serializable
 
 data class skuEntity(
@@ -90,7 +91,8 @@ data class skuEntity(
     val skuCode: String? = null,
     val spuId: String? = null,
     val name: String? = null,
-    val specs: MutableList<specs> = mutableListOf()
+    val specs: MutableList<specs> = mutableListOf(),
+    val skuList: MutableList<SkuItem> = mutableListOf()
 ) : Serializable
 
 data class specs(
@@ -102,3 +104,17 @@ data class specs(
     val spuId: String = "",
     val skuId: String = "",
 ) : Serializable
+
+data class SkuItem(
+    val id: String? = "",
+    val spuId: String = "",
+    val value: String = "",
+    val leaf: MutableList<SpecItem> = mutableListOf()
+) : Serializable
+
+data class SpecItem(
+    val spuId: String = "",
+    val id: String = "",
+    val value: String = "",
+    var selected: Boolean = false,
+)

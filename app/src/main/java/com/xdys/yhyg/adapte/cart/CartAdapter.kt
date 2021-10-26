@@ -1,10 +1,7 @@
 package com.xdys.yhyg.adapte.cart
 
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
-import androidx.appcompat.widget.AppCompatCheckBox
-import androidx.recyclerview.widget.DiffUtil
 import com.chad.library.adapter.base.BaseNodeAdapter
 import com.chad.library.adapter.base.entity.node.BaseNode
 import com.chad.library.adapter.base.provider.BaseNodeProvider
@@ -27,6 +24,17 @@ class CartAdapter(
         addFullSpanNodeProvider(CartShopProvider(listener))
         addNodeProvider(CartProductProvider(listener))
     }
+
+    // 判断是否是编辑模式
+    var editMode = false
+        set(value) {
+            if (field != value) {
+                field = value
+                // 进入编辑模式时，全部未选中
+                if (field) changeAllProductStatus(false)
+
+            }
+        }
 
     val checkStatusEntity = CartSelectedEntity()
 
@@ -64,11 +72,20 @@ class CartAdapter(
         return checkStatusEntity
     }
 
-    fun refreshAllCart(shopId: String, cartCheck: Boolean = false) {
+    fun refreshAllCart(shopId: String) {
         for (shop in data) (shop as? CartShopEntity)?.let {
             if (shop.shopId == shopId) {
-                it.selected = cartCheck
+                for (goods in shop.goodsList) {
+                    if (!goods.selected) {
+                        shop.selected = false
+                        notifyDataSetChanged()
+                        return
+                    } else {
+                        shop.selected = true
+                    }
+                }
             }
+            notifyDataSetChanged()
         }
     }
 
@@ -88,24 +105,12 @@ class CartAdapter(
     fun getCartIds(): String {
         val builder = StringBuilder()
         for (product in data) (product as? CartProductEntity)?.let {
-
+            if (product.selected) builder.append(product.userShoppingCartId).append(",")
         }
         if (builder.isNotEmpty()) builder.deleteCharAt(builder.lastIndex)
         return builder.toString()
     }
 }
-
-
-// 判断是否是编辑模式
-var editMode = false
-    set(value) {
-        if (field != value) {
-            field = value
-            // 进入编辑模式时，全部未选中
-            if (field) changeAllProductStatus(false)
-
-        }
-    }
 
 
 class CartShopProvider(
@@ -129,17 +134,6 @@ class CartShopProvider(
         }
     }
 
-
-    override fun onChildClick(helper: BaseViewHolder, view: View, data: BaseNode, position: Int) {
-        (data as? CartShopEntity)?.let {
-            when (view.id) {
-                R.id.cbShopCheck -> {
-                }
-                else -> {
-                }
-            }
-        }
-    }
 }
 
 class CartProductProvider(
@@ -153,14 +147,42 @@ class CartProductProvider(
         (item as CartProductEntity)?.let { cartProduct ->
             holder.setText(R.id.tvGoodsName, cartProduct.goodsSpu?.name)
             holder.setText(R.id.tvPrice, (cartProduct.goodsSpu?.priceDown?.currency()))
+            holder.setText(R.id.tvNumber, cartProduct.quantity.toString())
+            cartProduct.specs?.let {
+                holder.setText(R.id.tvSpuCode, it[0].specValueName)
+            }
             holder.getView<ImageView>(R.id.cbCartChecks).isSelected = cartProduct.selected
             holder.getView<ImageView>(R.id.cbCartChecks).setOnClickListener {
-                it.isSelected = !it.isSelected
-                ToastUtils.show(cartProduct.goodsSku.shopId.toString()+"你你你")
-                listener?.changeProduct(cartProduct, it.isSelected)
+                cartProduct.selected = !cartProduct.selected
+                listener?.changeProduct(cartProduct)
+                it.isSelected = cartProduct.selected
             }
+            holder.getView<ImageView>(R.id.ivSubtract).setOnClickListener {
+                if (cartProduct.quantity > 1) {
+                    listener?.numberChange(
+                        cartProduct,
+                        (cartProduct.quantity - 1).toInt(),
+                        cartProduct.quantity.toInt()
+                    )
+                } else {
+                    ToastUtils.show("最少只能一件")
+                }
+            }
+            holder.getView<ImageView>(R.id.ivAdd).setOnClickListener {
+                if (cartProduct.quantity < cartProduct.goodsSku.stock) {
+                    listener?.numberChange(
+                        cartProduct,
+                        (cartProduct.quantity + 1).toInt(),
+                        cartProduct.quantity.toInt()
+                    )
+                } else {
+                    ToastUtils.show("超过库存数量")
+                }
+            }
+
         }
     }
+
 }
 
 private val popupCoupons: CouponsPopupWindow by lazy {
@@ -185,7 +207,7 @@ interface OnCartItemSelectedListener {
     /**
      * 商品选择更新店铺
      */
-    fun changeProduct(cartProduct: CartProductEntity, isShop: Boolean)
+    fun changeProduct(cartProduct: CartProductEntity)
 
     /**
      * 店铺选中状态发生变化
@@ -194,12 +216,11 @@ interface OnCartItemSelectedListener {
 
     /**
      * 数量变化
-     * @param uiPosition 在adapter上面的位置
+     * @param cartProduct 点击的商品
      * @param type 类型 0:减 1:加 2:数量
      * @param originNumber 点击时的数字
-     * @param maxCount 最大值(库存)
      */
-    fun numberChange(uiPosition: Int, type: Int, originNumber: Int, maxCount: Int)
+    fun numberChange(cartProduct: CartProductEntity, type: Int, originNumber: Int)
 
     /**
      * 侧滑删除购物车商品

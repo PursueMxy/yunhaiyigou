@@ -45,6 +45,7 @@
         tools:text="【酒厂直供】杜康秘藏1号 大容量口粮酒 52度浓香型白酒..." />
 
     <TextView
+        android:id="@+id/tvSpuCode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16.5dp"
@@ -53,7 +54,7 @@
         android:backgroundTint="@color/BF2"
         android:paddingHorizontal="4dp"
         android:paddingVertical="1dp"
-        android:text="浓香型500ml/单瓶"
+        tools:text="浓香型500ml/单瓶"
         android:textColor="@color/B99"
         android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@id/ivGoods"

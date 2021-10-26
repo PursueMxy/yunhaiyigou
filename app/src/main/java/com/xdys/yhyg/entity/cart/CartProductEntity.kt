@@ -6,8 +6,8 @@ import java.io.Serializable
 
 
 data class CartEntity(
-    val list: MutableList<CartShopEntity> = mutableListOf()
-) {
+    var list: MutableList<CartShopEntity> = mutableListOf()
+) : Serializable {
     var totalPrice: String = "0"
 }
 
@@ -22,19 +22,29 @@ data class CartShopEntity(
 }
 
 data class CartProductEntity(
-    val cartId: Long = 0,
+    val userShoppingCartId: String = "",
     val goodsSpu: GoodsSpu? = GoodsSpu(),
     val skuId: String = "",
+    val spuId: String = "",
+    val quantity: Long = 0,
     val goodsSku: GoodsSku,
+    val specs: MutableList<Specs> = mutableListOf()
 ) : Serializable, BaseNode() {
     override val childNode: MutableList<BaseNode>? = null
     var selected = false
 }
 
+data class Specs(
+    val specValueId: String? = "",
+    val specValueName: String? = ""
+) : Serializable
+
+
 data class GoodsSku(
     val id: String? = null,
-    val shopId: String? = null
-)
+    val shopId: String? = null,
+    val stock: Long = 0
+) : Serializable
 
 data class GoodsSpu(
     val id: String? = null,
@@ -43,7 +53,7 @@ data class GoodsSpu(
     val picUrls: String? = null,
     val priceDown: String? = null,
     val priceUp: String? = null
-)
+) : Serializable
 
 
 data class CartGoods(

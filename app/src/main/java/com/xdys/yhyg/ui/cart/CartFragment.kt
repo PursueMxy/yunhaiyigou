@@ -5,12 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chad.library.adapter.base.entity.node.BaseNode
-import com.hjq.toast.ToastUtils
 import com.xdys.library.base.ViewModelFragment
 import com.xdys.library.extension.dp
 import com.xdys.library.kit.decoration.DividerItemDecoration
@@ -19,10 +19,12 @@ import com.xdys.yhyg.adapte.cart.CartAdapter
 import com.xdys.yhyg.adapte.cart.OnCartItemSelectedListener
 import com.xdys.yhyg.adapte.home.HomeGoodsAdapter
 import com.xdys.yhyg.databinding.FragmentCartBinding
+import com.xdys.yhyg.entity.cart.CartEntity
 import com.xdys.yhyg.entity.cart.CartProductEntity
 import com.xdys.yhyg.entity.cart.CartShopEntity
 import com.xdys.yhyg.ui.goods.GoodsDetailActivity
 import com.xdys.yhyg.ui.order.ConfirmOrderActivity
+import com.xdys.yhyg.vm.AddressViewModel
 import com.xdys.yhyg.vm.CartViewModel
 
 class CartFragment : ViewModelFragment<CartViewModel, FragmentCartBinding>() {
@@ -33,6 +35,7 @@ class CartFragment : ViewModelFragment<CartViewModel, FragmentCartBinding>() {
 
     private val goodsAdapter by lazy { HomeGoodsAdapter() }
     override val viewModel: CartViewModel by activityViewModels()
+    val addressViewModel: AddressViewModel by viewModels()
     private val cartAdapter: CartAdapter by lazy { CartAdapter(listener) }
 
 
@@ -59,7 +62,7 @@ class CartFragment : ViewModelFragment<CartViewModel, FragmentCartBinding>() {
             cartAdapter.refreshStatusEntity(true, cbCartAll.isChecked)
         }
         tvTotalAmount.text = "合计:￥799.00"
-        tvDiscount.text = "优惠减:￥100.00"
+        tvDiscount.text = "优惠减:￥0.00"
         tvEdit.setOnClickListener {
             when (tvEdit.text.toString()) {
                 "编辑" -> {
@@ -69,16 +72,23 @@ class CartFragment : ViewModelFragment<CartViewModel, FragmentCartBinding>() {
                 }
                 "完成" -> {
                     tvEdit.text = "编辑"
+                    cartAdapter.editMode = true
                     gpEdit.visibility = View.GONE
                     gpToSettle.visibility = View.VISIBLE
                 }
             }
         }
+
+        btnDelete.setOnClickListener {
+            var ids = cartAdapter.getCartIds()
+            viewModel.deleteCart(ids)
+        }
+        refreshLayout.setOnRefreshListener { initData() }
     }
 
     override fun initData() {
-//        viewModel.cart()
         viewModel.cartList()
+        addressViewModel.defaultAddress()
         goodsAdapter.setNewInstance(mutableListOf())
     }
 
@@ -96,8 +106,32 @@ class CartFragment : ViewModelFragment<CartViewModel, FragmentCartBinding>() {
 
     override fun initObserver() {
         viewModel.cartLiveData.observe(this) {
+            binding.refreshLayout.finishRefresh()
             cartAdapter.setNewInstance(it.list as MutableList<BaseNode>)
         }
+        viewModel.cartDeleteLivaData.observe(this) {
+            initData()
+        }
+        viewModel.cartUpdateLiveData.observe(this) {
+            initData()
+        }
+        addressViewModel.defaultAddressLivaData.observe(this) {
+            binding.tvAddress.text = "配送至:${it.detailedAddress}"
+        }
+    }
+
+    /**
+     * 计算资格
+     */
+    fun sumPrice() {
+
+    }
+
+    /**
+     * 结算
+     */
+    fun toSettle() {
+        val cartShop: CartEntity = CartEntity()
     }
 
     private val listener = object : OnCartItemSelectedListener {
@@ -106,9 +140,8 @@ class CartFragment : ViewModelFragment<CartViewModel, FragmentCartBinding>() {
 
         }
 
-        override fun changeProduct(cartProduct: CartProductEntity, isShop: Boolean) {
-            ToastUtils.show(cartProduct.selected.toString())
-            cartAdapter.refreshAllCart(cartProduct.goodsSku.shopId.toString(), isShop)
+        override fun changeProduct(cartProduct: CartProductEntity) {
+            cartAdapter.refreshAllCart(cartProduct.goodsSku.shopId.toString())
         }
 
 
@@ -117,9 +150,23 @@ class CartFragment : ViewModelFragment<CartViewModel, FragmentCartBinding>() {
         }
 
         // 数量变化
-        override fun numberChange(uiPosition: Int, type: Int, originNumber: Int, maxCount: Int) {
-
+        override fun numberChange(
+            cartProduct: CartProductEntity, type: Int,
+            originNumber: Int
+        ) {
+            val map = hashMapOf(
+                "id" to cartProduct.userShoppingCartId,
+                "spuId" to cartProduct.spuId,
+                "skuId" to cartProduct.skuId,
+                "quantity" to type.toString(),
+                "spuName" to cartProduct.goodsSpu?.name,
+                "addPrice" to cartProduct.goodsSpu?.priceDown,
+                "specInfo" to "",
+                "picUrl" to cartProduct.goodsSpu?.picUrls
+            )
+            viewModel.updateCart(map)
         }
+
 
         // 删除购物车item
         override fun itemDelete(uiPosition: Int) {

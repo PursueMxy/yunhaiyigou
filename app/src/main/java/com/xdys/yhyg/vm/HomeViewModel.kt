@@ -12,6 +12,7 @@ import com.xdys.yhyg.R
 import com.xdys.yhyg.api.HomeApi
 import com.xdys.yhyg.entity.goods.GenerateOrdersEntity
 import com.xdys.yhyg.entity.goods.GoodsDetailEntity
+import com.xdys.yhyg.entity.goods.SkuItem
 import com.xdys.yhyg.entity.home.BrandMerchantEntity
 import com.xdys.yhyg.entity.home.FavGoodsEntity
 import com.xdys.yhyg.entity.home.HomeBean
@@ -40,6 +41,8 @@ class HomeViewModel : BaseViewModel() {
     val secCarLiveData by lazy { MutableLiveData<MutableList<SecCatEntity>>() }
 
     val goodsDetailLiveData by lazy { MutableLiveData<GoodsDetailEntity>() }
+
+    val goodsSkuLiveData by lazy { MutableLiveData<MutableList<SkuItem>>() }
 
     fun conversion(choose: Boolean) {
         conversionLiveData.postValue(choose)
@@ -102,6 +105,17 @@ class HomeViewModel : BaseViewModel() {
     }
 
     /**
+     * 可选规格
+     */
+    fun goodsSpu(spuId: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            fetchData({ api.goodsSpu(spuId) })?.let {
+                goodsSkuLiveData.postValue(it)
+            }
+        }
+    }
+
+    /**
      * 下单
      */
     fun savaGoods(order: GenerateOrdersEntity) {
@@ -118,7 +132,7 @@ class HomeViewModel : BaseViewModel() {
     /**
      * 商品保障
      */
-    fun ensureBySpuId(id:String){
+    fun ensureBySpuId(id: String) {
         viewModelScope.launch {
             fetchData({ api.ensureBySpuId(id) })?.let {
 

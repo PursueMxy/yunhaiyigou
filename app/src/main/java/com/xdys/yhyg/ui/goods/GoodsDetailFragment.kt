@@ -74,6 +74,7 @@ class GoodsDetailFragment : ViewModelFragment<HomeViewModel, FragmentGoodsDetail
         activity?.intent?.getStringExtra(Constant.Key.EXTRA_ID)?.let {
             viewModel.goodsDetail(it)
             viewModel.ensureBySpuId(it)
+            viewModel.goodsSpu(it)
         }
         getCouponsAdapter.setNewInstance(mutableListOf("满500 送150 ", "满1230 送 333"))
         guaranteeAdapter.setNewInstance(mutableListOf("厂商发货配送", "品质保证", "不支持 7 天无理由退货"))

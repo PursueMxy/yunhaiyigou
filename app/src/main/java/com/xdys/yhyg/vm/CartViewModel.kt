@@ -20,6 +20,9 @@ class CartViewModel : BaseViewModel() {
 
     val cartLiveData by lazy { MutableLiveData<CartEntity>() }
 
+    val cartDeleteLivaData by lazy { MutableLiveData<Any>() }
+
+    val cartUpdateLiveData by lazy { MutableLiveData<Any>() }
 
 
     private val gson by lazy { Gson() }
@@ -50,10 +53,29 @@ class CartViewModel : BaseViewModel() {
         }
     }
 
-    fun cartList(){
+    fun updateCart(map: Map<String, String?>) {
+        val body = gson.toJson(map).toRequestBody(
+            context.getString(R.string.content_type_json).toMediaType()
+        )
+        viewModelScope.launch {
+            fetchData({ api.updateCart(body) })?.let {
+                cartUpdateLiveData.postValue(it)
+            }
+        }
+    }
+
+    fun cartList() {
         viewModelScope.launch {
             fetchData({ api.cartList() })?.let {
                 cartLiveData.postValue(it)
+            }
+        }
+    }
+
+    fun deleteCart(ids: String) {
+        viewModelScope.launch {
+            fetchEmptyData({ api.deleteCart(ids) })?.let {
+                cartDeleteLivaData.postValue(it)
             }
         }
     }
