@@ -38,6 +38,5 @@ class OrderDetailActivity : ViewModelActivity<OrderViewModel, ActivityOrderDetai
     }
 
     override fun initData() {
-        mAdapter.setNewInstance(mutableListOf(OrderProductEntity(), OrderProductEntity()))
     }
 }

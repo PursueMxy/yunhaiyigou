@@ -5,10 +5,7 @@ import com.xdys.library.network.base.PageData
 import com.xdys.library.network.base.Result
 import com.xdys.yhyg.entity.goods.GoodsDetailEntity
 import com.xdys.yhyg.entity.goods.SkuItem
-import com.xdys.yhyg.entity.home.BrandMerchantEntity
-import com.xdys.yhyg.entity.home.FavGoodsEntity
-import com.xdys.yhyg.entity.home.HomeBean
-import com.xdys.yhyg.entity.home.SecCatEntity
+import com.xdys.yhyg.entity.home.*
 import okhttp3.RequestBody
 import retrofit2.http.*
 
@@ -39,4 +36,10 @@ interface HomeApi : BaseApi {
     @GET("/mall-goods/api/goodsSpu/spuspec/tree")
     suspend fun goodsSpu(@Query("spuId") spuId: String): Result<MutableList<SkuItem>>
 
+
+    @GET("/mall-goods/api/seckillHall/page")
+    suspend fun seckillHall(
+        @Query("pageSize") pageSize: Int,
+        @Query("pageNum") pageNum: Int
+    ): Result<SeckillData>
 }

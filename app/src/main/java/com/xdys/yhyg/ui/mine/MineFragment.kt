@@ -82,6 +82,21 @@ class MineFragment : ViewModelFragment<MineViewModel, FragmentMineBinding>() {
         refreshLayout.setOnRefreshListener {
             initData()
         }
+        tvPendingPayment.setOnClickListener {
+            MyOrderActivity.start(requireContext(), 1)
+        }
+        tvToBeDelivered.setOnClickListener {
+            MyOrderActivity.start(requireContext(), 2)
+        }
+        tvToBeReceived.setOnClickListener {
+            MyOrderActivity.start(requireContext(), 3)
+        }
+        tvBeEvaluated.setOnClickListener {
+            MyOrderActivity.start(requireContext(), 4)
+        }
+        tvMyCollection.setOnClickListener {
+            MyOrderActivity.start(requireContext(), 5)
+        }
     }
 
     fun fillUI(userInfo: UserInfoEntity) {

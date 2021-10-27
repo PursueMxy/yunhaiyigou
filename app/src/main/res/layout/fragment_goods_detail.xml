@@ -419,6 +419,6 @@
             android:background="@color/white"
             android:minHeight="150dp"
             app:showProgress="false"
-            app:urlClickable="false" />
+            app:urlClickable="true" />
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

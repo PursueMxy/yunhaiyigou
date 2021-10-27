@@ -59,36 +59,25 @@ class GoodsDetailActivity : ViewModelActivity<HomeViewModel, ActivityGoodsDetail
         val goodsDetail = viewModel.goodsDetailLiveData.value
         val goodsSku = viewModel.goodsSkuLiveData.value
         ProductSpecPopupWindow(this, SpecItem()) { selectedSpec, selectedNumber, type ->
-            ToastUtils.show("规格" + selectedSpec.value)
             if (type == 1) {
                 var spuId = goodsSku?.get(0)?.spuId
                 ConfirmOrderActivity.goodsStart(
-                    this, CartEntity(
+                    this, ConfirmOrderEntity(
+                        "小杜营商", goodsDetail?.shopId.toString(),
                         mutableListOf(
-                            CartShopEntity(
-                                goodsDetail?.shopId.toString(), goodsDetail?.name.toString(),
-                                mutableListOf(
-                                    CartProductEntity(
-                                        "",
-                                        GoodsSpu(),
-                                        spuId.toString(),
-                                        selectedSpec?.id,
-                                        selectedNumber.toLong(),
-                                        GoodsSku()
-                                    )
-                                )
+                            OrderGoods(
+                                id,
+                                goodsDetail?.name,
+                                spuId.toString(),
+                                selectedSpec?.id,
+                                selectedSpec?.value,
+                                selectedNumber.toLong(),
+                                goodsDetail?.priceUp,
+                                goodsDetail?.picUrls?.get(0)
                             )
                         )
                     )
                 )
-//                val orderGoods = GenerateOrdersEntity(
-//                    "2", "1", "1",
-//                    "app", "", "", "", "", "",
-//                    "测试数据", mutableListOf(
-//                        shopId(goodsDetail?.id, "", "5")
-//                    )
-//                )
-////                viewModel.savaGoods(orderGoods)
             } else {
                 selectedSpec?.let { spec ->
                     goodsSku?.get(0)?.let {

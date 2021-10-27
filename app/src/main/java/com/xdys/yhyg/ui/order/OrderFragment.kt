@@ -7,17 +7,18 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import com.xdys.library.base.ViewModelFragment
+import com.xdys.yhyg.R
 import com.xdys.yhyg.adapte.order.OrderAdapter
 import com.xdys.yhyg.databinding.FragmentOrderBinding
 import com.xdys.yhyg.entity.order.OrderEntity
-import com.xdys.yhyg.vm.MineViewModel
+import com.xdys.yhyg.vm.OrderViewModel
 
-class OrderFragment : ViewModelFragment<MineViewModel, FragmentOrderBinding>() {
+class OrderFragment : ViewModelFragment<OrderViewModel, FragmentOrderBinding>() {
     override fun createBinding(
         inflater: LayoutInflater, container: ViewGroup?
     ) = FragmentOrderBinding.inflate(inflater, container, false)
 
-    override val viewModel: MineViewModel by activityViewModels()
+    override val viewModel: OrderViewModel by activityViewModels()
 
     companion object {
         private val EXTRA_ID = "position"
@@ -35,9 +36,30 @@ class OrderFragment : ViewModelFragment<MineViewModel, FragmentOrderBinding>() {
                 OrderDetailActivity.start(requireContext())
             }
         }
+        with(orderAdapter) {
+            setEmptyView(R.layout.layout_empty_order)
+        }
     }
 
     override fun initData() {
-        orderAdapter.setNewInstance(mutableListOf(OrderEntity(), OrderEntity(), OrderEntity()))
+        var position = arguments?.getInt(EXTRA_ID, 0)
+        when (position) {
+            0 -> viewModel.orderList("0", true)
+            1 -> viewModel.orderList("11", true)
+            2 -> viewModel.orderList("1", true)
+            3 -> viewModel.orderList("2", true)
+            4 -> viewModel.orderList("5", true)
+            5 -> viewModel.orderList("3", true)
+        }
+    }
+
+    override fun initObserver() {
+        super.initObserver()
+        viewModel.listStatusLiveData.observe(viewLifecycleOwner) {
+            it.restoreView(binding.refreshLayout, orderAdapter)
+        }
+        viewModel.orderListLiveData.observe(viewLifecycleOwner) {
+            orderAdapter.setNewInstance(it)
+        }
     }
 }

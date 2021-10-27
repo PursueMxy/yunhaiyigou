@@ -39,7 +39,7 @@ class ViceHomeFragment : ViewModelFragment<HomeViewModel, FragmentViceHomeBindin
 
     private val cateFirstAdapter by lazy { HomeCateFirstAdapter() }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?): Unit = with(binding) {
         var indicator = IndicatorView(requireContext())
             .setIndicatorColor(Color.DKGRAY)
             .setIndicatorSelectorColor(Color.WHITE)
@@ -70,18 +70,21 @@ class ViceHomeFragment : ViewModelFragment<HomeViewModel, FragmentViceHomeBindin
 
         with(flashGoodsAdapter) {
             setOnItemClickListener { _, _, position ->
-                data[position].id?.let { GoodsDetailActivity.start(requireContext(), it) }
+                data[position].spuId?.let { GoodsDetailActivity.start(requireContext(), it) }
             }
         }
         clSearch.setOnClickListener {
             SearchActivity.start(requireContext())
         }
-
+        refreshLayout.setOnRefreshListener {
+            initData()
+        }
     }
 
     override fun initData() {
         viewModel.goodsPage()
         viewModel.favGoods()
+        viewModel.seckillHall()
         cateFirstAdapter.setNewInstance(
             mutableListOf(
                 ButtonList("0", "", "正品保证"),
@@ -95,11 +98,14 @@ class ViceHomeFragment : ViewModelFragment<HomeViewModel, FragmentViceHomeBindin
     override fun initObserver() {
         super.initObserver()
         viewModel.homeLiveData.observe(this) {
+            binding.refreshLayout.finishRefresh()
             mAdapter.setNewInstance(it.carouselList)
         }
         viewModel.favGoodsLiveData.observe(this) {
             goodsAdapter.setDiffNewData(it.records)
-            flashGoodsAdapter.setDiffNewData(it.records)
+        }
+        viewModel.seckillHallLiveData.observe(this) {
+            flashGoodsAdapter.setDiffNewData(it.records.get(0).seckillGoods)
         }
     }
 

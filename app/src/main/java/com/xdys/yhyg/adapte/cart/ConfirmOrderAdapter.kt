@@ -4,6 +4,7 @@ import com.chad.library.adapter.base.BaseNodeAdapter
 import com.chad.library.adapter.base.entity.node.BaseNode
 import com.chad.library.adapter.base.provider.BaseNodeProvider
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
+import com.xdys.library.extension.currency
 import com.xdys.yhyg.R
 import com.xdys.yhyg.entity.cart.CartProductEntity
 import com.xdys.yhyg.entity.cart.CartShopEntity
@@ -43,6 +44,10 @@ class OrderGoodsProvider : BaseNodeProvider() {
 
     override fun convert(holder: BaseViewHolder, item: BaseNode) {
         (item as CartProductEntity)?.let {
+            holder.setText(R.id.tvGoodsName, it.goodsSpu?.name)
+                .setText(R.id.tvSpecs, it.specs.get(0).specValueName)
+                .setText(R.id.tvPrice, it.goodsSku.salesPrice?.currency())
+                .setText(R.id.tvNumber, it.quantity.toString())
         }
     }
 }

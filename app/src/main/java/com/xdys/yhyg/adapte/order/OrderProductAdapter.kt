@@ -4,19 +4,21 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.DiffUtil
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
+import com.xdys.library.extension.currency
 import com.xdys.library.extension.loadRoundCornerImage
 import com.xdys.yhyg.R
+import com.xdys.yhyg.entity.order.GoodsEntity
 import com.xdys.yhyg.entity.order.OrderProductEntity
 
 class OrderProductAdapter :
-    BaseQuickAdapter<OrderProductEntity, BaseViewHolder>(R.layout.item_order_product) {
+    BaseQuickAdapter<GoodsEntity, BaseViewHolder>(R.layout.item_order_product) {
 
 
-    override fun convert(holder: BaseViewHolder, item: OrderProductEntity) {
-        holder.setText(R.id.tvGoodsName, "【酒厂直供】杜康秘藏1号 大容量口粮酒 52°浓香型白酒...")
-            .setText(R.id.tvSpecification, "浓香型500ml/单瓶")
-            .setText(R.id.tvPrice, "¥799.0")
-            .setText(R.id.tvGoodsNum, "X1")
+    override fun convert(holder: BaseViewHolder, item: GoodsEntity) {
+        holder.setText(R.id.tvGoodsName, item.goodsName)
+            .setText(R.id.tvSpecification, item.goodsSpecifications)
+            .setText(R.id.tvPrice, item.goodsPrice?.currency())
+            .setText(R.id.tvGoodsNum, "X${item.goodsNumber}")
             .getView<ImageView>(R.id.ivGoods).loadRoundCornerImage(R.mipmap.du_kang_jiu, 7)
     }
 

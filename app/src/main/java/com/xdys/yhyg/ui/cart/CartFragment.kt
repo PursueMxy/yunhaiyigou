@@ -21,11 +21,16 @@ import com.xdys.yhyg.adapte.home.HomeGoodsAdapter
 import com.xdys.yhyg.databinding.FragmentCartBinding
 import com.xdys.yhyg.entity.cart.CartEntity
 import com.xdys.yhyg.entity.cart.CartProductEntity
+import com.xdys.yhyg.entity.cart.CartSelectedEntity
 import com.xdys.yhyg.entity.cart.CartShopEntity
+import com.xdys.yhyg.entity.goods.ConfirmOrderEntity
+import com.xdys.yhyg.entity.goods.OrderGoods
 import com.xdys.yhyg.ui.goods.GoodsDetailActivity
 import com.xdys.yhyg.ui.order.ConfirmOrderActivity
 import com.xdys.yhyg.vm.AddressViewModel
 import com.xdys.yhyg.vm.CartViewModel
+import java.math.BigDecimal
+import java.text.DecimalFormat
 
 class CartFragment : ViewModelFragment<CartViewModel, FragmentCartBinding>() {
     override fun createBinding(
@@ -37,7 +42,6 @@ class CartFragment : ViewModelFragment<CartViewModel, FragmentCartBinding>() {
     override val viewModel: CartViewModel by activityViewModels()
     val addressViewModel: AddressViewModel by viewModels()
     private val cartAdapter: CartAdapter by lazy { CartAdapter(listener) }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?): Unit = with(binding) {
         with(rvGoods) {
@@ -56,12 +60,12 @@ class CartFragment : ViewModelFragment<CartViewModel, FragmentCartBinding>() {
             }
         }
         tvToSettle.setOnClickListener {
-            ConfirmOrderActivity.start(requireContext())
+            toSettle()
         }
         cbCartAll.setOnClickListener {
             cartAdapter.refreshStatusEntity(true, cbCartAll.isChecked)
         }
-        tvTotalAmount.text = "合计:￥799.00"
+        tvTotalAmount.text = "合计:￥0.00"
         tvDiscount.text = "优惠减:￥0.00"
         tvEdit.setOnClickListener {
             when (tvEdit.text.toString()) {
@@ -113,31 +117,41 @@ class CartFragment : ViewModelFragment<CartViewModel, FragmentCartBinding>() {
             initData()
         }
         viewModel.cartUpdateLiveData.observe(this) {
-            initData()
+//            initData()
         }
         addressViewModel.defaultAddressLivaData.observe(this) {
             binding.tvAddress.text = "配送至:${it.detailedAddress}"
         }
     }
 
-    /**
-     * 计算资格
-     */
-    fun sumPrice() {
-
-    }
 
     /**
      * 结算
      */
     fun toSettle() {
-        val cartShop: CartEntity = CartEntity()
+        val goodsList: MutableList<OrderGoods> = mutableListOf()
+        val shop = viewModel.cartLiveData.value?.list?.get(0)
+        for (product in cartAdapter.data) (product as? CartProductEntity)?.let {
+            if (product.selected) {
+                goodsList.add(
+                    OrderGoods(
+                        product.goodsSpu?.id, product.goodsSpu?.name,
+                        product.spuId, product.skuId, product.specs.get(0).specValueName,
+                        product.quantity, product.goodsSku.salesPrice, product.goodsSpu?.picUrls
+                    )
+                )
+            }
+        }
+        ConfirmOrderActivity.goodsStart(
+            requireContext(), ConfirmOrderEntity(
+                shop?.shopName, shop?.shopId, goodsList
+            )
+        )
     }
 
     private val listener = object : OnCartItemSelectedListener {
         // 选中状态发生变化
         override fun changed() {
-
         }
 
         override fun changeProduct(cartProduct: CartProductEntity) {
@@ -147,6 +161,7 @@ class CartFragment : ViewModelFragment<CartViewModel, FragmentCartBinding>() {
 
         override fun changedShop(cartShop: CartShopEntity) {
             cartAdapter.refreshShopEntity(cartShop)
+
         }
 
         // 数量变化
@@ -165,16 +180,20 @@ class CartFragment : ViewModelFragment<CartViewModel, FragmentCartBinding>() {
                 "picUrl" to cartProduct.goodsSpu?.picUrls
             )
             viewModel.updateCart(map)
+            cartAdapter.notifyDataSetChanged()
+            cartAdapter.sumPrice()
         }
 
 
         // 删除购物车item
         override fun itemDelete(uiPosition: Int) {
-
         }
 
         override fun itemClick(uiPosition: Int, product: CartProductEntity) {
+        }
 
+        override fun allTolPrice(totalPrice: String) {
+            binding.tvTotalAmount.text = "总计：${totalPrice}"
         }
     }
 }

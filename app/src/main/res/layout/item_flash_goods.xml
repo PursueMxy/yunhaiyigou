@@ -13,11 +13,18 @@
         android:id="@+id/ivGoods"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="0.5dp"
         android:layout_marginHorizontal="0.5dp"
+        android:layout_marginTop="0.5dp"
         app:layout_constraintDimensionRatio="h,1:1"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@mipmap/watch" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/original_price"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvGoodsName"
@@ -44,6 +51,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/ivAdd"
         tools:text="￥3８999" />
+
+    <TextView
+        android:id="@+id/tvOriginalPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:textColor="@color/B99"
+        android:textSize="9sp"
+        app:layout_constraintBottom_toBottomOf="@id/tvPrice"
+        app:layout_constraintStart_toEndOf="@id/tvPrice"
+        tools:text="￥899" />
 
     <ImageView
         android:id="@+id/ivAdd"

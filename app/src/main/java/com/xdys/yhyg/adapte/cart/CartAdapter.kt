@@ -1,7 +1,9 @@
 package com.xdys.yhyg.adapte.cart
 
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
+import androidx.lifecycle.MutableLiveData
 import com.chad.library.adapter.base.BaseNodeAdapter
 import com.chad.library.adapter.base.entity.node.BaseNode
 import com.chad.library.adapter.base.provider.BaseNodeProvider
@@ -38,6 +40,7 @@ class CartAdapter(
 
     val checkStatusEntity = CartSelectedEntity()
 
+
     override fun getItemType(data: List<BaseNode>, position: Int): Int =
         when (data[position]) {
             is CartShopEntity -> 0
@@ -69,6 +72,7 @@ class CartAdapter(
 
         if (needAllCheck || (cartId > 0 && number > 0)) notifyDataSetChanged()
         checkStatusEntity.totalPrice = initPrice.toString()
+        listener?.changed()
         return checkStatusEntity
     }
 
@@ -78,6 +82,7 @@ class CartAdapter(
                 for (goods in shop.goodsList) {
                     if (!goods.selected) {
                         shop.selected = false
+                        sumPrice()
                         notifyDataSetChanged()
                         return
                     } else {
@@ -86,6 +91,7 @@ class CartAdapter(
                 }
             }
             notifyDataSetChanged()
+            sumPrice()
         }
     }
 
@@ -97,6 +103,7 @@ class CartAdapter(
             product.selected = cartShop.selected
         }
         notifyDataSetChanged()
+        sumPrice()
     }
 
     /**
@@ -109,6 +116,21 @@ class CartAdapter(
         }
         if (builder.isNotEmpty()) builder.deleteCharAt(builder.lastIndex)
         return builder.toString()
+    }
+
+    /**
+     * 计算资格
+     */
+    fun sumPrice() {
+        var price = BigDecimal.ZERO
+        for (product in data) (product as? CartProductEntity)?.let {
+            if (product.selected) {
+                val current = BigDecimal(product.goodsSku.salesPrice)
+                    .multiply(BigDecimal(product.quantity ?: 0))
+                price = price.add(current)
+            }
+        }
+        listener?.allTolPrice(price.toString())
     }
 }
 
@@ -159,6 +181,7 @@ class CartProductProvider(
             }
             holder.getView<ImageView>(R.id.ivSubtract).setOnClickListener {
                 if (cartProduct.quantity > 1) {
+                    cartProduct.quantity = cartProduct.quantity - 1
                     listener?.numberChange(
                         cartProduct,
                         (cartProduct.quantity - 1).toInt(),
@@ -170,6 +193,7 @@ class CartProductProvider(
             }
             holder.getView<ImageView>(R.id.ivAdd).setOnClickListener {
                 if (cartProduct.quantity < cartProduct.goodsSku.stock) {
+                    cartProduct.quantity = cartProduct.quantity + 1
                     listener?.numberChange(
                         cartProduct,
                         (cartProduct.quantity + 1).toInt(),
@@ -231,6 +255,10 @@ interface OnCartItemSelectedListener {
      * 点击事件
      */
     fun itemClick(uiPosition: Int, product: CartProductEntity)
+
+
+    fun allTolPrice(totalPrice: String)
+
 }
 
 

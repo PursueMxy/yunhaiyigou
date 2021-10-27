@@ -34,6 +34,7 @@
         tools:text="【酒厂直供】杜康秘藏1号 大容量口粮酒 52度浓香型白酒..." />
 
     <TextView
+        android:id="@+id/tvSpecs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16.5dp"
@@ -49,22 +50,24 @@
         tools:text="浓香型500ml/单瓶" />
 
     <TextView
+        android:id="@+id/tvPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:textColor="@color/RE3"
-        android:textSize="18sp"
+        android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="@id/ivGoods"
         app:layout_constraintStart_toEndOf="@id/ivGoods"
         tools:text="¥899" />
 
     <TextView
+        android:id="@+id/tvNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
         android:text="x1"
         android:textColor="@color/B33"
         android:textSize="12sp"
-        android:layout_marginEnd="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

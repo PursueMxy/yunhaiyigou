@@ -26,7 +26,7 @@ data class CartProductEntity(
     val goodsSpu: GoodsSpu? = GoodsSpu(),
     val skuId: String = "",
     val spuId: String = "",
-    val quantity: Long = 0,
+    var quantity: Long = 0,
     val goodsSku: GoodsSku,
     val specs: MutableList<Specs> = mutableListOf()
 ) : Serializable, BaseNode() {
@@ -43,7 +43,8 @@ data class Specs(
 data class GoodsSku(
     val id: String? = null,
     val shopId: String? = null,
-    val stock: Long = 0
+    val stock: Long = 0,
+    val salesPrice: String? = "0.00"
 ) : Serializable
 
 data class GoodsSpu(

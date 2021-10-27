@@ -8,15 +8,13 @@ import com.xdys.library.config.Constant
 import com.xdys.library.extension.context
 import com.xdys.library.network.HttpClient
 import com.xdys.library.network.base.PageData
+import com.xdys.library.utils.mxyUtils
 import com.xdys.yhyg.R
 import com.xdys.yhyg.api.HomeApi
 import com.xdys.yhyg.entity.goods.GenerateOrdersEntity
 import com.xdys.yhyg.entity.goods.GoodsDetailEntity
 import com.xdys.yhyg.entity.goods.SkuItem
-import com.xdys.yhyg.entity.home.BrandMerchantEntity
-import com.xdys.yhyg.entity.home.FavGoodsEntity
-import com.xdys.yhyg.entity.home.HomeBean
-import com.xdys.yhyg.entity.home.SecCatEntity
+import com.xdys.yhyg.entity.home.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaType
@@ -25,6 +23,8 @@ import okhttp3.RequestBody.Companion.toRequestBody
 class HomeViewModel : BaseViewModel() {
 
     private val api by lazy { HttpClient.create(HomeApi::class.java) }
+
+    private val api1 by lazy { HttpClient.create2(HomeApi::class.java) }
 
     private val api2 by lazy { HttpClient.create3(HomeApi::class.java) }
 
@@ -43,6 +43,10 @@ class HomeViewModel : BaseViewModel() {
     val goodsDetailLiveData by lazy { MutableLiveData<GoodsDetailEntity>() }
 
     val goodsSkuLiveData by lazy { MutableLiveData<MutableList<SkuItem>>() }
+
+    val savaGoodsLiveData by lazy { MutableLiveData<Any>() }
+
+    val seckillHallLiveData by lazy { MutableLiveData<SeckillData>() }
 
     fun conversion(choose: Boolean) {
         conversionLiveData.postValue(choose)
@@ -124,7 +128,7 @@ class HomeViewModel : BaseViewModel() {
         )
         viewModelScope.launch {
             fetchData({ api2.generateOrders(body) })?.let {
-
+                savaGoodsLiveData.postValue(it)
             }
         }
     }
@@ -136,6 +140,17 @@ class HomeViewModel : BaseViewModel() {
         viewModelScope.launch {
             fetchData({ api.ensureBySpuId(id) })?.let {
 
+            }
+        }
+    }
+
+    /**
+     * 首页秒杀
+     */
+    fun seckillHall() {
+        viewModelScope.launch {
+            fetchData({ api1.seckillHall(1, 1) })?.let {
+                seckillHallLiveData.postValue(it)
             }
         }
     }

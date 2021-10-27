@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit
 object HttpClient {
 
     object Url {
-        val baseUrl2 = "http://192.168.2.30:8000/"
+        val baseUrl2 = "http://desktop-penm4q0:8000/"
 
         val baseUrl1 = "http://desktop-r37dbo8:8081/"
 
