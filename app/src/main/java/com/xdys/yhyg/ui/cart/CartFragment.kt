@@ -142,11 +142,13 @@ class CartFragment : ViewModelFragment<CartViewModel, FragmentCartBinding>() {
                 )
             }
         }
-        ConfirmOrderActivity.goodsStart(
-            requireContext(), ConfirmOrderEntity(
-                shop?.shopName, shop?.shopId, goodsList
+        if (goodsList.size > 0) {
+            ConfirmOrderActivity.goodsStart(
+                requireContext(), ConfirmOrderEntity(
+                    shop?.shopName, shop?.shopId, goodsList
+                )
             )
-        )
+        }
     }
 
     private val listener = object : OnCartItemSelectedListener {
@@ -157,7 +159,6 @@ class CartFragment : ViewModelFragment<CartViewModel, FragmentCartBinding>() {
         override fun changeProduct(cartProduct: CartProductEntity) {
             cartAdapter.refreshAllCart(cartProduct.goodsSku.shopId.toString())
         }
-
 
         override fun changedShop(cartShop: CartShopEntity) {
             cartAdapter.refreshShopEntity(cartShop)

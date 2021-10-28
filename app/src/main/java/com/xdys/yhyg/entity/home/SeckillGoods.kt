@@ -7,8 +7,8 @@ data class SeckillData(
 data class SeckillEntity(
     val seckillId: String? = null,
     val hallDate: String? = null,
-    val startHallTime: String? = null,
-    val endHallTime: String? = null,
+    val startHallTime: Long? = 0,
+    val endHallTime: Long? = 0,
     val seckillGoods: MutableList<SeckillGoods> = mutableListOf()
 )
 
@@ -17,9 +17,12 @@ data class SeckillGoods(
     val skuId: String? = null,
     val name: String? = null,
     val seckillPrice: String? = null,
-    val seckillNum: String? = null,
-    val limitNum: String? = null,
+    val seckillNum: Int = 0,
+    val limitNum: Int = 0,
     val picUrl: String? = null,
     val seckillRule: String? = null,
     val shareTitle: String? = null,
+    val salesPrice: String? = null,
+    val shopId: String? = null,
+    val shopName: String? = null
 )

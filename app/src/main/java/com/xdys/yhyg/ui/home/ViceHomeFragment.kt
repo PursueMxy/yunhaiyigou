@@ -10,9 +10,11 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.to.aboomy.pager2banner.IndicatorView
 import com.xdys.library.base.ViewModelFragment
+import com.xdys.library.config.Constant
 import com.xdys.library.extension.dp
 import com.xdys.library.extension.px
 import com.xdys.library.kit.decoration.DividerItemDecoration
+import com.xdys.yhyg.R
 import com.xdys.yhyg.adapte.home.FlashGoodsAdapter
 import com.xdys.yhyg.adapte.home.HomeCateFirstAdapter
 import com.xdys.yhyg.adapte.home.HomeGoodsAdapter
@@ -20,6 +22,7 @@ import com.xdys.yhyg.adapte.home.ImageAdapter
 import com.xdys.yhyg.databinding.FragmentViceHomeBinding
 import com.xdys.yhyg.entity.home.ButtonList
 import com.xdys.yhyg.ui.goods.GoodsDetailActivity
+import com.xdys.yhyg.ui.web.WebViewActivity
 import com.xdys.yhyg.vm.HomeViewModel
 
 class ViceHomeFragment : ViewModelFragment<HomeViewModel, FragmentViceHomeBinding>() {
@@ -70,7 +73,16 @@ class ViceHomeFragment : ViewModelFragment<HomeViewModel, FragmentViceHomeBindin
 
         with(flashGoodsAdapter) {
             setOnItemClickListener { _, _, position ->
-                data[position].spuId?.let { GoodsDetailActivity.start(requireContext(), it) }
+                data[position].spuId?.let { GoodsDetailActivity.start(requireContext(), it, 1) }
+            }
+        }
+        with(cateFirstAdapter) {
+            setOnItemClickListener { _, view, position ->
+                WebViewActivity.start(
+                    requireContext(),
+                    "${Constant.webUrl}/rich/",
+                    data[position].text
+                )
             }
         }
         clSearch.setOnClickListener {
@@ -78,6 +90,9 @@ class ViceHomeFragment : ViewModelFragment<HomeViewModel, FragmentViceHomeBindin
         }
         refreshLayout.setOnRefreshListener {
             initData()
+        }
+        tvSeeMore.setOnClickListener {
+            FlashSaleActivity.start(requireContext())
         }
     }
 
@@ -87,10 +102,10 @@ class ViceHomeFragment : ViewModelFragment<HomeViewModel, FragmentViceHomeBindin
         viewModel.seckillHall()
         cateFirstAdapter.setNewInstance(
             mutableListOf(
-                ButtonList("0", "", "正品保证"),
-                ButtonList("0", "", "溯源平台"),
-                ButtonList("0", "", "产地直供"),
-                ButtonList("0", "", "关于我们")
+                ButtonList("0", R.mipmap.authentic_guarantee, "正品保证"),
+                ButtonList("1", R.mipmap.traceability_platform, "溯源平台"),
+                ButtonList("2", R.mipmap.origin_straight, "产地直供"),
+                ButtonList("3", R.mipmap.home_about, "关于我们")
             )
         )
     }

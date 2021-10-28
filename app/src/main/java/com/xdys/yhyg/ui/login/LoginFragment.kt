@@ -19,6 +19,7 @@ import com.xdys.yhyg.R
 import com.xdys.yhyg.databinding.FragmentLoginBinding
 import com.xdys.yhyg.ui.home.MainActivity
 import com.xdys.yhyg.ui.setting.ChangeLoginPswActivity
+import com.xdys.yhyg.ui.web.WebViewActivity
 import com.xdys.yhyg.vm.LoginViewModel
 
 class LoginFragment : ViewModelFragment<LoginViewModel, FragmentLoginBinding>() {
@@ -49,6 +50,7 @@ class LoginFragment : ViewModelFragment<LoginViewModel, FragmentLoginBinding>() 
             text = buildSpannedString {
                 append(getString(R.string.login_agree_1))
                 inSpans(CustomClickSpan({
+                    WebViewActivity.start(requireContext(), "${Constant.webUrl}/agreement/", "用户协议和隐私政策")
                 })) { append(getString(R.string.user_agreement)) }
             }
             setOnClickListener {
@@ -57,11 +59,11 @@ class LoginFragment : ViewModelFragment<LoginViewModel, FragmentLoginBinding>() 
         }
         tvRetrievePassword.setOnClickListener {
             val mobile = etMobile.text.toString().trim()
-            if (mobile.isEmpty() || mobile.length!=11) {
+            if (mobile.isEmpty() || mobile.length != 11) {
                 ToastUtils.show(etMobile.hint.toString())
                 return@setOnClickListener
-            }else{
-                Constant.mobile=mobile
+            } else {
+                Constant.mobile = mobile
                 ChangeLoginPswActivity.start(requireContext())
             }
         }

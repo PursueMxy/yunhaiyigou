@@ -217,6 +217,7 @@
                 android:drawablePadding="8dp"
                 android:textColor="@color/B33"
                 android:textSize="15sp"
+                android:hint="请选择规格"
                 app:layout_constraintBottom_toBottomOf="@id/selected"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/selected"

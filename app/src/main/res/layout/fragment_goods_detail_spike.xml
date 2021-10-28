@@ -120,7 +120,6 @@
                 android:textColor="@color/white"
                 android:textSize="13sp"
                 app:layout_constraintEnd_toEndOf="@id/tvUntilTime"
-                app:layout_constraintStart_toStartOf="@id/tvUntilTime"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -250,6 +249,7 @@
                 android:drawablePadding="8dp"
                 android:textColor="@color/B33"
                 android:textSize="15sp"
+                android:hint="请选择商品规格"
                 app:layout_constraintBottom_toBottomOf="@id/selected"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/selected"
@@ -295,7 +295,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
             android:background="@color/white"
-            android:paddingBottom="15dp">
+            android:paddingBottom="15dp"
+            android:visibility="gone">
 
             <View
                 android:layout_width="1dp"
@@ -446,6 +447,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="8dp"
+                android:visibility="gone"
                 android:src="@mipmap/du_kang_jiu"
                 app:layout_constraintDimensionRatio="h,1:1"
                 app:layout_constraintTop_toBottomOf="@id/tvGoodsDetail" />
@@ -453,7 +455,7 @@
             <com.xdys.library.widget.ProgressWebView
                 android:id="@+id/webView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 app:layout_constraintTop_toBottomOf="@id/tvGoodsDetail"
                 app:showProgress="false"
                 app:urlClickable="false" />

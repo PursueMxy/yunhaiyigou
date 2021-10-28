@@ -8,7 +8,6 @@ import com.xdys.library.extension.currency
 import com.xdys.library.extension.loadRoundCornerImage
 import com.xdys.yhyg.R
 import com.xdys.yhyg.entity.order.GoodsEntity
-import com.xdys.yhyg.entity.order.OrderProductEntity
 
 class OrderProductAdapter :
     BaseQuickAdapter<GoodsEntity, BaseViewHolder>(R.layout.item_order_product) {

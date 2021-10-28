@@ -3,6 +3,7 @@ package com.xdys.yhyg.ui.mine
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.navigation.findNavController
 import com.xdys.yhyg.R
@@ -37,4 +38,8 @@ class AddressActivity : ViewModelActivity<MineViewModel, ActivityAddressBinding>
     override val viewModel: MineViewModel by viewModels()
 
     private val navController by lazy { findNavController(R.id.addressContainer) }
+
+    override fun initUI(savedInstanceState: Bundle?) {
+    }
+
 }

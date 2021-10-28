@@ -11,6 +11,7 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.hjq.toast.ToastUtils
 import com.xdys.library.extension.context
 import com.xdys.library.extension.currency
+import com.xdys.library.extension.loadRoundCornerImage
 import com.xdys.yhyg.R
 import com.xdys.yhyg.entity.cart.CartProductEntity
 import com.xdys.yhyg.entity.cart.CartSelectedEntity
@@ -170,6 +171,7 @@ class CartProductProvider(
             holder.setText(R.id.tvGoodsName, cartProduct.goodsSpu?.name)
             holder.setText(R.id.tvPrice, (cartProduct.goodsSpu?.priceDown?.currency()))
             holder.setText(R.id.tvNumber, cartProduct.quantity.toString())
+            holder.getView<ImageView>(R.id.ivGoods).loadRoundCornerImage(item.goodsSpu?.picUrls)
             cartProduct.specs?.let {
                 holder.setText(R.id.tvSpuCode, it[0].specValueName)
             }

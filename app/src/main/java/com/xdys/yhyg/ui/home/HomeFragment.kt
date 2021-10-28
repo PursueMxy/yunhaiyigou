@@ -39,7 +39,6 @@ class HomeFragment : ViewModelFragment<HomeViewModel, FragmentHomeBinding>() {
         titleBar.setOnRightClickListener {
             drawerLayout.openDrawer(Gravity.END)
         }
-
         with(rvProductType) {
             adapter = productTypeAdapter
         }

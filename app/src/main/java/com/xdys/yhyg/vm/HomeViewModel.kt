@@ -11,6 +11,7 @@ import com.xdys.library.network.base.PageData
 import com.xdys.library.utils.mxyUtils
 import com.xdys.yhyg.R
 import com.xdys.yhyg.api.HomeApi
+import com.xdys.yhyg.entity.goods.EnsureByEntity
 import com.xdys.yhyg.entity.goods.GenerateOrdersEntity
 import com.xdys.yhyg.entity.goods.GoodsDetailEntity
 import com.xdys.yhyg.entity.goods.SkuItem
@@ -47,6 +48,8 @@ class HomeViewModel : BaseViewModel() {
     val savaGoodsLiveData by lazy { MutableLiveData<Any>() }
 
     val seckillHallLiveData by lazy { MutableLiveData<SeckillData>() }
+
+    val ensureByLiveData by lazy { MutableLiveData<MutableList<EnsureByEntity>>() }
 
     fun conversion(choose: Boolean) {
         conversionLiveData.postValue(choose)
@@ -139,7 +142,7 @@ class HomeViewModel : BaseViewModel() {
     fun ensureBySpuId(id: String) {
         viewModelScope.launch {
             fetchData({ api.ensureBySpuId(id) })?.let {
-
+                ensureByLiveData.postValue(it)
             }
         }
     }
@@ -154,6 +157,8 @@ class HomeViewModel : BaseViewModel() {
             }
         }
     }
+
+
 
 
 }

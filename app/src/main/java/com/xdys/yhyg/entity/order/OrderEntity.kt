@@ -27,11 +27,35 @@ data class GoodsEntity(
     val vendorName: String? = null,
 )
 
-data class OrderProductEntity(
-    val id: String? = null,
-    val goodsName: String? = null,
-    val specification: String? = null,
-    val price: String? = null,
-    val goodsNum: String? = null,
-    val image: String? = null,
+
+data class OrderDetail(
+    val coupon_discount: String? = null,
+    val valid_time: String? = null,
+    val courier_number: String? = null,
+    val online_discount: String? = null,
+    val freight: String? = null,
+    val merchant_id: String? = null,
+    val place_time: String? = null,
+    val payment_time: String? = null,
+    val user_id: String? = null,
+    val goods_amount: String? = null,
+    val order_on: String? = null,
+    val order_status: String? = null,
+    val distribution: String? = null,
+    val method_payment: String? = null,
+    val goods: GoodsDetailEntity? = null
+
+
+)
+
+data class GoodsDetailEntity(
+    val num: String? = null,
+    val data: MutableList<GoodsEntity> = mutableListOf()
+)
+
+
+data class OrderAddress(
+    val address: String? = null,
+    val Name: String? = null,
+    val telNum: String? = null
 )

@@ -28,8 +28,9 @@ class MainActivity : ViewModelActivity<MineViewModel, ActivityMainBinding>() {
     override val viewModel: MineViewModel by viewModels()
 
     companion object {
-        fun startActivity(context: Context, isNew: Boolean = true) {
+        fun startActivity(context: Context, isNew: Boolean = true, index: Int = 0) {
             val intent = Intent(context, MainActivity::class.java)
+                .putExtra(Constant.Key.EXTRA_INDEX, index)
             if (isNew) intent.newTask().clearTask()
             context.startActivity(intent)
         }
@@ -46,7 +47,6 @@ class MainActivity : ViewModelActivity<MineViewModel, ActivityMainBinding>() {
 
     override fun initUI(savedInstanceState: Bundle?) {
         super.initUI(savedInstanceState)
-        showFragment(0)
         with(binding) {
             with(tabLayout) {
                 addTab(
@@ -116,6 +116,9 @@ class MainActivity : ViewModelActivity<MineViewModel, ActivityMainBinding>() {
                     }
                 })
             }
+        }
+        intent.getIntExtra(Constant.Key.EXTRA_INDEX,0)?.let {
+            showFragment(it)
         }
     }
 

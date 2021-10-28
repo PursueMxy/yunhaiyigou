@@ -8,6 +8,7 @@ import androidx.fragment.app.viewModels
 import com.chad.library.adapter.base.entity.node.BaseNode
 import com.xdys.library.base.ViewModelActivity
 import com.xdys.library.config.Constant
+import com.xdys.library.extension.single
 import com.xdys.library.extension.singleTop
 import com.xdys.yhyg.adapte.cart.ConfirmOrderAdapter
 import com.xdys.yhyg.adapte.goods.OrderGoodsAdapter
@@ -17,6 +18,7 @@ import com.xdys.yhyg.entity.cart.CartProductEntity
 import com.xdys.yhyg.entity.cart.CartShopEntity
 import com.xdys.yhyg.entity.goods.*
 import com.xdys.yhyg.ui.goods.GoodsDetailActivity
+import com.xdys.yhyg.ui.home.MainActivity
 import com.xdys.yhyg.vm.AddressViewModel
 import com.xdys.yhyg.vm.CartViewModel
 import com.xdys.yhyg.vm.HomeViewModel
@@ -53,6 +55,9 @@ class ConfirmOrderActivity : ViewModelActivity<HomeViewModel, ActivityConfirmOrd
         (intent.getSerializableExtra(Constant.Key.EXTRA_DATA) as? ConfirmOrderEntity)?.let {
             binding.tvShopName.text = it.shopName + it.shopId
             mAdapter.setNewInstance(it.goodsList)
+            binding.tvGoodsAmount.text = "￥1000"
+            binding.tvShipping.text = "￥0.00"
+            binding.tvCouponDeduction.text = "￥0.00"
         }
         binding.tvPayImmediately.setOnClickListener {
             saveOrder()
@@ -94,7 +99,8 @@ class ConfirmOrderActivity : ViewModelActivity<HomeViewModel, ActivityConfirmOrd
             binding.tvMobile.text = it.phone
         }
         viewModel.savaGoodsLiveData.observe(this) {
-            MyOrderActivity.start(this)
+            MainActivity.startActivity(this, true, 3)
+            MyOrderActivity.start(this, 1)
         }
     }
 }

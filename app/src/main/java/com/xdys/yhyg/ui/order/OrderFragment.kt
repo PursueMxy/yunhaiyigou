@@ -10,7 +10,6 @@ import com.xdys.library.base.ViewModelFragment
 import com.xdys.yhyg.R
 import com.xdys.yhyg.adapte.order.OrderAdapter
 import com.xdys.yhyg.databinding.FragmentOrderBinding
-import com.xdys.yhyg.entity.order.OrderEntity
 import com.xdys.yhyg.vm.OrderViewModel
 
 class OrderFragment : ViewModelFragment<OrderViewModel, FragmentOrderBinding>() {
@@ -29,16 +28,18 @@ class OrderFragment : ViewModelFragment<OrderViewModel, FragmentOrderBinding>() 
 
     private val orderAdapter by lazy { OrderAdapter() }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?): Unit = with(binding) {
         with(rvOrder) {
             adapter = orderAdapter
-            orderAdapter.setOnItemClickListener { _, _, position ->
-                OrderDetailActivity.start(requireContext())
-            }
+
         }
         with(orderAdapter) {
             setEmptyView(R.layout.layout_empty_order)
+            setOnItemClickListener { _, _, position ->
+                data[position].orders_id?.let { OrderDetailActivity.start(requireContext(), it) }
+            }
         }
+        refreshLayout.setOnRefreshListener { initData() }
     }
 
     override fun initData() {
@@ -59,7 +60,8 @@ class OrderFragment : ViewModelFragment<OrderViewModel, FragmentOrderBinding>() 
             it.restoreView(binding.refreshLayout, orderAdapter)
         }
         viewModel.orderListLiveData.observe(viewLifecycleOwner) {
-            orderAdapter.setNewInstance(it)
+            binding.refreshLayout.finishRefresh()
+            orderAdapter.setDiffNewData(it)
         }
     }
 }

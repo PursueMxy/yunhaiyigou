@@ -136,7 +136,7 @@ class RecommendFragment : ViewModelFragment<HomeViewModel, FragmentRecommendBind
         super.initObserver()
         viewModel.homeLiveData.observe(this) {
             mAdapter.setNewInstance(it.carouselList)
-            cateFirstAdapter.setNewInstance(it.buttonList)
+//            cateFirstAdapter.setNewInstance(it.buttonList)
             countDown()
         }
         viewModel.favGoodsLiveData.observe(this) {

@@ -3,6 +3,7 @@ package com.xdys.yhyg.api
 import com.xdys.library.network.base.BaseApi
 import com.xdys.library.network.base.PageData
 import com.xdys.library.network.base.Result
+import com.xdys.yhyg.entity.goods.EnsureByEntity
 import com.xdys.yhyg.entity.goods.GoodsDetailEntity
 import com.xdys.yhyg.entity.goods.SkuItem
 import com.xdys.yhyg.entity.home.*
@@ -31,7 +32,7 @@ interface HomeApi : BaseApi {
     suspend fun generateOrders(@Body body: RequestBody): Result<Any>
 
     @GET("/mall-goods/api/goodsSpu/listEnsureBySpuId")
-    suspend fun ensureBySpuId(@Query("spuId") spuId: String): Result<Any>
+    suspend fun ensureBySpuId(@Query("spuId") spuId: String): Result<MutableList<EnsureByEntity>>
 
     @GET("/mall-goods/api/goodsSpu/spuspec/tree")
     suspend fun goodsSpu(@Query("spuId") spuId: String): Result<MutableList<SkuItem>>

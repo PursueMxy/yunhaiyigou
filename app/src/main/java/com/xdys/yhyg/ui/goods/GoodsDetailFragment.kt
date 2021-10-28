@@ -76,8 +76,7 @@ class GoodsDetailFragment : ViewModelFragment<HomeViewModel, FragmentGoodsDetail
             viewModel.ensureBySpuId(it)
             viewModel.goodsSpu(it)
         }
-        getCouponsAdapter.setNewInstance(mutableListOf("满500 送150 ", "满1230 送 333"))
-        guaranteeAdapter.setNewInstance(mutableListOf("厂商发货配送", "品质保证", "不支持 7 天无理由退货"))
+        getCouponsAdapter.setNewInstance(mutableListOf())
         evaluateImgAdapter.setNewInstance(mutableListOf("", "", ""))
     }
 
@@ -89,7 +88,6 @@ class GoodsDetailFragment : ViewModelFragment<HomeViewModel, FragmentGoodsDetail
             tvSold.text = "已售: ${goods.saleNum}"
             tvGoodsName.text = goods.name
             tvIntroduce.text = ""
-            tvSelected.text = goods.specType
             tvDelivery.text = "商家配送"
             ivPortrait.loadCircleImage(R.mipmap.du_kang_jiu)
             val jhhh: String = goods.description.toString()
@@ -114,6 +112,13 @@ class GoodsDetailFragment : ViewModelFragment<HomeViewModel, FragmentGoodsDetail
         viewModel.goodsDetailLiveData.observe(this) {
             fillUI(it)
         }
+        viewModel.ensureByLiveData.observe(this) {
+            guaranteeAdapter.setNewInstance(it)
+        }
+    }
+
+    fun specification(specification: String) {
+
     }
 
 }

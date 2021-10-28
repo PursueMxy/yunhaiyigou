@@ -179,14 +179,6 @@ class TimeUtils private constructor() {
          * @param format 时间格式
          * @return 时间字符串
          */
-        /**
-         * 将时间戳转为时间字符串
-         *
-         * 格式为yyyy-MM-dd HH:mm:ss
-         *
-         * @param millis 毫秒时间戳
-         * @return 时间字符串
-         */
         @JvmOverloads
         fun millis2String(millis: Long, format: DateFormat = DEFAULT_FORMAT): String {
             return format.format(Date(millis))

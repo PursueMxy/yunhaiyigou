@@ -221,12 +221,13 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/tvOrderAmount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
-                        android:text="￥1798.00"
                         android:textColor="@color/B33"
-                        android:textSize="14sp" />
+                        android:textSize="14sp"
+                        tools:text="￥1798.00" />
                 </FrameLayout>
 
                 <FrameLayout
@@ -266,6 +267,7 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/tvDiscount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
@@ -277,7 +279,8 @@
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="28dp">
+                    android:layout_marginTop="28dp"
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -291,15 +294,16 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
-                        android:text="+￥10.00"
                         android:textColor="@color/RFF"
-                        android:textSize="14sp" />
+                        android:textSize="14sp"
+                        tools:text="+￥10.00" />
                 </FrameLayout>
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="28dp">
+                    android:layout_marginTop="28dp"
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="wrap_content"
