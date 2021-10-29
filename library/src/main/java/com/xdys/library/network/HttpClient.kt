@@ -17,7 +17,9 @@ object HttpClient {
 
         val baseUrl1 = "http://desktop-r37dbo8:8081/"
 
-        val baseUrl = "http://desktop-0csfku1:8081/"
+//        val baseUrl = "http://desktop-0csfku1:8081/"
+
+        val baseUrl = "http://desktop-r37dbo8:8081/"
 
     }
 

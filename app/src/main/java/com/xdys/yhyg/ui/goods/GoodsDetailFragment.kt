@@ -65,6 +65,9 @@ class GoodsDetailFragment : ViewModelFragment<HomeViewModel, FragmentGoodsDetail
             layoutManager = GridLayoutManager(context, 3)
             addItemDecoration(DividerItemDecoration(13.dp, 10.px))
         }
+        with(getCouponsAdapter) {
+            setEmptyView(R.layout.empty_coupons_goods)
+        }
         tvViewAll.setOnClickListener {
             navController.navigate(R.id.goodsEvaluateFragment)
         }
@@ -111,6 +114,7 @@ class GoodsDetailFragment : ViewModelFragment<HomeViewModel, FragmentGoodsDetail
         super.initObserver()
         viewModel.goodsDetailLiveData.observe(this) {
             fillUI(it)
+//            it.shopId?.let { shopId -> viewModel.couponPage(shopId) }
         }
         viewModel.ensureByLiveData.observe(this) {
             guaranteeAdapter.setNewInstance(it)

@@ -80,7 +80,7 @@ class ViceHomeFragment : ViewModelFragment<HomeViewModel, FragmentViceHomeBindin
             setOnItemClickListener { _, view, position ->
                 WebViewActivity.start(
                     requireContext(),
-                    "${Constant.webUrl}/rich/",
+                    "${Constant.webUrl}/rich/${data[position].id}",
                     data[position].text
                 )
             }
@@ -102,8 +102,8 @@ class ViceHomeFragment : ViewModelFragment<HomeViewModel, FragmentViceHomeBindin
         viewModel.seckillHall()
         cateFirstAdapter.setNewInstance(
             mutableListOf(
-                ButtonList("0", R.mipmap.authentic_guarantee, "正品保证"),
-                ButtonList("1", R.mipmap.traceability_platform, "溯源平台"),
+                ButtonList("1", R.mipmap.authentic_guarantee, "正品保证"),
+                ButtonList("4", R.mipmap.traceability_platform, "溯源平台"),
                 ButtonList("2", R.mipmap.origin_straight, "产地直供"),
                 ButtonList("3", R.mipmap.home_about, "关于我们")
             )

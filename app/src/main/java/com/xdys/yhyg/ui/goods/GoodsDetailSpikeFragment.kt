@@ -78,6 +78,10 @@ class GoodsDetailSpikeFragment :
             layoutManager = GridLayoutManager(context, 3)
             addItemDecoration(DividerItemDecoration(13.dp, 10.px))
         }
+        with(getCouponsAdapter) {
+            setEmptyView(R.layout.empty_coupons_goods)
+        }
+
         tvViewAll.setOnClickListener {
             navController.navigate(R.id.goodsEvaluateFragment)
         }

@@ -43,4 +43,7 @@ interface HomeApi : BaseApi {
         @Query("pageSize") pageSize: Int,
         @Query("pageNum") pageNum: Int
     ): Result<SeckillData>
+
+    @GET("/mall-goods/api/coupon/page")
+    suspend fun couponPage(@Body body: RequestBody): Result<Any>
 }

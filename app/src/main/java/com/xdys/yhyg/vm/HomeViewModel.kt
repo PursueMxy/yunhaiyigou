@@ -158,7 +158,19 @@ class HomeViewModel : BaseViewModel() {
         }
     }
 
-
+    /**
+     * 店铺商店
+     */
+    fun couponPage(shopId: String) {
+        val map = hashMapOf("shopId" to shopId)
+        val body = gson.toJson(map).toRequestBody(
+            context.getString(R.string.content_type_json).toMediaType()
+        )
+        viewModelScope.launch {
+            fetchData({ api.couponPage(body) })?.let {
+            }
+        }
+    }
 
 
 }

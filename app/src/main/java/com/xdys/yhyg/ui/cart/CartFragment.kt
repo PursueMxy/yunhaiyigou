@@ -29,6 +29,7 @@ import com.xdys.yhyg.ui.goods.GoodsDetailActivity
 import com.xdys.yhyg.ui.order.ConfirmOrderActivity
 import com.xdys.yhyg.vm.AddressViewModel
 import com.xdys.yhyg.vm.CartViewModel
+import com.xdys.yhyg.vm.HomeViewModel
 import java.math.BigDecimal
 import java.text.DecimalFormat
 
@@ -41,6 +42,9 @@ class CartFragment : ViewModelFragment<CartViewModel, FragmentCartBinding>() {
     private val goodsAdapter by lazy { HomeGoodsAdapter() }
     override val viewModel: CartViewModel by activityViewModels()
     val addressViewModel: AddressViewModel by viewModels()
+
+    val homeViewModel: HomeViewModel by viewModels()
+
     private val cartAdapter: CartAdapter by lazy { CartAdapter(listener) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?): Unit = with(binding) {
@@ -93,7 +97,7 @@ class CartFragment : ViewModelFragment<CartViewModel, FragmentCartBinding>() {
     override fun initData() {
         viewModel.cartList()
         addressViewModel.defaultAddress()
-        goodsAdapter.setNewInstance(mutableListOf())
+        homeViewModel.favGoods()
     }
 
     private fun createHeaderView(): View {
@@ -121,6 +125,9 @@ class CartFragment : ViewModelFragment<CartViewModel, FragmentCartBinding>() {
         }
         addressViewModel.defaultAddressLivaData.observe(this) {
             binding.tvAddress.text = "配送至:${it.detailedAddress}"
+        }
+        homeViewModel.favGoodsLiveData.observe(this) {
+            goodsAdapter.setNewInstance(it.records)
         }
     }
 

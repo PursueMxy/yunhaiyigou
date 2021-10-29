@@ -119,6 +119,7 @@ class MainActivity : ViewModelActivity<MineViewModel, ActivityMainBinding>() {
         }
         intent.getIntExtra(Constant.Key.EXTRA_INDEX,0)?.let {
             showFragment(it)
+            tabSelect(it)
         }
     }
 
@@ -139,5 +140,9 @@ class MainActivity : ViewModelActivity<MineViewModel, ActivityMainBinding>() {
             else add(R.id.container, fragment).setMaxLifecycle(fragment, Lifecycle.State.RESUMED)
         }
 
+    }
+
+    fun tabSelect(index: Int) {
+//        binding.tabLayout.
     }
 }

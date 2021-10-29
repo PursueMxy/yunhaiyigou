@@ -40,9 +40,9 @@ class WebViewActivity : ViewModelActivity<SetViewModel, ActivityWebviewBinding>(
         }
         intent.getStringExtra(EXTRA_ID)?.let { binding.webView.loadUrl(it) }
         val homes: String = "android传入到网页里的数据，有参"
-        binding.titleBar.setOnLeftClickListener {
-            binding.webView.loadUrl("javascript:loadSellerInfo('$homes')");
-        }
+//        binding.titleBar.setOnLeftClickListener {
+//            binding.webView.loadUrl("javascript:loadSellerInfo('$homes')");
+//        }
         binding.webView.addJavaScript(JavaScriptInterface())
     }
 

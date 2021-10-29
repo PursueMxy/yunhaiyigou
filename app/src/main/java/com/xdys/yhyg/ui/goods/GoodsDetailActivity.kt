@@ -18,6 +18,7 @@ import com.xdys.yhyg.databinding.ActivityGoodsDetailBinding
 import com.xdys.yhyg.entity.cart.*
 import com.xdys.yhyg.entity.goods.*
 import com.xdys.yhyg.popup.ProductSpecPopupWindow
+import com.xdys.yhyg.ui.home.MainActivity
 import com.xdys.yhyg.ui.order.ConfirmOrderActivity
 import com.xdys.yhyg.vm.CartViewModel
 import com.xdys.yhyg.vm.HomeViewModel
@@ -64,6 +65,9 @@ class GoodsDetailActivity : ViewModelActivity<HomeViewModel, ActivityGoodsDetail
             viewModel.goodsSkuLiveData.value?.let { it1 ->
                 productSpecPopupWindow.setData(it1, 1).showPopupWindow()
             }
+        }
+        ivCart.setOnClickListener {
+            MainActivity.startActivity(this@GoodsDetailActivity,true,2)
         }
     }
 

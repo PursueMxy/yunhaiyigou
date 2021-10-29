@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -151,7 +151,7 @@
                 android:textColor="@color/B33"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:text="杜康酒【迎雙喜】500ML纯粮食酿造浓香型白酒" />
 
             <TextView
@@ -247,9 +247,9 @@
                 android:layout_marginStart="10dp"
                 android:drawableRight="@mipmap/arrow_right"
                 android:drawablePadding="8dp"
+                android:hint="请选择商品规格"
                 android:textColor="@color/B33"
                 android:textSize="15sp"
-                android:hint="请选择商品规格"
                 app:layout_constraintBottom_toBottomOf="@id/selected"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/selected"
@@ -447,8 +447,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="8dp"
-                android:visibility="gone"
                 android:src="@mipmap/du_kang_jiu"
+                android:visibility="gone"
                 app:layout_constraintDimensionRatio="h,1:1"
                 app:layout_constraintTop_toBottomOf="@id/tvGoodsDetail" />
 
@@ -462,5 +462,5 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </LinearLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.core.widget.NestedScrollView>
