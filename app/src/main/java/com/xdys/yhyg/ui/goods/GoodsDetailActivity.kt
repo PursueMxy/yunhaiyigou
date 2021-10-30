@@ -58,16 +58,26 @@ class GoodsDetailActivity : ViewModelActivity<HomeViewModel, ActivityGoodsDetail
         navController.graph = nav
         tvAddCart.setOnClickListener {
             viewModel.goodsSkuLiveData.value?.let { it1 ->
-                productSpecPopupWindow.setData(it1, 0).showPopupWindow()
+                viewModel.goodsDetailLiveData.value?.skus?.let { skus ->
+                    productSpecPopupWindow.setData(
+                        it1,
+                        skus, 0
+                    ).showPopupWindow()
+                }
             }
         }
         tvBuyNow.setOnClickListener {
             viewModel.goodsSkuLiveData.value?.let { it1 ->
-                productSpecPopupWindow.setData(it1, 1).showPopupWindow()
+                viewModel.goodsDetailLiveData.value?.skus?.let { it2 ->
+                    productSpecPopupWindow.setData(
+                        it1,
+                        it2, 1
+                    ).showPopupWindow()
+                }
             }
         }
         ivCart.setOnClickListener {
-            MainActivity.startActivity(this@GoodsDetailActivity,true,2)
+            MainActivity.startActivity(this@GoodsDetailActivity, true, 2)
         }
     }
 
@@ -75,12 +85,31 @@ class GoodsDetailActivity : ViewModelActivity<HomeViewModel, ActivityGoodsDetail
 //        intent.getStringExtra(Constant.Key.EXTRA_ID)?.let { viewModel.goodsDetail(it) }
     }
 
+    override fun initObserver() {
+        super.initObserver()
+        viewModel.goodsDetailLiveData.observe(this) {
+            for (goods in it.skus) {
+                val builder = StringBuilder()
+                val builderName = StringBuilder()
+                for (spec in goods.specs) {
+                    builder.append(spec.specValueId).append(",")
+                    builderName.append(spec.specValueName).append(",")
+                }
+                if (builder.length > 0) {
+                    goods.gatherName = builderName.deleteCharAt(builderName.length - 1).toString()
+                    goods.gatherId = builder.deleteCharAt(builder.length - 1).toString()
+                }
+            }
+        }
+    }
+
 
     private val productSpecPopupWindow: ProductSpecPopupWindow by lazy {
         val id: String = intent.getStringExtra(Constant.Key.EXTRA_ID).toString()
         val goodsDetail = viewModel.goodsDetailLiveData.value
         val goodsSku = viewModel.goodsSkuLiveData.value
-        ProductSpecPopupWindow(this, SpecItem()) { selectedSpec, selectedNumber, type ->
+
+        ProductSpecPopupWindow(this, skuEntity()) { selectedSpec, selectedNumber, type ->
             if (type == 1) {
                 var spuId = goodsSku?.get(0)?.spuId
                 ConfirmOrderActivity.goodsStart(
@@ -92,7 +121,7 @@ class GoodsDetailActivity : ViewModelActivity<HomeViewModel, ActivityGoodsDetail
                                 goodsDetail?.name,
                                 spuId.toString(),
                                 selectedSpec?.id,
-                                selectedSpec?.value,
+                                selectedSpec?.gatherName,
                                 selectedNumber.toLong(),
                                 goodsDetail?.priceUp,
                                 goodsDetail?.picUrls?.get(0)
@@ -102,16 +131,18 @@ class GoodsDetailActivity : ViewModelActivity<HomeViewModel, ActivityGoodsDetail
                 )
             } else {
                 selectedSpec?.let { spec ->
-                    goodsSku?.get(0)?.let {
-                        cartModel.addCart(
-                            it.spuId,
-                            spec.id,
-                            selectedNumber.toString(),
-                            spec.value,
-                            "566",
-                            "",
-                            ""
-                        )
+                    spec.gatherName?.let { spuName ->
+                        spec.spuId?.let {
+                            cartModel.addCart(
+                                it,
+                                id,
+                                selectedNumber.toString(),
+                                spuName,
+                                "566",
+                                "",
+                                ""
+                            )
+                        }
                     }
                 }
             }

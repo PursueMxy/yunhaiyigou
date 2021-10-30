@@ -13,16 +13,17 @@ import com.xdys.yhyg.entity.goods.*
 import razerdp.basepopup.BasePopupWindow
 
 class ProductSpecPopupWindow(
-    context: Context, val default: SpecItem,
-    val onSend: (selectedSpec: SpecItem, number: Int, type: Int) -> Unit,
+    context: Context, val default: skuEntity,
+    val onSend: (selectedSpec: skuEntity, number: Int, type: Int) -> Unit,
 ) : BasePopupWindow(context) {
 
     var specAdapter: ProductSpecAdapter? = null
     private val builder = StringBuilder()
     private val formatBuilder = StringBuilder()
-    var selectedSpec: SpecItem = default
+    var selectedSpec: skuEntity = default
     var specAttrList: MutableList<SkuItem> = mutableListOf()
     var specList: MutableList<SpecItem> = mutableListOf()
+    var skuList: MutableList<skuEntity> = mutableListOf()
     private var number: Int = 1
 
     var type: Int = 0
@@ -74,9 +75,14 @@ class ProductSpecPopupWindow(
         }
     }
 
-    fun setData(goodsList: MutableList<SkuItem>, types: Int): ProductSpecPopupWindow {
+    fun setData(
+        goodsList: MutableList<SkuItem>,
+        skuList: MutableList<skuEntity>,
+        types: Int
+    ): ProductSpecPopupWindow {
         type = types
         specAttrList = goodsList
+        this.skuList = skuList
         goodsList?.let {
             if (it.size > 0) {
                 specList = it[0].leaf
@@ -91,7 +97,7 @@ class ProductSpecPopupWindow(
     /**
      * 筛选出已选中的属性集合，若不是集合，则返回默认的属性集合
      */
-    private fun chooseSelectedSpec(): SpecItem {
+    private fun chooseSelectedSpec(): skuEntity {
         if (specAttrList.size > 0) {
             builder.setLength(0)
             formatBuilder.setLength(0)
@@ -99,23 +105,24 @@ class ProductSpecPopupWindow(
             for (spec in specAttrList) {
                 loop@ for (value in spec.leaf) {
                     if (value.selected) {
-                        builder.append(value.value + ":").append(value.id).append(";")
+                        builder.append(value.id).append(",")
                         formatBuilder.append("“${value.value}”").append(" ")
                         break@loop
                     }
                 }
             }
             if (builder.isEmpty()) return default
-            val valueId = builder.deleteCharAt(builder.length - 1).toString()
-            for (specPrice in specList) {
-                if (specPrice.selected == true) {
+            val valueId = builder.deleteCharAt(builder.length-1).toString()
+            for (specPrice in skuList) {
+                if (TextUtils.equals(specPrice.gatherId, valueId)) {
                     return specPrice
                 }
             }
         } else {
-            var specPrice = specList[0]
-
-            return specPrice
+            if (specList.size > 0) {
+                var specPrice = skuList[0]
+                return specPrice
+            }
         }
         return default
     }

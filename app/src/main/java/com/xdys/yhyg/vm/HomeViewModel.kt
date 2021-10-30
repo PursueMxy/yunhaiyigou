@@ -159,7 +159,7 @@ class HomeViewModel : BaseViewModel() {
     }
 
     /**
-     * 店铺商店
+     * 店铺优惠券
      */
     fun couponPage(shopId: String) {
         val map = hashMapOf("shopId" to shopId)

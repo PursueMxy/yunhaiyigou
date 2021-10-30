@@ -1,5 +1,6 @@
 package com.xdys.yhyg.ui.cart
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,9 +20,7 @@ import com.xdys.yhyg.adapte.cart.CartAdapter
 import com.xdys.yhyg.adapte.cart.OnCartItemSelectedListener
 import com.xdys.yhyg.adapte.home.HomeGoodsAdapter
 import com.xdys.yhyg.databinding.FragmentCartBinding
-import com.xdys.yhyg.entity.cart.CartEntity
 import com.xdys.yhyg.entity.cart.CartProductEntity
-import com.xdys.yhyg.entity.cart.CartSelectedEntity
 import com.xdys.yhyg.entity.cart.CartShopEntity
 import com.xdys.yhyg.entity.goods.ConfirmOrderEntity
 import com.xdys.yhyg.entity.goods.OrderGoods
@@ -30,8 +29,6 @@ import com.xdys.yhyg.ui.order.ConfirmOrderActivity
 import com.xdys.yhyg.vm.AddressViewModel
 import com.xdys.yhyg.vm.CartViewModel
 import com.xdys.yhyg.vm.HomeViewModel
-import java.math.BigDecimal
-import java.text.DecimalFormat
 
 class CartFragment : ViewModelFragment<CartViewModel, FragmentCartBinding>() {
     override fun createBinding(
@@ -47,6 +44,7 @@ class CartFragment : ViewModelFragment<CartViewModel, FragmentCartBinding>() {
 
     private val cartAdapter: CartAdapter by lazy { CartAdapter(listener) }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?): Unit = with(binding) {
         with(rvGoods) {
             layoutManager = GridLayoutManager(activity, 2).apply {
@@ -60,7 +58,7 @@ class CartFragment : ViewModelFragment<CartViewModel, FragmentCartBinding>() {
             setHeaderView(createHeaderView())
             headerWithEmptyEnable = true
             setOnItemClickListener { _, _, position ->
-                GoodsDetailActivity.start(requireContext(), "")
+                data[position].id?.let {GoodsDetailActivity.start(requireContext(), it, 1)}
             }
         }
         tvToSettle.setOnClickListener {
