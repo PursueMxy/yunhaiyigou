@@ -38,6 +38,16 @@ class OrderFragment : ViewModelFragment<OrderViewModel, FragmentOrderBinding>() 
             setOnItemClickListener { _, _, position ->
                 data[position].orders_id?.let { OrderDetailActivity.start(requireContext(), it) }
             }
+            setOnItemChildClickListener { _, view, position ->
+                when (view.id) {
+                    R.id.btnOrderStatus -> {
+                    }
+                    R.id.btnTwoStatus -> {
+                    }
+                    R.id.btnThreeStatus -> {
+                    }
+                }
+            }
         }
         refreshLayout.setOnRefreshListener { initData() }
     }

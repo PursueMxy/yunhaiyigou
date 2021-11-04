@@ -146,7 +146,7 @@ class CartShopProvider(
     override fun convert(holder: BaseViewHolder, item: BaseNode) {
         (item as CartShopEntity)?.let { shop ->
             holder.getView<ImageView>(R.id.cbShopCheck).isSelected = shop.selected
-            holder.setText(R.id.tvShopName, shop.shopName)
+            holder.setText(R.id.tvShopName, "杜康古城酒业商城")
                 .getView<View>(R.id.tvDiscountCoupon).setOnClickListener {
                     popupCoupons.setData().showPopupWindow()
                 }
@@ -173,7 +173,7 @@ class CartProductProvider(
             holder.setText(R.id.tvNumber, cartProduct.quantity.toString())
             holder.getView<ImageView>(R.id.ivGoods).loadRoundCornerImage(item.goodsSpu?.picUrls)
             cartProduct.specs?.let {
-                holder.setText(R.id.tvSpuCode, it[0].specValueName)
+                holder.setText(R.id.tvSpuCode, "浓香型500ml/单瓶")
             }
             holder.getView<ImageView>(R.id.cbCartChecks).isSelected = cartProduct.selected
             holder.getView<ImageView>(R.id.cbCartChecks).setOnClickListener {
@@ -225,6 +225,7 @@ fun changeAllProductStatus(checkAll: Boolean) {
 
 
 interface OnCartItemSelectedListener {
+
     /**
      * 选中状态发生变化
      */

@@ -51,6 +51,8 @@ class HomeViewModel : BaseViewModel() {
 
     val ensureByLiveData by lazy { MutableLiveData<MutableList<EnsureByEntity>>() }
 
+    val homeGoodsLiveData by lazy { MutableLiveData<PageData<FavGoodsEntity>>() }
+
     fun conversion(choose: Boolean) {
         conversionLiveData.postValue(choose)
     }
@@ -152,7 +154,7 @@ class HomeViewModel : BaseViewModel() {
      */
     fun seckillHall() {
         viewModelScope.launch {
-            fetchData({ api1.seckillHall(1, 1) })?.let {
+            fetchData({ api.seckillHall(1, 1) })?.let {
                 seckillHallLiveData.postValue(it)
             }
         }
@@ -168,6 +170,17 @@ class HomeViewModel : BaseViewModel() {
         )
         viewModelScope.launch {
             fetchData({ api.couponPage(body) })?.let {
+            }
+        }
+    }
+
+    /**
+     * 商品分页列表
+     */
+    fun goodsSpuPage() {
+        viewModelScope.launch {
+            fetchData({ api.goodsSpuPage("sale_num", "false") })?.let {
+                homeGoodsLiveData.postValue(it)
             }
         }
     }

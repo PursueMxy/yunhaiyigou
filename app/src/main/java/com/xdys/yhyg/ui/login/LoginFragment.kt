@@ -50,7 +50,7 @@ class LoginFragment : ViewModelFragment<LoginViewModel, FragmentLoginBinding>() 
             text = buildSpannedString {
                 append(getString(R.string.login_agree_1))
                 inSpans(CustomClickSpan({
-                    WebViewActivity.start(requireContext(), "${Constant.webUrl}/agreement/", "用户协议和隐私政策")
+                    WebViewActivity.start(requireContext(), "${Constant.webUrl}/agreement/1", "用户协议和隐私政策")
                 })) { append(getString(R.string.user_agreement)) }
             }
             setOnClickListener {

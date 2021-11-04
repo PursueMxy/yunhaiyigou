@@ -94,9 +94,6 @@ class MineFragment : ViewModelFragment<MineViewModel, FragmentMineBinding>() {
         tvBeEvaluated.setOnClickListener {
             MyOrderActivity.start(requireContext(), 4)
         }
-        tvMyCollection.setOnClickListener {
-            MyOrderActivity.start(requireContext(), 5)
-        }
     }
 
     fun fillUI(userInfo: UserInfoEntity) {
@@ -109,9 +106,9 @@ class MineFragment : ViewModelFragment<MineViewModel, FragmentMineBinding>() {
             tvBalanceNum.text = userInfo.balance
             tvCouponsNumber.text = userInfo.cardVoucherList.size.toString()
             ivPortrait.loadCircleImage(R.mipmap.watch)
-            tvTodayIncomeNum.text = "16586"
-            tvTodayOrderNum.text = "5556"
-            tvTodaySalesNum.text = "7596"
+            tvTodayIncomeNum.text = "0"
+            tvTodayOrderNum.text = "0"
+            tvTodaySalesNum.text = "0"
             ivPortrait.loadCircleImage(userInfo.headimgUrl)
             clShopkeeperCenter.isVisible = userInfo.isMerchant == "1"
         }

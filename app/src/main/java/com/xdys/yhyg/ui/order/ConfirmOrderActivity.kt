@@ -4,24 +4,22 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.fragment.app.viewModels
 import com.chad.library.adapter.base.entity.node.BaseNode
 import com.xdys.library.base.ViewModelActivity
 import com.xdys.library.config.Constant
-import com.xdys.library.extension.single
+import com.xdys.library.event.CartEvent
+import com.xdys.library.event.LiveDataBus
+import com.xdys.library.extension.currency
 import com.xdys.library.extension.singleTop
+import com.xdys.library.utils.mxyUtils
 import com.xdys.yhyg.adapte.cart.ConfirmOrderAdapter
 import com.xdys.yhyg.adapte.goods.OrderGoodsAdapter
 import com.xdys.yhyg.databinding.ActivityConfirmOrderBinding
-import com.xdys.yhyg.entity.cart.CartEntity
-import com.xdys.yhyg.entity.cart.CartProductEntity
-import com.xdys.yhyg.entity.cart.CartShopEntity
 import com.xdys.yhyg.entity.goods.*
-import com.xdys.yhyg.ui.goods.GoodsDetailActivity
 import com.xdys.yhyg.ui.home.MainActivity
 import com.xdys.yhyg.vm.AddressViewModel
-import com.xdys.yhyg.vm.CartViewModel
 import com.xdys.yhyg.vm.HomeViewModel
+import com.xdys.yhyg.vm.OrderViewModel
 
 class ConfirmOrderActivity : ViewModelActivity<HomeViewModel, ActivityConfirmOrderBinding>() {
 
@@ -29,12 +27,14 @@ class ConfirmOrderActivity : ViewModelActivity<HomeViewModel, ActivityConfirmOrd
 
     override val viewModel: HomeViewModel by viewModels()
 
+    val orderViewModel: OrderViewModel by viewModels()
+
     val addressViewModel: AddressViewModel by viewModels()
 
     companion object {
-        fun goodsStart(context: Context, cartShop: ConfirmOrderEntity) {
+        fun goodsStart(context: Context, foldOrder: FoldOrder) {
             val intent = Intent(context, ConfirmOrderActivity::class.java)
-                .putExtra(Constant.Key.EXTRA_DATA, cartShop)
+                .putExtra(Constant.Key.EXTRA_DATA, foldOrder)
                 .singleTop()
             context.startActivity(intent)
         }
@@ -46,42 +46,74 @@ class ConfirmOrderActivity : ViewModelActivity<HomeViewModel, ActivityConfirmOrd
         }
     }
 
-    private val mAdapter by lazy { OrderGoodsAdapter() }
+    private val mAdapter by lazy { ConfirmOrderAdapter() }
 
     override fun initUI(savedInstanceState: Bundle?): Unit = with(binding) {
         with(rvGoods) {
             adapter = mAdapter
         }
-        (intent.getSerializableExtra(Constant.Key.EXTRA_DATA) as? ConfirmOrderEntity)?.let {
-            binding.tvShopName.text = it.shopName + it.shopId
-            mAdapter.setNewInstance(it.goodsList)
-            binding.tvGoodsAmount.text = "￥1000"
-            binding.tvShipping.text = "￥0.00"
-            binding.tvCouponDeduction.text = "￥0.00"
+        intent.getStringExtra(Constant.Key.EXTRA_ID)?.let {
+            binding.tvGoodsAmount.text = it.currency()
         }
         binding.tvPayImmediately.setOnClickListener {
             saveOrder()
         }
+        tvPaymentType.text = "微信支付"
 
     }
+
+    /**
+     * 商品拆单
+     */
+    fun foldOrder(addressId: String) {
+        (intent.getSerializableExtra(Constant.Key.EXTRA_DATA) as? FoldOrder)?.let {
+            it.buyerAddressId = addressId
+            orderViewModel.foldOrder(it)
+        }
+    }
+
 
     /**
      * 下单
      */
     fun saveOrder() {
-        val shopList: MutableList<GoodsList> = mutableListOf()
-        val goodsList: MutableList<GoodsOrder> = mutableListOf()
-        (intent.getSerializableExtra(Constant.Key.EXTRA_DATA) as? ConfirmOrderEntity)?.let {
-            for (goods in it.goodsList) {
-                goodsList.add(GoodsOrder(goods.goodsId, goods.skuId, goods.quantity.toString()))
+        val buyShopList: MutableList<BuyShopEntity> = mutableListOf()
+        val userShoppingCartIdList: MutableList<String> = mutableListOf()
+        (intent.getSerializableExtra(Constant.Key.EXTRA_DATA) as? FoldOrder)?.let {
+            for (cart in it.goodsList) {
+                if (cart.cartId != null) {
+                    userShoppingCartIdList.add(cart.cartId)
+                }
             }
-            shopList.add(GoodsList(it.shopId, goodsList))
-            val orderGoods = GenerateOrdersEntity(
-                "2", "1", "1",
-                "app", "0", "0", "0", "0", "0",
-                "测试数据", ShopList(shopList), addressViewModel.defaultAddressLivaData.value?.id
+        }
+
+        orderViewModel.previewOrderLiveData.value?.let {
+            for (buyShop in it.buyShopList) {
+                val buyGoodsList: MutableList<BuyGoodsEntity> = mutableListOf()
+                for (goods in buyShop.goodsList) {
+                    buyGoodsList.add(
+                        BuyGoodsEntity(
+                            goods.shopId, goods.spuId, goods.skuId,
+                            goods.quantity, "", goods.orderType, "false", goods.deliveryMode
+                        )
+                    )
+                }
+                buyShopList.add(
+                    BuyShopEntity(
+                        buyShop.shopId, buyShop.deliveryMode,
+                        "", buyGoodsList, "", buyShop.orderType
+                    )
+                )
+
+            }
+            orderViewModel.addOrder(
+                GenerateOrdersEntity(
+                    userShoppingCartIdList,
+                    it.buyerAddressId,
+                    it.paymentType,
+                    buyShopList
+                )
             )
-            viewModel.savaGoods(orderGoods)
         }
     }
 
@@ -97,10 +129,20 @@ class ConfirmOrderActivity : ViewModelActivity<HomeViewModel, ActivityConfirmOrd
             binding.tvAddress.text = "${it.provinceName}${it.cityName}${it.townsName}"
             binding.tvConsignee.text = it.consigneeName
             binding.tvMobile.text = it.phone
+            it.id?.let { id -> foldOrder(id) }
         }
         viewModel.savaGoodsLiveData.observe(this) {
             MainActivity.startActivity(this, true, 3)
             MyOrderActivity.start(this, 1)
         }
+        orderViewModel.previewOrderLiveData.observe(this) {
+            mAdapter.setNewInstance(it.buyShopList as MutableList<BaseNode>)
+            binding.tvShipping.text = "￥0.00"
+            binding.tvCouponDeduction.text = "￥0.00"
+        }
+        orderViewModel.saveOrderLiveData.observe(this) {
+            LiveDataBus.post(CartEvent())
+        }
+
     }
 }

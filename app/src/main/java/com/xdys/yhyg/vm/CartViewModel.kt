@@ -24,6 +24,8 @@ class CartViewModel : BaseViewModel() {
 
     val cartUpdateLiveData by lazy { MutableLiveData<Any>() }
 
+    val cartAddLiveData by lazy { MutableLiveData<String>() }
+
 
     private val gson by lazy { Gson() }
 
@@ -49,6 +51,7 @@ class CartViewModel : BaseViewModel() {
         )
         viewModelScope.launch {
             fetchData({ api.addCart(body) })?.let {
+                cartAddLiveData.postValue("成功加人购物车")
             }
         }
     }

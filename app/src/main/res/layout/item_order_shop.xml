@@ -12,7 +12,7 @@
         android:layout_marginStart="16.5dp"
         android:drawableStart="@mipmap/shops"
         android:drawablePadding="6.5dp"
-        android:paddingVertical="19.5dp"
+        android:paddingTop="19.5dp"
         android:textColor="@color/B33"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"

@@ -134,22 +134,6 @@
                     tools:text="微信支付" />
             </FrameLayout>
 
-            <TextView
-                android:id="@+id/tvShopName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
-                android:background="@color/white"
-                android:drawableStart="@mipmap/shops"
-                android:drawablePadding="6.5dp"
-                android:paddingVertical="19.5dp"
-                android:paddingStart="16.5dp"
-                android:textColor="@color/B33"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="杜康古城酒业商城" />
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvGoods"
                 android:layout_width="match_parent"
@@ -161,8 +145,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
-                android:visibility="gone"
-                android:background="@drawable/bg_r10">
+                android:background="@drawable/bg_r10"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/tvDiscountCoupon"
@@ -316,10 +300,10 @@
                 </FrameLayout>
 
                 <FrameLayout
-                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingVertical="11dp">
+                    android:paddingVertical="11dp"
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -341,10 +325,10 @@
                 </FrameLayout>
 
                 <FrameLayout
-                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingVertical="11dp">
+                    android:paddingVertical="11dp"
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="wrap_content"

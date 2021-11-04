@@ -103,6 +103,7 @@
         app:layout_constraintTop_toBottomOf="@id/tvPrice" />
 
     <TextView
+        android:id="@+id/btnTwoStatus"
         android:layout_width="wrap_content"
         android:layout_height="29dp"
         android:layout_marginEnd="10dp"
@@ -115,6 +116,23 @@
         android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="@id/btnOrderStatus"
         app:layout_constraintEnd_toStartOf="@id/btnOrderStatus"
+        app:layout_constraintTop_toTopOf="@id/btnOrderStatus" />
+
+    <TextView
+        android:id="@+id/btnThreeStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="29dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/box_r100"
+        android:backgroundTint="@color/B99"
+        android:gravity="center"
+        android:minWidth="90dp"
+        android:text="退换/售后"
+        android:textColor="@color/B66"
+        android:textSize="13sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/btnOrderStatus"
+        app:layout_constraintEnd_toStartOf="@id/btnTwoStatus"
         app:layout_constraintTop_toTopOf="@id/btnOrderStatus" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

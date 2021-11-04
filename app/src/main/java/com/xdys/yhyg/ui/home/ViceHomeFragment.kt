@@ -98,8 +98,9 @@ class ViceHomeFragment : ViewModelFragment<HomeViewModel, FragmentViceHomeBindin
 
     override fun initData() {
         viewModel.goodsPage()
-        viewModel.favGoods()
+//        viewModel.favGoods()
         viewModel.seckillHall()
+        viewModel.goodsSpuPage()
         cateFirstAdapter.setNewInstance(
             mutableListOf(
                 ButtonList("1", R.mipmap.authentic_guarantee, "正品保证"),
@@ -115,6 +116,11 @@ class ViceHomeFragment : ViewModelFragment<HomeViewModel, FragmentViceHomeBindin
         viewModel.homeLiveData.observe(this) {
             binding.refreshLayout.finishRefresh()
             mAdapter.setNewInstance(it.carouselList)
+            val tvBannerList: MutableList<String> = mutableListOf()
+            for (banner in it.noticeList) {
+                banner.name?.let { it1 -> tvBannerList.add(it1) }
+            }
+            binding.tbvContent.setDatas(tvBannerList)
         }
         viewModel.favGoodsLiveData.observe(this) {
             goodsAdapter.setDiffNewData(it.records)
@@ -122,6 +128,19 @@ class ViceHomeFragment : ViewModelFragment<HomeViewModel, FragmentViceHomeBindin
         viewModel.seckillHallLiveData.observe(this) {
             flashGoodsAdapter.setDiffNewData(it.records.get(0).seckillGoods)
         }
+        viewModel.homeGoodsLiveData.observe(this){
+            goodsAdapter.setDiffNewData(it.records)
+        }
     }
 
+
+    override fun onResume() {
+        super.onResume()
+        binding.tbvContent.startViewAnimator()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        binding.tbvContent.stopViewAnimator()
+    }
 }

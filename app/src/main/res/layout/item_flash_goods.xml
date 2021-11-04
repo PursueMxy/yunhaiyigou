@@ -17,7 +17,8 @@
         android:layout_marginTop="0.5dp"
         app:layout_constraintDimensionRatio="h,1:1"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@mipmap/watch" />
+        tools:src="@mipmap/watch"
+         />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -50,7 +51,8 @@
         app:layout_constraintBottom_toBottomOf="@id/ivAdd"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/ivAdd"
-        tools:text="￥3８999" />
+        tools:text="￥3８999"
+        tools:ignore="SmallSp" />
 
     <TextView
         android:id="@+id/tvOriginalPrice"
@@ -61,13 +63,14 @@
         android:textSize="9sp"
         app:layout_constraintBottom_toBottomOf="@id/tvPrice"
         app:layout_constraintStart_toEndOf="@id/tvPrice"
-        tools:text="￥899" />
+        tools:text="￥899"
+        tools:ignore="SmallSp" />
 
     <ImageView
         android:id="@+id/ivAdd"
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_marginTop="13.5dp"
+        android:layout_marginTop="5.5dp"
         android:layout_marginEnd="7.5dp"
         android:background="@drawable/bg_r100"
         android:backgroundTint="@color/RE3"

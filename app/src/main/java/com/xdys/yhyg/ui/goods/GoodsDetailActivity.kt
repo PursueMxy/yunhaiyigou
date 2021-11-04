@@ -58,21 +58,25 @@ class GoodsDetailActivity : ViewModelActivity<HomeViewModel, ActivityGoodsDetail
         navController.graph = nav
         tvAddCart.setOnClickListener {
             viewModel.goodsSkuLiveData.value?.let { it1 ->
-                viewModel.goodsDetailLiveData.value?.skus?.let { skus ->
-                    productSpecPopupWindow.setData(
-                        it1,
-                        skus, 0
-                    ).showPopupWindow()
+                viewModel.goodsDetailLiveData.value?.let { goods ->
+                    goods.skus?.let { skus ->
+                        productSpecPopupWindow.setData(
+                            it1,
+                            skus, 0, goods.picUrls[0]
+                        ).showPopupWindow()
+                    }
                 }
             }
         }
         tvBuyNow.setOnClickListener {
             viewModel.goodsSkuLiveData.value?.let { it1 ->
-                viewModel.goodsDetailLiveData.value?.skus?.let { it2 ->
-                    productSpecPopupWindow.setData(
-                        it1,
-                        it2, 1
-                    ).showPopupWindow()
+                viewModel.goodsDetailLiveData.value?.let { goods ->
+                    goods?.skus?.let { skus ->
+                        productSpecPopupWindow.setData(
+                            it1,
+                            skus, 1, goods.picUrls[0]
+                        ).showPopupWindow()
+                    }
                 }
             }
         }
@@ -101,6 +105,10 @@ class GoodsDetailActivity : ViewModelActivity<HomeViewModel, ActivityGoodsDetail
                 }
             }
         }
+
+        cartModel.cartAddLiveData.observe(this) {
+            ToastUtils.show(it)
+        }
     }
 
 
@@ -108,34 +116,45 @@ class GoodsDetailActivity : ViewModelActivity<HomeViewModel, ActivityGoodsDetail
         val id: String = intent.getStringExtra(Constant.Key.EXTRA_ID).toString()
         val goodsDetail = viewModel.goodsDetailLiveData.value
         val goodsSku = viewModel.goodsSkuLiveData.value
-
         ProductSpecPopupWindow(this, skuEntity()) { selectedSpec, selectedNumber, type ->
             if (type == 1) {
                 var spuId = goodsSku?.get(0)?.spuId
                 ConfirmOrderActivity.goodsStart(
-                    this, ConfirmOrderEntity(
-                        "小杜营商", goodsDetail?.shopId.toString(),
-                        mutableListOf(
-                            OrderGoods(
-                                id,
-                                goodsDetail?.name,
-                                spuId.toString(),
+                    this,
+                    FoldOrder(
+                        "", mutableListOf(
+                            FoldGoods(
+                                goodsDetail?.shopId.toString(),
+                                spuId,
                                 selectedSpec?.id,
-                                selectedSpec?.gatherName,
-                                selectedNumber.toLong(),
-                                goodsDetail?.priceUp,
-                                goodsDetail?.picUrls?.get(0)
+                                selectedNumber.toString(),
+                                "",
+                                "0",
+                                "1"
                             )
                         )
                     )
                 )
+
+//                ConfirmOrderActivity.goodsStart(
+//                    this, ConfirmOrderEntity(
+//                        "小杜营商", goodsDetail?.shopId.toString(),
+//                        mutableListOf(
+//                            OrderGoods(id, goodsDetail?.name, spuId.toString(),
+//                                selectedSpec?.id, selectedSpec?.gatherName,
+//                                selectedNumber.toLong(), goodsDetail?.priceUp,
+//                                goodsDetail?.picUrls?.get(0)
+//                            )
+//                        )
+//                    ), goodsDetail?.priceDown.toString()
+//                )
             } else {
                 selectedSpec?.let { spec ->
                     spec.gatherName?.let { spuName ->
-                        spec.spuId?.let {
+                        spec.id?.let {
                             cartModel.addCart(
-                                it,
                                 id,
+                                it,
                                 selectedNumber.toString(),
                                 spuName,
                                 "566",

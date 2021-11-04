@@ -28,6 +28,11 @@ class BalanceChangeEvent
 class OrderDeleteEvent(val orderId: String)
 
 /**
+ * 购物车
+ */
+class CartEvent()
+
+/**
  * 订单状态变化事件
  * @param orderStatus 状态，为空则为未知
  */

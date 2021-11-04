@@ -4,6 +4,8 @@ import android.content.Context
 import android.text.TextUtils
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.hjq.toast.ToastUtils
+import com.xdys.library.extension.currency
 import com.xdys.library.extension.loadRoundCornerImage
 import com.xdys.yhyg.R
 import com.xdys.yhyg.adapte.goods.OnSpecValueClickListener
@@ -51,10 +53,6 @@ class ProductSpecPopupWindow(
             })
             adapter = specAdapter
         }
-
-        binding.ivGoods?.loadRoundCornerImage(R.mipmap.du_kang_jiu)
-        binding.tvPrice?.text = "￥599"
-        binding.tvProductNumber?.text = "商品编号:20211123558"
         binding.ivSubtract.setOnClickListener {
             if (number > 1) {
                 --number
@@ -67,8 +65,12 @@ class ProductSpecPopupWindow(
 
         }
         binding.tvConfirm.setOnClickListener {
-            dismiss()
-            onSend?.invoke(selectedSpec, number, type)
+            if (selectedSpec!=default) {
+                dismiss()
+                onSend?.invoke(selectedSpec, number, type)
+            }else{
+                ToastUtils.show("请选择完整规格")
+            }
         }
         binding.ivClose.setOnClickListener {
             dismiss()
@@ -78,7 +80,7 @@ class ProductSpecPopupWindow(
     fun setData(
         goodsList: MutableList<SkuItem>,
         skuList: MutableList<skuEntity>,
-        types: Int
+        types: Int, imgUrl: String
     ): ProductSpecPopupWindow {
         type = types
         specAttrList = goodsList
@@ -87,6 +89,11 @@ class ProductSpecPopupWindow(
             if (it.size > 0) {
                 specList = it[0].leaf
             }
+        }
+        if (skuList.size > 0) {
+            binding.ivGoods.loadRoundCornerImage(imgUrl)
+            binding.tvProductNumber?.text = "库存：${skuList[0].stock}"
+            binding.tvPrice?.text = "${skuList[0].salesPrice?.currency()}"
         }
         specAdapter?.setNewInstance(goodsList)
         specAdapter?.notifyDataSetChanged()
@@ -112,9 +119,11 @@ class ProductSpecPopupWindow(
                 }
             }
             if (builder.isEmpty()) return default
-            val valueId = builder.deleteCharAt(builder.length-1).toString()
+            val valueId = builder.deleteCharAt(builder.length - 1).toString()
             for (specPrice in skuList) {
                 if (TextUtils.equals(specPrice.gatherId, valueId)) {
+                    binding.tvPrice.text = specPrice.salesPrice?.currency()
+                    binding.tvProductNumber?.text = "库存：${specPrice.stock}"
                     return specPrice
                 }
             }

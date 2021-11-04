@@ -1,32 +1,50 @@
 package com.xdys.yhyg.entity.goods
 
+import java.io.Serializable
+
 data class GenerateOrdersEntity(
-    val paymentWay: String? = null,
-    val deliveryWay: String? = null,
+    val userShoppingCartIdList: MutableList<String> = mutableListOf(),
+    val buyerAddressId: String? = null,
     val paymentType: String? = null,
-    val tradeType: String? = null,
-    val freightPrice: String? = null,
-    val salesPrice: String? = null,
-    val paymentPointsPrice: String? = null,
-    val paymentCouponPrice: String? = null,
-    val paymentPoints: String? = null,
-    val userMessage: String? = null,
-    val itemIds: ShopList? = null,
-    val addressId: String? = null,
+    val buyShopList: MutableList<BuyShopEntity> = mutableListOf()
 )
 
-data class ShopList(
-    val shopList: MutableList<GoodsList> = mutableListOf(),
-)
-
-data class GoodsList(
+data class BuyShopEntity(
     val shopId: String? = null,
-    val goodsList: MutableList<GoodsOrder> = mutableListOf(),
+    val deliveryMode: String? = null,
+    val buyerRemark: String? = null,
+    val goodsList: MutableList<BuyGoodsEntity> = mutableListOf(),
+    val userCouponId: String? = null,
+    val orderType: String? = null,
+    val marketId: String? = null,
+    val relationId: String? = null,
 )
 
-
-data class GoodsOrder(
-    val goodsId: String? = null,
+data class BuyGoodsEntity(
+    val shopId: String? = null,
+    val spuId: String? = null,
     val skuId: String? = null,
-    val quantity: String? = null
-)
+    val quantity: String? = null,
+    val seckillskuId: String? = null,
+    val orderType: String? = null,
+    val hasEnable: String? = null,
+    val deliveryMode: String? = null,
+
+    )
+
+
+data class FoldOrder(
+    var buyerAddressId: String? = null,
+    var goodsList: MutableList<FoldGoods> = mutableListOf()
+) : Serializable
+
+data class FoldGoods(
+    val shopId: String? = null,
+    val spuId: String? = null,
+    val skuId: String? = null,
+    val quantity: String? = null,
+    val seckillskuId: String? = null,
+    val orderType: String? = null,
+    val deliveryMode: String? = null,
+    val cartId: String? = null,
+) : Serializable

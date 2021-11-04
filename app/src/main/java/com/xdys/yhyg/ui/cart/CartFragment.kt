@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chad.library.adapter.base.entity.node.BaseNode
 import com.xdys.library.base.ViewModelFragment
+import com.xdys.library.event.CartEvent
+import com.xdys.library.event.LiveDataBus
 import com.xdys.library.extension.dp
 import com.xdys.library.kit.decoration.DividerItemDecoration
 import com.xdys.yhyg.R
@@ -23,6 +25,8 @@ import com.xdys.yhyg.databinding.FragmentCartBinding
 import com.xdys.yhyg.entity.cart.CartProductEntity
 import com.xdys.yhyg.entity.cart.CartShopEntity
 import com.xdys.yhyg.entity.goods.ConfirmOrderEntity
+import com.xdys.yhyg.entity.goods.FoldGoods
+import com.xdys.yhyg.entity.goods.FoldOrder
 import com.xdys.yhyg.entity.goods.OrderGoods
 import com.xdys.yhyg.ui.goods.GoodsDetailActivity
 import com.xdys.yhyg.ui.order.ConfirmOrderActivity
@@ -44,6 +48,8 @@ class CartFragment : ViewModelFragment<CartViewModel, FragmentCartBinding>() {
 
     private val cartAdapter: CartAdapter by lazy { CartAdapter(listener) }
 
+    var allPrice: String = "0.00"
+
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?): Unit = with(binding) {
         with(rvGoods) {
@@ -58,7 +64,7 @@ class CartFragment : ViewModelFragment<CartViewModel, FragmentCartBinding>() {
             setHeaderView(createHeaderView())
             headerWithEmptyEnable = true
             setOnItemClickListener { _, _, position ->
-                data[position].id?.let {GoodsDetailActivity.start(requireContext(), it, 1)}
+                data[position].id?.let { GoodsDetailActivity.start(requireContext(), it, 1) }
             }
         }
         tvToSettle.setOnClickListener {
@@ -89,7 +95,7 @@ class CartFragment : ViewModelFragment<CartViewModel, FragmentCartBinding>() {
             var ids = cartAdapter.getCartIds()
             viewModel.deleteCart(ids)
         }
-        refreshLayout.setOnRefreshListener { initData() }
+        refreshLayout.setOnRefreshListener { viewModel.cartList() }
     }
 
     override fun initData() {
@@ -116,10 +122,10 @@ class CartFragment : ViewModelFragment<CartViewModel, FragmentCartBinding>() {
             cartAdapter.setNewInstance(it.list as MutableList<BaseNode>)
         }
         viewModel.cartDeleteLivaData.observe(this) {
-            initData()
+            viewModel.cartList()
         }
         viewModel.cartUpdateLiveData.observe(this) {
-//            initData()
+//           viewModel.cartList()
         }
         addressViewModel.defaultAddressLivaData.observe(this) {
             binding.tvAddress.text = "配送至:${it.detailedAddress}"
@@ -127,36 +133,38 @@ class CartFragment : ViewModelFragment<CartViewModel, FragmentCartBinding>() {
         homeViewModel.favGoodsLiveData.observe(this) {
             goodsAdapter.setNewInstance(it.records)
         }
+        LiveDataBus.toObserve(CartEvent::class.java).observe(this) {
+            viewModel.cartList()
+        }
     }
-
 
     /**
      * 结算
      */
-    fun toSettle() {
-        val goodsList: MutableList<OrderGoods> = mutableListOf()
+    private fun toSettle() {
+        val goodsList: MutableList<FoldGoods> = mutableListOf()
         val shop = viewModel.cartLiveData.value?.list?.get(0)
         for (product in cartAdapter.data) (product as? CartProductEntity)?.let {
             if (product.selected) {
                 goodsList.add(
-                    OrderGoods(
-                        product.goodsSpu?.id, product.goodsSpu?.name,
-                        product.spuId, product.skuId, product.specs.get(0).specValueName,
-                        product.quantity, product.goodsSku.salesPrice, product.goodsSpu?.picUrls
+                    FoldGoods(
+                        shop?.shopId,
+                        product.spuId, product.skuId, product.quantity.toString(),
+                        "", "0", "1", product.userShoppingCartId
+
                     )
                 )
             }
         }
         if (goodsList.size > 0) {
             ConfirmOrderActivity.goodsStart(
-                requireContext(), ConfirmOrderEntity(
-                    shop?.shopName, shop?.shopId, goodsList
-                )
+                requireContext(), FoldOrder("", goodsList)
             )
         }
     }
 
     private val listener = object : OnCartItemSelectedListener {
+
         // 选中状态发生变化
         override fun changed() {
         }
@@ -200,6 +208,9 @@ class CartFragment : ViewModelFragment<CartViewModel, FragmentCartBinding>() {
 
         override fun allTolPrice(totalPrice: String) {
             binding.tvTotalAmount.text = "总计：${totalPrice}"
+            allPrice = totalPrice
         }
     }
+
+
 }

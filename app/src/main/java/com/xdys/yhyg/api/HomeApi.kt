@@ -46,4 +46,11 @@ interface HomeApi : BaseApi {
 
     @GET("/mall-goods/api/coupon/page")
     suspend fun couponPage(@Body body: RequestBody): Result<Any>
+
+
+    @GET("/mall-goods/api/goodsSpu/page")
+    suspend fun goodsSpuPage(
+        @Query("sortColumn") sortColumn: String,
+        @Query("asc") asc: String
+    ): Result<PageData<FavGoodsEntity>>
 }

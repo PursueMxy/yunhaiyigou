@@ -1,6 +1,8 @@
 package com.xdys.yhyg.adapte.order
 
 import android.view.View
+import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.chad.library.adapter.base.BaseQuickAdapter
@@ -14,6 +16,7 @@ class OrderAdapter :
 
     init {
         setDiffCallback(OrderDiffCallback())
+        addChildClickViewIds(R.id.btnOrderStatus, R.id.btnTwoStatus, R.id.btnThreeStatus)
     }
 
     override fun convert(holder: OrderViewHolder, item: OrderEntity) {
@@ -35,6 +38,39 @@ class OrderAdapter :
 
         }
         holder.orderAdapter.setNewInstance(item.order_goods_items)
+        val btnOrderStatus = holder.getView<TextView>(R.id.btnOrderStatus)
+        val btnTwoStatus = holder.getView<TextView>(R.id.btnTwoStatus)
+        val btnThreeStatus = holder.getView<TextView>(R.id.btnThreeStatus)
+        btnThreeStatus.isVisible = (item.status == "3" || item.status == "4" || item.status == "5")
+        when (item.status) {
+            "0" -> {
+                btnOrderStatus.text = "去付款"
+                btnTwoStatus.text = "取消订单"
+            }
+            "1" -> {
+                btnOrderStatus.text = "催发货"
+                btnTwoStatus.text = "申请退款"
+            }
+            "2" -> {
+                btnOrderStatus.text = "催发货"
+                btnTwoStatus.text = "申请退款"
+            }
+            "3" -> {
+                btnOrderStatus.text = "确认收货"
+                btnTwoStatus.text = "查看物流"
+                btnThreeStatus.text = "退换/售后"
+            }
+            "4" -> {
+                btnOrderStatus.text = "晒单评价"
+                btnTwoStatus.text = "查看物流"
+                btnThreeStatus.text = "退换/售后"
+            }
+            "5" -> {
+                btnOrderStatus.text = "再次购买"
+                btnTwoStatus.text = "查看物流"
+                btnThreeStatus.text = "退换/售后"
+            }
+        }
     }
 
     override fun onItemViewHolderCreated(viewHolder: OrderViewHolder, viewType: Int) {

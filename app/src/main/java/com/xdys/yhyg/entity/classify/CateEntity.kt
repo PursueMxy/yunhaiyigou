@@ -4,11 +4,15 @@ import com.chad.library.adapter.base.entity.node.BaseNode
 import java.io.Serializable
 
 data class CateEntity(
-    val category_id: String? = null,
-    val category_name: String? = null,
-    val category_pic: String? = null,
-    val child_list: MutableList<CateEntity>? = null
+    val id: String? = null,
+    val parentId: String? = null,
+    val sort: String? = null,
+    val children: MutableList<Categories>? = null,
+    val tenantId: String? = null,
+    val enable: String? = null,
+    val shopId: String? = null,
+    val name: String? = null
 ) : BaseNode(), Serializable {
     override val childNode: MutableList<BaseNode>?
-        get() = child_list as? MutableList<BaseNode>
+        get() = children as? MutableList<BaseNode>
 }

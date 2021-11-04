@@ -11,17 +11,19 @@ import com.xdys.library.network.HttpClient
 import com.xdys.yhyg.R
 import com.xdys.yhyg.api.OrderApi
 import com.xdys.yhyg.entity.ListStatusParams
+import com.xdys.yhyg.entity.goods.FoldOrder
+import com.xdys.yhyg.entity.goods.GenerateOrdersEntity
 import com.xdys.yhyg.entity.order.OrderAddress
 import com.xdys.yhyg.entity.order.OrderDetail
 import com.xdys.yhyg.entity.order.OrderEntity
-import kotlinx.coroutines.Dispatchers
+import com.xdys.yhyg.entity.order.PreviewOrderEntity
 import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody.Companion.toRequestBody
 
 class OrderViewModel : BaseViewModel() {
 
-    private val api by lazy { HttpClient.create3(OrderApi::class.java) }
+    private val api by lazy { HttpClient.create2(OrderApi::class.java) }
 
     private val gson by lazy { Gson() }
 
@@ -32,6 +34,10 @@ class OrderViewModel : BaseViewModel() {
     val orderDetailLiveData by lazy { MutableLiveData<OrderDetail>() }
 
     val addressLiveData by lazy { MutableLiveData<OrderAddress>() }
+
+    val previewOrderLiveData by lazy { MutableLiveData<PreviewOrderEntity>() }
+
+    val saveOrderLiveData by lazy { MutableLiveData<Any>() }
 
     private var page: Int = 1
 
@@ -77,6 +83,28 @@ class OrderViewModel : BaseViewModel() {
         viewModelScope.launch {
             fetchData({ api.logistics(orderId) })?.let {
                 addressLiveData.postValue(it)
+            }
+        }
+    }
+
+    fun foldOrder(foldOrder: FoldOrder) {
+        val body = gson.toJson(foldOrder).toRequestBody(
+            context.getString(R.string.content_type_json).toMediaType()
+        )
+        viewModelScope.launch {
+            fetchData({ api.foldOrder(body) })?.let {
+                previewOrderLiveData.postValue(it)
+            }
+        }
+    }
+
+    fun addOrder(generateOrders: GenerateOrdersEntity) {
+        val body = gson.toJson(generateOrders).toRequestBody(
+            context.getString(R.string.content_type_json).toMediaType()
+        )
+        viewModelScope.launch {
+            fetchData({ api.addOrder(body) })?.let {
+                saveOrderLiveData.postValue(it)
             }
         }
     }

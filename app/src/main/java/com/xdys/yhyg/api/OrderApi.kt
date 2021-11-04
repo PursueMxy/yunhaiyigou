@@ -5,6 +5,7 @@ import com.xdys.library.network.base.Result
 import com.xdys.yhyg.entity.order.OrderAddress
 import com.xdys.yhyg.entity.order.OrderDetail
 import com.xdys.yhyg.entity.order.OrderEntity
+import com.xdys.yhyg.entity.order.PreviewOrderEntity
 import okhttp3.RequestBody
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -26,4 +27,10 @@ interface OrderApi : BaseApi {
     @GET("api/check_logistics")
     suspend fun logistics(@Query("courier_number") courier_number: String): Result<OrderAddress>
 
+
+    @POST("/mall-order/api/orderinfo/foldOrder")
+    suspend fun foldOrder(@Body body: RequestBody): Result<PreviewOrderEntity>
+
+    @POST("/mall-order/api/orderinfo/addOrder")
+    suspend fun addOrder(@Body body: RequestBody): Result<Any>
 }

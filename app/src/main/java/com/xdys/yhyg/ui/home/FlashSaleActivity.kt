@@ -14,6 +14,8 @@ import com.xdys.yhyg.R
 import com.xdys.yhyg.adapte.home.FlashSaleAdapter
 import com.xdys.yhyg.databinding.ActivityFlashSaleBinding
 import com.xdys.yhyg.entity.goods.ConfirmOrderEntity
+import com.xdys.yhyg.entity.goods.FoldGoods
+import com.xdys.yhyg.entity.goods.FoldOrder
 import com.xdys.yhyg.entity.goods.OrderGoods
 import com.xdys.yhyg.ui.goods.GoodsDetailActivity
 import com.xdys.yhyg.ui.order.ConfirmOrderActivity
@@ -49,18 +51,17 @@ class FlashSaleActivity : ViewModelActivity<HomeViewModel, ActivityFlashSaleBind
                         val goodsSale = data[position]
                         if (goodsSale.seckillNum < goodsSale.limitNum) {
                             ConfirmOrderActivity.goodsStart(
-                                this@FlashSaleActivity, ConfirmOrderEntity(
-                                    goodsSale.shopName, goodsSale?.shopId.toString(),
-                                    mutableListOf(
-                                        OrderGoods(
-                                            goodsSale.spuId,
-                                            goodsSale.name,
+                                this@FlashSaleActivity,
+                                FoldOrder(
+                                    "", mutableListOf(
+                                        FoldGoods(
+                                            goodsSale?.shopId.toString(),
                                             goodsSale.spuId,
                                             goodsSale.skuId,
-                                            "",
-                                            1,
+                                            "1",
                                             goodsSale.seckillPrice,
-                                            goodsSale.picUrl
+                                            "3",
+                                            "1"
                                         )
                                     )
                                 )

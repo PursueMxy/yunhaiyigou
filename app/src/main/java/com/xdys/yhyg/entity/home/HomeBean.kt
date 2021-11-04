@@ -2,10 +2,17 @@ package com.xdys.yhyg.entity.home
 
 data class HomeBean(
     var id: String? = null,
+    val noticeList: MutableList<NoticeBean> = mutableListOf(),
     val carouselList: MutableList<BannerBean> = mutableListOf(),
     val goodsCategoryListFirst: MutableList<HomeClassifyBean> = mutableListOf(),
 //    val buttonList: MutableList<ButtonList> = mutableListOf(),
     val disImg: DisImg? = null
+)
+
+data class NoticeBean(
+    val id: String? = null,
+    val name: String? = null,
+    val info: String? = null,
 )
 
 
