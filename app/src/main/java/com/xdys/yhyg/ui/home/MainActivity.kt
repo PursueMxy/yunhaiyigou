@@ -39,6 +39,8 @@ class MainActivity : ViewModelActivity<MineViewModel, ActivityMainBinding>() {
 //    private val homeFragment: HomeFragment by lazy { HomeFragment() }
 
     private val homeFragment: ViceHomeFragment by lazy { ViceHomeFragment() }
+
+//    private val classificationFragment: ClassificationFragment by lazy { ClassificationFragment() }
     private val classificationFragment: ViceCateFragment by lazy { ViceCateFragment() }
 
     //    private val mallFragment: MallFragment by lazy { MallFragment() }

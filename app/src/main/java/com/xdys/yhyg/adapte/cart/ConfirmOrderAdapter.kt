@@ -8,8 +8,6 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.xdys.library.extension.currency
 import com.xdys.library.extension.loadRoundCornerImage
 import com.xdys.yhyg.R
-import com.xdys.yhyg.entity.cart.CartProductEntity
-import com.xdys.yhyg.entity.cart.CartShopEntity
 import com.xdys.yhyg.entity.order.BuyShop
 import com.xdys.yhyg.entity.order.OrderGoods
 
@@ -50,8 +48,8 @@ class OrderGoodsProvider : BaseNodeProvider() {
         (item as OrderGoods)?.let {
             holder.setText(R.id.tvGoodsName, it.goodsSpuVo?.name)
                 .setText(R.id.tvSpecs, it.goodsSkuVo?.specName)
-                .setText(R.id.tvPrice, it.paymentPrice)
-                .setText(R.id.tvNumber, it.quantity.toString())
+                .setText(R.id.tvPrice, it.paymentPrice?.currency())
+                .setText(R.id.tvNumber, "X${it.quantity}")
                 .getView<ImageView>(R.id.ivGoods)
                 .loadRoundCornerImage(it.goodsSpuVo?.picUrls?.get(0))
         }

@@ -55,12 +55,31 @@ class OrderFragment : ViewModelFragment<OrderViewModel, FragmentOrderBinding>() 
     override fun initData() {
         var position = arguments?.getInt(EXTRA_ID, 0)
         when (position) {
-            0 -> viewModel.orderList("0", true)
-            1 -> viewModel.orderList("11", true)
-            2 -> viewModel.orderList("1", true)
-            3 -> viewModel.orderList("2", true)
-            4 -> viewModel.orderList("5", true)
-            5 -> viewModel.orderList("3", true)
+            0 -> {
+                val map = hashMapOf("status" to "")
+                viewModel.orderList(map, true)
+            }
+            1 -> {
+                val map = hashMapOf("isPay" to "0")
+                viewModel.orderList(map, true)
+            }
+            2 -> {
+                val map = hashMapOf("status" to "1")
+                viewModel.orderList(map, true)
+            }
+            3 -> {
+                val map = hashMapOf("status" to "2")
+                viewModel.orderList(map, true)
+            }
+            4 -> {
+                val map = hashMapOf("appraisesStatus" to "1")
+                viewModel.orderList(map, true)
+            }
+            5 -> {
+                val map = hashMapOf("status" to "3")
+                viewModel.orderList(map, true)
+            }
+
         }
     }
 

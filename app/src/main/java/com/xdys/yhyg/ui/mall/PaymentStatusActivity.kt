@@ -12,13 +12,14 @@ import com.xdys.library.kit.decoration.DividerItemDecoration
 import com.xdys.yhyg.adapte.home.HomeGoodsAdapter
 import com.xdys.yhyg.databinding.ActivityPaymentStatusBinding
 import com.xdys.yhyg.ui.goods.GoodsDetailActivity
+import com.xdys.yhyg.vm.HomeViewModel
 import com.xdys.yhyg.vm.MallViewModel
 
-class PaymentStatusActivity : ViewModelActivity<MallViewModel, ActivityPaymentStatusBinding>() {
+class PaymentStatusActivity : ViewModelActivity<HomeViewModel, ActivityPaymentStatusBinding>() {
 
     override fun createBinding() = ActivityPaymentStatusBinding.inflate(layoutInflater)
 
-    override val viewModel: MallViewModel by viewModels()
+    override val viewModel: HomeViewModel by viewModels()
 
     private val goodsAdapter by lazy { HomeGoodsAdapter() }
 
@@ -36,12 +37,20 @@ class PaymentStatusActivity : ViewModelActivity<MallViewModel, ActivityPaymentSt
             layoutManager = GridLayoutManager(this@PaymentStatusActivity, 2)
             addItemDecoration(DividerItemDecoration(7.dp, 7.dp))
             goodsAdapter.setOnItemClickListener { adapter, view, position ->
-                GoodsDetailActivity.start(this@PaymentStatusActivity,"")
+                GoodsDetailActivity.start(this@PaymentStatusActivity, "")
             }
         }
+        tvPayDetail.text="支付方式：微信支付"
     }
 
     override fun initData() {
-        goodsAdapter.setDiffNewData(mutableListOf())
+        viewModel.favGoods()
+    }
+
+    override fun initObserver() {
+        super.initObserver()
+        viewModel.favGoodsLiveData.observe(this) {
+            goodsAdapter.setNewInstance(it.records)
+        }
     }
 }

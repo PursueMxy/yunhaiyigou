@@ -44,12 +44,12 @@ class AddressEditFragment : ViewModelFragment<AddressViewModel, FragmentAddressE
             }
         }
         tvSaveAddress.setOnClickListener {
-            savaAddress()
+            saveAddress()
         }
     }
 
 
-    fun savaAddress() {
+    fun saveAddress() {
         with(binding) {
             val consigneeName = etConsignee.text.toString()
             val phone = etPhoneNumber.text.toString()
@@ -115,7 +115,7 @@ class AddressEditFragment : ViewModelFragment<AddressViewModel, FragmentAddressE
             binding.etDetailedAddress.setText(it.detailedAddress)
             binding.etPhoneNumber.setText(it.phone)
             binding.etConsignee.setText(it.consigneeName)
-            binding.etCity.text = "${it.provinceName}${it.cityName}${it.townsName}"
+            binding.etCity.text = (it.provinceName ?: "").plus(it.cityName ?: "").plus(it.townsName ?: "")
             binding.ivSetDefaultAddress.isSelected = it.hasDefault == "1"
         }
     }

@@ -142,7 +142,7 @@
     <string name="setting">设置</string>
     <string name="edit_information">编辑资料</string>
     <string name="clear_cache">清除缓存</string>
-    <string name="about_app">关于APP</string>
+    <string name="about_app">关于云海易购APP</string>
     <string name="sign_out">退出登录</string>
     <string name="personal_information">个人信息</string>
     <string name="region">地区</string>
@@ -351,5 +351,7 @@
     <string name="select_area">选择地区</string>
     <string name="confirm">确定</string>
     <string name="more">更多</string>
+    <string name="about_name">云海易购</string>
+    <string name="version_name">版本号：</string>
 
 </resources>

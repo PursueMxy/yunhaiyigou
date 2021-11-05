@@ -41,13 +41,14 @@ class OrderViewModel : BaseViewModel() {
 
     private var page: Int = 1
 
-    fun orderList(type: String, restart: Boolean) {
+    fun orderList(map: HashMap<String, String>, restart: Boolean) {
         if (restart) page = 1
         viewModelScope.launch {
-
             if (restart) page = 1
             fetchData({
-                api.orderList(type, page, Constant.Config.SIZE)
+                map["current"] = page.toString()
+                map["size"] = Constant.Config.SIZE.toString()
+                api.orderList(map)
             }, failure = {
                 handleThrowable(it)
                 listStatusLiveData.postValue(

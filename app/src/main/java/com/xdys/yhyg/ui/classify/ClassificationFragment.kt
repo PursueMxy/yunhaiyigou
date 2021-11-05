@@ -47,11 +47,11 @@ class ClassificationFragment :
     override fun initData() {
         viewModel.goodsClassify()
 //        viewModel.goodsSpu()
-        cateAdapter.setNewInstance(mutableListOf("推荐", "男装", "女装", "美食", "电器", "酒水", "家居日用"))
-        cateSecondAdapter.list = mutableListOf(
-            CateEntity(), CateEntity(), CateEntity(), CateEntity(),
-            CateEntity(), CateEntity(), CateEntity(),
-        )
+//        cateAdapter.setNewInstance(mutableListOf("推荐", "男装", "女装", "美食", "电器", "酒水", "家居日用"))
+//        cateSecondAdapter.list = mutableListOf(
+//            CateEntity(), CateEntity(), CateEntity(), CateEntity(),
+//            CateEntity(), CateEntity(), CateEntity(),
+//        )
     }
 
     override fun initObserver() {
@@ -60,7 +60,8 @@ class ClassificationFragment :
 
         }
         viewModel.goodsClassifyLiveData.observe(this){
-
+            cateAdapter.setNewInstance(it)
+            cateSecondAdapter.list = it
         }
     }
 }

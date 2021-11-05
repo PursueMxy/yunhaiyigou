@@ -25,8 +25,8 @@ object Constant {
     }
 
     object Config {
-        val SIZE = 20
-        val WX_APPID = "wx340fb564c21261de"
+        val SIZE = 1
+        val WX_APPID = "wxef9d34097c2fe25f"
         val compressDir: File
             get() {
                 val dir = File(context.filesDir, "compress")

@@ -17,6 +17,7 @@ import com.xdys.yhyg.adapte.goods.OrderGoodsAdapter
 import com.xdys.yhyg.databinding.ActivityConfirmOrderBinding
 import com.xdys.yhyg.entity.goods.*
 import com.xdys.yhyg.ui.home.MainActivity
+import com.xdys.yhyg.ui.mall.PaymentStatusActivity
 import com.xdys.yhyg.vm.AddressViewModel
 import com.xdys.yhyg.vm.HomeViewModel
 import com.xdys.yhyg.vm.OrderViewModel
@@ -137,8 +138,9 @@ class ConfirmOrderActivity : ViewModelActivity<HomeViewModel, ActivityConfirmOrd
         }
         orderViewModel.previewOrderLiveData.observe(this) {
             mAdapter.setNewInstance(it.buyShopList as MutableList<BaseNode>)
-            binding.tvShipping.text = "￥0.00"
+            binding.tvShipping.text = it.buyShopList.get(0).freight?.currency()
             binding.tvCouponDeduction.text = "￥0.00"
+            binding.tvGoodsAmount.text = it.buyShopList.get(0).paymentPrice?.currency()
         }
         orderViewModel.saveOrderLiveData.observe(this) {
             LiveDataBus.post(CartEvent())

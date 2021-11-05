@@ -71,9 +71,9 @@ class MineFragment : ViewModelFragment<MineViewModel, FragmentMineBinding>() {
         tvReturnAfterSale.setOnClickListener {
             ReturnAfterSaleActivity.start(requireContext())
         }
-        tvFeedback.setOnClickListener {
-            ViewSolutionActivity.start(requireContext())
-        }
+//        tvFeedback.setOnClickListener {
+//            ViewSolutionActivity.start(requireContext())
+//        }
         tvBoardCommittee.setOnClickListener {
         }
         tvCommonProblem.setOnClickListener {

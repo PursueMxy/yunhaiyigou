@@ -7,18 +7,13 @@ import com.xdys.yhyg.entity.order.OrderDetail
 import com.xdys.yhyg.entity.order.OrderEntity
 import com.xdys.yhyg.entity.order.PreviewOrderEntity
 import okhttp3.RequestBody
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface OrderApi : BaseApi {
 
-    @GET("api/datasearch")
+    @GET("/mall-order/api/orderinfo/page")
     suspend fun orderList(
-        @Query("status") status: String,
-        @Query("pageNum") pageNum: Int,
-        @Query("pageSize") pageSize: Int
+        @QueryMap map: Map<String, String>
     ): Result<MutableList<OrderEntity>>
 
     @POST("api/order_details")

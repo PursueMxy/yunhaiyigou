@@ -87,4 +87,8 @@ dependencies {
 
     api 'com.github.LuckSiege.PictureSelector:picture_library:v2.6.0'
 
+    api 'com.tencent.mm.opensdk:wechat-sdk-android:+'
+
+    api(name: 'alipaysdk-15.8.05.211018174351', ext: 'aar')
+
 }

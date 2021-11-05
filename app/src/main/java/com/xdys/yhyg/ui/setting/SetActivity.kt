@@ -4,15 +4,12 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
-import com.xdys.yhyg.databinding.ActivitySetBinding
-import com.xdys.yhyg.vm.MineViewModel
 import com.xdys.library.base.ViewModelActivity
 import com.xdys.library.config.Constant
 import com.xdys.library.extension.singleTop
-import com.xdys.yhyg.popup.FeedbackPopupWindow
+import com.xdys.yhyg.databinding.ActivitySetBinding
 import com.xdys.yhyg.popup.PromptPopupWindow
 import com.xdys.yhyg.ui.login.LoginActivity
-import com.xdys.yhyg.vm.LoginViewModel
 import com.xdys.yhyg.vm.SetViewModel
 
 class SetActivity : ViewModelActivity<SetViewModel, ActivitySetBinding>() {
@@ -38,6 +35,9 @@ class SetActivity : ViewModelActivity<SetViewModel, ActivitySetBinding>() {
         tvLogOut.setOnClickListener {
             viewModel.logout()
             popupFeedback.setData("您确定要退出登录么").showPopupWindow()
+        }
+        flAbout.setOnClickListener {
+            AboutActivity.start(this@SetActivity)
         }
     }
 

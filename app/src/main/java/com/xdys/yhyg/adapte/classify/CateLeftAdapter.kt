@@ -4,10 +4,11 @@ import android.widget.TextView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.xdys.yhyg.R
+import com.xdys.yhyg.entity.classify.CateEntity
 
 class CateLeftAdapter(
     private val onCateSelect: ((Int) -> Unit)? = null
-) : BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_cate_left) {
+) : BaseQuickAdapter<CateEntity, BaseViewHolder>(R.layout.item_cate_left) {
 
     private var selectedPosition = 0
 
@@ -15,8 +16,8 @@ class CateLeftAdapter(
         setOnItemClickListener { _, _, position -> scrollToPosition(position) }
     }
 
-    override fun convert(holder: BaseViewHolder, item: String) = with(holder) {
-        setText(R.id.tvCateName, item)
+    override fun convert(holder: BaseViewHolder, item: CateEntity) = with(holder) {
+        setText(R.id.tvCateName, item.name)
         getView<TextView>(R.id.tvCateName).paint.isFakeBoldText =
             selectedPosition == holder.adapterPosition
         itemView.isSelected = selectedPosition == holder.adapterPosition
@@ -26,10 +27,10 @@ class CateLeftAdapter(
     fun scrollToPosition(position: Int) {
         recyclerView.smoothScrollToPosition(position)
         // 触发回调
-            onCateSelect?.invoke(position)
-            // 切换选中的Item
-            selectedPosition = position
-            notifyDataSetChanged()
+        onCateSelect?.invoke(position)
+        // 切换选中的Item
+        selectedPosition = position
+        notifyDataSetChanged()
 //        recyclerView.postDelayed({
 //            (recyclerView.layoutManager as? LinearLayoutManager)?.run {
 //                findViewByPosition(position)?.let {

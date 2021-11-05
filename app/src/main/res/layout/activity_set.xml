@@ -220,6 +220,7 @@
                     android:background="@color/BE0" />
 
                 <FrameLayout
+                    android:id="@+id/flAbout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingVertical="20dp"
@@ -241,7 +242,6 @@
                         android:layout_gravity="end"
                         android:drawableEnd="@mipmap/arrow_right_s"
                         android:drawablePadding="8dp"
-                        android:text="0MB"
                         android:textColor="@color/B99"
                         android:textSize="15sp"
                         tools:ignore="UseCompatTextViewDrawableXml" />
