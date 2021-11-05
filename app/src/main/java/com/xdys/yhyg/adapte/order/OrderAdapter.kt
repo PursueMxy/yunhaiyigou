@@ -20,7 +20,7 @@ class OrderAdapter :
     }
 
     override fun convert(holder: OrderViewHolder, item: OrderEntity) {
-        holder.setText(R.id.tvShopName, item.order_goods_items.get(0).vendorName)
+        holder.setText(R.id.tvShopName, "")
             .setText(
                 R.id.tvOrderStatus, when (item.status) {
                     "0" -> "待付款"
@@ -33,11 +33,8 @@ class OrderAdapter :
             )
 //            .setText(R.id.tvOrderTips, "订单将在29分30秒后自动关闭")
             .setText(R.id.tvPrice, item.orders_count)
-            .setText(R.id.tvGoodsNum, "共${item.order_goods_items.size}件商品 实付：")
-        for (goods in item.order_goods_items) {
-
-        }
-        holder.orderAdapter.setNewInstance(item.order_goods_items)
+            .setText(R.id.tvGoodsNum, "共${item.listOrderItem.size}件商品 实付：")
+        holder.orderAdapter.setNewInstance(item.listOrderItem)
         val btnOrderStatus = holder.getView<TextView>(R.id.btnOrderStatus)
         val btnTwoStatus = holder.getView<TextView>(R.id.btnTwoStatus)
         val btnThreeStatus = holder.getView<TextView>(R.id.btnThreeStatus)

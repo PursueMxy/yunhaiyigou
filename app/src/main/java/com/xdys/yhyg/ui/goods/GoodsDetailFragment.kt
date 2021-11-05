@@ -19,6 +19,7 @@ import com.xdys.library.extension.dp
 import com.xdys.library.extension.loadCircleImage
 import com.xdys.library.extension.px
 import com.xdys.library.kit.decoration.DividerItemDecoration
+import com.xdys.library.utils.WXShareUtil
 import com.xdys.yhyg.R
 import com.xdys.yhyg.adapte.home.EvaluateImgAdapter
 import com.xdys.yhyg.adapte.home.GetCouponsAdapter
@@ -70,6 +71,10 @@ class GoodsDetailFragment : ViewModelFragment<HomeViewModel, FragmentGoodsDetail
         }
         tvViewAll.setOnClickListener {
             navController.navigate(R.id.goodsEvaluateFragment)
+        }
+        ivShare.setOnClickListener {
+            WXShareUtil.shareWeb(requireContext(),"http://192.168.2.96:3000/project/11/interface/api/898",
+            "商品详情","赶紧来购物吧")
         }
     }
 

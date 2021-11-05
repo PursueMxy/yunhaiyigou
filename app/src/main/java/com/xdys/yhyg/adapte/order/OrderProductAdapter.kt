@@ -14,10 +14,10 @@ class OrderProductAdapter :
 
 
     override fun convert(holder: BaseViewHolder, item: GoodsEntity) {
-        holder.setText(R.id.tvGoodsName, item.goodsName)
-            .setText(R.id.tvSpecification, item.goodsSpecifications)
-            .setText(R.id.tvPrice, item.goodsPrice?.currency())
-            .setText(R.id.tvGoodsNum, "X${item.goodsNumber}")
+        holder.setText(R.id.tvGoodsName, item.spuName)
+            .setText(R.id.tvSpecification, item.specInfo)
+            .setText(R.id.tvPrice, item.salesPrice?.currency())
+            .setText(R.id.tvGoodsNum, "X${item.quantity}")
             .getView<ImageView>(R.id.ivGoods).loadRoundCornerImage(R.mipmap.du_kang_jiu, 7)
     }
 

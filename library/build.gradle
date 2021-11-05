@@ -36,6 +36,7 @@ android {
 }
 
 dependencies {
+    implementation fileTree(dir: "libs", include: ['*.aar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     api 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2'
 
@@ -45,7 +46,6 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-
 
     // AndroidX Support
     api 'androidx.constraintlayout:constraintlayout:2.0.4'
@@ -62,9 +62,9 @@ dependencies {
     api 'androidx.navigation:navigation-fragment-ktx:2.3.2'
     api 'androidx.navigation:navigation-ui-ktx:2.3.2'
     // Third part
-    api  'com.squareup.retrofit2:converter-gson:2.9.0'
-    api  'com.squareup.retrofit2:retrofit:2.9.0'
-    api  'com.squareup.okhttp3:logging-interceptor:4.8.1'
+    api 'com.squareup.retrofit2:converter-gson:2.9.0'
+    api 'com.squareup.retrofit2:retrofit:2.9.0'
+    api 'com.squareup.okhttp3:logging-interceptor:4.8.1'
     api 'io.coil-kt:coil:1.2.0'
     api 'io.coil-kt:coil-gif:1.2.0'
     implementation 'top.zibin:Luban:1.1.8'
@@ -87,8 +87,9 @@ dependencies {
 
     api 'com.github.LuckSiege.PictureSelector:picture_library:v2.6.0'
 
+    /**
+     * 支付
+     */
     api 'com.tencent.mm.opensdk:wechat-sdk-android:+'
-
-    api(name: 'alipaysdk-15.8.05.211018174351', ext: 'aar')
 
 }

@@ -8,6 +8,7 @@ import com.xdys.library.config.Constant
 import com.xdys.library.event.DisposableLiveData
 import com.xdys.library.extension.context
 import com.xdys.library.network.HttpClient
+import com.xdys.library.network.base.PageData
 import com.xdys.yhyg.R
 import com.xdys.yhyg.api.OrderApi
 import com.xdys.yhyg.entity.ListStatusParams
@@ -20,6 +21,7 @@ import com.xdys.yhyg.entity.order.PreviewOrderEntity
 import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody.Companion.toRequestBody
+import java.util.Collections.addAll
 
 class OrderViewModel : BaseViewModel() {
 
@@ -29,7 +31,7 @@ class OrderViewModel : BaseViewModel() {
 
     val listStatusLiveData by lazy { DisposableLiveData<ListStatusParams>() }
 
-    val orderListLiveData by lazy { MutableLiveData<MutableList<OrderEntity>>() }
+    val orderListLiveData by lazy { MutableLiveData<PageData<OrderEntity>>() }
 
     val orderDetailLiveData by lazy { MutableLiveData<OrderDetail>() }
 
@@ -56,7 +58,7 @@ class OrderViewModel : BaseViewModel() {
                 )
             })?.let {
                 orderListLiveData.postValue(
-                    if (restart) it else orderListLiveData.value?.apply { addAll(it) }
+                    if (restart) it else orderListLiveData.value?.apply { addAll(it.records) }
                 )
                 listStatusLiveData.postValue(
                     (listStatusLiveData.value ?: ListStatusParams()).success(page, it.size)

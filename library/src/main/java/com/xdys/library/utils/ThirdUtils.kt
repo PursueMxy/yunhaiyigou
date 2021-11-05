@@ -1,6 +1,7 @@
 package com.xdys.library.utils
 
 import android.app.Activity
+import com.alipay.sdk.app.PayTask
 import com.tencent.mm.opensdk.modelmsg.SendAuth
 import com.tencent.mm.opensdk.modelpay.PayReq
 import com.tencent.mm.opensdk.openapi.WXAPIFactory
@@ -13,11 +14,11 @@ object ThirdUtils {
 
     val api by lazy { WXAPIFactory.createWXAPI(context, Constant.Config.WX_APPID) }
 
-//    suspend fun aliPay(activity: Activity, params: String): AliResult {
-//        return withContext(Dispatchers.IO) {
-//            AliResult(PayTask(activity).payV2(params, true))
-//        }
-//    }
+    suspend fun aliPay(activity: Activity, params: String): AliResult {
+        return withContext(Dispatchers.IO) {
+            AliResult(PayTask(activity).payV2(params, true))
+        }
+    }
 
     fun wxPay(map: Map<String, *>): Boolean {
         return if (api.isWXAppInstalled) {

@@ -4,27 +4,27 @@ package com.xdys.yhyg.entity.order
 data class OrderEntity(
     val orders_id: String? = null,
     val orders_count: String? = null,
-    val order_goods_items: MutableList<GoodsEntity> = mutableListOf(),
+    val listOrderItem: MutableList<GoodsEntity> = mutableListOf(),
     val status: String = "0"
 )
 
 data class GoodsEntity(
     val orderId: String? = null,
-    val goodsNum: String? = null,
-    val validTime: String? = null,
-    val goodsId: String? = null,
-    val signatureKey: String? = null,
-    val goodsName: String? = null,
-    val orderOfTime: String? = null,
-    val orderOn: String? = null,
-    val merchantId: String? = null,
-    val goodsImages: String? = null,
-    val goodsPrice: String? = null,
-    val goodsState: String? = null,
-    val goodsAmount_of: String? = null,
-    val goodsNumber: String? = null,
-    val goodsSpecifications: String? = null,
-    val vendorName: String? = null,
+    val spuId: String? = null,
+    val spuName: String? = null,
+    val id: String? = null,
+    val skuId: String? = null,
+    val specInfo: String? = null,
+    val quantity: String? = null,
+    val salesPrice: String? = null,
+    val tenantId: String? = null,
+    val freightPrice: String? = null,
+    val paymentPrice: String? = null,
+    val paymentPointsPrice: String? = null,
+    val paymentCouponPrice: String? = null,
+    val paymentPoints: String? = null,
+    val status: String? = null,
+    val isRefund: String? = null,
 )
 
 

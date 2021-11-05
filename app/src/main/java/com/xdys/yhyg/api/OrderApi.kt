@@ -1,6 +1,7 @@
 package com.xdys.yhyg.api
 
 import com.xdys.library.network.base.BaseApi
+import com.xdys.library.network.base.PageData
 import com.xdys.library.network.base.Result
 import com.xdys.yhyg.entity.order.OrderAddress
 import com.xdys.yhyg.entity.order.OrderDetail
@@ -14,7 +15,7 @@ interface OrderApi : BaseApi {
     @GET("/mall-order/api/orderinfo/page")
     suspend fun orderList(
         @QueryMap map: Map<String, String>
-    ): Result<MutableList<OrderEntity>>
+    ): Result<PageData<OrderEntity>>
 
     @POST("api/order_details")
     suspend fun orderDetail(@Body body: RequestBody): Result<OrderDetail>

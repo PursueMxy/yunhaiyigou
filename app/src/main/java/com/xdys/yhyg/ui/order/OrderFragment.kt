@@ -90,7 +90,7 @@ class OrderFragment : ViewModelFragment<OrderViewModel, FragmentOrderBinding>() 
         }
         viewModel.orderListLiveData.observe(viewLifecycleOwner) {
             binding.refreshLayout.finishRefresh()
-            orderAdapter.setDiffNewData(it)
+            orderAdapter.setDiffNewData(it.records)
         }
     }
 }
