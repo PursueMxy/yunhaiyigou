@@ -1,8 +1,10 @@
 package com.xdys.yhyg.api
 
+import com.xdys.library.entity.PayParametersEntity
 import com.xdys.library.network.base.BaseApi
 import com.xdys.library.network.base.PageData
 import com.xdys.library.network.base.Result
+import com.xdys.yhyg.entity.goods.SaveOrderEntity
 import com.xdys.yhyg.entity.order.OrderAddress
 import com.xdys.yhyg.entity.order.OrderDetail
 import com.xdys.yhyg.entity.order.OrderEntity
@@ -28,5 +30,8 @@ interface OrderApi : BaseApi {
     suspend fun foldOrder(@Body body: RequestBody): Result<PreviewOrderEntity>
 
     @POST("/mall-order/api/orderinfo/addOrder")
-    suspend fun addOrder(@Body body: RequestBody): Result<Any>
+    suspend fun addOrder(@Body body: RequestBody): Result<MutableList<SaveOrderEntity>>
+
+    @POST("/mall-order/api/pay/payment")
+    suspend fun orderPay(@Body body: RequestBody): Result<PayParametersEntity>
 }

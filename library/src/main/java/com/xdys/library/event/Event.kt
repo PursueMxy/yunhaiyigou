@@ -37,3 +37,8 @@ class CartEvent()
  * @param orderStatus 状态，为空则为未知
  */
 class OrderStatusChangeEvent(val orderId: String, val orderStatus: Int?)
+
+/**
+ * 微信支付
+ */
+class PaySuccessEvent(status: Boolean)

@@ -91,20 +91,6 @@ class GoodsDetailActivity : ViewModelActivity<HomeViewModel, ActivityGoodsDetail
 
     override fun initObserver() {
         super.initObserver()
-        viewModel.goodsDetailLiveData.observe(this) {
-            for (goods in it.skus) {
-                val builder = StringBuilder()
-                val builderName = StringBuilder()
-                for (spec in goods.specs) {
-                    builder.append(spec.specValueId).append(",")
-                    builderName.append(spec.specValueName).append(",")
-                }
-                if (builder.length > 0) {
-                    goods.gatherName = builderName.deleteCharAt(builderName.length - 1).toString()
-                    goods.gatherId = builder.deleteCharAt(builder.length - 1).toString()
-                }
-            }
-        }
 
         cartModel.cartAddLiveData.observe(this) {
             ToastUtils.show(it)
@@ -135,19 +121,6 @@ class GoodsDetailActivity : ViewModelActivity<HomeViewModel, ActivityGoodsDetail
                         )
                     )
                 )
-
-//                ConfirmOrderActivity.goodsStart(
-//                    this, ConfirmOrderEntity(
-//                        "小杜营商", goodsDetail?.shopId.toString(),
-//                        mutableListOf(
-//                            OrderGoods(id, goodsDetail?.name, spuId.toString(),
-//                                selectedSpec?.id, selectedSpec?.gatherName,
-//                                selectedNumber.toLong(), goodsDetail?.priceUp,
-//                                goodsDetail?.picUrls?.get(0)
-//                            )
-//                        )
-//                    ), goodsDetail?.priceDown.toString()
-//                )
             } else {
                 selectedSpec?.let { spec ->
                     spec.gatherName?.let { spuName ->

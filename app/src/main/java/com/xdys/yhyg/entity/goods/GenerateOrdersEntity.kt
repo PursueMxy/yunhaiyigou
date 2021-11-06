@@ -29,8 +29,22 @@ data class BuyGoodsEntity(
     val orderType: String? = null,
     val hasEnable: String? = null,
     val deliveryMode: String? = null,
+)
 
-    )
+data class SaveOrderEntity(
+    val orderId: String? = null,
+    val tenantId: String? = null,
+    val shopId: String? = null,
+    val orderNo: String? = null,
+    val totalAmounts: String? = null,
+    val payEndTime: String? = null,
+    val payEndTimeLoc: String? = null,
+)
+
+data class OrderPay(
+    val orderIds: MutableList<String> = mutableListOf(),
+    var paymentType: String? = null,
+)
 
 
 data class FoldOrder(
@@ -48,3 +62,4 @@ data class FoldGoods(
     val deliveryMode: String? = null,
     val cartId: String? = null,
 ) : Serializable
+

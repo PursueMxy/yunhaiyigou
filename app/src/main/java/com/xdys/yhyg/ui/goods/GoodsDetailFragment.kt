@@ -73,8 +73,12 @@ class GoodsDetailFragment : ViewModelFragment<HomeViewModel, FragmentGoodsDetail
             navController.navigate(R.id.goodsEvaluateFragment)
         }
         ivShare.setOnClickListener {
-            WXShareUtil.shareWeb(requireContext(),"http://192.168.2.96:3000/project/11/interface/api/898",
-            "商品详情","赶紧来购物吧")
+            activity?.intent?.getStringExtra(Constant.Key.EXTRA_ID)?.let {
+                WXShareUtil.shareWeb(
+                    requireContext(), "${Constant.webUrl}/goodsDetails/$it",
+                    "商品详情", "赶紧来购物吧"
+                )
+            }
         }
     }
 
@@ -95,7 +99,7 @@ class GoodsDetailFragment : ViewModelFragment<HomeViewModel, FragmentGoodsDetail
             tvPrice.text = goods.priceUp?.currency()
             tvSold.text = "已售: ${goods.saleNum}"
             tvGoodsName.text = goods.name
-            tvIntroduce.text = ""
+            tvIntroduce.text = goods.skus.get(0).gatherName
             tvDelivery.text = "商家配送"
             ivPortrait.loadCircleImage(R.mipmap.du_kang_jiu)
             val jhhh: String = goods.description.toString()
@@ -118,8 +122,19 @@ class GoodsDetailFragment : ViewModelFragment<HomeViewModel, FragmentGoodsDetail
     override fun initObserver() {
         super.initObserver()
         viewModel.goodsDetailLiveData.observe(this) {
+            for (goods in it.skus) {
+                val builder = StringBuilder()
+                val builderName = StringBuilder()
+                for (spec in goods.specs) {
+                    builder.append(spec.specValueId).append(",")
+                    builderName.append(spec.specValueName).append(",")
+                }
+                if (builder.length > 0) {
+                    goods.gatherName = builderName.deleteCharAt(builderName.length - 1).toString()
+                    goods.gatherId = builder.deleteCharAt(builder.length - 1).toString()
+                }
+            }
             fillUI(it)
-//            it.shopId?.let { shopId -> viewModel.couponPage(shopId) }
         }
         viewModel.ensureByLiveData.observe(this) {
             guaranteeAdapter.setNewInstance(it)

@@ -5,12 +5,15 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import com.chad.library.adapter.base.entity.node.BaseNode
+import com.hjq.toast.ToastUtils
 import com.xdys.library.base.ViewModelActivity
 import com.xdys.library.config.Constant
 import com.xdys.library.event.CartEvent
 import com.xdys.library.event.LiveDataBus
+import com.xdys.library.event.PaySuccessEvent
 import com.xdys.library.extension.currency
 import com.xdys.library.extension.singleTop
+import com.xdys.library.utils.ThirdUtils
 import com.xdys.library.utils.mxyUtils
 import com.xdys.yhyg.adapte.cart.ConfirmOrderAdapter
 import com.xdys.yhyg.adapte.goods.OrderGoodsAdapter
@@ -144,6 +147,20 @@ class ConfirmOrderActivity : ViewModelActivity<HomeViewModel, ActivityConfirmOrd
         }
         orderViewModel.saveOrderLiveData.observe(this) {
             LiveDataBus.post(CartEvent())
+            val orderPay: OrderPay = OrderPay()
+            for (order in it) {
+                order.orderId?.let { it1 -> orderPay.orderIds.add(it1) }
+            }
+            orderPay.paymentType = "1"
+            orderViewModel.orderPay(orderPay)
+        }
+        orderViewModel.payParametersLiveData.observe(this) {
+            if (!ThirdUtils.wxPay(it)) ToastUtils.show("")
+        }
+
+        LiveDataBus.toObserve(PaySuccessEvent::class.java).observe(this) {
+            MainActivity.startActivity(this, true, 3)
+            MyOrderActivity.start(this, 1)
         }
 
     }

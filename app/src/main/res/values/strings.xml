@@ -353,5 +353,7 @@
     <string name="more">更多</string>
     <string name="about_name">云海易购</string>
     <string name="version_name">版本号：</string>
+    <string name="please_install_wx">请安装微信后，再使用微信支付</string>
+    <string name="pay_cancel">用户取消支付</string>
 
 </resources>

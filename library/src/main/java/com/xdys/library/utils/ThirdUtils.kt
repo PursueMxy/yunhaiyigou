@@ -6,6 +6,7 @@ import com.tencent.mm.opensdk.modelmsg.SendAuth
 import com.tencent.mm.opensdk.modelpay.PayReq
 import com.tencent.mm.opensdk.openapi.WXAPIFactory
 import com.xdys.library.config.Constant
+import com.xdys.library.entity.PayParametersEntity
 import com.xdys.library.extension.context
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -20,17 +21,17 @@ object ThirdUtils {
         }
     }
 
-    fun wxPay(map: Map<String, *>): Boolean {
+    fun wxPay(payParameters: PayParametersEntity): Boolean {
         return if (api.isWXAppInstalled) {
             api.registerApp(Constant.Config.WX_APPID)
             api.sendReq(PayReq().apply {
-                appId = map["appid"] as String
-                partnerId = map["partnerid"] as String
-                prepayId = map["prepayid"] as String
-                nonceStr = map["noncestr"] as String
-                timeStamp = map["timestamp"].toString()
-                packageValue = map["package"] as String
-                sign = map["sign"] as String
+                appId = payParameters.appId
+                partnerId =payParameters.mchId
+                prepayId = payParameters.prepayId
+                nonceStr = payParameters.nonceStr
+                timeStamp =payParameters.timestamp
+                packageValue = payParameters.packageStr
+                sign = payParameters.sign
             })
             true
         } else false

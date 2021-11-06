@@ -5,15 +5,16 @@ import androidx.lifecycle.viewModelScope
 import com.google.gson.Gson
 import com.xdys.library.base.BaseViewModel
 import com.xdys.library.config.Constant
+import com.xdys.library.entity.PayParametersEntity
 import com.xdys.library.event.DisposableLiveData
 import com.xdys.library.extension.context
 import com.xdys.library.network.HttpClient
 import com.xdys.library.network.base.PageData
+import com.xdys.library.utils.ThirdUtils
 import com.xdys.yhyg.R
 import com.xdys.yhyg.api.OrderApi
 import com.xdys.yhyg.entity.ListStatusParams
-import com.xdys.yhyg.entity.goods.FoldOrder
-import com.xdys.yhyg.entity.goods.GenerateOrdersEntity
+import com.xdys.yhyg.entity.goods.*
 import com.xdys.yhyg.entity.order.OrderAddress
 import com.xdys.yhyg.entity.order.OrderDetail
 import com.xdys.yhyg.entity.order.OrderEntity
@@ -39,7 +40,9 @@ class OrderViewModel : BaseViewModel() {
 
     val previewOrderLiveData by lazy { MutableLiveData<PreviewOrderEntity>() }
 
-    val saveOrderLiveData by lazy { MutableLiveData<Any>() }
+    val saveOrderLiveData by lazy { MutableLiveData<MutableList<SaveOrderEntity>>() }
+
+    val payParametersLiveData by lazy { MutableLiveData<PayParametersEntity>() }
 
     private var page: Int = 1
 
@@ -108,6 +111,21 @@ class OrderViewModel : BaseViewModel() {
         viewModelScope.launch {
             fetchData({ api.addOrder(body) })?.let {
                 saveOrderLiveData.postValue(it)
+            }
+        }
+    }
+
+    fun orderPay(orderPay: OrderPay) {
+        val body = gson.toJson(orderPay).toRequestBody(
+            context.getString(R.string.content_type_json).toMediaType()
+        )
+        viewModelScope.launch {
+            fetchData({ api.orderPay(body) })?.let {
+                if (it.paymentType=="1"){
+                    if (!ThirdUtils.wxPay(it)) messageLiveData.postValue(
+                        context.getString(R.string.please_install_wx)
+                    )
+                }
             }
         }
     }
