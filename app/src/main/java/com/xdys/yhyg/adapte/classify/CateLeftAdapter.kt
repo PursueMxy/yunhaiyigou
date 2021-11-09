@@ -12,9 +12,9 @@ class CateLeftAdapter(
 
     private var selectedPosition = 0
 
-    init {
-        setOnItemClickListener { _, _, position -> scrollToPosition(position) }
-    }
+//    init {
+//        setOnItemClickListener { _, _, position -> scrollToPosition(position) }
+//    }
 
     override fun convert(holder: BaseViewHolder, item: CateEntity) = with(holder) {
         setText(R.id.tvCateName, item.name)

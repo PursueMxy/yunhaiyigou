@@ -56,10 +56,10 @@ class ClassificationFragment :
 
     override fun initObserver() {
         super.initObserver()
-        viewModel.goodsSpuLiveData.observe(this){
+        viewModel.goodsSpuLiveData.observe(this) {
 
         }
-        viewModel.goodsClassifyLiveData.observe(this){
+        viewModel.goodsClassifyLiveData.observe(this) {
             cateAdapter.setNewInstance(it)
             cateSecondAdapter.list = it
         }

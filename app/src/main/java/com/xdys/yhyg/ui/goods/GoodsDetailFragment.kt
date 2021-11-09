@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.flexbox.FlexboxLayoutManager
+import com.hjq.toast.ToastUtils
 import com.xdys.library.base.ViewModelFragment
 import com.xdys.library.config.Constant
 import com.xdys.library.extension.currency
@@ -88,6 +89,9 @@ class GoodsDetailFragment : ViewModelFragment<HomeViewModel, FragmentGoodsDetail
             viewModel.ensureBySpuId(it)
             viewModel.goodsSpu(it)
         }
+        val id = activity?.intent?.data?.getQueryParameters("id")
+
+
         getCouponsAdapter.setNewInstance(mutableListOf())
         evaluateImgAdapter.setNewInstance(mutableListOf("", "", ""))
     }
@@ -99,8 +103,9 @@ class GoodsDetailFragment : ViewModelFragment<HomeViewModel, FragmentGoodsDetail
             tvPrice.text = goods.priceUp?.currency()
             tvSold.text = "已售: ${goods.saleNum}"
             tvGoodsName.text = goods.name
-            tvIntroduce.text = goods.skus.get(0).gatherName
-            tvDelivery.text = "商家配送"
+
+            tvSelected.text = if (goods.skus.size > 0) goods.skus[0].gatherName else ""
+            tvDelivery.text = "商家配送" 
             ivPortrait.loadCircleImage(R.mipmap.du_kang_jiu)
             val jhhh: String = goods.description.toString()
             webView.loadUrl("javascript:callJS('$jhhh')")

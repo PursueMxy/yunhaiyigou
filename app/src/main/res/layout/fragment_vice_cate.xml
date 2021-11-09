@@ -1,13 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <com.xdys.library.widget.ProgressWebView
         android:id="@+id/webView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:visibility="gone"
         app:showProgress="false"
         app:urlClickable="false" />
+
+    <com.xdys.library.widget.TitleBar
+        android:id="@+id/titleCate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title_content="@string/classification"
+        tools:layout_height="48dp" />
+
+    <TextView
+        android:id="@+id/tvSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/bg_r100"
+        android:backgroundTint="@color/BF6"
+        android:drawablePadding="6dp"
+        android:gravity="center_horizontal"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="8dp"
+        android:text="@string/search_goods"
+        android:textColor="@color/B99"
+        android:textSize="14sp"
+        app:drawableStartCompat="@mipmap/home_search"
+        app:layout_constraintTop_toBottomOf="@id/titleCate" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvLeft"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/BF2"
+        android:clipToPadding="false"
+        android:paddingBottom="12dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvSearch"
+        app:layout_constraintWidth_percent="0.267" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvRight"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/BF2"
+        android:backgroundTint="@color/white"
+        android:clipToPadding="false"
+        android:paddingHorizontal="10dp"
+        android:paddingBottom="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/rvLeft"
+        app:layout_constraintTop_toBottomOf="@id/tvSearch" />
 </androidx.constraintlayout.widget.ConstraintLayout>

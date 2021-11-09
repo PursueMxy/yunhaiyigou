@@ -51,6 +51,7 @@ class SearchActivity : ViewModelActivity<MineViewModel, ActivitySearchBinding>()
             layoutManager = GridLayoutManager(context, 2)
             addItemDecoration(DividerItemDecoration(6.px, 15.px))
         }
+        ivBack.setOnClickListener { onBackPressed() }
     }
 
     override fun initData() {

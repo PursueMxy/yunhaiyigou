@@ -69,7 +69,7 @@ class ConfirmOrderActivity : ViewModelActivity<HomeViewModel, ActivityConfirmOrd
     /**
      * 商品拆单
      */
-    fun foldOrder(addressId: String) {
+    private fun foldOrder(addressId: String) {
         (intent.getSerializableExtra(Constant.Key.EXTRA_DATA) as? FoldOrder)?.let {
             it.buyerAddressId = addressId
             orderViewModel.foldOrder(it)
@@ -80,7 +80,7 @@ class ConfirmOrderActivity : ViewModelActivity<HomeViewModel, ActivityConfirmOrd
     /**
      * 下单
      */
-    fun saveOrder() {
+    private fun saveOrder() {
         val buyShopList: MutableList<BuyShopEntity> = mutableListOf()
         val userShoppingCartIdList: MutableList<String> = mutableListOf()
         (intent.getSerializableExtra(Constant.Key.EXTRA_DATA) as? FoldOrder)?.let {

@@ -62,18 +62,19 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:src="@mipmap/latest_announcements"
+                    app:layout_constraintBottom_toBottomOf="@id/tbvContent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/tbvContent"
-                    app:layout_constraintBottom_toBottomOf="@id/tbvContent"/>
+                    app:layout_constraintTop_toTopOf="@id/tbvContent" />
 
                 <com.xdys.library.widget.TextBannerView
                     android:id="@+id/tbvContent"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="5dp"
-                    app:layout_constraintTop_toTopOf="parent"
+                    android:minHeight="20dp"
                     app:layout_constraintEnd_toStartOf="@id/tvMore"
                     app:layout_constraintStart_toEndOf="@id/ivLatest"
+                    app:layout_constraintTop_toTopOf="parent"
                     app:setDirection="top_to_bottom"
                     app:setGravity="center"
                     app:setTextColor="@color/B66"
@@ -196,7 +197,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/guess_you_like"
+                    android:src="@mipmap/liquor"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

@@ -1,16 +1,14 @@
 package com.xdys.yhyg.adapte.classify
 
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
+import com.xdys.library.extension.px
+import com.xdys.library.kit.decoration.DividerItemDecoration
 import com.xdys.yhyg.R
 import com.xdys.yhyg.adapte.home.GoodsTypeAdapter
 import com.xdys.yhyg.ui.classify.SingleCategoryActivity
-import com.xdys.library.extension.px
-import com.xdys.library.kit.decoration.DividerItemDecoration
-import com.xdys.yhyg.entity.cart.CartGoods
 
 class CateItemAdapter : BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_cate_list) {
 
@@ -30,7 +28,7 @@ class CateItemAdapter : BaseQuickAdapter<String, BaseViewHolder>(R.layout.item_c
         }
         with(goodsTypeAdapter) {
             setOnItemClickListener { _, view, position ->
-                SingleCategoryActivity.start(context,"","")
+                SingleCategoryActivity.start(context, "", "")
             }
         }
     }
