@@ -56,7 +56,7 @@ class OrderFragment : ViewModelFragment<OrderViewModel, FragmentOrderBinding>() 
         var position = arguments?.getInt(EXTRA_ID, 0)
         when (position) {
             0 -> {
-                val map = hashMapOf("status" to "")
+                val map = hashMapOf("" to "")
                 viewModel.orderList(map, true)
             }
             1 -> {

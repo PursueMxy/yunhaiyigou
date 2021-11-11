@@ -105,7 +105,7 @@ class GoodsDetailFragment : ViewModelFragment<HomeViewModel, FragmentGoodsDetail
             tvGoodsName.text = goods.name
 
             tvSelected.text = if (goods.skus.size > 0) goods.skus[0].gatherName else ""
-            tvDelivery.text = "商家配送" 
+            tvDelivery.text = "商家配送"
             ivPortrait.loadCircleImage(R.mipmap.du_kang_jiu)
             val jhhh: String = goods.description.toString()
             webView.loadUrl("javascript:callJS('$jhhh')")

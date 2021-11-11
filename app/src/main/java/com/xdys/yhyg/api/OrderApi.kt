@@ -34,4 +34,10 @@ interface OrderApi : BaseApi {
 
     @POST("/mall-order/api/pay/payment")
     suspend fun orderPay(@Body body: RequestBody): Result<PayParametersEntity>
+
+    @PUT("/mall-order/api/orderinfo/receive/{id}")
+    suspend fun orderReceive(@Path("id") id: String): Result<Any>
+
+    @GET("/mall-order/api/orderinfo/{id}")
+    suspend fun orderInfo(@Path("id") id: String): Result<Any>
 }

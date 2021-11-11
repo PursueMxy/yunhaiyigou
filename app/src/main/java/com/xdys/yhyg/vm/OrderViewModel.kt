@@ -44,6 +44,8 @@ class OrderViewModel : BaseViewModel() {
 
     val payParametersLiveData by lazy { MutableLiveData<PayParametersEntity>() }
 
+    val orderReceiveLiveData by lazy { MutableLiveData<Any>() }
+
     private var page: Int = 1
 
     fun orderList(map: HashMap<String, String>, restart: Boolean) {
@@ -121,11 +123,25 @@ class OrderViewModel : BaseViewModel() {
         )
         viewModelScope.launch {
             fetchData({ api.orderPay(body) })?.let {
-                if (it.paymentType=="1"){
+                if (it.paymentType == "1") {
                     if (!ThirdUtils.wxPay(it)) messageLiveData.postValue(
                         context.getString(R.string.please_install_wx)
                     )
                 }
+            }
+        }
+    }
+
+    fun orderReceive(id: String) {
+        viewModelScope.launch {
+            fetchData({ api.orderReceive(id) })?.let {
+            }
+        }
+    }
+
+    fun orderInfo(id: String) {
+        viewModelScope.launch {
+            fetchData({ api.orderInfo(id) })?.let {
             }
         }
     }

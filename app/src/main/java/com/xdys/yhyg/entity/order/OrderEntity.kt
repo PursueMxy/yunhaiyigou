@@ -5,7 +5,9 @@ data class OrderEntity(
     val orders_id: String? = null,
     val orders_count: String? = null,
     val listOrderItem: MutableList<GoodsEntity> = mutableListOf(),
-    val status: String = "0"
+    val status: String = "0",
+    val isPay: String = "0",
+    val appraisesStatus: String = "0"
 )
 
 data class GoodsEntity(

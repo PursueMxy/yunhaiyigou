@@ -3,10 +3,12 @@ package com.xdys.yhyg.ui.setting
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.text.format.Formatter
 import androidx.activity.viewModels
 import com.xdys.library.base.ViewModelActivity
 import com.xdys.library.config.Constant
 import com.xdys.library.extension.singleTop
+import com.xdys.library.utils.FileUtils
 import com.xdys.yhyg.databinding.ActivitySetBinding
 import com.xdys.yhyg.popup.PromptPopupWindow
 import com.xdys.yhyg.ui.login.LoginActivity
@@ -39,12 +41,25 @@ class SetActivity : ViewModelActivity<SetViewModel, ActivitySetBinding>() {
         flAbout.setOnClickListener {
             AboutActivity.start(this@SetActivity)
         }
+        flClearCache.setOnClickListener {
+            popupClearCache.setData("您确定清除缓存么").showPopupWindow()
+        }
     }
 
     private val popupFeedback: PromptPopupWindow by lazy {
         PromptPopupWindow(this) {
             Constant.saveUserToken("")
             LoginActivity.startActivity(this, true)
+        }
+    }
+
+
+    private val popupClearCache: PromptPopupWindow by lazy {
+        PromptPopupWindow(this) {
+            if (FileUtils.deleteFile(cacheDir)) {
+                binding.tvClearCache.text =
+                    Formatter.formatFileSize(this, FileUtils.getFolderSize(cacheDir))
+            }
         }
     }
 }

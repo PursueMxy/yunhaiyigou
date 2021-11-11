@@ -114,6 +114,7 @@
         android:text="申请退款"
         android:textColor="@color/B66"
         android:textSize="13sp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/btnOrderStatus"
         app:layout_constraintEnd_toStartOf="@id/btnOrderStatus"
         app:layout_constraintTop_toTopOf="@id/btnOrderStatus" />
