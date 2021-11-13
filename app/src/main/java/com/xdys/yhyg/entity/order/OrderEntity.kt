@@ -2,7 +2,7 @@ package com.xdys.yhyg.entity.order
 
 
 data class OrderEntity(
-    val orders_id: String? = null,
+    val id: String? = null,
     val orders_count: String? = null,
     val listOrderItem: MutableList<GoodsEntity> = mutableListOf(),
     val status: String = "0",
@@ -11,10 +11,9 @@ data class OrderEntity(
 )
 
 data class GoodsEntity(
-    val orderId: String? = null,
+    val id: String? = null,
     val spuId: String? = null,
     val spuName: String? = null,
-    val id: String? = null,
     val skuId: String? = null,
     val specInfo: String? = null,
     val quantity: String? = null,
@@ -31,28 +30,35 @@ data class GoodsEntity(
 
 
 data class OrderDetail(
-    val coupon_discount: String? = null,
-    val valid_time: String? = null,
-    val courier_number: String? = null,
-    val online_discount: String? = null,
-    val freight: String? = null,
-    val merchant_id: String? = null,
-    val place_time: String? = null,
-    val payment_time: String? = null,
-    val user_id: String? = null,
-    val goods_amount: String? = null,
-    val order_on: String? = null,
-    val order_status: String? = null,
-    val distribution: String? = null,
-    val method_payment: String? = null,
-    val goods: GoodsDetailEntity? = null
+    val createUserId: String? = null,
+    val createTime: String? = null,
+    val updateUserId: String? = null,
+    val updateTime: String? = null,
+    val tenantId: String? = null,
+    val id: String? = null,
+    val shopId: String? = null,
+    val sourceType: String? = null,
+    val userId: String? = null,
+    val userCode: String? = null,
+    val orderNo: String? = null,
+    val paymentWay: String? = null,
+    val deliveryWay: String? = null,
+    val paymentType: String? = null,
+    val tradeType: String? = null,
+    val isPay: String? = null,
+    val name: String? = null,
+    val status: String? = null,
+    val appraisesStatus: String? = null,
+    val freightPrice: String? = null,
+    val salesPrice: String? = null,
+    val paymentPointsPrice: String? = null,
+    val paymentCouponPrice: String? = null,
+    val paymentPrice: String? = null,
+    val paymentPoints: String? = null,
+    val orderType: String? = null,
+    val payEndTime: String? = null,
+    val listOrderItem: MutableList<GoodsEntity> = mutableListOf()
 
-
-)
-
-data class GoodsDetailEntity(
-    val num: String? = null,
-    val data: MutableList<GoodsEntity> = mutableListOf()
 )
 
 

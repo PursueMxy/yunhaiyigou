@@ -76,21 +76,9 @@ class OrderViewModel : BaseViewModel() {
 
 
     fun orderDetail(orderId: String) {
-        val map = hashMapOf("order_id" to orderId)
-        val body = gson.toJson(map).toRequestBody(
-            context.getString(R.string.content_type_json).toMediaType()
-        )
         viewModelScope.launch {
-            fetchData({ api.orderDetail(body) })?.let {
+            fetchData({ api.orderInfo(orderId) })?.let {
                 orderDetailLiveData.postValue(it)
-            }
-        }
-    }
-
-    fun logistics(orderId: String) {
-        viewModelScope.launch {
-            fetchData({ api.logistics(orderId) })?.let {
-                addressLiveData.postValue(it)
             }
         }
     }

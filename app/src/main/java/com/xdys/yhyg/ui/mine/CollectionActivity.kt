@@ -10,19 +10,19 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.xdys.yhyg.R
-import com.xdys.yhyg.databinding.ActivityCollectionBinding
-import com.xdys.yhyg.vm.MallViewModel
 import com.xdys.library.base.ViewModelActivity
 import com.xdys.library.extension.singleTop
+import com.xdys.yhyg.R
+import com.xdys.yhyg.databinding.ActivityCollectionBinding
+import com.xdys.yhyg.vm.MineViewModel
 
-class CollectionActivity : ViewModelActivity<MallViewModel, ActivityCollectionBinding>() {
+class CollectionActivity : ViewModelActivity<MineViewModel, ActivityCollectionBinding>() {
 
     override fun createBinding() = ActivityCollectionBinding.inflate(layoutInflater)
 
-    override val viewModel: MallViewModel by viewModels()
+    override val viewModel: MineViewModel by viewModels()
 
-    var tableList = arrayOf("商品", "店铺")
+    var tableList = arrayOf("商品")
 
     companion object {
         fun start(context: Context) {
@@ -40,7 +40,7 @@ class CollectionActivity : ViewModelActivity<MallViewModel, ActivityCollectionBi
                     if (tab == null) return
                     tab.customView =
                         layoutInflater.inflate(
-                            R.layout.item_tab_category, null
+                            R.layout.item_tab_mall, null
                         ).apply {
                             findViewById<TextView>(R.id.tvTitle).text = tableList[tab.position]
                         }
@@ -77,6 +77,8 @@ class CollectionActivity : ViewModelActivity<MallViewModel, ActivityCollectionBi
             tab.text = tableList[position]
         }.attach()
 
-        //店铺收藏
+        titleBar.setOnRightClickListener() {
+            viewModel.updateEdit(true)
+        }
     }
 }

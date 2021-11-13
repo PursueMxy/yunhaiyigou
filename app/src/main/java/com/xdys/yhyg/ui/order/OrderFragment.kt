@@ -4,8 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
+import com.chad.library.adapter.base.BaseQuickAdapter
+import com.chad.library.adapter.base.listener.OnItemLongClickListener
 import com.xdys.library.base.ViewModelFragment
 import com.xdys.yhyg.R
 import com.xdys.yhyg.adapte.order.OrderAdapter
@@ -36,7 +39,7 @@ class OrderFragment : ViewModelFragment<OrderViewModel, FragmentOrderBinding>() 
         with(orderAdapter) {
             setEmptyView(R.layout.layout_empty_order)
             setOnItemClickListener { _, _, position ->
-                data[position].orders_id?.let { OrderDetailActivity.start(requireContext(), it) }
+                data[position].id?.let { OrderDetailActivity.start(requireContext(), it) }
             }
             setOnItemChildClickListener { _, view, position ->
                 when (view.id) {
@@ -48,6 +51,7 @@ class OrderFragment : ViewModelFragment<OrderViewModel, FragmentOrderBinding>() 
                     }
                 }
             }
+
         }
         refreshLayout.setOnRefreshListener { initData() }
     }

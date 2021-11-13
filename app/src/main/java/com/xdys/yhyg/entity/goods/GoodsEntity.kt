@@ -75,6 +75,7 @@ data class GoodsDetailEntity(
     val verifyStatus: String? = null,
     val verifyDetail: String? = null,
     val isHot: String? = null,
+    val userCollectId: String = "",
     val skus: MutableList<skuEntity> = mutableListOf(),
 ) : Serializable
 

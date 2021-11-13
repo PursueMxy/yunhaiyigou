@@ -5,19 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
+    android:paddingTop="14dp"
     android:paddingBottom="15dp">
 
-    <androidx.appcompat.widget.AppCompatCheckBox
+
+    <ImageView
         android:id="@+id/cbCartCheck"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginStart="20.5dp"
-        android:background="@null"
-        android:button="@drawable/selector_pay"
-        android:visibility="gone"
+        android:src="@drawable/selector_pay"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <ImageView
         android:id="@+id/ivGoods"
@@ -57,5 +58,16 @@
         app:layout_constraintBottom_toBottomOf="@id/ivGoods"
         app:layout_constraintStart_toEndOf="@id/ivGoods" />
 
-
+    <ImageView
+        android:id="@+id/ivAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/bg_r100"
+        android:backgroundTint="@color/BE0"
+        android:padding="10dp"
+        android:src="@mipmap/gray_cart"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

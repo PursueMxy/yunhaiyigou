@@ -53,4 +53,7 @@ interface HomeApi : BaseApi {
         @Query("sortColumn") sortColumn: String,
         @Query("asc") asc: String
     ): Result<PageData<FavGoodsEntity>>
+
+    @POST("/mall-user/api/collect")
+    suspend fun collect(@Body body: RequestBody): Result<Any>
 }

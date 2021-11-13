@@ -15,13 +15,11 @@ object HttpClient {
     object Url {
         val baseUrl2 = "http://desktop-penm4q0:8000/"
 
-//        val baseUrl1 = "https://www.dkgcjy.com/"
+        val baseUrl1 = "https://www.dkgcjy.com/"
+
+        val baseUrl = "https://www.dkgcjy.com/"
 //
-//        val baseUrl = "https://www.dkgcjy.com/"
-
-        val baseUrl1 = "http://192.168.2.6:8081"
-
-        val baseUrl = "http://192.168.2.6:8081"
+        
 
 //        val baseUrl = "http://desktop-r37dbo8:8081/"
 

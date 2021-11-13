@@ -45,15 +45,14 @@ class OrderDetailActivity : ViewModelActivity<OrderViewModel, ActivityOrderDetai
 
     override fun initData() {
         intent.getStringExtra(EXTRA_DATA)?.let {
-            viewModel.orderDetail(it)
-            viewModel.logistics(it)
+            viewModel.orderInfo(it)
         }
     }
 
     override fun initObserver() {
         super.initObserver()
         viewModel.orderDetailLiveData.observe(this) {
-            mAdapter.setNewInstance(it.goods?.data)
+            mAdapter.setNewInstance(it.listOrderItem)
             fillUI(it)
             fillCountdown()
             viewModel.countdown(100000)
@@ -72,30 +71,29 @@ class OrderDetailActivity : ViewModelActivity<OrderViewModel, ActivityOrderDetai
     fun fillUI(orderDetail: OrderDetail) {
         with(binding) {
             tvOrderStatus.text = "等待付款"
-            tvOrderTime.text = "订单编号：${orderDetail.order_on}"
-            tvOrderAmount.text = orderDetail.goods_amount
+            tvOrderTime.text = "订单编号：${orderDetail.orderNo}"
+            tvOrderAmount.text = orderDetail.paymentPrice
         }
     }
 
     fun fillCountdown() {
-        viewModel.orderDetailLiveData.value?.valid_time?.let {
-
-            var needCountdown =
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                    Instant.now().epochSecond
-                } else {
-                    System.currentTimeMillis() / 1000
-                }
-            if (it.toLong() > needCountdown) {
-                val hour = format.format((it.toLong()?.minus(needCountdown))?.div((60 * 60)))
-                val min = format.format((it?.toLong().minus(needCountdown))?.rem(60 * 60)?.div(60))
-                val sec = format.format((it?.toLong().minus(needCountdown))?.rem(60))
-                val str = " $hour : $min : $sec "
-                binding.tvTime.text = "剩余  $str  自动关闭订单"
-            } else {
-                binding.tvTime.text = "订单已过期"
-            }
-        }
+//        viewModel.orderDetailLiveData.value?.valid_time?.let {
+//            var needCountdown =
+//                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+//                    Instant.now().epochSecond
+//                } else {
+//                    System.currentTimeMillis() / 1000
+//                }
+//            if (it.toLong() > needCountdown) {
+//                val hour = format.format((it.toLong()?.minus(needCountdown))?.div((60 * 60)))
+//                val min = format.format((it?.toLong().minus(needCountdown))?.rem(60 * 60)?.div(60))
+//                val sec = format.format((it?.toLong().minus(needCountdown))?.rem(60))
+//                val str = " $hour : $min : $sec "
+//                binding.tvTime.text = "剩余  $str  自动关闭订单"
+//            } else {
+//                binding.tvTime.text = "订单已过期"
+//            }
+//        }
     }
 
 }

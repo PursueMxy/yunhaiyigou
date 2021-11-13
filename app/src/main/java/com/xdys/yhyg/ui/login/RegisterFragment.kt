@@ -11,10 +11,12 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.hjq.toast.ToastUtils
 import com.xdys.library.base.ViewModelFragment
+import com.xdys.library.config.Constant
 import com.xdys.library.kit.span.ClickMovementMethod
 import com.xdys.library.kit.span.CustomClickSpan
 import com.xdys.yhyg.R
 import com.xdys.yhyg.databinding.FragmentRegisterBinding
+import com.xdys.yhyg.ui.web.WebViewActivity
 import com.xdys.yhyg.vm.LoginViewModel
 
 class RegisterFragment : ViewModelFragment<LoginViewModel, FragmentRegisterBinding>() {
@@ -59,6 +61,11 @@ class RegisterFragment : ViewModelFragment<LoginViewModel, FragmentRegisterBindi
             text = buildSpannedString {
                 append(getString(R.string.login_agree_1))
                 inSpans(CustomClickSpan({
+                    WebViewActivity.start(
+                        requireContext(),
+                        "${Constant.webUrl}/rich/4",
+                        ""
+                    )
                 })) { append(getString(R.string.user_agreement)) }
             }
         }

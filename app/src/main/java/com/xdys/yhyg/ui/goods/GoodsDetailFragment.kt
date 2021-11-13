@@ -81,6 +81,11 @@ class GoodsDetailFragment : ViewModelFragment<HomeViewModel, FragmentGoodsDetail
                 )
             }
         }
+        ivCollection.setOnClickListener {
+            activity?.intent?.getStringExtra(Constant.Key.EXTRA_ID)?.let { id ->
+                viewModel.collect("1", id)
+            }
+        }
     }
 
     override fun initData() {

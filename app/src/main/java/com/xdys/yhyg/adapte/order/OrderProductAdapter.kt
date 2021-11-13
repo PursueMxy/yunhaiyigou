@@ -12,7 +12,6 @@ import com.xdys.yhyg.entity.order.GoodsEntity
 class OrderProductAdapter :
     BaseQuickAdapter<GoodsEntity, BaseViewHolder>(R.layout.item_order_product) {
 
-
     override fun convert(holder: BaseViewHolder, item: GoodsEntity) {
         holder.setText(R.id.tvGoodsName, item.spuName)
             .setText(R.id.tvSpecification, item.specInfo)
@@ -22,20 +21,3 @@ class OrderProductAdapter :
     }
 
 }
-
-//class OrderProductDiffCallback : DiffUtil.ItemCallback<OrderProductEntity>() {
-//    override fun areItemsTheSame(
-//        oldItem: OrderProductEntity,
-//        newItem: OrderProductEntity
-//    ): Boolean {
-//        return oldItem.id == newItem.id
-//    }
-//
-//    override fun areContentsTheSame(
-//        oldItem: OrderProductEntity,
-//        newItem: OrderProductEntity
-//    ): Boolean {
-//        return oldItem.goodsName == oldItem.goodsName && oldItem.goodsNum == newItem.goodsNum &&
-//                oldItem.price == newItem.price && oldItem.specification == newItem.specification
-//    }
-//}

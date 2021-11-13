@@ -25,9 +25,6 @@ class HomeViewModel : BaseViewModel() {
 
     private val api by lazy { HttpClient.create(HomeApi::class.java) }
 
-    private val api1 by lazy { HttpClient.create2(HomeApi::class.java) }
-
-    private val api2 by lazy { HttpClient.create3(HomeApi::class.java) }
 
     private val gson by lazy { Gson() }
 
@@ -124,19 +121,6 @@ class HomeViewModel : BaseViewModel() {
         }
     }
 
-    /**
-     * 下单
-     */
-    fun savaGoods(order: GenerateOrdersEntity) {
-        val body = gson.toJson(order).toRequestBody(
-            context.getString(R.string.content_type_json).toMediaType()
-        )
-        viewModelScope.launch {
-            fetchData({ api2.generateOrders(body) })?.let {
-                savaGoodsLiveData.postValue(it)
-            }
-        }
-    }
 
     /**
      * 商品保障
@@ -181,6 +165,21 @@ class HomeViewModel : BaseViewModel() {
         viewModelScope.launch {
             fetchData({ api.goodsSpuPage("sale_num", "false") })?.let {
                 homeGoodsLiveData.postValue(it)
+            }
+        }
+    }
+
+    /**
+     * 新增用户收藏
+     */
+    fun collect(type: String, relationId: String) {
+        val map = hashMapOf("type" to type, "relationId" to relationId)
+        val body = gson.toJson(map).toRequestBody(
+            context.getString(R.string.content_type_json).toMediaType()
+        )
+        viewModelScope.launch {
+            fetchData({ api.collect(body) })?.let {
+
             }
         }
     }

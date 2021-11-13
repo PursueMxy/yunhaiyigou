@@ -19,12 +19,6 @@ interface OrderApi : BaseApi {
         @QueryMap map: Map<String, String>
     ): Result<PageData<OrderEntity>>
 
-    @POST("api/order_details")
-    suspend fun orderDetail(@Body body: RequestBody): Result<OrderDetail>
-
-    @GET("api/check_logistics")
-    suspend fun logistics(@Query("courier_number") courier_number: String): Result<OrderAddress>
-
 
     @POST("/mall-order/api/orderinfo/foldOrder")
     suspend fun foldOrder(@Body body: RequestBody): Result<PreviewOrderEntity>
@@ -39,5 +33,5 @@ interface OrderApi : BaseApi {
     suspend fun orderReceive(@Path("id") id: String): Result<Any>
 
     @GET("/mall-order/api/orderinfo/{id}")
-    suspend fun orderInfo(@Path("id") id: String): Result<Any>
+    suspend fun orderInfo(@Path("id") id: String): Result<OrderDetail>
 }

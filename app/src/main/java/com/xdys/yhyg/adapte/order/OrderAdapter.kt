@@ -106,7 +106,7 @@ class OrderViewHolder(view: View) : BaseViewHolder(view) {
 
 class OrderDiffCallback : DiffUtil.ItemCallback<OrderEntity>() {
     override fun areItemsTheSame(oldItem: OrderEntity, newItem: OrderEntity): Boolean {
-        return oldItem.orders_id == newItem.orders_id
+        return oldItem.id == newItem.id
     }
 
     override fun areContentsTheSame(oldItem: OrderEntity, newItem: OrderEntity): Boolean {
